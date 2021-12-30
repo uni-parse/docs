@@ -11,7 +11,7 @@
       ›x?y: length| %'border-box| center'd| <side>.
   •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box.
   •scale(x=y|x,y)|X(x)|Y(y); ›x?y: ±#1d.
-    ›-#→pointReflection, -x:e→9, -y:e→6, -x=y:6→9[rotate(.5turn)]
+    ›-#→pointReflection, -x:e→9,-y:e→6, -x=y:6→9[rotate(.5turn)]
   •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
 
  *3Dimensions: •demo: #parent{
@@ -29,7 +29,7 @@
   }
 
 
-  *enable & create z-distance from z=0 parent-object to user:
+  *enable & create z-distance from z=0 plane parent-object to user:
   create 3d vision z-distance from z=0 to uset
     •individual spaces:
       .object-child{t: perspective(length) …;}
