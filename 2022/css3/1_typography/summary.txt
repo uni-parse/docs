@@ -20,7 +20,7 @@
 *font-family: •generic_families: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(for headers), system-ui(defualt).
   •non-generic-families: Capitalized & 'multi word' between quotations & generic_fallback separated by commas(,).
   •external file: @font-face {font-family: 'Define|reName';
-      src:  local('Rosemary'),…, /*avoid unnecessary downloads*/
+      src:  local(Rosemary),…, /*avoid unnecessary downloads*/
         url(f.svg) format('svg'),            /*19%onlySafari*/
         url(f.woff2) format('woff2'),    /*96no-IE&OperaMini*/
         url(f.woff) format('woff'),          /*2018 browsers*/

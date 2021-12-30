@@ -14,14 +14,12 @@
     ›-#→pointReflection, -x:e→9, -y:e→6, -x=y:6→9[rotate(.5turn)]
   •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
 
- *3Dimensions: 
-  •demo: #parent{
-    perspective: none'd| length;  /*enable z-axis shared space*/
-    perspective-origin: <bg-position>;         /*view position*/
+ *3Dimensions: •demo: #parent{
+    perspective: none'd| length; /*create shared 3Dview z0→eye*/
+    perspective-origin: <bg-position>;/*shared 3Dview position*/
     t-style: flat'd| preserve-3d;          /*enable 3d nesting*/
-    .object{
-     position: absolute;                   /*enable 3d nesting*/
-      t: perspective(length)                /*individual space*/
+    .transformedChild{ position: absolute; /*enable 3d nesting*/
+      t: perspective(length) /*create individual 3Dview z0→eye*/
          rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
          translate3d(x,y,z) transateX?Y?Z()
          scale3d(x,y,z) scaleX?Y?Z();
@@ -32,6 +30,7 @@
 
 
   *enable & create z-distance from z=0 parent-object to user:
+  create 3d vision z-distance from z=0 to uset
     •individual spaces:
       .object-child{t: perspective(length) …;}
       ›length € [1,1000px], length<200px useless(too big)
@@ -39,7 +38,7 @@
 
   *setting view position of parent-object:
     .container(perspective-origin: <bg-position>(50% 50%)d}
-      ›±%'border-box, 3values(21-moz?webkit-→95≠Opera1.4%)≠autoPF
+    ›±%'border-box, 3values(21-moz?webkit-→95≠Opera1.4%)≠autoPF.
 
   *enabling 3d space of parent-object to its childrens.
     parent-object{t-style: flat'd| preserve-3d}
@@ -63,7 +62,7 @@
 
 
 •demo: #container{
-    perspective: none'd| length;               /*shared space*/
+    perspective: none'd| length;                /*shared space*/
     perspective-origin: <bg-position>;         /*view position*/
     #parent-object{
       t-style: flat'd| preserve-3d;        /*enable 3d nesting*/
