@@ -1,0 +1,3 @@
+var friends = ["mechid", "wassim", "hamid", "hamza"];
+var name = 'bill';
+var myVariable = 4;

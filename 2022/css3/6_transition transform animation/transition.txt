@@ -1,0 +1,31 @@
+
+★transition: property <duration delay?> timing-function,…?;
+  ›apply to all els, ::before?after77≠S, ≠state-pseudo-class.
+  ›required statePseudoClass:hover?focuse?active or js.on|event.
+  ›demo: el{color: red; transition: color 2s ease-out;}
+         el:hover{color: cyan;}/*transtion happend on un&hover*/
+  •t-property: none| all'd| <property-name>, …?;
+    ›target p: value(length|#|<color>);, shorthand=its-longhands
+  •t-duration?delay: #s?ms'0d, …?;
+  •t-timing-function: ease'd|-in-out|-in|-out| linear'unChanged| cubic-bezier()| step-start?end| steps(), …?;
+    ›ease: slow at start&end, change slow→fast at middle.
+    ›ease-in-out: as ease, but unChanged(linear) at middle.
+    ›ease-in: slow at start. ›ease-out:slow at end.
+    »cubic-bezier(x2,y2,x3,y3): custom curve, x€[0,1], y€R.
+      ›Point2(x2,y2) creat touching-line with Point1(0,0),
+      ›Point3(x3,y3) creat touching-line with Point4(1,1).
+      ›if y<0, transtions reversed untel point4(1,1).
+    »steps(#[, start?end'd|jump-start?end?both?none]?):
+      ›#: steps(duration/#) devide duration to fractions.
+      ›jump-none(jump #-1): jump just between steps.
+      ›jump-both(#+1): jump between steps, transition-start&end.
+      ›jump-|start?end(#): between steps, transition-start?end.
+    ›step-start?end=steps(1, jump-|start?end).
+  •multi-t: transition: ›p1 dr1 dl1 tf1, p2 dr2 dl2 tf2, …;
+    ›t-property?duration?delay?timing-function: v1, v2, …;
+    »omitting value from shorthand→initial, but in longhands→ refill by order to #all previous list-value's.
+      ›ex: t-property: p1, p2, p3, p4, p5, p6, p7;
+           t-duration: d1, d2, d3;→ t-d: d1,d2,d3,d1,d2,d3,d1;
+
+
+

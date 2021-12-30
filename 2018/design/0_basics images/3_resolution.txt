@@ -1,0 +1,35 @@
+
+
+★image size & resolution:
+  *resolution PPI: (pixels per inche)
+    •images resolution is not important. but pixels number is!.
+    
+    •screen resolution previosly was in common 72ppi, now in common 135ppi(j5).
+      ›at 2010 apple released iphone-5(326ppi) retina screens wich divide 1 common pixel size to 4 pixels with same size!
+      ›now in 2021 premium devices divide 1common-pixle-size to 9, 16 pixels !!!.
+      ›problem: css images & contents become narrow(small) & different from screen to another !!.
+      »solution: 
+        we use 'reference pixel'→#x (#=number, x=scale)
+        ›in general: #x means 1pixel-of-css = #pixels-of-screen (#px-Css = #px-Reference)
+          _ex:
+            .5x → 1pxCss = .5pxScreen
+            1x → 1pxCss = 1pxScreen
+            2x → 1pxCss = 2pxScreen
+            3x → 1pxCss = 3pxScreen
+            3x → 1pxCss = 4pxScreen
+        ›in apple: #x → 1cssPx = #point
+          _ex: 2x → 1cssPx = 2PT
+        ›in google(android): 
+          #x → 1cssPx = #(device Independent Pixel)
+          _ex: 3x → 1csspx = 3DiP | 1csspx = 3DP
+        ›summary: when we are using css, we call refenced content size, not the actual size, and to avoid blury we need to creat svg images & based on 1x(not 2x or .5x), or collection of same bitmapped image(.5x, 1x, 2x, 3x, 4x)(at least x1, x2).
+          _ex: 
+            . css: img{width:100px;}
+            . device(like iphone4) 325ppi 2x: 200pxScreen, 200PT, 200DP
+            . iphone 13 460ppi 3x: 300pxScreen, 300PT. 300DP
+            . tablet 130ppi 0.5x: 50pxScreen, 50PT. 50DP
+            
+    •printe resolution: don't measured by PPI but by DPI(dots per inch)
+
+
+

@@ -1,0 +1,126 @@
+
+★demo:
+
+★form attributes:
+  •name='<formname>': for javascript & php
+  •accept-charset=utf-8|ISO-8859-1|ISO-8859-8|ASCII|…
+    ›recommended: utf-8
+    ›if omitted inherite <meta charset=''>
+  •autocomplete=on'd|off: applay to input|select|textarea
+  •rel=value(see img)
+    ›https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
+  •action=appURL.php|.jsp: application_url(server|local_offline)
+  •method=get|post|dialog: http_method
+    ›get'd: send #1 unencrypted limitted characters request.
+      (appURL?name1=value1&name2=value2&…)
+    ›post: send several encrypted unlimited characters requests.
+    ›dialog: if form inside <dialog> 73%gs-noSafaru|firefox
+  •enctype='':
+    ›defualt: 'application/x-www-form-urlencoded'
+    ›if <input type=file>: 'multipart/form-data'
+    ›html5 debugging: 'text/plain'
+    »addition: if method=post, enctype is MIME_type (Multipurpose Internet Mail Extensions)
+  •novalidate: boolean att, if omitted it #is validate inputs.
+  •target=_self'd|_blank|_parent|_top|<reusedName>
+
+
+★form shared controls_attributes:
+  •name=variable(#required) •form=form_id(outside form): i
+  nput textarea select(name=array[]) output meter fieldset button progress(form only)
+  •value=value: input textarea option progress meter button
+  •disabled (unEditable unsended color:gray): input textarea select optgroup fieldset button
+  •maxlength=#|minlength=# (#characters): textarea <input type=text|password|search|email|tel|url|?>
+  •placeholder=hint: textarea <input type=text|password|search|email|tel|url|number>
+  •size=#(width:#characters): <input type=text|password|search|email|tel|url>
+  •inputmode=text'd|decimal|numeric|tel|search|email|url|none (86%gs-noDesktopSafari): textarea input
+  •readonly(unEditable sended) •required •autofocus(+button) •autocomplete=on|off|value(only input): textarea input select
+    ›value=name|honorific-prefix|given-name|additional-name|family-name|honorific-suffix|nickname|email|username|new-password|current-password|one-time-code|organization|-title|street-address|address-line1~3|address-level1~4|country|-name|postal-code|'cc'-name|-given-name|-additional-name|-family-name|-number|-csc|-type|'cc-exp'|-month|-year|'transaction'-currency|-amount|language|'bday'|-day|-month|-year|impp|url|photo|sex|'tel'|-country-code|-national|-area-code|-local|-extension
+  
+  •dirname=name(send <name>=rtl|ltr 92%gs-noFirefox): textarea <input type=text|search>
+  •min|max=#: <input type=number(±#)|range|time|date|month|week|datetime-local> progress(only max) meter(±#)
+  •pattern=regExp: <inp type=text|password|email|search|tel|url>
+    »password: (?=.*[0-9|a-z|A-Z])()…{exact#|min#,|min#,max#} 
+      ›ex: pattern=(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} title="enter 8 characters or more, with one or more number and uppercase and lowercase letter"
+    »email: pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$ title=name@address.domain
+    »search: pattern=[^'\x22]+ title='(") (&apos;) invalid'
+    »url: pattern=https?://.+ title='Include http(s)://'
+
+
+★form controls:
+*line-text: <input type=text'd|password|search|email|tel|url>
+*multiline:<textarea rows=# cols=# wrap=soft|hard>val</textarea>
+  •soft'd: unsend auto-line-breaks characters
+  •hard: send auto-line-breaks (cols=# required)
+*radio|checkbox button: 
+  •<input type=radio name=groupName value=required checked>
+  •<input type=checkbox name=groupName value=required checked>
+*numeric inputs:
+  •<input type=number min=±#(allowed #€R) max=±#>
+    ›not supported by mobile agents.
+  •<input type=range min= max= step=any|#>
+*times:
+  •<input type=time value=hh:mm:ss.fff>
+  •<input type=date value=yyyy-mm-dd>
+  •<input type=datetime-local value=yyyy-mm-ddThh:mm:ss.fff>
+  •<input type=month value=yyyy-mm>
+  •<input type=week value="yyyy-Www: 2021-W45">
+  »T|W must be uppercase, prefix single number by 0(4:30→04:30)   
+*menu: 
+  <select name=choice|choices[] size=#(options before scroll the rest) multiple>
+    <optgroup label=header>
+      <option selected>value</option> …
+    </optgroup> …
+  </select>
+*drop-down input suggestions:
+  <input type=all(not hidden|password|checkbox|radio|file) list=suggestions_id>
+  <datalist id=suggestions_id>
+    <option value=suggested1> <option value=suggested2> …
+  </datalist>
+*color picker: <input type=color>
+*upload: <input type=file accept=image/*|audio|video|(other-formats-type) capture|capture=user(front_camera)|environment(back) multiple>
+  •required: <form method=post enctype=multipart/form-data>
+*hidden background control: <input type=hidden>
+  •not appear in user interface,#Worning !! he can access it
+*need js behavior:
+  •<progress max=#(required ex:100) value=#></progress>
+  •<meter min=# max=# low=# high=# optimum=# value=#></meter>
+    ›min=0'd < low < high < max=1'd, ±#€Ž
+    ›low: Indicates the lower bound of the measured range
+    ›high: Indicates the upper bound of the measured range
+    ›optimum: between min&low(green|yellow|orange)| low&high(yellow|green|yellow)| high&max(orange|yellow|green)
+  •output: <form oninput="o.value = a.valueAsNumber + b.valueAsNumber" onsubmit="return false">
+      <input type=number name=a step=any> + 
+      <input type=number name=b step=any> = 
+      <output name=o for="a b"></output></form>
+    ›addEventListener() required id= as replacement to name=
+
+
+★form submit: (no name=att) 
+*shared submit_attributes: (overrid form_attributes)
+  •formaction, formenctype, formmethod, formnovalidate, formtarget
+*<input type=submit value=submit>
+*<input type=image src= alt=submit width=40 height=~> no-value
+*<button type=submit'd(|button|reset) value=submit>txt|img</button> •button are dynamic.innerhtml & styled::after|before
+*reset (useless):
+  •<input type=reset value=reset>
+  •<button type=reset value=reset></button>
+
+★accessibility: •<fieldset> <legend>group-description</legend>
+                            <!--controls--> </fieldset>
+*labels: •<label>description <input> description</label>
+  •<label for=input_id>description</lebel> <input id=input_id>
+
+★form styling:
+*selectors: :chacked :defualt :disabled :enabled :in-range :out-of-range :valid :invalid :required :optional :read-only :read-write :placeholder-shown ::placeholder :indeterminate
+textarea{resize:both'd|horizontal|vertical|initial|none'r;}
+is(form,input):valid|invalid{/*max|minlength, required*/}
+input, textarea{caret-color:red;} /*alerted vertical-line*/
+
+
+
+
+
+
+
+
+

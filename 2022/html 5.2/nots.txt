@@ -1,0 +1,4 @@
+meta
+embed
+canvas
+base in head

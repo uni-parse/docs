@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>transition</title>
+    <meta name=viewport content='width=device-width, initial-scale=1'>
+    <meta name=color-scheme content='only dark'>
+    <meta charset=uft-8>
+    <style>
+      html,*{box-sizing:border-box}
+      body{
+        background:#333;
+        color:#aaa;
+        text-align:center;
+      }
+      a{
+        border:ridge .1em; border-radius:.5em;
+        padding:.1em .5em;
+        background:#356;
+        display:inline-block;
+        position:relative;
+        right:0;
+        transition: all 1s cubic-bezier(.2,1,.7,.5), color 1s ease-in /*steps(3, jump-none)*/;
+        margin:20vh auto;
+      }
+      a:hover{
+        right:2em;
+        color: red; background: hsl(100grad,100%,50%);
+        font: 900 1.5em somethink; border-radius:50%;
+        letter-spacing: .5em;
+      }
+
+    </style>
+  </head>
+  <body>
+  <a>hello</a>
+
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+

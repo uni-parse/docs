@@ -1,0 +1,74 @@
+var item = {
+ wood: 33,
+ steel: 11,
+ gold: 4 //items.wood + items.steel error
+}
+
+var status = {
+ user: ["Hopeless", "Phantom"],
+ level: 1,
+ score: 500,
+ items: item,
+ price: function() {
+  return this.items.wood * 5 + this
+   .items.steel * 20 + this.items.gold * 100;
+ },
+ display: function() {
+  return console.log(this);
+ },
+ vip: false
+}
+console.log(status);
+console.log("");
+console.log("user: " + status.user);
+console.log(status.items);
+console.log("" + status.items);
+console.log("");
+console.log("items price: " + status.price() +
+ "$.");
+console.log("");
+
+/*we can store several related variables of any type (strings, numbers, booleans, arrays and another objects) to Object.
+it have objectName, and properties separated by comma's nested doubel {curly braces}.*/
+//outside we can access property by add 'objectName.propertyName'.
+/*we can store related functions too, we call it methods.
+to call methods we need to type object name, then .pediot the method name then (parantheses).
+*/
+/*just inside motheds we can access propertys or another methods by 'THIS+.pediot'befor them's names.
+THIS is refer to object not propertys or methods.*/
+
+
+
+
+
+//gropping propertys and methods in one ibject descript to encaps'ulation.
+//oop is object oriented programing style,its easy to trake updated variables,betore then FP functionality programming style that need RETURN every time.
+var pistol = {
+ hands: 1,
+ weight: "light",
+ singleshot: function(shots) {
+  for (var i = 0; i < shots; i++) {
+   console.log("pew   ");
+  }
+ }
+}
+var desertEagle = Object.create(pistol);
+console.log(desertEagle);
+console.log(desertEagle.hands);
+console.log(desertEagle.weight);
+desertEagle.singleshot(2);
+desertEagle.size = "big";
+desertEagle.doubleshot = function(shots) {
+ for (var i = 0; i < shots; i++) {
+  console.log("pePew   ");
+ }
+};
+console.log(desertEagle);
+desertEagle.doubleshot(2);
+
+/*the inherited objects from others template objects not own or store the inherited properties & methods , but it can just access them.*/
+/* to creat in'he'rI'ted objects from others templates we use 'Object.creat(templateObjectName)'
+and to store properties & methods we do like above*/
+
+
+

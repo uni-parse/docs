@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="uft-8">
+    <style>
+      body{
+        background:#333;
+        color:#f77;
+      }
+    </style>
+  </head>
+  <body>
+    <form action="url.php" method="post" 
+     enctype="multipart/form-data" autocomplet=on>
+      <fieldset>
+        <legend>form controls</legend>
+       
+        <input type=text name="non" maxlength=12 minlength="4" size=12 placeholder="disabled ph" value='' disabled><br>
+        
+        <input type="text" name="fixed" maxlength="12" minlength="4" size="12" placeholder="readonly" value="readonly" readonly><br>
+        
+        <input type=text name="username" maxlength="12" minlength="4" size=12 placeholder="userName" value=""><br>
+        
+        <textarea inputmode dirname="textDirection" autofocus autocomplet name="comment" placeholder="comment&gt;8characters" minlength="0" maxlength="30" rows="5" cols="15" wrap="hard">option-value</textarea><br>
+        
+        <input type="password" name="pw" placeholder="password***" minlength="8" maxlength="30" size="25" value=""><br>
+        
+        <input type="search" name="search" placeholder="search" minlength="0" maxlength="30" size="30" value="" list="search-suggestions"><br>
+        <datalist id="search-suggestions">
+          <option value="a">
+          <option value="b">
+          <option value="c">
+          <option value="d">
+          <option value="e">
+          <option value="f">
+          <option value="g">
+          <option value="h">
+          <option value="i">
+          <option value="j">
+          <option value="k">
+          <option value="l">
+          <option value="m">
+          <option value="n">
+        </datalist>
+        
+        <input multiple list="1,2,4" type="email" name="email" placeholder="ex: name@example.com" minlength="14" maxlength="38" size="30" value="phantombill@gmail.com"><br>
+        
+        <input type="tel" name="tel" placeholder="telephon number" minlength="10" maxlength="10" size="16" value="0696501956"><br>
+        
+        <input type="url" name="url" placeholder="website url" minlength="5" maxlength="" size="30" value="caniuse.com"><br>
+        
+      </fieldset>
+      
+      <fieldset>
+        <legend>radio buttons</legend>
+        <label><input type="radio" name="age" value="1" checked>under 24<label><br>
+        <label><input type="radio" name="age" value="2"><label>25 to 54<br>
+        <label><input type="radio" name="age" value="3">above 55<label><br>
+      </fieldset>
+      <fieldset>
+        <legend>checkbox buttons</legend>
+        <label><input type="checkbox" name="pet" value="dog" checked>love dogs<label><br>
+        <label><input type="checkbox" name="pet" value="cat">love cats<label><br>
+        <label><input type="checkbox" name="pet" value="mouse">love mouses<label><br>
+      </fieldset>
+      
+      <fieldset>
+        <legend>menus</legend>
+        <select name="jobCountry" size="3">
+          <optgroup label="europa">
+            <option value="fr">french</option>
+            <option>germani</option>
+            <option>poland</option>
+          </optgroup>
+          <optgroup label="usa">
+            <option value="ny">new yourk</option>
+            <option>washinton</option>
+            <option value="lv">las vigas</option>
+          </optgroup>
+        </select><br>
+        <select name="visitedCountry[]" size="4" multiple>
+          <optgroup label="europa">
+            <option value="fr">french</option>
+            <option>germani</option>
+            <option>poland</option>
+          </optgroup>
+          <optgroup label="usa">
+            <option value="ny" selected>new yourk</option>
+            <option>washinton</option>
+            <option value="lv">las vigas</option>
+          </optgroup>
+        </select>
+      </fieldset><br>
+      
+      <input type="file" name="" multiple required accept="image"><br>
+      
+      <input type="hidden" name="background" value="true">
+      
+      <fieldset>
+        <legend>times</legend>
+          <input type="time" name="" value="20:44:31.978"><br>
+          <input multiple list type="date" name="" value=""><br>
+          <input type="datetime-local" name="" 
+            value="2000-01-15T04:33:22.891"><br>
+          <input type="month" name="" value=""><br>
+          <input type="week" name="" value="2000-W02"><br>   
+      </fieldset>
+      
+      <fieldset>
+        <legend>numeric inputs</legend>
+        <input type="number" name="" value="2008" 
+          min="2000" max="2021">
+        <input type="range" name="" value="2020"
+          min="2000" max="2070" step="10">
+      </fieldset>
+      
+      <input type="color" name="" value="#77439f"><hr>
+      
+      <input type="submit"><br>
+      
+      <input type="image" src=gaara.webp alt="form submmition" width="40" height="auto"><br>
+      
+      <button type="submit" formaction formenctype formmethod formnovalidate formtarget>submit button</button>
+      
+      <input type="reset"><br>
+     
+    </form>
+    <form onsubmit="return false" oninput="s.value = w.valueAsNumber * h.valueAsNumber;
+        p.min.value=min.valueAsNumber;
+        p.max.value=max.valueAsNumber;
+        m.min.value=min.valueAsNumber;
+        m.min.value=max.valueAsNumber;
+        m.low.value=low.valueAsNumber;
+        m.high.value=high.valueAsNumber;
+        p.value=v.value;
+        m.value=v.value;">
+      
+      <label>minimum:<input type="number" name="min" placeholder="minimum" value="0"></label>
+     <label>maximum:<input type="number" name="max" placeholder="maximum" value="100"></label><br>
+      <label>lower:<input type="number" name="low" placeholder="lower" value="15"></label>
+      <label>higher:<input type="number" name="high" placeholder="higher" value="85"></label><br>
+      
+      <input type="range" name="v" min="0" max="100" step="2"><br>
+      
+      <progress name="p" min="0" max="100" value="15.76"></progress><br>
+      <meter name="m" min="0" max="100" low="15" high="85" value=""></meter><br>
+      </form>
+      
+      <form onsubmit="return false" 
+       oninput="o.value = a.valueAsNumber + b.valueAsNumber">
+        <input name=a type=number step=any> 
+        + <input name=b type=number step=any> 
+        = <output name=o for="a b"></output> 
+      </form>
+      
+      <!--target="text|_blank|_self| _parent|_top"-->
+      
+      <hr>
+      <form target="_top" onsubmit="return false" oninput="rv.value=r.valueAsNumber; m2.optimum=r.valueAsNumber">
+        <input name="r" type="range" 
+         min="0" max="100" step="20">
+        <output name="rv" for="r"></output><br>
+        <meter name="m2" min="0" max="100" 
+         low="20" high="80" optimum="50"></meter>
+      </form><hr>
+        
+    
+
+    <footer>&copy; 2021 abbani billal</footer>
+    <script src="script.js"></script>
+  </body>
+</html>

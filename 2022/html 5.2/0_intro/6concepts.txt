@@ -1,0 +1,50 @@
+
+1★a multitude devices: smartphon, tablet, netbook, laptop, desktop, Tv, hand-watch, vehocles-pda, air-pda, screen-readers ...
+2★sticking with the standards: https://www.w3.org/standards/
+  •make content svailable to all devices & all people genres.
+3★progressive enhacement: (supporte)
+  •html important content clear & meaningful & independent(js)
+  •css supported(80%↑ caniuse.com), use nodejs autoprefixer plugin.
+  •javascript as addition, not complement.
+4★responsive web: 
+  •one website for all hardwar-screens: dimentions, resolution, orientation, high density
+5★accessibilty:
+  *standers: •w3.org/wai (web accessibility initiative)
+             •aria (accessible rich internet applications)
+  *vision impairment: (blind)
+    •html: ›add alt='' on <img>
+      ›surrounded video|audio|picture, by <figure|figcaption>
+      ›use label|dfn|address|cite|i|em|strong, role=|area-lable=
+      ›<a>meaningful_link</a>
+    •css: »contrast-ratio: must_be≥4.5, recommanded≈7, best_ratio=21(black→white)
+            ›adjust hsl() lightness, hue-differ≥120
+  *mobility impairment: (handless)
+    •html: ›add accesskey=<key> navigate links & #fragments
+           ›add tabindex=# to important spots
+  *auditory impairment:
+    •html: ›nest <p>alternative</p> in audio|video.
+         ›surrounded video|audio|picture, by <figure|figcaption>
+  *cognitive impairment: (thinking slowly)
+    •html: ›clear organizing, 
+           ›add hints & notes by<aside>
+           ›use <em|strong|b|s|del>, avoid <ins|u>
+    •css: complements colors to important content.
+6★performing & optimization: load-timd ≤ 2000ms (developer-tools/Network:waterfall_chart)
+  *limite files size:
+    •optimize images size (use .webp|.svg format)
+    •dont load unnessessary images, animations, scripts.
+    •optimize html, css & javascript files, delet white_space & unnessesary containers.
+  *reducing http requests: (to server)
+    •add /index.html to end of URL's, if its are directories.
+    •limite resources numberth(images→1sprite)
+    •dont request resource by button (on/off) ??
+    •add <meta name="pragma" content="no-cach">
+
+
+
+
+
+
+
+
+

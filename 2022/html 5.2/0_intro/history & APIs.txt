@@ -1,0 +1,34 @@
+
+*history:
+  1994 html+
+  1995 html 2.0
+  1996 html 3.2
+  1998 html 4.0
+  2000(1999/12) html 4.01 made by WHATWG
+       xhtml 1.0
+       xhtml 2.0
+  2014(from 2004) html 5, made by w3c.org (based on html4.01 & xhtml2.0), completed after 10 years !!
+  2016 html 5.1
+  2017 html 5.2
+
+*check if document valid:
+  (validator.w3.org) 
+  (html5.validator.nu) 
+
+*api: Application Programming interface
+  •some html5 APIs:
+    ›media player: audio & video 
+    ›payment-handler & payment-request
+    ›geolocation
+    ›battery-status
+    ›screen-capture
+    ›editing
+    ›session-history
+    ›drage & drope
+    ›canvas
+    ›service-workers
+    ›web-storage
+    ›Web Sockets: stream connection between clint-dide & server-side, with no lags for the traditional HTTP requests, like social-media, multiplayer-games, live-video,
+  •full list:
+    (html5-overview. net)
+    (www.w3.org/TR/tr-title-all)

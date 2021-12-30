@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="uft-8">
+    <style>
+      body{
+        background:#333;
+        color:#aaa;
+        font-size:25px;
+      }
+      
+::cue,::-webkit-cue { font-size: 24px; opacity: 1; background-color: black !important; transform: translateY(10%) !important; color:yellow !important; } /*not supported*/
+
+video::-webkit-media-text-track-display { overflow: visible !important; box-sizing: border-box; background: hsla(90,100%,50%,.5); padding: 8px; border-radius: 16px;}
+      
+    </style>
+  </head>
+  <body>
+
+  <iframe id=imap height=300 name=imap title=map allow=geolocation src="https://maps.google.com/maps?q=blida&t=&z=9&ie=UTF8&iwloc=&output=embed"></iframe>
+  <button onclick='a()'>my place</button>
+  
+  <script>
+    function a(){
+     // var cl=navigator.geolocation.getCurrentPosition();
+     /* imap.setAttribute('src', 'https://maps.google.com/maps?q=' + cl + '&t=&z=9&ie=UTF8&iwloc=&output=embed');*/
+      alert('done');
+    }
+  </script>
+  
+  <!--srcdoc='<a download=rename href=v.webm> download</a>'-->
+  
+  <a href='https://www.youtube.com/embed/_hl571bJLzk?autoplay=1&mute=0' target=map>youtube_video</a>
+  <hr>
+
+
+
+
+  <object data="v.mp4" type="video/mp4" width="320" height="262">
+    <param name="allowFullScreen" value="true"> <!--nothing-->
+    <param name="loop" value="true"> 
+    <param name="controls" value="false"> 
+    <param name="autoplay" value="autoplay"> 
+    <param name="Muted" value="true">
+  </object>
+  <hr>
+  
+  <video width=500 controls playsinline loop muted preload="auto" poster="gaara.webp">
+    <source type=video/webm src=v.webm>
+    <source type=video/mp4 src=v.mp4>
+    <source type=video/ogg src=windtunnel.ogg>
+    <track defualt label=English kind=captions srclang=en src=t.vtt>
+    fallback
+  </video>
+  nhkj
+  </body>
+</html>
+
+
+
+
+
+
+

@@ -1,0 +1,82 @@
+
+★color: currentcolor, rgb|a(r,g,b|,a), hsl|a(h,s,l|,a), #rgb|a = #rrggbb|aa (#hexaDecimal #101010 ≠ #111 = #111111)
+  •red|green|blue≤100%|255|#f, alpha≤100%|1|#f, hue≤360|<angle>, saturate(100'd)|lightness(50'd)≤100%
+    ›angle: 360deg'rees = 1turn = 400grad'ians = 2(π→#)rad'ians
+*color painting areas: (in body|html bg cover entir viewport)
+ •foreground↓: textNode+ border+ text-decoration, currentColor'd
+ •background≠↓: contentBox+padding+border ≠margin, transParent'd
+★bg: color img position/size repeat attachment <origin clip>,…?;
+*bg-color: <color>;
+*bg-image: none'd| <image: url()?image-set()?gradiant>;
+  •url(''): relative to @rule file-holder .html|.css, or /root
+    ›omitting quotes, required to \escape: whiteSpace () '"
+  •image-set(<image>|'url' type('image/webp|…') #<resolotion>,…)
+    ›-ms|moz|webkit-93%, 'url' fallback required.
+    ›safari support just image:url() & resulotion:#x
+  •linear-gradient(<angle>|to <s|c>, <color> <stop1~2>,c2 s2,…)
+    ›side: top:0°|right:90°|bottom'd:±180°|left:-90°.
+    ›corner: top right:45°| b r:135°| b l:-135°| t l:-45°.
+    »stop: length|%(relative to imagined angle-directed #line)
+      ›by defualt: first-stop=0, last-stop=100%.
+      ›double-stop valid: x-gradient(<color1> s1 s2, c2 s1 s2,…)
+  •radial-gradient(<endShape>? <size> at <position>, c1 s1, …)
+    ›ending-shape'optional: circle|ellipse'd
+    »size: hr vr(ellipse-radius)| length(circle_radius)| keyword
+      ›horizontal|vertical-radius: length|%(r to bg-origin box)
+      ›keyword:       (circle-end=°, ellipse-end=0)
+        .closest-side: °meet closeBoxSide, 0meet close h+v sides
+        .farthest-side: °meet farBoxSide, 0meet far h+v sides
+        .closest-corner: °|0meet closest boxCorner to <position>
+        .farthest-corner'd: °|0meet farthestCorner to <position>
+    »position: as bg-position, but applayTo center(not top left)
+  •conic-gradient(from <angle> at <position>, <color> <stop>,…);
+    ›stop: <angle>|%(relative to 360°)
+  •repeating-<linear|radial|conic>-gradient()
+    ›repeating entire color-stops list.
+  •https://www.virtuosoft.eu/tools/css-gradient-generator/
+   https://learnui.design/tools/gradient-generator.html
+   https://angrytools.com/gradient/
+*bg-position: x'd?y=side(omitted=50%)| x y| h offset v offset;
+  •x?y: ±length0d| ±%| <side>| center'd;   •h?v: <side>; 
+  •offset: ±length| ±%; (omitted h?v→0 {bg-p: hs OF vs|hs vs OF})
+  •#%: mean align #% of bg-origin box-w|h, with #% of img-w|h
+  •applay to(top left|0 0) of image, relative to bg-origin box.
+*bg-size: cover?contain| w(h=auto)| w h;
+  •width|height: auto'd|length|%(r to bg-origin)
+    ›auto: preserving image-origin aspect-ratio.
+  •cover: scale to big-dimension of painting-area(fixed:vmax)
+    ›display #only one|part of big-image (bg-repeat ignored)
+    ›cropped if aspect-ratios not matched.
+  •contain: scale to smallDimension of painting-area(fixed:vmin)
+    ›display full imgs, unMatched aspectRatios left gap toRepeat
+*bg-repeat: repeat-x?y| [repeat'd| no-repeat| space| round]{1,2}
+  •repeat: fill & #crop & preserve-aspectRatio(also <space>)
+  •space: fill+unCrop & add evenly x|y Gaps(bg-position ignored)
+  •round: fill+unCrop & stretch|shrink x|y ≤50% of all imgs
+*bg-attachment: scroll'd| fixed| local(78-noSafari);
+  •fixed: painting-area = viewport (bg-origin ignored)
+  •local: painting-area = element ,overflow:scroll; bg-clip≠text
+*bg-origin: border-box| padding-box'd| content-box;
+  •painting-area Determines how the bg-position is calculated.
+*bg-clip: border-box'd| padding-box| content-box| text;
+  •text(3.5-webkit→98%): contrastRatio ≥4.5, ↓accessibility
+    ›if bg-image:url; color-fallback required
+    ›incompatible with bg-shorthand & bg-attachment:fixed;
+*multi-backgrounds: #first override previos ones.
+  •individual: ›bg-color: <fallback>;
+    ›bg-image: url(url1)|<gradient1>, url(url2)|<gradient2>, …;
+    ›bg-position|origin|repeat|attachment|size|clip: vl1, vl2,…;
+  •shorthand: ›bg: vl1, vl2, …, vln color(only on last vl);
+★opacity: 0~1d; affect both foreground & background.
+★filter: blur0d(length) brightness|contrast|saturate(≤#1d|100%≤) grayscale0d|sepia0d|invert0d|opacity1d(≥#1|100%) hue-rotate(<angle>) drop-shadow(offsetX offsetY <blur> <color>)
+
+
+
+
+
+
+
+
+
+
+

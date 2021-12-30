@@ -1,0 +1,69 @@
+
+★image: <img src=images/image.webp alt='' width='' height=''>
+  •src(source)=url, absolute-url|relative-url(local)
+  •alt(alternative)=description, required(↑accessibility)
+*css'd: {display:inline-block; vertical-align:baseline}
+
+★svg (scalable vectore graphic):
+*embedded by: <img src=img.svg alt="">
+  •pros: cached, fast-loading
+  •cons: +http-request, non-dynamic, non-external.css
+*embedded by: <object type=image/svg+xml data=img.svg>
+  <img> <!--fallback (unnecessary)--> </object>
+  •pros: cached, dynamic, have-fallback
+  •cons: +http-request, non-external.css, slow-load, fallback-auto-download-issue [fix: <div aria-label=alt role=img style=bg-image:url(img.webp);width:200px;height:150px;></div>]
+*inline: <svg>…</svg> → more-info → /graphics/2_svg/
+  •pros: -http-request, full-DOM-access(styling|scripting), ultra-fast-loading •cons: uncached
+*background-style: {background-image:url(img.svg)}
+*fallback: by object|picture (unnecessary)
+  •ex: <picture> <source type=image/svg+xml srcset=img.svg>
+    <img srcset=img.webp alt=''> <!--fallback--> </picture>
+
+★<map name=mapName> <!--att coordinates x|y|r=#(without px)-->
+   <area alt= shape=defualt|rect(angle)|circle|poly(gon)
+     coords=x1,y1,x2,y2(rect)|x,y,r(circle)|x1,y1,…xn,yn(poly)
+     href= target= download rel= ping= referrerpolicy=> …
+ </map> <img usemap=#mapName src= alt=>
+
+★responsive image:
+*demo: <picture>
+  <source type='' media='screan and (orientation:landscape) and (min-width:1280px)'
+    srcset="ls.svg, ls.webp, ls@2.webp 2x, ls_large 1376w"
+    sizes="(min-width:1280px) 50vw,(min-width:1376px) 30vw">
+  <source type='' media='screan and (orientation:portrait) and (max-width:915px)'
+    srcset="pr.svg, pr.webp, pr@2.webp 2x, pr_large 515w"
+    sizes="(max-width:915px) 45vw, (max-width:480px) 98vw">
+  <img src=fallback.png alt='' srcset='' sizes=''> </picture>
+*formats|resolution: → /graphics/0_basics/
+*meta element: <meta name=viewport content='width=device-width,initial-scale=1'>
+*srcset|sizes attributes:
+  •w-descriptor: viewport-size(width) based, responsive-layout
+    ›markup: sizes="(media-feature) length, …"
+    ›ex: <img src=fallback.webp alt='' srcset="url480.webp 480w,
+      url672.webp 672w, url720.webp 720w, url1280.webp 1280w"
+   sizes="(max-width:515px) 100vw,(max-width:915px) 70vw, 20px">
+  •x-descriptor: pixel-ratio(scale) based, for dence-screens
+    ›ex: <img src=img.webp alt='' srcset="img.webp@.5 .5x, img@2.webp 2x, …">
+
+*media attributd: art-direction based, like css @media-query
+  •ex:<picture><source media='screan and (orientation:portrait)'
+    srcset=portrait.webp> <img src=fallback.webp alt=></picture>
+*type attribute: format-type based (unnecessary, webp 95%gs)
+  •ex: <picture> <source type=image/svg+xml srcset=img.svg>
+    <source type=image/webp srcset=img.webp>
+    <img src=fallback.png alt=> </picture>
+
+★suppprt: caniuse.com
+  •<source>|media=''|type='': 51%gs
+  •<picture>|srcset=''|sizes='': 96%gs
+★polyfill: (support old browsers)
+  •link: scottjehl.github.io/picturefill/
+  •usage: <head><script src=path/picturefill.js></script></head>
+
+
+
+
+
+
+
+

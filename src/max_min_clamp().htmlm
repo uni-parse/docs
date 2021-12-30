@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>flexbox</title>
+    <meta charset=utf-8>
+    <meta name=author content='Phantom Bill'>
+    <meta name=viewport content='width=device-width,initial-scale=1.0'>
+    <meta name=color-scheme content='only dark'>
+    <style>
+      html,*{box-sizing:border-box}
+      body{
+        text-align:center;
+      }
+      div{ display:inline-block;
+        border: red groove;
+      }
+      h1{
+        font-size: clamp(2rem, 5vw, 5rem);/*
+        font-size: calc(2rem*3*-1*-1);*/
+      }
+      p{ display:inline-block;
+        font-size: clamp(1rem, 1.25vw, 1.25rem);/* /*zoom required relative unit in middle*/
+        width: clamp(12em, 350px, 90%);/*
+        width: 80%;
+        max-width: 500px;*/
+      }
+      /*
+        min(maximum, value) use smallest value
+        max(minimumm, value) use biggest value
+        clamp(min, mid, max) use mid under max & min
+      */
+      
+    </style>
+  </head>
+  <body>
+    <input type=range min=0 max=100 step=any><br>
+    <div>
+      <h1>I'am Heading</h1>
+      <p>kghhg gghhg hghhh hhhhh hhhhh hhhhh hhghg hgggg hhhhh hhggg ggggg bhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhgg hhhhh uhggg yhghh hhghh hhhhg hhhhh kghhg gghhg hghhh hhhhh hhhhh hhhhh hhghg hgggg hhhhh hhggg ggggg bhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhgg hhhhh uhggg yhghh hhghh hhhhg hhhhh</p>
+    </div>
+    
+    <script>
+      var ra=document.querySelectorAll('input');
+      ra[0].addEventListener('input', function(){
+        var d=document.querySelectorAll('body>div');
+        d[0].style.width=ra[0].value + '%';
+      });
+    //  alert('done');
+    </script>
+  </body>
+</html>

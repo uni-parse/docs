@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="uft-8">
+    <style>
+      @font-face{
+        font-family:rosemary;
+        src:url('Rosemary.ttf');
+      }
+      html{box-sizing:content-box}
+      *{box-sizing:inherit;}
+      body{
+        background:#333; color:#aaa;
+        font: calc(1rem + 1vw) rosemary, sans-serif;
+        margin-bottom:40vh;
+      }
+      p{margin:1%;
+        border:solid thin yellow;
+        border-radius:.5em;
+      }
+      p:first-child{
+        display:flow-root;
+        padding:1em;
+        max-height: max-content;
+      }
+      p::first-letter{color:cyan;background:#f008}
+      img{/*
+        box-sizing: border-box;
+        border:solid #1938 1em;
+        border-top-right-radius:6em;
+        padding:0 1em 1em 0;*/ background:#323;
+        width:27vmin;
+        float:left;
+        shape-outside: polygon(evenodd, 0 40%, 100% 40%, 20% 100%, 50% 0, 80% 100%);
+        /*ellipse(50% 150px at 50% 200px);*/
+        /*repeating-conic-gradient(white 90deg, #fff1 165deg);*/
+        /*content-box;*/
+        /*url(gaara.webp);*/
+        /*radial-gradient( orange, transparent 100%);*/
+        shape-image-threshold:.9;
+        shape-margin:.3em;  /*limited to 2em*/
+        animation: 4s poly infinite alternate ease-in-out;
+      }
+@keyframes poly {
+  from { 
+    shape-outside: polygon(evenodd, 0 40%, 100% 40%, 20% 100%, 50% 0, 80% 100%);
+    clip-path:     polygon(evenodd, 0 40%, 100% 40%, 20% 100%, 50% 0, 80% 100%);
+  }
+  to { 
+    shape-outside: polygon(evenodd, 10% 45%, 90% 45%, 25% 80%, 50% 20%, 70% 80%);
+    clip-path:     polygon(evenodd, 10% 45%, 90% 45%, 25% 80%, 50% 20%, 70% 80%);
+  }
+}
+
+      span{
+        color:#aa1;
+        float:right;
+        width:40%;
+        border:solid thin red;
+        padding:.4em;
+        margin:.4em;
+        clip-path: ;
+      }
+      p:nth-child(n+2):nth-last-child(n+3){
+        float:left;
+        width:35%;
+      }
+      p:nth-last-child(2){
+        border:thick #1a4 solid;
+        /*  fix    display:flow-root;*/
+      }
+      section>p:last-child{
+        clear:both;
+        margin-top:2em;
+      }
+      section,body>div{
+        /*display:flow-root;*/
+        border:ridge 3px darkcyan;
+        margin-bottom:5vh;
+      }
+      div>div{
+        float:left;color: red;
+      }
+    </style>
+  </head>
+  <body>
+  
+   <section>
+    <p>11111 jjjjj jjjjj jjjjj jjjjj jjjjj jjji<img src=gaara.webp> jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji hgjbh bhjgh ngjbh hgjbi jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji</p>
+    <p>22222 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg  hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+    
+    <p>33333 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+    
+    <p>44444 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+    
+    <p>55555 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+    
+    <p>66666 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>6 ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+    
+    <p>77777 jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</p>
+   </section>
+   <div>
+     <div>div jhhhh nhhh hhhh hhjjj hhhh hhhh jjjh  hhhh <span>ghjgh hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbb</span> hhhhh hjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjjjj jjji jjjji iiiii ijji hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjb hgjgh hfhghg hhjgjh hgjgu hfjgy hgjgj hgjbh bhjgh ngjbh hgjbi</div>
+   </div>
+    
+  
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

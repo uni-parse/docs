@@ -1,0 +1,69 @@
+
+
+★instalation:
+pkg install dart && pub global activate sass && export PATH="$PATH":"$HOME/.pub-cache/bin"
+  
+  
+★terminal command line use:
+  *syntext: 
+    •$ sass flags path/inputName.scss path/outputName.css
+      ›$ sass flags path/*.scss path/outputName.css
+    •$ sass <input.scss>:<output.css> <input/>:<output/> <dir/>
+  *flags:
+    •-w: watch if input.scss changed, then update output.css in real time at background.
+    •--no-source-map: dont comment & dont creat map file
+    •--update: affect just older files.css
+    
+    
+★sass(syn'tactical'ly awe'some style sheet):
+  *introduction: sass are preprocessor language, have awesome syntext (powerfull & ease then css), we need to converted it(.scss|.sass) to .css by (nodejs-sass|dart-sass) through terminal based on bash.
+  
+  *demo:
+    •nesting:
+      ul{
+        /* ul{} */
+        li{
+          /* ul li{} */
+          a{
+            /* ul li a{} */
+          }
+        }
+      }
+    •variables:
+      $varName:value;
+      img{width:$varNane; height:calc(.7*$varName);}
+      main{
+        display:grid; 
+        grid: minmax(calc(auto,.9*$varName)),/1fr;
+      }
+    •include mixins:
+      @mixin mixName($argument1, $argument2, …){
+      /*declarations have $argumentNames as values*/
+      }
+      nav a{@include mixName(value1, value2, …);}
+      nav a:hover{
+        @include mixName(yellow, blue, …);
+        /*extra declarations*/
+      }
+      »ex2:
+        @mixin bg($origin-box, $clip-box){
+          background-origin: $origin-box;
+          -webkit-background-clip: $area-box; /*95% gs*/
+          background-clip: $area-box; /*3.5% gs*/
+        }
+        h1{
+          background: linear-gradient(orange, red, purple);
+          @include bg(content-box, text);
+        }
+
+
+
+
+
+
+
+
+
+
+
+

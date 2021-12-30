@@ -1,0 +1,226 @@
+<!doctype HTML>
+<html>
+  <head>
+    <title>marking up</title>
+    <meta charset=utf-8>
+    <meta name=author content='Phantom Bill'>
+    <meta name=keywords content='markup, html, basic markup'>
+    <meta name=description content='basic markup of html'>
+    <meta name=viewport content='width=device-width,initial-scale=1.0'>
+    <meta name=robors content=nofollow>        <!-- no index -->
+    <meta name=color-scheme content=dark>
+    <meta name=theme-color content=#a11>
+    <meta http-equiv=refresh content=5>
+    <meta http-ewuiv=pragma content=no-cach><!--cach ? cache-->
+    <style>
+      body{
+        background:;
+        color:;
+        margin-bottom:10vh;
+      }
+      pre{
+        white-space:/*pre-wrap*/;
+        background:#222;
+        overflow:scroll;
+        padding-top:1em;
+      }
+      samp{
+        background:#252530;
+        padding:.5em;
+      }
+      kbd{
+        border:.05em groove;
+        border-radius:40%/20%;
+        padding:.3em;
+        background:#222;
+      }
+      #tem{margin-bottom:20vh;}
+    </style>
+  </head>
+  <body>
+  
+  <ul>
+      <li>unordered list item&apos;s have bullet&apos;s</li>
+      naked item
+    </ul>
+    <hr>
+    
+    <ol type="i" start="5"  reversed>
+      <li>ordered list item</li>
+      <li value="100">ordered list item</li>
+      <li>
+        <ul><li>unordered list item nested in ordered list item</li><li></li></ul>
+      </li>
+      <li>ordered list item</li>
+    </ol>
+    <hr>
+    
+    <dl>
+      <dt>description list <b>NAMES</b>: like termp&apos;s question&apos;s</dt>
+      <dd><p>description list <b>VALUES</b>: can contain any flow elemen&apos;s</p><p>but not <b>NAMES</b><dd>
+      <dd><b>VALUES</b> descript the <b>NAMES</b> like answer&apos;s definition&apos;s</dd>
+    </dl>
+    <hr>
+    
+    <p>normal paragraph</p>
+    <p><q>short quotation contain just text-level(inline) elements and it can break to new line automaticly</q></p>
+    <blockquote cite="https://en.m.wikipedia.org/wiki/COVID-19_pandemic">
+      <h3>block quotation heading</h3>
+      <p>another block elements inside block quotation</p>
+    </blockquote>
+    <hr>
+    
+    <p>formatted      
+                source                                                                (raw)
+                code.</p>
+    <pre>
+      preformatted        source                                                       (raw)
+                  code          .
+    with <code>font-family:monospace;</code>
+    </pre>
+    <hr>
+    
+    <figure>
+      <figcaption>top figure caption descript the image</figcaption>
+      <img src=d.jpg width=200 alt="image">
+      <figcaption>bottom figure caption descript the image</figcaption>
+    </figure>
+    <hr>
+    
+    <q><dfn><abbr title="hyperText markup language">html</abbr></dfn></q> can be learned in <cite>all in one teach yourself</cite> book
+    
+    <p>we can solve the problem: <code>5<var>x</var><sup>2</sup> =1</code>, by enter in calculator: <kbd>0</kbd> <kbd>x<sup>2</sup></kbd> <kbd>-</kbd> <kbd>4</kbd> <kbd>&times;</kbd> <kbd>5</kbd> <kbd>&times;</kbd> <kbd>-x</kbd> <kbd>1</kbd> to find Λ = 20 wich its Λ > 0<br>so the two solutions are:</p>
+    <samp><var>x<sub>1</sub></var> = (-0-√Λ)&divide;(2&times;5) = -√5/5</samp><br>
+    <samp><var>x<sub>2</sub></var> = (-0+√Λ)&divide;(2&times;5) = √5/5</samp>
+    
+    <p>best light <mark>weapon</mark> for me is desert-eagle .50cal</p>
+    <p>first time i see that gun was on video game at <time datetime="2015-03-16T18:44:31.979+01:00">16<sup>th</sup> 2015<sub>3</sub> at 6pm and 44min at algeria time zone</time></p>
+    
+    <p>best characters in farCry series: hark, <del>vass</del>, mark, james, maya, <mark>joseph<wbr>Seed</mark>, <ins>diego</ins> </p>
+    
+    <p>user: jack 90 xp<br>user: خطأ 100 px (raw)<br>user: <bdi>بلال</bdi> 140 xp (only bidirection isolotion)<br>user: <bdo dir="rtl">موسى</bdo> 50 xp (only bidirection override)<br>user: <bdi><bdo dir="rtl">موسى</bdo></bdi> 50 px (both)</p>
+    <hr>
+
+
+
+  <template id=details-tem><style>
+      details{font: 1em "Open Sans Light", Helvetica, Arial}
+      code{font: bold 120% monospace; color: #217ac0}
+      h4{margin:10px 0 -8px}
+      h4 span{padding:2px 6px;background:#217ac0;
+        color:#fff; border:1px solid #cee9f9;border-radius:4px}
+      div{margin-left:22px; font-size:.9em}
+      div [name=att]{margin-left: 16px; font-style: italic}
+    </style>
+    <details><summary>
+      <dfn><code>&lt;<slot name=tag>Tag</slot>&gt;</code></dfn>
+      <i><q><slot name=dfn>Description</slot></q></i></summary>
+      <div><h4><span>Attributes</span></h4>
+        <slot name=att>None</slot></div></details></template>
+  
+  <script>
+    customElements.define('bill-el', class extends HTMLElement{
+      constructor() { super();
+        var tem=document.getElementById('details-tem').content,
+        shadowRoot = this.attachShadow({mode:'open'})
+        .appendChild(tem.cloneNode(true));}
+    });</script> <noscript>please enable java script</noscript>
+    
+  <bill-el> <span slot=tag>slot</span>
+    <span slot=dfn>A placeholder inside a web component that users can fill with their own markup, with the effect of composing different DOM trees together.</span>
+    <dl slot=att> <dt>name='placeholderName'</dt> 
+      <dd>The name of the slot.</dd></dl></bill-el>
+
+  <bill-el> <span slot=tag>template</span>
+    <span slot=dfn>A mechanism for holding client-side content that is not to be rendered when a page is loaded but may subsequently be instantiated during runtime using JS.</span>
+  </bill-el>
+
+
+
+<!--
+<template id="element-details-template">
+  <style>
+  details {font-family: "Open Sans Light",Helvetica,Arial}
+  .name {font-weight: bold; color: #217ac0; font-size: 120%}
+  h4 { margin: 10px 0 -8px 0; }
+  h4 span { background: ; padding: 2px 6px 2px 6px }
+  h4 span { border: 1px solid #cee9f9; border-radius: 4px }
+  h4 span { color: white }
+  .attributes { margin-left: 22px; font-size: 90% }
+  .attributes p { margin-left: 16px; font-style: italic }
+  </style>
+  <details>
+    <summary>
+      <span>
+        <code class="name">&lt;<slot name="element-name">NEED NAME</slot>&gt;</code>
+        <i class="desc"><slot name="description">NEED DESCRIPTION</slot></i>
+      </span>
+    </summary>
+    <div class="attributes">
+      <h4><span>Attributes</span></h4>
+      <slot name="attributes"><p>None</p></slot>
+    </div>
+  </details>
+  <hr>
+</template>
+
+<div id=tem></div>
+
+<element-details>
+  <span slot="element-name">slot</span>
+  <span slot="description">A placeholder inside a web
+    component that users can fill with their own markup,
+    with the effect of composing different DOM trees
+    together.</span>
+  <dl slot="attributes">
+    <dt>name</dt>
+    <dd>The name of the slot.</dd>
+  </dl>
+</element-details>
+
+<element-details>
+  <span slot="element-name">template</span>
+  <span slot="description">A mechanism for holding client-
+    side content that is not to be rendered when a page is
+    loaded but may subsequently be instantiated during
+    runtime using JavaScript.</span>
+</element-details>
+
+  <script async>
+    var t=document
+      .getElementById('element-details-template'),
+        d=document.getElementById('tem');
+    window.addEventListener('load', function(){
+      d.appendChild(t.content);
+    });
+customElements.define('element-details', 
+  class extends HTMLElement{
+    constructor() {
+      super();
+      var template = document
+          .getElementById('element-details-template').content,
+        shadowRoot = this.attachShadow({mode: 'open'})
+          .appendChild(template.cloneNode(true));
+    }
+  }
+);
+    alert('done');
+  </script>
+-->
+<!-- slot are template placeholder like function(argument) -->
+  
+  
+  
+  
+    
+  </body>
+</html>
+
+
+
+
+
+
+
+
+

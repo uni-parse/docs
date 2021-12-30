@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>tabels</title>
+    <meta charset="uft-8">
+    <style>
+      body{
+        matgin-bottom:100vh;
+        font-size:32px;
+        background:#333;
+        color:#aaa;
+      }
+      td{
+        border:1px solid #999;
+        text-align:center;
+      }
+      th{
+        
+        border:2px solid #aaa;
+        border-radius:.75em/.25em
+      }
+      td,th{
+        padding:0 .5em 0 .5em;
+      }
+      caption{
+        caption-side:bottom;
+      }
+      #start-column, #thead{
+        background:#533;
+      }
+      #end-column{
+        background:#334;
+      }
+      colgroup{
+        background:#344;
+      }
+      table{
+        display:block;height:200px;overflow:auto;
+        border:5px groove #aaa;
+        background:#963;
+        padding:.15em;
+        position:relative;
+      }
+      thead{position:sticky;top:0;}
+    </style>
+  </head>
+  <body>
+    <table>
+      <thead>
+        <tr>
+          <th>Albume</th>
+          <th>Year</th>
+        <tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rubber Soul</td>
+          <td>1965</td>
+        </tr>
+        <tr>
+          <td>Revolver</td>
+          <td>1966</td>
+        </tr>
+        <tr>
+          <td>Sgt.Pepper's</td>
+          <td>1967</td>
+        </tr>
+        <tr>
+          <td>The White Album</td>
+          <td>1968</td>
+        </tr>
+        <tr>
+          <td>Abbey Road</td>
+          <td>1969</td>
+        </tr>
+      </tbody>
+    </table><br>
+    
+    <table>
+      <thead>
+        <caption>web developers classify</caption>
+        <tr>
+          <th></th>
+          <th id="author">author</th>
+          <th id="desighner">designer</th>
+          <th id="programmer">programmer</th>
+        <tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th rowspan="2" scope="rowgroup">language&nbsp;and <br> its&nbsp;function</th>
+          <td>html5</td>
+          <td>css3</td>
+          <td>java Script Es6</td>
+        </tr>
+        <tr>
+          <td>structure</td>
+          <td>style</td>
+          <td>dynamic</td>
+        </tr>
+        <tr>
+          <th scope="row">support</th>
+          <td colspan="2" headers="author designer">default</td>
+          <td>enable js</td>
+        </tr>
+        <tr>
+          <th id="browser" scope="row">browser support</th>
+          <td colspan="2" rowspan="2" headsrs="author designer browser accessibility">full</td>
+          <td>only main not mini</td>
+        </tr>
+        <tr>
+          <th id="accessibility" scope="row">accessibility support</th>
+          <td>non</td >
+        </tr>
+      </tbody>
+    </table><br>
+    
+    
+    <table>
+      <caption style="caption-side:top;">Your Content Here</caption>
+      <colgroup>
+        <col id="start-column">
+      </colgroup>
+      <colgroup span="2"></colgroup>
+      <colgroup>
+        <col span="2" id="end-column">
+      </colgroup>
+      <thead id="thead">
+        <tr>
+          <th rowspan="2" style="border:hidden !important; background:#963 !important;"></th>
+          <th colspan="2" scope="colgroup">A common header for two subheads</th>
+          <th rowspan="2" scope="column">Header 3</th>
+          <th rowspan="2" scope="column">Header 4</th>
+        </tr>
+        <tr>
+          <th scope="column">Header 1</th>
+          <th scope="column">Header 2</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <th scope="roq">Thing A</th>
+          <td>Data A1</td>
+          <td>Data A2</td>
+          <td>Data A3</td>
+          <td>Data A4</td>
+        </tr>
+        <tr>
+          <th scope="roq">Thing B</th>
+          <td>Data B1</td>
+          <td>Data B2</td>
+          <td>Data B3</td>
+          <td>Data B4</td>
+        </tr>
+        <tr>
+          <th scope="roq">Thing C</th>
+          <td>Data C1</td>
+          <td>Data C2</td>
+          <td>Data C3</td>
+          <td>Data C3</td>
+        </tr>
+        <tr>
+          <th scope="roq">Thing D</th>
+          <td>Data D1</td>
+          <td>Data D2</td>
+          <td>Data D3</td>
+          <td>Data D3</td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </body>
+</html>

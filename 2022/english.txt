@@ -1,0 +1,36 @@
+  
+  
+  advantage≠disadvantage مزايا سلبيات
+  indi'vidual فردي
+  abbreviation
+  url uniform resource location
+  indented/intended مقصورة/مسافة بادئة
+  omit حذف
+  identifies تحدد
+  emphasized text نص ماكد
+  identify/classify تصنيف/تحديد
+  semantic دلالة
+  w3c world wide web consortium
+  wai web accessible initiative
+  aria accessible rich onternet applecation
+  diagram منحنى بياني
+  hierarchy هرمي
+  preferred يفضل
+  alternative بديل
+  xml extensible markup language لغة موسوعة فائقة
+  svg scalble vectore graphic
+  illustration شرح
+  embedded مضمن داخل شيئ
+  purpose غاية هدف
+  dom document object model
+  appropriat مناسب
+  measurement قياس
+  synchonized مزامنة
+  identical مطابق
+  Ajax asynchronous javascript and xml
+  rect'angle(♦) tri'angle(Λ)
+  Exponentiation Exponent اس x²
+  Deprecated (no more support)
+  
+  
+  

@@ -1,0 +1,34 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="uft-8">
+    <meta name="viewport" content="sidth=device-width, initial-scale=1">
+    <style>
+      body{
+        background:#333;
+        color:#aaa;
+        text-align:center;
+      }
+      body>div{
+        display:inline-block;
+        border:groove thick yellow;
+        margin-top:30vh;
+      }
+      body div>div{
+        border:ridge thin cyan;
+        opacity:.7;
+        width:50vw;
+        height:50vw;
+        background:hsl(90,100%,50%);
+        transform-origin:left;
+        transform: /*translate(50%)*/ rotate(-90deg) translate(50%) /*skewX(-10deg)*/;
+      }
+    </style>
+  </head>
+  <body>
+    <div><div></div></div>
+    <script src="script.js"></script>
+  </body>
+</html>

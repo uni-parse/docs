@@ -1,0 +1,43 @@
+body {
+  background: #333;
+}
+
+ul {
+  background: rgba(0, 0, 0, 0.2) url(images/) 0 0/cover fixed no-repeat;
+  list-style: none;
+  display: grid;
+  grid: auto-flow auto/1fr;
+}
+ul li {
+  position: relative;
+  background: rgba(191, 255, 102, 0.25) linear-gradient(50deg, #ff6a00, rgba(191, 255, 102, 0.25), #00d5ff) left top/cover content-box;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+  padding: 0.1em 0.25em;
+}
+ul li::before {
+  content: "";
+  position: absolute;
+  top: -0.1em;
+  bottom: -0.1em;
+  left: -0.1em;
+  right: -0.1em;
+  z-index: -2;
+  border-radius: 1em 0 1em 0/1em;
+  background: linear-gradient(50deg, #ff6a00, rgba(191, 255, 102, 0.25), #00d5ff);
+}
+ul li::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  border-radius: 1em 0 1em 0/1em;
+  background: #333;
+}
+ul li h1 {
+  border-left: 0.2em ridge red !important;
+}

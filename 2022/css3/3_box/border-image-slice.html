@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="uft-8">
+    <style>
+      body{
+        background:#333;
+        color:#aaa;
+        font:calc(1.5rem + 3vw) rosemary;
+        text-align:center;
+      }
+      .wrapper {
+  width: 400px;
+  height: 300px;
+}
+
+div > div {
+  width: 300px;
+  height: 200px;
+  border-width: 30px;
+  border-style: solid;
+  border-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/border-diamonds.png);
+  border-image-slice: 30 fill;
+  border-image-repeat: space;
+}
+
+li {
+  display: flex;
+  place-content: center;
+}
+
+      
+      
+      
+    </style>
+  </head>
+  <body>
+    <div class="wrapper">
+  <div></div>
+</div>
+
+<ul>
+  <li>
+    <label for="width">slide to adjust <code>border-width</code></label>
+    <input type="range" min="10" max="45" id="width">
+    <output id="width-output">30px</output>
+  </li>
+  <li>
+    <label for="slice">slide to adjust <code>border-image-slice</code></label>
+    <input type="range" min="10" max="45" id="slice">
+    <output id="slice-output">30</output>
+  </li>
+</ul>
+
+
+
+  <script>
+  const widthSlider = document.getElementById('width');
+const sliceSlider = document.getElementById('slice');
+const widthOutput = document.getElementById('width-output');
+const sliceOutput = document.getElementById('slice-output');
+const divElem = document.querySelector('div > div');
+
+widthSlider.addEventListener('input', () => {
+  const newValue = widthSlider.value + 'px';
+  divElem.style.borderWidth = newValue;
+  widthOutput.textContent = newValue;
+})
+
+sliceSlider.addEventListener('input', () => {
+  const newValue = sliceSlider.value + ' fill';
+  divElem.style.borderImageSlice = newValue;
+  sliceOutput.textContent = newValue;
+})
+
+  </script>
+  </body>
+</html>

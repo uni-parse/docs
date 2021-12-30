@@ -1,0 +1,25 @@
+ 
+★keyframes animations:
+  *keyframes syntext:
+    @keyframes <animation-name>{
+      percentage|from'0%|to'100%{declarations-block}
+      another keyframes
+      …
+    }
+  *animations properties:
+    •animation-name: any-name; (required)
+    •animation-duration: time; (required)
+    •animation-delay: time;
+    •animation-timing-function: ease'd|ease-in-out|ease-in|ease-out|linear|steps(<times>,start|end)|step-start|step-end|cubic-bezier(x2,y2,x3,y3);
+    •animation-direction: normal'd|reverse|alternate|alternate-reverse;
+      »normal: allways frome first frame to last frame.
+      »reverse: allways frome last frame to first frame.
+      »alternate: frome [0% to 100%] then [100% to 0%].
+      »alternate-reverse: frome [100% to 0%] then [0% to 100%].
+    •animation-iteration-count: <times>|infinite;
+    •animation-fill-mode: none'd|forwards|backwards|both;
+      »forwards: applay last frame if animation end.
+      »backwards: applay first frame if delayed(or none).
+    •animatiom-play-state: running'd|paused;
+      »usefull for java script to pause & replay the current frame, wighout restart frome first frame.
+   ••animation: name 'duration delay' iteration-count timing-function direction fill-mode play-state;

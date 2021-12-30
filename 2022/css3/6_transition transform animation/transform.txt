@@ -1,0 +1,80 @@
+
+★transform: none'd| rotate?translate?scale|X?Y?Z?3d() skew?X?Y() matrix?3d() perspective();
+  ›unapply to unReplaced-i & table-column|-group els.
+  ›functions executed by #order, subsequence functions apply to main-axis of #transformed-box(not origin-box).
+  ›el:statePseudoClass{#t:required reset all el{t:functions()}}
+
+  •t-origin(→rotate): x?y'omitted→50%| x y z(length0d)?;
+    ›x?y: length| %'border-box| center'd| <side>.
+
+ *2Dimensions: •rotate?Z(<angle>); »t-origin:x?y'omitted=50%|x y;
+      ›x?y: length| %'border-box| center'd| <side>.
+  •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box.
+  •scale(x=y|x,y)|X(x)|Y(y); ›x?y: ±#1d.
+    ›-#→pointReflection, -x:e→9, -y:e→6, -x=y:6→9[rotate(.5turn)]
+  •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
+
+ *3Dimensions: 
+  •demo: #parent{
+    perspective: none'd| length;  /*enable z-axis shared space*/
+    perspective-origin: <bg-position>;         /*view position*/
+    t-style: flat'd| preserve-3d;          /*enable 3d nesting*/
+    .object{
+     position: absolute;                   /*enable 3d nesting*/
+      t: perspective(length)                /*individual space*/
+         rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
+         translate3d(x,y,z) transateX?Y?Z()
+         scale3d(x,y,z) scaleX?Y?Z();
+      t-origin: x?y'omitted→50%|x y z(length0d)?;   /*rotate()*/
+      backface-visibility: visible'd|hidden;  /*rotate(.5turn)*/
+    }
+  }
+
+
+  *enable & create z-distance from z=0 parent-object to user:
+    •individual spaces:
+      .object-child{t: perspective(length) …;}
+      ›length € [1,1000px], length<200px useless(too big)
+    •shared space: .container{perspective:none'd|length}
+
+  *setting view position of parent-object:
+    .container(perspective-origin: <bg-position>(50% 50%)d}
+      ›±%'border-box, 3values(21-moz?webkit-→95≠Opera1.4%)≠autoPF
+
+  *enabling 3d space of parent-object to its childrens.
+    parent-object{t-style: flat'd| preserve-3d}
+    ›to se affect use: .object-childs{position: absolute}
+
+  *backface(on 180deg) of childrens-objects:
+    .object-childs{backface-visibility: visible'd| hidden}
+
+  *3d functions: 2d notations &&↓
+    •individual:
+      ›X-axis'left→right: rotateX()'6→-
+      ›Y-axis'top↓botton: rotateY()'6→|
+      ›Z-axis'object↑Eye: rotateZ()'6→9 translateZ() scaleZ()
+    •shorthands:
+      ›rotate3d(x,y,z,<angle>). ›x?y?z: 0?±1.
+        _ex: rotate(45deg)→rotateZ(45deg)→rotate3d(0,0,1,45deg).
+      ›translate3d(x,y,z). ›z work as scale(x=y).
+      ›scale(x,y,z). ›z multiply translateZ()*z
+        _ex:t:translateZ(z) scaleZ(sz);→translateZ(calc(z*sz)).
+
+
+
+•demo: #container{
+    perspective: none'd| length;               /*shared space*/
+    perspective-origin: <bg-position>;         /*view position*/
+    #parent-object{
+      t-style: flat'd| preserve-3d;        /*enable 3d nesting*/
+      .object-childs{
+        position: absolute;                /*enable 3d nesting*/
+        t: perspective(none'd|length)       /*individual space*/
+           rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
+           translate3d(x,y,z) transateX?Y?Z()
+           scale3d(x,y,z) scaleX?Y?Z();
+        t-origin: x?y'omitted→50%|x y z(length0d)?; /*rotate()*/
+        backface-visibility: visible'd|hidden;/*rotate(.5turn)*/
+      }
+    }
+  }

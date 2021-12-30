@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>grid</title>
+    <meta charset=uft-8>
+    <style>
+      body{
+        background:#333;
+        color:#aaa; text-align:center;
+        font:clamp(1rem + .5vw, 2vw, 1rem + 1vw) rosemary;
+      }
+      body>div{ border:red solid; writing-mode:;
+        margin:; height:22em; width: 100%;
+        display: inline-grid;
+        
+        /*
+        grid-template:
+            [header-start] "h h h h h h" 20vh [header-end]
+            [main-start] "ads . c c c l" 50vh
+            [main-end footer-start] "f f f f f f" 10vh
+            
+             20% 1fr 16% 16% 16% 2fr;
+            [ads-start header-start] 20% [ads-end] .5fr [c-start] 16% 16% 16% [link-start] 2.5fr [link-end header-end];
+         grid: [a-start] 3em  3em [a-end] repeat(2,3em)/[a-start] 4em 4em [a-end] repeat(2,4em);
+         grid-auto-rows:2em;
+         grid-auto-columns:;
+         grid-auto-flow:;
+         
+         direction:ltr;
+         border:double thick darkcyan;
+         height:80vh;
+         grid-column-gap:;*/
+         
+         /*grid:"a a c" 2em "b b c" 3em/5em auto auto;*/
+         gap:;
+         justify-content:;
+         align-content:;
+         place-content:;
+         justify-items:;
+         align-items:;
+         place-items:;
+
+         grid: 'a a b' 'a a b' '. c c' /auto auto auto;
+         
+         
+         
+      }
+      div>div{
+        border:thin yellow solid;
+        background:hsla(90,100%,40%,.2);
+        border-radius:.7em;/*
+        margin:auto;*/
+      }
+      div>div:first-child{
+        /*
+        grid-area:c;
+        direction:rtl;
+        justify-self:;
+        align-self:;
+        width:;
+        height:;
+        order:;
+        
+        grid-column-start: span 4;
+        grid-column-end: link-end;
+        grid-column:span 4/link-end;
+        grid-row:1/2;
+        grid-area:1/c-start/auto/-1;
+        */
+        
+        
+        
+        
+        grid-column: ;
+        grid-row: ;
+        grid-area: 2/2/4;
+        place-self: baseline;
+        margin:auto;
+        
+      }
+    </style>
+  </head>
+  <label>width: <input type=range min=0 max=100 step=any></label><br>
+  <label>height: <input type=range min=0 max=40 step=any></label><br>
+  <body>
+    <!--<a href=m.m4a download=bill>music</a><br>-->
+    <div>
+      <div>مرحبا</div>
+      <div>02 hello</div>
+      <div>03</div>
+      <div>04</div>
+      <div>05</div>
+      <div>06</div>
+      <div>07</div>
+      <div>08</div>
+      <div>09</div>
+      <div>10</div>
+      <div>11</div>
+      <div>12</div>
+      <div>13</div>
+      <div>14</div>
+      <div>15</div>
+      <div>16</div>
+      <div>17</div>
+      <div>18</div>
+      <div>19</div>
+      <div>20</div>
+      <div>21</div>
+      <div>22</div>
+    </div>
+    
+    <script>
+      var i=document.querySelectorAll('input'),
+          d=document.querySelectorAll('body>div');
+      i[0].addEventListener('input', function(){
+        d[0].style.width=i[0].value + '%';
+      });
+      i[1].addEventListener('input', function(){
+        d[0].style.height=i[1].value + 'em';
+      });
+      window.addEventListener('load', function(){
+        i[0].value=100; i[1].value=22;
+      });
+      //alert('done');
+    </script>
+    
+  </body>
+</html>

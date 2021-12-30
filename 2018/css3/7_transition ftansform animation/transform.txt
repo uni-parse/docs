@@ -1,0 +1,85 @@
+
+★transform shorthand: do not applay to non-replaced-inline els.
+  *transform: none'd|rotate() rotateX() rotateY() rotateZ() rotate3d() translate() translateX() translateY() translateZ() scale() scaleX() scaleY() scaleZ() skew() skewX() skewY().
+  
+  *transform-origin: x y(50% 50%)'d|only(x or y); 
+    •x: percentage(r to border-box)|length|center|left|right
+    •y: percentage|length|center|top|bottom 
+    •only: omitting x or y, set the cross-axis to 50% !!.
+    
+  *importan notes: 
+    •the #Order affect !!, next functions applay to the #transformed-box(main-axis can be vertical!!)
+    •multiTransforms to elements state like a, a:hover, required to reset all previos function from 'a' to 'a:hover'.
+    
+★2 dimensions transforms:
+  *transform: rotate(-360~+360deg);
+  *transform: translate(x,y)|translateX(x) teanslateY(y);
+    •x|y: ±length|±percentage(r to border-box)
+    •Note: translate(only); → translateX(only) translateY(0);
+  *transform: scale(number:x=y)|scaleX(*) scaleY(*);
+  *transform: skew(Xdeg, Ydeg)|skewX() skewY();
+    •Note skew(only) → skewX(only) skewY(0);
+
+★3 dimensions transforms:
+  *creat z-distance from parent-object to you:
+    •individual spaces:
+      .object-child{transform: perspective(none'd|number|length) other-functions() …;}
+      »length € ]0,1000px], length<200px useless
+      »number represent pixels.
+    •shared space:
+      .container{perspective:none'd|length;}↓
+      
+  *setting view position of parent-object:
+    .container(perspective-origin: x y(50% 50%)'d|only(x or y);} 
+    •x: percentage(r to border-box)|length|center|left|right 
+    •y: percentage|length|center|top|bottom 
+    •only: omitting x or y, set the cross-axis to 50%|center !!.
+    
+  *enabling 3d space of parent-object to its childrens.
+    parent-object{transform-style:flat'd|preserve-3d;}
+    •Note: to se affect use:
+     .object-childes{position:absolute;}
+   
+  *backface(on 180deg) of childrens-objects:
+    .object-childs{backface-visibility:visible'd|hidden;}
+    
+  *3d functions: 2d notations &&↓
+    •individual:
+      ›X-axis(→left to right→): rotateX()
+      ›Y-axis(↓top to botton↓): rotateY()
+      ›Z-axis(↑object to eye↑): rotateZ() translateZ() scaleZ()
+    •shorthands:
+      »translate3d(x,y,z)
+       ›z work as scale(x=y).
+      »scale(x,y,z)
+       ›z multiply translateZ()*z
+         _ex: transform:translateZ(10px) scaleZ(2);
+            same as→transform:translateZ(20px);
+      »rotate3d(x,y,z,<angle>)
+       ›<angle>: 180deg = .5turn = 3.142rad
+       ›x,y,z of rotate3d can be: -1|0|1
+        _ex: rotate(45deg)→rotateZ(45deg)→rotate3d(0,0,1,45deg)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

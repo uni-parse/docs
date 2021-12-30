@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+ <title></title>
+ <meta name='viewport' content='width=drvice-width,initial-scale=1,maximum-scale=1'>
+ 
+ <style>
+   :root, body{font:28px rosemary;padding:0;margin:0;box-sizing:border-box}
+   *{font-size:1rem;padding;box-sizing:border-box}
+   textarea, div{
+     width:100vw;height:25vh;overflow:auto;padding:.2rem;
+     color:hsl(90,100%,50%);
+   }
+   textarea::placeholder{
+     color: teal
+   }
+   textarea:placeholder-shown{
+     color:orange;
+   }
+ </style>
+</head>
+<body>
+
+  <textarea placeholder=input wrap=hard></textarea><br>
+  <textarea placeholder=innerHTML disabled></textarea>
+  <div></div>
+
+  <script>
+    var t=document.querySelectorAll('textarea'),
+      d=document.querySelectorAll('div');
+  
+    t[0].addEventListener('input', function(){
+      d[0].innerHTML=t[0].value;
+      t[1].innerText=d[0].innerHTML;
+    });
+    alert('done');
+  </script>
+</body>
+</html>

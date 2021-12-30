@@ -1,0 +1,85 @@
+
+★defualt object|iframe dimensions: width=300 height=150
+  •issue: aspectRatio unpreserved, style=width:auto;
+  •video: defualt w|h are original dimensions.
+
+★iframe(inline frame): embed another source through window (page|video|audio|image|svg|canvas|map)
+  •<iframe name=targetName src=url allowfullscreen(issue) title=alt 
+    allow=fullscreen|geolocation|camera 'none'; microphone 'none'|layout-animations 'none'; unoptimized-images 'none'; oversized-images 'none'; sync-script 'none'; sync-xhr 'none'; unsized-media 'none'; (new feature)
+    referrerpolicy=no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin'd|unsafe-url
+    srcdoc='inline html|xml ex: <a>override src=</a>'
+    sendbox='allow-'downloads(73noSafari)|same-origin|scripts|popups|popups-to-escape-sandbox|presentation|pointer-lock|forms|'-top-navigation'|by-user-activation> fallback </iframe>
+
+  •src=www.youtube.com/embed/ id(v=id) ?autoplay=1|0 &mute=1|0
+  •src=https://maps.google.com/maps?q= location(ex: blida) &t=&z=9&ie=UTF8&iwloc=&output=embed
+
+★object: (att usemap=#value, <map name=value> image)
+ •<object type=image/svg+xml data=url typemustmatch name= form=>
+    <image src=fallback alt=>
+   </object>
+ •<object type=video/mp4 data=url typemustmatch name= form=>
+    <param name=autostart value=false|true>
+    <param name=controller value=false|true>
+   </object> 
+ •<embed src= type=>: for plug-ins (useless remplaced by object)
+
+
+★video & audeo:
+  •<video src=url controls autoplay muted loop poster=img_url 
+    preload=auto|none|metadata playsinline(nonMobileFullscreen)
+    crossorigin=anonymous|use-credentials>
+     <track defualt src=url.vtt|.srt label=interface_selection
+      kind=metadata(js)|captions|descriptions|chapters|subtitles
+      srclang="en|fr|ar|cn, required kind=subtitles">…
+     <a href=download.mp4>alternative</a>
+   </video>
+  •<video preload= controls autoplay muted loop poster= crossorigin=>
+     <source type=video/webm src=url.webm>
+     <source type=video/mp4 src=url.mp4>
+     <source type=video/ogg src=url.ogg>
+     <track>'s…
+     <a href=download.mp4>alternative</a>
+    </video>
+  •Encoding tools: handbrake.fr|firefogg.org|ffmpeg.org|freemake.com(video→audio)
+  •styling(track text):
+    ›video::cue{/*not supported yet*/} 
+    ›video::-webkit-media-text-track-display { overflow: visible !important; box-sizing:border-box; background: hsla(90,100%,50%,.5); padding:8px; border-radius:16px;}
+
+  •<audio src=url controls loop autoplay preload= crossorigin=>
+     <track>'s…
+     <a href=download.mp3>alternative</a>
+    </audio>
+  •<audio controls loop autoplay preload= crossorigin=>
+     <source type=audio/ogg src=url.ogg>
+     <source type=audio/mp3 src=url.mp3>
+     <source type=audio/webm src=url.webm>
+     <source type=audio/wav src=url.wav> <!--not optimized-->
+     <track>'s…
+     <a href=download.mp3>alternative</a> 
+    </audio>
+  •Encoding tools: online-audio-converter.com|media.io|www.mediahuman.com/audio-converter/|sbooth.org/Max/(mac)|www.audacityteam.org(multitrack)
+
+
+  ★canvas: area to creat bitmapped animated atractive graphics by javascript (cant scalable as svg).
+  <canvas widtg="" height="">
+    fallback if js not enabled or not supported
+  </canvas>
+  <script>
+    var c=document.querySelectorAll('canvas');
+    stroke(); strokeStyle; strokeRect(x1, y1, x2, y2);
+    beginPath(); closePath(); lineWidth;
+    fill(); fillStyle; fillText(your_text, x1, y1);
+    font;
+    rotate(); scale();
+    arc(x, y, arc_radius, angle_radians_beg, angle_radians_end);
+  <script≥
+    
+    
+    
+    
+    
+    
+    
+
+ 
+    

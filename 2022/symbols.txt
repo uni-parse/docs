@@ -1,0 +1,27 @@
+comma ,
+colon :
+semiColon ;
+curly brace {}
+parentheses ()
+hyphen manius dash -
+underLine underscore _
+tilde ~
+multiply star aste'risk *
+carat ^
+equal =
+slash division /
+slashBare back-slash \
+bar |
+single and duble pair quotes "" ''
+right & left an'gled bracket <>
+exclamention  !
+hash #
+period dot .
+equality ===
+inequality !==
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="uft-8">
+    <meta name=viewport content='width=device-width,initial-scale=1'>
+    <style>
+      @font-face{
+        font-family:'Phantom Bill';
+        src: /*local('Rosemary'),*/
+          url('LeagueMonoVariable.woff2'),
+          url('LeagueMonoVariable.ttf'),
+          url('Texturina-Italic-VariableFont_opsz,wght.ttf'),
+          /*wood bold serif h2-h6*/
+          url('Rosemary.ttf');
+      }
+      html{font-size:46px;}
+      body{
+        background:#223;color:#888;
+        text-align:center;
+        font:1em 'Phantom Bill', serif;
+        font-size:48px;font-family:;
+        font-stretch:200%;
+      }
+      h1,p{
+        font-weight:lighter;
+        display:inline-block;
+        background: linear-gradient(45deg,#020,#0a0,#020);
+        -webkit-background-clip:text;
+        color:transparent;
+        font-variant-ligatures:no-common-ligatures;
+      }
+      p{/*
+        font-variant:small-caps;
+        font-weight:600;*/font-family:sans-serif
+      }
+      p::first-letter{/*
+        font-size:xxx-large;
+        font-weight:lighter;*/;
+        font-variant: all-petite-caps;
+      }
+      i{
+        font-style:normal;/*
+        font-variant-caps: all-small-caps;*/
+        font-variant-numeric: ;
+        -webkit-font-stretch: 50%;
+        writing-mode:vertical-rl;
+        text-orientation:upright;
+      }
+    </style>
+    <!--
+          url('Fraunces-VariableFont_SOFT,WONK,opsz,wght.ttf'),
+    url('Fraunces0Italic-VariableFont_SOFT,WONK,opsz,wght.ttf'),
+          /*g serif h3-h5 text*/
+          url('Tourney-VariableFont_wdth,wght.ttf'),
+          url('Tourney-Italic-VariableFont_wdth,wght.ttf'),
+          /*2 display sans h1*/
+          url('BigShouldersInlineText-VariableFont_wght.ttf'),
+          /*3 d sans h1*/
+       url('BigShouldersStencilDisplay-VariableFont_wght.ttf'),
+          /*cutted-off d h2-h4*/
+          url('Gluten-VariableFont_wght.ttf'),
+          /*w bold d funny h1-h6*/
+          url('Lemonada-VariableFont_wght.ttf'),
+          /*clear bold d text*/
+          url('Podkova-VariableFont_wght.ttf'),
+          /*beauty serif short-text dfn i em*/
+          url('RedHatMono-VariableFont_wght.ttf'),
+          url('RedHatMono-Italic-VariableFont_wght.ttf'),
+          /*beauty monospace output*/
+          url('SansitaSwashed-VariableFont_wght.ttf'),
+          /*beauty bold d h1-h2*/
+          url('Texturina-VariableFont_opsz,wght.ttf'),
+      -->
+  </head>
+  <body>
+    <h1>wHalfiflgiuH</h1><p>XxhHjH</p><br>
+    co0123456789.12345Th<br>
+    <i>co012<br>3456789.12345Th</i>
+    <i>بلال<br>عباني</i>
+  </body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,98 @@
+
+
+★resposive web design principles:
+  meta(viewport:device), flexible grid, responsive image, media queries + 'responsive zoom'
+  
+  *meta: 
+   <meta name="viewport" content="width=device-width, initial-scale=1, o'maximum-scale=1, o'minimum-scale=1">
+    •mack the document viewport sized to device-width before loading.
+    •maximum-scale=1 block the ability of zooming.
+    
+  *responsive image & embedded media
+    max-width:100%;
+  
+  *media queries: 
+    •internal: .css or <style>: 
+      @media 'type' and (query1) and (query2) and …{rules}
+      »types: print(don't have queries), screen, both, (can be omitted)
+      »queries: (feature:value)
+        ›features:
+         width|min-width|max-width|height|min-height|max-height
+         |oreintation(portrait,landscape)|aspect-ratio(w/h:16/9)
+         |hover|any-hover|pointer|any-pointer|resolution
+    •external: <link> or @import:
+      <link rel="stylesheet" href="style2.css" media="type and (queries)">
+      @import url("1.css") type and (queries1), url(2.css) type and (queries2), …;
+    •breakpoints: test by chrome developers tools #by em's not px's.
+
+
+
+★rwd methods: layout, typography, navigation, image, form, table, intractive media.
+  *lay'out: start on smallest screen stratigy(320px W), than expand & add breakPoints as necessary, by chrome/developers-tools, 
+    •add: css: 
+      html{box-sizing:border-box;}
+      *{box-sizing:inherit;}
+      body{font-size:100%;margin:0;}
+  *typography:
+    •font-face:
+      »on smart phone: thin-family, clear, localy(sans-serif)
+      »on desktops: wide-family, styled, can be downloaded
+    •font-size: adjust to target minmax(45em, 75em) on line width
+    •line-height: 1.2~1.5(number*) on smartPhones, 1.4~1.6 on desktops.
+    •margin: 
+      »horizonral 2%~4% on smallScreens
+      »vertical em-based.
+  *navigation: on small screens: size≥44px, use select menu(&sub-menu), or offset canvas(left:-100%;) by java script
+  *image: multi srcset, smaller then bigger, focuse on important content only, use sprite to limite http requests.
+  *forms: use flexbox, labels, size≥44px, no unnecessary info.
+  *tables: use overflow-x on table, or on td. 
+  *intractive media: put link to map app on small screens.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

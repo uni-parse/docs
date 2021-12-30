@@ -1,0 +1,141 @@
+
+
+ selectors priority//
+
+
+  ★user-reader !important > author !important > author > user-reader > user-agent
+
+ »author: specificy > position > order
+
+  *position: inline > embedded > external
+  
+  *specificy weight:
+   ids nth > class + pseudo-class nth > indi|vidual elements nth
+   [ids] [classes+pseudoClasses] [els]
+
+
+
+
+  *element s: e{}
+  *grouped s: e1, e2, …{}
+  *identify s: e#id, #id{}
+  *classify s: .class, e.class{}
+  *contextual (combinators) s:
+    •descondant s: ancestors el{} 
+      ex:e0 e{} == e0 … e(i) … e(i+n) e{}
+    •direct child s: … > parent > child{}
+    •next-sibling s: e + only-one-next-e{}
+    •subsequent-sibling s: e ~ all-next-e{}
+  *universal s: #section *{}
+
+
+★pseudo classes:
+  *states: order required
+    •unvisited: a:link{}
+    •visited: a:visited{}
+  l4•visited|unvisited: a:any-link{}
+    •selected: a:focus{}
+  l4•selected-descondant a:focus-whithin{}
+      ›ex: <div style=:focus-whithin{}> <a></a>…<input> </div>
+           <!-- select div if any els inside it selected -->
+    •hovered: a:hover{}
+    •while clicking: a:active{}
+    •e:target{} 
+      html: <e id="e-id"></e>…<a href="#e-id"></a>…
+      url: website.io#e-id
+      ›Note: to clear target click on / html: <a href="#"></a>
+    •e:
+     
+  *structure:
+    •:root{--variables:values;}brefer to <html>with high specify
+    •e:empty{} have no content even space except comments
+    •pr:first-child{}
+    •pr:last-child{}
+      »body>el:last-child{} not-work !!!
+    •pr:first-of-type{}
+    •pr:last-of-type{}
+    •pr:not(#child1-selector):not(.another:last-child)…{}
+    •pr:nth-child(even=2n+1|obb=2n|(a€Ž)n+(b≥0)):nth-child(an+b)…{}
+      »ex: pr:nth-child(4n+60):nth(-4n+80){}
+        select 60,64,68,72,76 and 80 from 100
+    •pr:nth-last-child(an+b)…{}
+    •pr:nth-first-of-type(an+b)…{}
+    •pr:nth-last-of-type(an+b)…{}
+    •pr:only-child{}
+      select any pr have 1 child
+    •pr:only-of-type{}
+      select any descondant-type who dont havd siblings
+  l4•:is(el, [att], :pseudo-class, …) p{}
+      select any <p> inside <el1> & [att] & :pseudo-class & …
+      Note :is(::pseudo-elements) invalid !!
+  l4•:where(el1, el2, :pseudo-class, …) p:hover{}
+      same as :is(), but have different specificy weight:
+        :is() el{} → [0][1][1]
+        :where() el{} → [0][0][1]
+        el{} → [0][0][1] + order
+      "el{}" can override ":were() el{}", but not ":is() el{}"
+      
+  *form:
+    •i:checked{} or :checked{}
+      if user select|check it.
+  l4•i:default{} or :default{}
+      if it have att: checked|selected|type="image|submit"
+      to select labels :default+label{}
+    •i:disabled{opacity:.3;} 
+      if it have att: disabled
+    •i:enabled{} if it not disabled.
+  l4•i:in-range{} match att; min max (type=number|time's…)
+  l4•i:out-of-range{}
+      do not match att: min max (required type=number)
+  l4•form,i:valid{}           (maxlength=|minlength=|required)
+  l4•form,i:invalid{} if user input incorrect for  requirement.
+  l4•i:required{} if it have att: required
+  l4•i:optional{} if it do not have att: required
+  l4•i:read-only{} 
+      if it have att: readonly(d'*:not(input))
+  l4•i:read-write{} 
+      if it not have att: readonly, content'editable
+  l4•i:indeterminate + label{}
+      unselected i[type=checkbox], i[type=radio](77gs-noSafari), <progress></progress>
+      
+  *language:
+   •q:lang(en|fr|ar){quotates:'«' '”';} 
+     target att: lang="" or what meta incloded, en'd
+
+
+★pseudo elements:
+    •e::selection{} whene user select text 83% -moz-0.7%
+    •text::first-letter{}
+    •text::first-line{}
+    •e::before{content="text|s-characters|url(no-quotations)";}
+    •e::after{content="";}
+  *form:
+    •i::placeholder{} select placeholder #text
+  l4•i:placeholder-shown{} /* pseudo-class */
+      select input|textarea who its placeholder are displaying
+    
+
+★attributes seldctors:
+    •e[att][]…{}
+    •e[att=val][]…{}
+  l4•e[att=val i][]…{} case-Insencitive
+      ›ex: img[src=img.webp i]{}, mean src='(img|Img|IMG).webp'
+    •e[att~="part of val"][]…{}
+    •e[att^="prefix of val"][]…{}
+    •e[att$="suffix of val"][]…{}
+    •e[att|="single word of val"][]…{}
+      ex: 
+       html:<abbr title="phantombill">pb</abbr>
+            <abbr title="bill-ab">ba</abbr>
+       css: [title|="bill"]{color:#999;}
+        the second abbreviation who selelected 
+        becuose "bill" are single word separated by hyphen.
+
+
+
+
+
+
+
+
+

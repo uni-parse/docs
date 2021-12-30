@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>position</title>
+    <meta charset="uft-8">
+    <meta name=viewport content='width=device-width,initial-scale=1.0'>
+    <meta name=color-scheme content=dark>
+    <style>
+      @font-face{
+        font-family: Rosemary;
+        src: local('Rosemary.ttf'), url('Rosemary.ttf');
+      }
+      html,*{box-sizing:border-box}
+      body{
+        background:;
+        color:;
+        font: calc(1rem + 1vw) Rosemary, sans-serif;
+        height:200vh;
+      }
+      div{
+        width:20em;
+        height:5em;
+        padding:1em;
+        background:#336;
+        margin:15vh auto 0;
+        overflow:auto;
+        position:;/*
+        top:1em;*/
+      }
+      p{
+        overflow:none;
+        position:;
+        margin:auto;
+        background:#633;
+      }
+      em{
+        background:#363;
+        position: absolute;/*
+        width:5em;
+        top:1em;
+        bottom:0;*/
+                /* just if absolute|fixed */ /*
+        margin:1em auto;       
+        padding:.2em;
+        border: solid #f11;
+        outline: solid cyan;
+        outline-offset: 1em;*/
+      }
+    </style>
+  </head>
+  <body>
+   <div>
+     <p>ffhvg hcjv hhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhjjh hhhhh hhhhh jjhhj jjjnj njjjj bgbh hhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhhh hhhh hhhhh hjjjh hhhhh hhhhh nnnnn hhhhh hhhhh hhhhh hhhhj jjjjj jjjji jiiik jvjg: <em>hello</em> :njhgkvh jjjjj jjjjj nnnnn jjjjj jjjjj jjjjj jjjm mjjjjj jjjjm jjjj jjjjm njjn njnnj hhhh hhhhh hhhh hhhh hhhh hjhhh hhhhh hhhhh hhhh hhhhh hhhhh jjjjj hjjjj hjjjh  hhhhh hhhh hhhhh hhhhh hhhhh hhhnn jnjmj hhhh kdjfjvj ngkvjg jgkv bhhg hgjhh</p>
+   </div>
+   ggkgjjvh nhbjgkj jgjjgkj hgkvjjh hgjfjgy hgkgjbhh
+  </body>
+</html>

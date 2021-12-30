@@ -1,0 +1,9 @@
+#a {
+  /*
+  clip-path: url();
+  color: white;
+  border-color: #ffffff;
+  background: #fff;*/
+  perspective-origin: left 1px top;
+  background: image-set(url("gaara.webp") type(image/webp) 1x);
+}

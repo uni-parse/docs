@@ -1,0 +1,126 @@
+
+class Items {
+ constructor(w, s, g) {
+  this.wood = w;
+  this.steel = s;
+  this.gold = g;
+ }
+}
+var day1 = new Items(33, 10, 4);
+console.log(day1);
+var day2 = new Items(47, 3, 5);
+console.log(day2);
+console.log("");
+/*class is template, boosting creating new objects that have same propertys with defferant values,
+we set values as parameters of constructor method*/
+class ItemsPrice {
+ constructor(w, s, g) {
+  this.wood = w;
+  this.steel = s;
+  this.gold = g;
+ }
+ isVipPrice(vip) {
+  if (vip === true) {
+   return console.log("price: " + (this.wood * 5 +
+    this.steel * 20 +
+    this.gold * 100) * 0.8 + "$. with 20% OFF");
+  }
+  return console.log("price: " + (this.wood * 5 +
+   this.steel * 20 +
+   this.gold * 100) + "$.");
+ }
+}
+var day3 = new ItemsPrice(33, 10, 4);
+console.log(day3);
+day3.isVipPrice(true);
+var day4 = new ItemsPrice(47, 3, 5);
+console.log(day4);
+day4.isVipPrice()
+console.log("");
+//to make our class template intractive, we can add methodes too.
+class Phone {
+ constructor(made, model) {
+  this.made = made;
+  this.model = model;
+ }
+ call(person) {
+  console.log("calling " + person + " ... by " +
+   this.made + " model: " + this.model);
+ }
+};
+class Nokia extends Phone {};
+var Nokia1 = new Nokia("nokia", 0.1);
+Nokia1.call("wassim");
+var Nokia2 = new Nokia("nokia", 0.2);
+Nokia2.call("mechid");
+class Samsung extends Phone {
+ videocall(person) {
+  console.log("video calling " + person +
+   " ... by " + this.made + " model: " + this
+   .model);
+ }
+}
+console.log("");
+var S4 = new Samsung("samsung", "s4");
+S4.call("wassim");
+S4.videocall("wassim");
+var S8 = new Samsung("samsung", "s8");
+S8.call("mechid");
+S8.videocall("mechid");
+console.log("");
+/*subclass's can inherted all its superclass properties & methods,by 'extends' statement.*/
+class Human {
+ constructor(weapon) {
+  this.weapon = weapon;
+  this.health = 100;
+ }
+ attack() {
+  console.log("Swing " + this.weapon);
+ }
+ damage(shots) {
+  console.log(shots * 10 + "dmg");
+ }
+}
+
+class Wizard extends Human {
+ attack() {
+  super.attack();
+  console.log("Zimzalabim!");
+ }
+ damage(shots) {
+  super.damage(shots);
+  console.log("+" + shots * 2 + "Magic.dmg");
+ }
+}
+
+var wizard = new Wizard("staff");
+wizard.attack();
+wizard.damage(10);
+console.log("");
+/*im subclass we can push another elements inside the extanded method by adding 'super.methodname' as element in subclass same methodname to superclass*/
+class Video {
+ constructor(length) {
+  this.length = length;
+ }
+}
+
+class Loop extends Video {
+ constructor(length, start, end) {
+  super(length);
+  this.start = start;
+  this.end = end;
+ }
+}
+
+var loop = new Loop(10.5, 3.2, 7.4);
+console.log(loop);
+/*subclass can add properties to the inherted ones, by adding new properties after adding 'super(inherted parameters)' 
+and adding new parameters to the inherted ones*/
+
+
+
+
+
+/*core methodes reduce errors that came from recoding all low level methods */
+
+
