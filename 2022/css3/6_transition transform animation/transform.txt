@@ -4,11 +4,11 @@
   ›functions executed by #order, subsequence functions apply to main-axis of #transformed-box(not origin-box).
   ›el:statePseudoClass{#t:required reset all el{t:functions()}}
 
- *2Dimensions: •rotate?Z(<angle>); »t-origin:x?y'omitted=50%|x y;
-      ›x?y: length| %'border-box| center'd| <side>.
+ *2Dimensions: •rotate?Z(<angle>);
+    »t-origin: <bg-position≠offset>; ›%'border-box.
   •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box.
-  •scale(x=y|x,y)|X(x)|Y(y); ›x?y: ±#1d.
-    ›-#→pointReflection, -x:e→9,-y:e→6, -x=y:6→9[rotate(.5turn)]
+  •scale(x=y=±#1d|x,y)|X(x)|Y(y);
+    ›-#→pointReflection, -x:e→9,-y:e→6,-x=-y:6→9'rotate(.5turn).
   •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
 
  *3Dimensions: •demo: #parent{
@@ -23,13 +23,16 @@
     t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate()*/
     backface-visibility: visible'd|hidden;    /*rotate(.5turn)*/
 
-  •perspective() create 3Dview
-  •t-origin(→rotate): x?y'omitted→50%| x y z(length0d)?;
-    ›x?y: length| %'border-box| center'd| <side>.
+  •perspective(z-distance:z=0'2Dplane→user) create 3Dview apply to parent, perspective property apply just to childrens
+  •
+  •t-origin(→rotate): x?y'omitted→50%| x y z(±length0d)?;
+    ›x?y: ±length| ±%'border-box| center'd| <side>.
+    ›z-offset: +push|-pull #rotated z=0 far|to?behind user.
+  
 
 
-  *enable & create z-distance from z=0 plane parent-object to user:
-  create 3d vision z-distance from z=0(2d plane) to user
+  *enable & create z-distance from z=0 2d plane to user:
+  z-distance from z=0(2d plane) to user, create 3d vision.
     •individual spaces:
       .object-child{t: perspective(length) …;}
       ›length € [1,1000px], length<200px useless(too big)
@@ -38,7 +41,7 @@
 
   *setting view position of parent-object:
     .container(perspective-origin: <bg-position>(50% 50%)d}
-    ›±%'border-box, 3values(21-moz?webkit-→95≠Opera1.4%)≠autoPF.
+    ›±%'border-box, 3values(21-moz?webkit-95≠Opera1.4%)≠autoPF.
 
   *enabling 3d space of parent-object to its childrens.
     parent-object{t-style: flat'd| preserve-3d}

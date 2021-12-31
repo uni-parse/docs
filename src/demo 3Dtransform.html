@@ -28,15 +28,14 @@
         padding:3%;
       }
       body>div>div{ border-radius: inherit;
-        
         background:hsla(355,100%,45%,.5);
         transform-style:preserve-3d;
-        transform:rotate3d(1,0,0,.06turn);
+        transform: rotateX(.06turn)/*rotate3d(1,0,0,.06turn)*/;
         transition: all .6s/*1.5s*/ linear;
         width:100%;height:100%;
       }
       body>div:hover>div{
-        transform:rotate3d(0,1,0,.25turn)/*.05,1,0,.5turn perspective(90em)*/ scale(1.2);
+        transform:rotate3d(0,1,0,.25turn)/*.05,1,0,.5turn*/ perspective(90em) scale(1.2);
       }
       body>div>div div{ border-radius: inherit;
         transform: /*rotate(50deg)*/ ;
@@ -48,13 +47,14 @@
       }
       body>div>div>div:first-child{
         box-shadow:-.3em .3em 5px 0 rgba(0,0,0,.6);
+        backface-visibility: ;
       }
-      body>div>div>div:first-child img{ 
+      body>div>div>div:first-child img{
         max-height:100%;width:auto;
       }
       body>div>div>div:last-child{
         transform:rotate3d(0,1,0,.75turn) perspective(1em); /*.6turn creat book*/
-        overflow:auto;
+        overflow:auto; transform-origin: center center 0px;
         box-shadow:-.3em .3em 5px 0 #000a;
       }
       p{
@@ -62,7 +62,7 @@
         text-shadow: .05em .08em 5px rgba(0,0,0,.64);
         padding:0 1em;
       }
-      h1{ display:inline-block; margin: 0;
+      h1{ display:inline-block; margin: 0; padding:0 .1em;
         font: italic 600 small-caps clamp(2rem, 5vmin, 5rem) serif;
         text-shadow:.07em .1em 3px #0007;
         color:transparent;
@@ -72,15 +72,16 @@
         animation:gaara 3s infinite linear alternate;
       }
       h1::first-letter{
-        font:bolder clamp(1.4em, 3vmin, 1.4em + 2vw) Rosemary,serif;
+        font:bolder clamp(2.4rem, 5.5vmin, 5.8rem) Rosemary,serif;
+        text-transform:uppercase;
       }
       :is(h1)::selection{
         background:red;
         color:yellow
       }
       @keyframes gaara{
-        100%{background-position:center, -200px;
-          letter-spacing:.5em;}
+        100%{background-position:center, -60px;
+          letter-spacing:.1em;}
       }
 
     </style>
