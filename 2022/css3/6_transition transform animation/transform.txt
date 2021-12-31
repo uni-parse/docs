@@ -5,78 +5,35 @@
   ›el:statePseudoClass{#t:required reset all el{t:functions()}}
 
  *2Dimensions: •rotate?Z(<angle>);
-    »t-origin: <bg-position≠offset>; ›%'border-box.
-  •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box.
-  •scale(x=y=±#1d|x,y)|X(x)|Y(y);
-    ›-#→pointReflection, -x:e→9,-y:e→6,-x=-y:6→9'rotate(.5turn).
+    ›t-origin: <bg-position≠offset>(50% 50%'d→border-box);
+  •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box
+  •scale(x=y=±#1d|x,y)|X(x)|Y(y); ›#€-1~1: shrink, else grow.
+    ›-#→pointReflection,-x:e→9, -y:e→6, -x=-y:6→9'rotate(.5turn)
   •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
 
  *3Dimensions: •demo: #parent{
-    perspective: none'd| length'z0→eye; /*create shared 3Dview*/
-    perspective-origin: <bg-position>;/*shared 3Dview position*/
-    t: perspective(length'z0→eye) …;/*create individual 3Dview*/
-    t-style: flat'd| preserve-3d;          /*enable 3d nesting*/
-  .Child{ position: absolute;              /*enable 3d nesting*/
-    t: rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
-      translate3d(x,y,z) transateX?Y?Z()
-      scale3d(x,y,z) scaleX?Y?Z();
-    t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate()*/
-    backface-visibility: visible'd|hidden;    /*rotate(.5turn)*/
-
-  •perspective(z-distance:z=0'2Dplane→user) create 3Dview apply to parent, perspective property apply just to childrens
-  •
+     perspective: none'd|length'z0→eye; /*create shared 3Dview*/
+     perspective-origin: <bg-position>;/*shared 3DviewPosition*/
+     t-style: flat'd| preserve-3d;         /*enable 3d nesting*/
+    .t-Child{ position: absolute;          /*enable 3d nesting*/
+      t: perspective(length'z0→eye) /*create individual 3Dview*/
+        rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
+        translate|scale3d(x,y,z) transate|scaleX?Y?Z();
+      t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate*/
+      backface-visibility: visible'd|hidden;          /*rotate*/
+  •perspective:; apply to t-childrens, ›length'r=200big~1000px.
+    »p-origin: 50% 50%'d; #only apply to perspective property.
+      ›%'border-box, 3values21-moz?webkit-95≠Opera1.4≠gulp.
+    »perspective(z-distance:z=0'2Dplane→user) apply→ current tEl
+      ›viewPosition uncontrollable, can mixed under p-property.
   •t-origin(→rotate): x?y'omitted→50%| x y z(±length0d)?;
     ›x?y: ±length| ±%'border-box| center'd| <side>.
-    ›z-offset: +push|-pull #rotated z=0 far|to?behind user.
-  
-
-
-  *enable & create z-distance from z=0 2d plane to user:
-  z-distance from z=0(2d plane) to user, create 3d vision.
-    •individual spaces:
-      .object-child{t: perspective(length) …;}
-      ›length € [1,1000px], length<200px useless(too big)
-    •shared space: .container{perspective:none'd|length}
-     applies only to the children of the element that it’s used on, not the element itself.
-
-  *setting view position of parent-object:
-    .container(perspective-origin: <bg-position>(50% 50%)d}
-    ›±%'border-box, 3values(21-moz?webkit-95≠Opera1.4%)≠autoPF.
-
-  *enabling 3d space of parent-object to its childrens.
-    parent-object{t-style: flat'd| preserve-3d}
-    ›to se affect use: .object-childs{position: absolute}
-
-  *backface(on 180deg) of childrens-objects:
-    .object-childs{backface-visibility: visible'd| hidden}
-
-  *3d functions: 2d notations &&↓
-    •individual:
-      ›X-axis'left→right: rotateX()'6→-
-      ›Y-axis'top↓botton: rotateY()'6→|
-      ›Z-axis'object↑Eye: rotateZ()'6→9 translateZ() scaleZ()
-    •shorthands:
-      ›rotate3d(x,y,z,<angle>). ›x?y?z: 0?±1.
-        _ex: rotate(45deg)→rotateZ(45deg)→rotate3d(0,0,1,45deg).
-      ›translate3d(x,y,z). ›z work as scale(x=y).
-      ›scale(x,y,z). ›z multiply translateZ()*z
-        _ex:t:translateZ(z) scaleZ(sz);→translateZ(calc(z*sz)).
-
-
-
-•demo: #container{
-    perspective: none'd| length;                /*shared space*/
-    perspective-origin: <bg-position>;         /*view position*/
-    #parent-object{
-      t-style: flat'd| preserve-3d;        /*enable 3d nesting*/
-      .object-childs{
-        position: absolute;                /*enable 3d nesting*/
-        t: perspective(none'd|length)       /*individual space*/
-           rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
-           translate3d(x,y,z) transateX?Y?Z()
-           scale3d(x,y,z) scaleX?Y?Z();
-        t-origin: x?y'omitted→50%|x y z(length0d)?; /*rotate()*/
-        backface-visibility: visible'd|hidden;/*rotate(.5turn)*/
-      }
-    }
-  }
+    ›z-offset: +push|-pull #rotated z0'origin far|to?behind user
+  •t: »rotate3d(x,y,z,<angle>); x?y?z-coordinates: ±#'r=-1~1.
+      ›rotate clock-wise p→o-axis, Point(x,y,z) Origin(t-origin)
+      ›x=y=z=0 valid & #ignored. ›rotate?Z(a)→rotate3d(0,0,1,a)
+    ›translate3d(x,y,z); x?y:±length?±%, z:±length.
+    »scale3d(x,y,z); x?y?z: ±#1d, -#→pointReflection -z:e/3→3/e.
+      ›t: scaleZ(sz) translateZ(z);→ t: translateZ(calc(z*sz));
+  •3Daxises: ox→+ rotateX(90°)'6→-, oy↓+ rotateY(90°)'6→|,
+    ›oz↑user+: rotate?Z(180°)'6→9 translateZ() scaleZ().
