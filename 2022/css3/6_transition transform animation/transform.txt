@@ -4,9 +4,6 @@
   ›functions executed by #order, subsequence functions apply to main-axis of #transformed-box(not origin-box).
   ›el:statePseudoClass{#t:required reset all el{t:functions()}}
 
-  •t-origin(→rotate): x?y'omitted→50%| x y z(length0d)?;
-    ›x?y: length| %'border-box| center'd| <side>.
-
  *2Dimensions: •rotate?Z(<angle>); »t-origin:x?y'omitted=50%|x y;
       ›x?y: length| %'border-box| center'd| <side>.
   •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box.
@@ -15,26 +12,29 @@
   •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
 
  *3Dimensions: •demo: #parent{
-    perspective: none'd| length; /*create shared 3Dview z0→eye*/
+    perspective: none'd| length'z0→eye; /*create shared 3Dview*/
     perspective-origin: <bg-position>;/*shared 3Dview position*/
+    t: perspective(length'z0→eye) …;/*create individual 3Dview*/
     t-style: flat'd| preserve-3d;          /*enable 3d nesting*/
-    .transformedChild{ position: absolute; /*enable 3d nesting*/
-      t: perspective(length) /*create individual 3Dview z0→eye*/
-         rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
-         translate3d(x,y,z) transateX?Y?Z()
-         scale3d(x,y,z) scaleX?Y?Z();
-      t-origin: x?y'omitted→50%|x y z(length0d)?;   /*rotate()*/
-      backface-visibility: visible'd|hidden;  /*rotate(.5turn)*/
-    }
-  }
+  .Child{ position: absolute;              /*enable 3d nesting*/
+    t: rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
+      translate3d(x,y,z) transateX?Y?Z()
+      scale3d(x,y,z) scaleX?Y?Z();
+    t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate()*/
+    backface-visibility: visible'd|hidden;    /*rotate(.5turn)*/
+
+  •perspective() create 3Dview
+  •t-origin(→rotate): x?y'omitted→50%| x y z(length0d)?;
+    ›x?y: length| %'border-box| center'd| <side>.
 
 
   *enable & create z-distance from z=0 plane parent-object to user:
-  create 3d vision z-distance from z=0 to uset
+  create 3d vision z-distance from z=0(2d plane) to user
     •individual spaces:
       .object-child{t: perspective(length) …;}
       ›length € [1,1000px], length<200px useless(too big)
     •shared space: .container{perspective:none'd|length}
+     applies only to the children of the element that it’s used on, not the element itself.
 
   *setting view position of parent-object:
     .container(perspective-origin: <bg-position>(50% 50%)d}

@@ -31,6 +31,6 @@
   rect'angle(♦) tri'angle(Λ)
   Exponentiation Exponent اس x²
   Deprecated (no more support)
-  
+  cubic مكعب
   
   
