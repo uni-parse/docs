@@ -20,7 +20,7 @@
         rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
         translate|scale3d(x,y,z) transate|scaleX?Y?Z();
       t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate*/
-      backface-visibility: visible'd|hidden;          /*rotate*/
+      backface-visibility: visible'd|hidden;    /*rotate 3D≠2D*/
   •perspective:; apply to t-childrens, ›length'r=200big~1000px.
     »p-origin: 50% 50%'d; #only apply to perspective property.
       ›%'border-box, 3values21-moz?webkit-95≠Opera1.4≠gulp.
