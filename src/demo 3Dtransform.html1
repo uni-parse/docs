@@ -47,7 +47,7 @@
       }
       body>div>div>div:first-child{
         box-shadow:-.3em .3em 5px 0 rgba(0,0,0,.6);
-        backface-visibility: ;
+        backface-visibility:;
       }
       body>div>div>div:first-child img{
         max-height:100%;width:auto;

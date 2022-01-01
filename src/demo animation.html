@@ -1,32 +1,37 @@
 <!doctype html>
-<html lang="en">
+<html lang=en>
   <head>
-    <title></title>
-    <link rel="stylesheet" href="style.css">
-    <meta charset="uft-8">
+    <title>animation</title>
+    <meta name=viewport content='width=device-width, initial-scale=1'>
+    <meta name=color-scheme content='only dark'>
+    <meta charset=uft-8>
     <style>
-      html{box-sizing:border-box;}
-      html *{box-sizing:inherit;}
+      html,*{box-sizing:border-box}
+      html,body{margin:0;padding:0}
+      @font-face{
+        font-family: Rosemary;
+        src: local(Rosemary), url(Rosemary.ttf) format('truetype');
+      }
       body{
         background:#333;
         color:#fff;
         text-align:center;
       }
-      body>div{
-        margin-top:20vh;
-        border:double thick yellow;
-        background:hsla(45,100%,45%,.8);
-        perspective:1000;perspective-origin:0 0;
+      body>div{ border-radius: 1em;
+        margin-top:20vmin;
+        border:double thick rgb(162, 0, 255);
+        background:#008ae6cc;
+        perspective:50em; perspective-origin:;
         position:relative;
         display:inline-block;
-        width:80vw;height:60vw;
+        width:80vmin;height:60vmin;
         padding:3%;
       }
       body>div>div{
         border-radius:10%/20%;
-        background:linear-gradient(to bottom, transparent, rgba(0,0,0,.9));
+        background:linear-gradient(to bottom, transparent, #000e);
         transform-style:preserve-3d;
-        transition: all 1.5s linear;
+        transition: all .8s linear;
         width:100%;height:100%;
         box-shadow:.3em .3em 5px 0 rgba(0,0,0,.6);
       }
@@ -37,9 +42,10 @@
       body>div>div>div{
         position:absolute;
         width:100%;height:100%;
+        backface-visibility:hidden;
       }
       body>div>div>div:first-child img{
-        max-height:90%;width:auto;margin:5% auto;
+        max-height:90%;margin:5% auto;
         animation-name:gaara;
         animation-duration:3s;
         animation-delay:0s;
@@ -48,7 +54,7 @@
         animation-direction:alternate;
         animation-fill-mode:both;
         animation-play-state:running;
-        animation:gaara 2s 0s infinite linear alternate both running ;
+        animation:gaara 6s 0s infinite linear alternate both running ;
       }
       @keyframes gaara{
         0%{transform:translate(-25%);}
@@ -57,36 +63,40 @@
       }
       body>div>div>div:last-child{
         transform:rotate3d(0,1,0,.5turn);
-        backface-visibility:hidden;
+        overflow:auto;
       }
       p{
-        font:600  100%/16vw Rosemary,sans-serif;
+        font:600  clamp(.8rem, 1.25vmin, 1.25rem) Rosemary,sans-serif;
         text-shadow: .05em .08em 5px rgba(0,0,0,.64);
+        padding:0 1em;
       }
-      p::first-letter{
-        font:bolder 1.4em Rosemary,serif;
-      }
-      dfn{
-        font: italic 600 small-caps 200% serif;
-        text-shadow:.07em .1em 3px rgba(0,0,0,.5);
+      h1{ display:inline-block; margin: 0; padding:0 .1em;
+        font: italic 600 small-caps clamp(2rem, 5vmin, 5rem) serif;
+        text-shadow:.07em .1em 3px #0007;
         color:transparent;
-        background:red linear-gradient(0deg,purple, red, orange) 0 0/cover content-box;
+        background: linear-gradient(to top, #0008, transparent) center/contain content-box, 
+        repeating-radial-gradient(circle, red .1em, #0000 .3em, red .4em);
         -webkit-background-clip:text;
+        animation:gaarah1 3s infinite linear alternate;
+      }
+      h1::first-letter{
+        font:bolder clamp(2.4rem, 5.5vmin, 5.8rem) Rosemary,serif;
+        text-transform:uppercase;
+      }
+      :is(h1)::selection{
+        background:red;
+        color:yellow
+      }
+      @keyframes gaarah1{
+        100%{background-position:center, -60px;
+          letter-spacing:.1em;}
       }
     </style>
   </head>
   <body>
-    <div>
-      <div>
-        <div>
-          <img src="gaara.webp" alt="gaara">
-        </div>
-        <div>
-          <p><dfn>gaara</dfn><br>one of our favorite childhood characters</p>
-        </div>
-      </div>
-    </div>
-  
-    <script src="script.js"></script>
+    <div><div>
+      <div><img src=gaara.webp alt=gaara></div>
+      <div><h1>gaara</h1><p>one of our favorite childhood characters</p></div>
+  </div></div>
   </body>
 </html>

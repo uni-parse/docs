@@ -1,6 +1,6 @@
  
 ★keyframes animations:
-  *keyframes syntext:
+  *keyframes syntaxt:
     @keyframes <animation-name>{
       percentage|from'0%|to'100%{declarations-block}
       another keyframes
