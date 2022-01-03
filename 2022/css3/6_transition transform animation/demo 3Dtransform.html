@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang=en>
   <head>
-    <title>animation</title>
+    <title>3Dtransform</title>
     <meta name=viewport content='width=device-width, initial-scale=1'>
     <meta name=color-scheme content='only dark'>
     <meta charset=uft-8>
@@ -18,7 +18,7 @@
         text-align:center;
       }
       body>div{ border-radius: 1em;
-        margin-top:20vmin;
+        margin-top: 20vh;
         border:double thick rgb(162, 0, 255);
         background:#008ae6cc;
         perspective:50em; perspective-origin:;
@@ -27,43 +27,35 @@
         width:80vmin;height:60vmin;
         padding:3%;
       }
-      body>div>div{
-        border-radius:10%/20%;
-        background:linear-gradient(to bottom, transparent, #000e);
+      body>div>div{ border-radius: inherit;
+        background:hsla(355,100%,45%,.5);
         transform-style:preserve-3d;
-        transition: all .8s linear;
+        transform: rotateX(.06turn)/*rotate3d(1,0,0,.06turn)*/;
+        transition: all .6s/*1.5s*/ linear;
         width:100%;height:100%;
-        box-shadow:.3em .3em 5px 0 rgba(0,0,0,.6);
       }
       body>div:hover>div{
-        transform:rotate3d(.1,1,0,.6turn) scale(1.2);
-        box-shadow:-.4em .4em 5px 0 rgba(0,0,0,.6);
+        transform:rotate3d(0,1,0,.25turn)/*.05,1,0,.5turn*/ perspective(90em) scale(1.2);
       }
-      body>div>div>div{
+      body>div>div div{ border-radius: inherit;
+        transform: /*rotate(50deg)*/ ;
+        border:ridge 3px #666;
+        backface-visibility:;
         position:absolute;
         width:100%;height:100%;
-        backface-visibility:hidden;
+        background:rgba(55,55,55,.8) radial-gradient(ellipse 50% 90% at center, #fff, #222);
+      }
+      body>div>div>div:first-child{
+        box-shadow:-.3em .3em 5px 0 rgba(0,0,0,.6);
+        backface-visibility:;
       }
       body>div>div>div:first-child img{
-        max-height:90%;margin:5% auto;
-        animation-name:gaara;
-        animation-duration:3s;
-        animation-delay:0s;
-        animation-timing-function:linear;
-        animation-iteration-count:infinite;
-        animation-direction:alternate;
-        animation-fill-mode:none;
-        animation-play-state:running;
-        animation:gaara 6s 3s infinite linear alternate both running ;
-      }
-      @keyframes gaara{
-        0%{transform:translate(-25%);}
-        50%{transform:translate(0,-5%);}
-        100%{transform:translate(25%);}
+        max-height:100%;width:auto;
       }
       body>div>div>div:last-child{
-        transform:rotate3d(0,1,0,.5turn);
-        overflow:auto;
+        transform:rotate3d(0,1,0,.75turn) perspective(1em); /*.6turn creat book*/
+        overflow:auto; transform-origin: center center 0px;
+        box-shadow:-.3em .3em 5px 0 #000a;
       }
       p{
         font:600  clamp(.8rem, 1.25vmin, 1.25rem) Rosemary,sans-serif;
@@ -77,7 +69,7 @@
         background: linear-gradient(to top, #0008, transparent) center/contain content-box, 
         repeating-radial-gradient(circle, red .1em, #0000 .3em, red .4em);
         -webkit-background-clip:text;
-        animation:gaarah1 3s infinite linear alternate;
+        animation:gaara 3s infinite linear alternate;
       }
       h1::first-letter{
         font:bolder clamp(2.4rem, 5.5vmin, 5.8rem) Rosemary,serif;
@@ -87,16 +79,17 @@
         background:red;
         color:yellow
       }
-      @keyframes gaarah1{
+      @keyframes gaara{
         100%{background-position:center, -60px;
           letter-spacing:.1em;}
       }
+
     </style>
   </head>
   <body>
     <div><div>
-      <div><img src=gaara.webp alt=gaara></div>
-      <div><h1>gaara</h1><p>one of our favorite childhood characters</p></div>
-  </div></div>
+        <div><img src=gaara.webp alt=gaara></div>
+        <div><h1>gaara</h1><p>one of our favorite childhood characters</p></div>
+    </div></div>
   </body>
 </html>

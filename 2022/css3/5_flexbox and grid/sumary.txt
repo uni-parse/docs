@@ -36,7 +36,7 @@
     •g-auto-rows?columns: <track-size(auto'd)>…;
 •g-template: none'd| <gt-rows>/<gt-columns>|
    [ln? <string> <track-size>? ln?]… / <track-list≠repeat>;
-  ›lineNames: [ln1 ln2…]; ln=[a~Z][a~Z|0~9|-|_|\escapedChara]?…;
+  ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\escapedChara]?…;
     _if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
   •g-template-rows?columns: none'd| <track-list>| <auto-t-list>;
     »track-list: [ln? <track-size?repeat>]… ln?;
