@@ -1,10 +1,15 @@
 
-
+… ★ • ‹› ≠ «» ⁂⁑⁎ ×÷ € ←→↑↓↔↕⇆ π ♪ ≠ ±
 ★resposive web design principles:
   meta(viewport:device), flexible grid, responsive image, media queries + 'responsive zoom'
 
-  *meta:
-   <meta name=viewport content="width=device-width, initial-scale=1, o'maximum-scale=1, o'minimum-scale=1">
+  *
+
+  <meta name=viewport(mobile) content='width=device-width, viewport-fit=auto?content?cover
+  , maximum?minimum?initial-scale=.0~10, user-scalable=yes's?no'
+  
+  
+  <meta name=viewport content="width=device-width, initial-scale=1, o'maximum-scale=1, o'minimum-scale=1">
     •mack the document viewport sized to device-width before loading.
     •maximum-scale=1 block the ability of zoomi ng.
 

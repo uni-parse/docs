@@ -69,11 +69,10 @@
          t-duration: d1, d2, d3;→ t-d: d1,d2,d3,d1,d2,d3,d1;
 
 
-★@keyframes <name>{%?from?to{declarations-block}…}
- *animation: name <duration delay> timing-function iteration-count direction fill-mode play-state;
-  •a-name'Req: none'd| name,…?;
-    ›name=[≠0~9][a~Z|0~9|-|_|\escapedCharacter]
-  •a-duration'Req?delay?timing-function: <transition-*>;
+★@keyframes <name>{%?from'0%?to'100%{declarations-block}…}
+ *animation: none?name <duration delay> timing-function iteration-count direction fill-mode play-state, …?;
+  •a-name: none'd|name=[≠0~9][a~Z|0~9|-|_|\escapedCharacter],…?;
+  •a-duration?delay?timing-function: <transition-*>;
   •a-iteration-count: #€+Z1d| infinite, …?; ›ex #=.5: [d 0→50%].
   •a-direction: normal'd| reverse| alternate|-reverse, …?;
     ›normal: allways [delay 0→100%] ›reverse: allways [d 100→0%]
