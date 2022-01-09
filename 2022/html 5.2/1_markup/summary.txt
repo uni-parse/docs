@@ -27,7 +27,7 @@
   •rel=noreferrer| alternate| stylesheet| search(req type=application/ex:opensearchdescription+xml)| help| license|author| next?prev(sequence page)| preconnect91noF| preload| prefetch79noS|…
   •referrerpolicy=no-referrer|-when-downgrade|unsafe-url|origin|-when-cross-origin
 
-★<style media=></style>
+★<style media=all'd></style>
 
 
 ★block-level elements: as <div></div>

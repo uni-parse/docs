@@ -1,11 +1,7 @@
 @charset "UTF-8";
-html {
+html, *{
   box-sizing: border-box;
 }
-* {
-  box-sizing: inherit;
-}
-
 body {
   font-family: Verdana, Arial, serif;
   font-size: 100%;
@@ -108,15 +104,13 @@ main img {
   display: block;
   margin: .5em auto;
 }
-main img[src*="bread"]{shape-outside:url("images/bread.webp");}
-main img[src*="muffin"]{shape-outside:url("images/muffin.webp");}
-/*
-
+main img[src*=bread]{shape-outside:url("images/bread.webp")}
+main img[src*=muffin]{shape-outside:url("images/muffin.webp")}
 
 
 
 /* aside "hours" styles */
-aside {
+aside{
 	background: url(images/scallop_top.webp) repeat-x left top; 
 	background-color: #F6F3ED;
 	padding: 1em;
@@ -165,13 +159,13 @@ footer {
     font-family:'Stint Ultra Expanded', Georgia, serif;
   }
   h2, h3{
-    font-wight:bold; 
+    font-weight:bold; 
   }
   main{
     line-height:1.8em;
     padding:1em;
     border:double 4px #eaddc4;
-    birder-radius:25%;
+    border-radius:25%;
     margin:2.5%;
   }
 }

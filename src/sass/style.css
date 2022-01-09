@@ -1,9 +1,5 @@
-html {
+html, * {
   box-sizing: border-box;
-}
-
-* {
-  box-sizing: inherit;
 }
 
 body {
@@ -127,11 +123,6 @@ main img[src*=muffin] {
   shape-outside: url("images/muffin.webp");
 }
 
-/*
-
-
-
-
 /* aside "hours" styles */
 aside {
   background: url(images/scallop_top.webp) repeat-x left top;
@@ -187,14 +178,14 @@ footer {
   }
 
   h2, h3 {
-    font-wight: bold;
+    font-weight: bold;
   }
 
   main {
     line-height: 1.8em;
     padding: 1em;
     border: double 4px #eaddc4;
-    birder-radius: 25%;
+    border-radius: 25%;
     margin: 2.5%;
   }
 }

@@ -26,7 +26,7 @@
  </map> <img usemap=#mapName src= alt=>
 
 ★responsive image:
-*demo: <picture>
+*demo: <picture>                             <!--img required-->
   <source type='' media='screan and (orientation:landscape) and (min-width:1280px)'
     srcset="ls.svg, ls.webp, ls@2.webp 2x, ls_large 1376w"
     sizes="(min-width:1280px) 50vw,(min-width:1376px) 30vw">

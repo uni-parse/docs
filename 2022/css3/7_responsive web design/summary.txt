@@ -1,0 +1,46 @@
+
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
+★principles: meta(mobile320~425), flexible & grid layout, responsive img?zoom, media queries.
+  •<meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=2(1=noZoom avoid img blur)'>.
+    ›size document to mobile physical-dimensions before loading.
+  •responsive img & embedded-media: {max-inline-size:100%}.
+ *media queries: •internal: @media query1, query2, …{rules}
+    »query: type|and? features| not?only type'R [and features]?
+      ›features: feature [and feature]…?.
+        »feature(name [: value]?): (aspect-ratio: w/h'ex16) (max?min-|w?h: length) (orientation: portrite?landscape)
+        (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)
+        (display-mode: browser?fullscreen?standalone?minimal-ui)
+        (grid: 0=bitmap?1=grid) (color|: #8d(8bit=256)'0noColor)
+        (any-|pointer'both|: none?coarse'touch?fine'noTouch)
+        (any-|hover|: none?hover'noTouch)
+      ›type: all'd| screen?print| speech≠supportedYet.
+    »operators: ›,(=or): at least one query return true.
+      ›and: all individual-features & type must return true.
+      ›not: negation #sum of next type&features before ,(=or).
+      ›only: unapply style-block if old-browser≠support @media
+  •external: issue(link?@import download even if return false)
+    @import url(1.css)?'1.css' query1, query2, …?;     /*rule1*/
+    <link rel=stylesheet href=2.css media='query1, query2, …?'>
+    <picture>   <source media='query1, query2, …?'>   </picture>
+  •breakpoints: chrome:MoreTools/DeveloperTools by em≠px.
+
+
+★methods: layout, typography, navigation, image, form, table, intractive media.
+  *lay'out: start on smallest screen stratigy(320px W), then expand & add breakPoints as necessary, by chrome/developers-tools, 
+    •add: css: 
+      html,*{box-sizing:border-box}
+      body{font-size:100%;margin:0}
+  *typography:
+    •font-face:
+      »on smart phone: thin-family, clear, localy(sans-serif)
+      »on desktops: wide-family, styled, can be downloaded
+    •font-size: adjust to target minmax(45em, 75em) on line width
+    •line-height: 1.2~1.5(number*) on smartPhones, 1.4~1.6 on desktops.
+    •margin: 
+      »horizonral 2%~4% on smallScreens
+      »vertical em-based.
+  *navigation: on small screens: size≥44px, use select menu(&sub-menu), or offset canvas(left:-100%;) by javascript
+  *image: multi srcset, smaller then bigger, focuse on important content only, use sprite to limite http requests.
+  *forms: use flexbox, labels, size≥44px, no unnecessary info.
+  *tables: use overflow-x on table, or on td. 
+  *intractive media: put link to map app on small screens.

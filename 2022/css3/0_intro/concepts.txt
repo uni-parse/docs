@@ -1,9 +1,9 @@
 
-★insurting cascading style sheet: link|@media|style|style=
+★insurting cascading style sheet: link|@import|style|style=
  <head>
    •<link href=external.css rel=stylesheet>        <!--cached-->
    •<style>                                      <!--embedded-->
-     •@import url(external.css);                     /*cached*/
+     •@import 'external.css'   ; /*before any rule*/  /*cached*/
      /*rules= selector{declaration_block= properties:values;}*/
    </style>
  </head><body>

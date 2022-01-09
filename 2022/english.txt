@@ -30,7 +30,8 @@
   Ajax asynchronous javascript and xml
   rect'angle(♦) tri'angle(Λ)
   Exponentiation Exponent اس x²
-  Deprecated (no more support)
+  Deprecated de|pre|kated (no more supported)
   cubic مكعب
+  api application programming interface
   
   
