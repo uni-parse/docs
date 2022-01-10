@@ -115,12 +115,3 @@
 textarea{resize:both'd|horizontal|vertical|initial|none'r;}
 is(form,input):valid|invalid{/*max|minlength, required*/}
 input, textarea{caret-color:red;} /*alerted vertical-line*/
-
-
-
-
-
-
-
-
-

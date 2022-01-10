@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <title>rwd</title>
+    <meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=2'>
+    <meta name=color-scheme content='only dark'>
+    <meta charset=uft-8>
+    <link href=4.css media='(grid), not screen and (grid)' rel=stylesheet>
+    <script src=picturefill.min.js></script>
+    <style>
+      @import '1.css' not screen and (grid:0), (pointer);
+      @import '2.css' only print;
+      html,*{box-sizing:border-box}
+      body{
+        background:#333;
+        color:#aaa;
+        text-align:center;
+      }
+      img{max-inline-size: 100%}
+      @media /*not screen and (grid:0) and (grid:1), (grid:1) */
+       (any-pointer){
+        img{max-inline-size:15%}
+      }
+      p{
+        font: 12px sans-serif;
+        border: thin yellow solid;
+        overflow:visible;
+        word-break:break-all;
+      }
+      span{background: red}
+    </style>
+  </head>
+  <body>
+    <p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p>
+    <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p>
+    <picture>
+      <source srcset=gaara.webp media='(grid), not print'><img>
+    </picture>
+  </body>
+</html>

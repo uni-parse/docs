@@ -1,0 +1,72 @@
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
+★forms:  •9 important styles: ›html{box-sizing:border-box}
+      *,*::before,*::after{box-sizing:inherite}
+    ›form{max-width:40em}
+    ›ul{list-style-type:none}
+    ›li{display:flex; flex-wrap:wrap}
+      <li><label for=x></label><input id=x></li>
+    ›label{flex:0 0 8em}                   /*unflexable, fixed*/
+     label.checkbox,label.radioButton{flex:auto}  /*overriding*/
+    ›fieldset,textarea,input{flex:1 1 20em}       /*320px=20em*/
+    ›input,textarea,:is(input,textarea)::placeholder{font-family:inherite}
+    ›fieldset{border:none; padding:0}
+    »legend{width:1px;height:1px;overflow:hidden}
+      ›screenReader repeat legend on each option, make it short.
+  •extra: [type=text?password?email?tel?url?search?select], textarea { border|-radius; margin; padding; background; …}
+  ›textarea{resize: both'd|horizontal|vertical|none'recommended}
+ •selectors :focus:hover :checked:selected:default ::placeholder
+    :enabled'd:disabled valid:invalid :required:optional'd
+    :read-only:read-write [type=number] :in-range:out-of-range
+
+★tables: ›caption{caption-side:top'd|bottom}
+  ›table{border-collapse↓:separate'd|collapse}
+  •if table{border-collapse↓:separate}:
+    ›table{border-spacing↓: hLength v; empty-cells:show'd|hide}
+      <table cellspacing=2d>…</table>
+    »table{table-layout:auto|fixed(calculate cells width)}
+      ›auto: browser slowly calculate minimume cells content.
+    
+★revert: various browsers have various UA-origin styles.
+  •copy 'reset-styles'(disable all default styles) above my styles to override UA-origin, 
+  •or @imprort "rormalize.css"(use perfect same default styles) above my styles to override uA-origin styles.
+
+
+★image replacment technique: (just if alt="" not usefull)
+  •markup: <h1>logo name</h1>
+  •style: h1{
+            background-img:url(path/img.suffix);
+            text-indent:-9999px;
+          }
+  •the content accessible by screen readers & search engines,
+   but browser will rendering tooo wide box affect perfermence.
+   
+   
+★sprite (↑↑performence↑↑)
+  *limite http-requests by generate one huge image (sprite) contain all images,
+  *thene use background-image and position & size.
+  *ex: 
+    •markup:
+     <ul>
+       <li><a>facebook</a></li>
+       <li><a>twitter</a></li>
+       <li><a>insagram</a></li>
+     </ul>
+    •style:
+     ul a{
+       display:inline-block;
+       width:40px;height:40px;
+       background:url("social.webp") 0 0/cover norepeat border-box;
+       -webkit-background-clip:border-box;
+       text-indent:100%;
+       overflow:hidden;
+       white-space:nowrap;
+     }
+     ul a:nth-child(2){background-position:0 -40px;}
+     ul a:nth-child(3){background-position:0 -80px;}
+
+
+★query detecting: @supports (test) <operator> (test) …{ 
+    /*we can nest @media|fallback|targated-properties/valeus*/};
+    •test: property:value
+    •operator: and|or|not
+      |not(not (test))|and (not (test))|or (not (test));

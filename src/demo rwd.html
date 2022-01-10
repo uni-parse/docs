@@ -21,10 +21,18 @@
        (any-pointer){
         img{max-inline-size:15%}
       }
-      
+      p{
+        font: 12px sans-serif;
+        border: thin yellow solid;
+        overflow:visible;
+        word-break:break-all;
+      }
+      span{background: red}
     </style>
   </head>
   <body>
+    <p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p>
+    <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p>
     <picture>
       <source srcset=gaara.webp media='(grid), not print'><img>
     </picture>

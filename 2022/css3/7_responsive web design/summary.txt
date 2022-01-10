@@ -1,4 +1,3 @@
-
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
 ★principles: meta(mobile320~425), flexible & grid layout, responsive img?zoom, media queries.
   •<meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=2(1=noZoom avoid img blur)'>.
@@ -23,24 +22,20 @@
     <link rel=stylesheet href=2.css media='query1, query2, …?'>
     <picture>   <source media='query1, query2, …?'>   </picture>
   •breakpoints: chrome:MoreTools/DeveloperTools by em≠px.
-
-
 ★methods: layout, typography, navigation, image, form, table, intractive media.
-  *lay'out: start on smallest screen stratigy(320px W), then expand & add breakPoints as necessary, by chrome/developers-tools, 
-    •add: css: 
-      html,*{box-sizing:border-box}
-      body{font-size:100%;margin:0}
-  *typography:
-    •font-face:
-      »on smart phone: thin-family, clear, localy(sans-serif)
-      »on desktops: wide-family, styled, can be downloaded
-    •font-size: adjust to target minmax(45em, 75em) on line width
-    •line-height: 1.2~1.5(number*) on smartPhones, 1.4~1.6 on desktops.
-    •margin: 
-      »horizonral 2%~4% on smallScreens
-      »vertical em-based.
-  *navigation: on small screens: size≥44px, use select menu(&sub-menu), or offset canvas(left:-100%;) by javascript
-  *image: multi srcset, smaller then bigger, focuse on important content only, use sprite to limite http requests.
-  *forms: use flexbox, labels, size≥44px, no unnecessary info.
-  *tables: use overflow-x on table, or on td. 
-  *intractive media: put link to map app on small screens.
+  •lay'out: start on smallest screen stratigy(320px W), then expand & add breakPoints as necessary.
+    ›html,*{box-sizing:border-box} body{font-size:100%;margin:0}
+  •typography: adjust to target 45~75character on 1line.
+    »font-face: onMobile: thinFamily, clear, local(sans-serif)
+      ›onDesktops: wide-family, styled, can be downloaded.
+    »font-size: ›p{f-size: clamp(1rem, 1.25vw, 1.25rem)} 
+      ›h1{f-size: clamp(2rem, 5vw, 5rem)}
+    ›line-height: onMobile: 1.2~1.5 , onDesktop: 1.4~1.6.
+    ›margin: horizontal: 2~4% onMobile, vertical: em-based.
+  •navigation: onMobile: size≥44px, use <select?optgroup>, 
+    ›or offset canvas(left:-100%;) by js.addEventListener.
+  •image: multi srcset, small to big, crop important content.
+    ›use sprite to limite http requests.
+  •form: use flexbox, labels, size≥44px, no unnecessary info.
+  •table: use table,td{overflow-x:auto}. 
+  •intractive-media: onMobile add <a href=apps>: tel, email, youtube, facebook, map, pdf, ….
