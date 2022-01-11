@@ -5,15 +5,14 @@
     ›ul{list-style-type:none}
     ›li{display:flex; flex-wrap:wrap}
       <li><label for=x></label><input id=x></li>
-    ›label{flex:0 0 8em}                   /*unflexable, fixed*/
-     label.checkbox,label.radioButton{flex:auto}  /*overriding*/
+    ›label{flex:0 0 8em} label:is(.checkbox,.radio){flex:auto}
     ›fieldset,textarea,input{flex:1 1 20em}       /*320px=20em*/
     ›input,textarea,:is(input,textarea)::placeholder{font-family:inherite}
     ›fieldset{border:none; padding:0}
     »legend{width:1px;height:1px;overflow:hidden}
       ›screenReader repeat legend on each option, make it short.
-  •extra: [type=text?password?email?tel?url?search?select], textarea { border|-radius; margin; padding; background; …}
-  ›textarea{resize: both'd|horizontal|vertical|none'recommended}
+  •extra: [type=text?password?email?tel?url?search?select], textarea {border|-radius; margin; padding; background; …}
+  ›textarea{resize: none}         /*both'd|horizontal|vertical*/
  •selectors :focus:hover :checked:selected:default ::placeholder
     :enabled'd:disabled valid:invalid :required:optional'd
     :read-only:read-write [type=number] :in-range:out-of-range
@@ -21,15 +20,14 @@
 ★tables: ›caption{caption-side:top'd|bottom}
   ›table{border-collapse↓:separate'd|collapse}
   •if table{border-collapse↓:separate}:
-    ›table{border-spacing↓: hLength v; empty-cells:show'd|hide}
+    ›table{border-spacing↓: h v'length; empty-cells:show'd|hide}
       <table cellspacing=2d>…</table>
     »table{table-layout:auto|fixed(calculate cells width)}
       ›auto: browser slowly calculate minimume cells content.
     
-★revert: various browsers have various UA-origin styles.
-  •copy 'reset-styles'(disable all default styles) above my styles to override UA-origin, 
-  •or @imprort "rormalize.css"(use perfect same default styles) above my styles to override uA-origin styles.
-
+★defualt: various browsers have various UA-origin styles.
+  ›disable UA-origin to initial w3-css: @import 'reset.css';
+  ›override UA-origin by author-origin: @import 'normalize.css';
 
 ★image replacment technique: (just if alt="" not usefull)
   •markup: <h1>logo name</h1>

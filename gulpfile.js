@@ -113,7 +113,7 @@ function htmlTask(){
 // sass→css task
 function sassTask(){
   var plugins = [ 
-    autoprefixer({overrideBrowserslist: ['last 1 version']}),
+    autoprefixer({overrideBrowserslist: ['last 2 version']}),
     cssnext(),
     cssnano()
   ];

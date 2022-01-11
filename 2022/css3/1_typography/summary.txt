@@ -4,12 +4,12 @@
          p:first-child{font-size: inherit}            /* 13px */
          p:nth-child(2){font-size: initial}           /* 16px */
          all{font-family: unset}                     /*initial*/
-         p{font-size:10px; font-size:revert} /*#1=13px #2=16px*/
-  •inherit: set clocest ancestor value.
-  •initial: set default user-agent value.
+         p{font-size:revert}                 /*#1=13px #2=16px*/
   •unset: set inherit value, else set initial value.
-  •revert: ignore current declaration_block, & set author-origin(previos declarations) value, else set user-agent-origin(initial) value.
-
+    •inherit: set clocest ancestor value.
+    •initial: set default w3-css value, not UA-origin.
+  •revert: set inherit value, else set UA-origin value.
+    ›old: ignore current rule same declarations, set previos author-origin value, else UA-origin value.
 ★font↓: sys|style weight stretch variant size/line-height family
   ›size|family required by order, values #before size can be unordered & omitted(→initial), including line-height.
   ›variant: must be just css2.1 value (normal|small-caps)
@@ -20,12 +20,10 @@
 *font-family: •generic_families: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(for headers), system-ui(defualt).
   •non-generic-families: Capitalized & 'multi word' between quotations & generic_fallback separated by commas(,).
   •external file: @font-face {font-family: 'Define|reName';
-      src:  local(Rosemary),…, /*avoid unnecessary downloads*/
-        url(f.svg) format('svg'),            /*19%onlySafari*/
-        url(f.woff2) format('woff2'),    /*96no-IE&OperaMini*/
-        url(f.woff) format('woff'),          /*2018 browsers*/
-        url(eot) format('embeddedopentype'),/*0.9full-IE6-11*/
-        url(ttf|otf) format('truetype|opentype')/*97p-IE9-11*/
+      src:  local(Rosemary),…,   /*avoid unnecessary downloads*/
+        url(f.svg) format('svg'),              /*19%onlySafari*/
+        url(f.woff?2) format('woff?2'),      /*96≠OperaMini1.5*/
+        url(ttf|otf) format('truetype|opentype')          /*97*/
     p{font-family: 'Defined Name',…, generic_fallback;}
 
 *font-size: font-families have different initial sizes ≠ 16px !!
