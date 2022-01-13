@@ -1,15 +1,4 @@
 
-★global values:
-  •demo: body{font-size:13px}
-         p:first-child{font-size: inherit}            /* 13px */
-         p:nth-child(2){font-size: initial}           /* 16px */
-         all{font-family: unset}                     /*initial*/
-         p{font-size:revert}                 /*#1=13px #2=16px*/
-  •unset: set inherit value, else set initial value.
-    •inherit: set clocest ancestor value.
-    •initial: set default w3-css value, not UA-origin.
-  •revert: set inherit value, else set UA-origin value.
-    ›old: ignore current rule same declarations, set previos author-origin value, else UA-origin value.
 ★font↓: sys|style weight stretch variant size/line-height family
   ›size|family required by order, values #before size can be unordered & omitted(→initial), including line-height.
   ›variant: must be just css2.1 value (normal|small-caps)

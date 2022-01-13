@@ -7,9 +7,10 @@
     <meta charset=uft-8>
     <link href=4.css media='(grid), not screen and (grid)' rel=stylesheet>
     <script src=picturefill.min.js></script>
-    <style>
+    <style>/*
+      @import 'newreset-min.css';/*
       @import 'reset-min.css';
-      @import 'normalize-min.css';
+      @import 'normalize-min.css';*/
       @import '1.css' not screen and (grid:0), (pointer);
       @import '2.css' only print;
       html,*{box-sizing:border-box}
@@ -24,7 +25,7 @@
        (any-pointer){
         img{max-inline-size:15%}
       }
-      p{
+      p{display:block; width:50%;
         font: 12px sans-serif;
         border: thin yellow solid;
         overflow:visible;
@@ -32,12 +33,13 @@
       }
       p{text-align: revert}
       span{background: red}
-      
     </style>
   </head>
   <body>
+    <div>
     <p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p>
     <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p>
+    </div>
     <picture>
       <source srcset=gaara.webp media='(grid), not print'><img>
     </picture>
