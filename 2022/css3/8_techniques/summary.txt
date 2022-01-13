@@ -24,10 +24,6 @@
       <table cellspacing=2d>…</table>
     »table{table-layout:auto|fixed(calculate cells width)}
       ›auto: browser slowly calculate minimume cells content.
-    
-★defualt: various browsers have various UA-origin styles.
-  ›disable UA-origin to initial w3-css: @import 'reset.css';
-  ›override UA-origin by author-origin: @import 'normalize.css';
 
 ★image replacment technique: (just if alt="" not usefull)
   •markup: <h1>logo name</h1>
@@ -37,8 +33,7 @@
           }
   •the content accessible by screen readers & search engines,
    but browser will rendering tooo wide box affect perfermence.
-   
-   
+
 ★sprite (↑↑performence↑↑)
   *limite http-requests by generate one huge image (sprite) contain all images,
   *thene use background-image and position & size.
@@ -61,7 +56,6 @@
      }
      ul a:nth-child(2){background-position:0 -40px;}
      ul a:nth-child(3){background-position:0 -80px;}
-
 
 ★query detecting: @supports (test) <operator> (test) …{ 
     /*we can nest @media|fallback|targated-properties/valeus*/};

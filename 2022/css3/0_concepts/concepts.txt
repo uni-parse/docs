@@ -52,25 +52,6 @@
     •viewport: vw|vh|vmin|vmax
       ›<meta name=viewport content=width=device-width, initial-scale=1>
 
-★global values: •demo:     /*w3-css initial: *{display:inline}*/
-                            /*UA-styleSheet: p{display:block} */
-    body{font-size:13px}
-    p:nth-child(1){}
-    p:nth-child(1){}
-    p:nth-child(1){}
-    p:nth-child(1){}
-
-  body{font-size:13px}
-         p:first-child{font-size: inherit}            /* 13px */
-         p:nth-child(2){font-size: initial}           /* 16px */
-         all{font-family: unset}                     /*initial*/
-         p{font-size:revert}                 /*#1=13px #2=16px*/
-
-  •revert: set inherit, else UA-styleSheet value, else initial.
-  •unset: set inherit, else initial.
-    •inherit: set clocest ancestor #inheritable↓ value.
-    •initial: set default w3-css value(≠UA-styleSheet).
-
 ★functions: 
   ›can be: ±#| length| %| <time:s?ms>| <angle>| <frequency:Hz?kHz>| nested min?max?calc?clamp(<math-operations>)
   ›math operators: ±v1 ± ±v2 ± ±v3…| ±v*±#*±#…| ±v/±#/±#…
@@ -78,3 +59,18 @@
 •min?max(mo1, mo2, …): set smallest?largest unordered sum. 
 •clamp(mo1,mo2,mo3):set middle(rel sum) limited by min & max sum
 •var(--custom-property, fallback-value): store reused value of custom property declared in :root{--c-p: val;}.
+
+★global values: •demo:     /*w3-css initial: *{display:inline}*/
+    body{font-size:13px}    /*UA-origin: p{display:block} */
+    p:nth-child(1){font-size: inherit}                  /*13px*/
+    p:nth-child(2){font-size: initial}                  /*16px*/
+    p:nth-child(3){all: unset} /*font-size:13px;display:inline*/
+    p:nth-child(4){all: revert} /*font-size:13px;display:block*/
+  •revert: set inherit, else UA-origin value, else initial.
+  •unset: set inherit, else initial.
+    •inherit: set clocest ancestor #inheritable↓ value.
+    •initial: set default w3-css value(≠UA-origin).
+
+★defualt environment: various browsers = various UA-origins.
+  ›initial & fix most UA-origin styles: @import 'reset.css';
+  ›override UA-origin by author-origin: @import 'normalize.css';

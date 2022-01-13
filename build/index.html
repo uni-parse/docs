@@ -16,11 +16,15 @@
        (any-pointer){
         img{max-inline-size:15%}
       }
-      p{display:block; width:50%;
+      p{display:inline-block; width:40%;
         font: 12px sans-serif;
         border: thin yellow solid;
         overflow:visible;
         word-break:break-all;
       }
-      p{text-align: revert}
-      span{background: red}</style></head><body><div><p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p><p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p></div><picture><source media="(grid), not print" srcset=gaara.webp><img></picture></body></html>
+      p{display: revert}
+      span{background: red}
+      div{
+          display:block; width:100%;
+          border:solid red thin;
+        }</style></head><body><div><p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p><p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p></div><picture><source media="(grid), not print" srcset=gaara.webp><img></picture></body></html>
