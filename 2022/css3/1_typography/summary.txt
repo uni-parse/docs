@@ -16,11 +16,10 @@
     p{font-family: 'Defined Name',…, generic_fallback;}
 
 *font-size: font-families have different initial sizes ≠ 16px !!
-  •keywirds: ›relative to inherited Val: smaller_.85 larger_1.2
-    ›absolute to initial value 16px(not html rem): xx-small_.5625 x-small_.625 small_.8125 medium'd_1 large_1.125 x-large_1.5 xx-large_2 xxx-large_3(78%-noSafari|opera)
-  •per|cen|tage: relative to inherited value.
-    ›ex: target:24px ÷ contex:16px = result:1.5 ≈ font-size:150%
-  •rem absolute to initial html :root| •em rel to inherited size
+  •keywirds: ›relative to inherited Val: smaller.85 larger1.2
+    ›absolute to initial value 16px(not html rem): xx-small.5625 x-small.625 small.8125 medium'd1 large1.125 x-large1.5 xx-large2 xxx-large3-78≠Safari?opera.
+  •rem rel→html:root{font-size:16px}
+  •em?% rel→parent: h1=2em h2=150% h3=120% h4=1em h5=85% h6=65%.
   •accessibility↑: p{f-s:clamp(1rem, 1.25vw, 1.25rem)} h1{f-s:clamp(2rem, 5vw, 5rem)};
 *font-variant: normal|none|<ligatures1~3> <caps> <numeric1~3>
   •font-variant-ligatures(connecting): normal| none| common-ligatures(=normal,fi/fl/th)| no-common-ligatures(=none)|…

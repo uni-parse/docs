@@ -33,10 +33,20 @@
       }
       p{display: revert}
       span{background: red}
-      
+      section{border: white thin solid;
+        display:inline-block; box-sizing:content-box;
+        word-break:break-all; line-height: 1; padding:0;
+      }
+      section:first-of-type{
+        --d:10ch; width:var(--d); height:var(--d)}
+      section:last-of-type{ font-size: 22px;
+        --d1:5em; width:var(--d1); height:var(--d1)}
+      section:last-of-type::first-letter{
+        color:yellow; font-size: 6ch; vertical-align: -.1em;
+        border:yellow thin solid;
+      }
       :is(div,a){border-color:green}
-      div{
-          display:block; width:100%;
+      div{display:block; width:100%;
           border:solid red thin;
         }
       body div{border-color:cyan}
@@ -50,6 +60,12 @@
     </div>
     <picture>
       <source srcset=gaara.webp media='(grid), not print'><img>
-    </picture>
+    </picture><br>
+    <section>
+      00000000000000000000000000000000000000000000000000
+    </section><br>
+    <section>
+      MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
+    </section>
   </body>
 </html>

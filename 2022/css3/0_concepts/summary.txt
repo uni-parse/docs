@@ -8,14 +8,7 @@
  </head><body>
     <tag •style=/*inlineDeclarations*/></tag><body><!--inline-->
 
-★inheritance: els build in hi|erar|čhical structure.
-    ›Ançe|stors ? Des|cen|dants: high?low hierarchy lvl.
-    ›parent?child: one hierarchy lvl high?low.
-    ›sib|lings: same hierarchy level.
-  •Descendants inherit some ancestors properties(font|color|…)(not border|background|…), & overrided by descendents styles.
-  •some measurements inherit as absolute result: em?rem?%→ px↓.
-
-★priorite: origin > specificity > order.
+★priorite: origin > specificity > order > inheritance.
   •origin: User?>Author !important > Author > User > UA > w3.
   •selector specificity weight: (specific# ,> generic#).
     »(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
@@ -23,19 +16,21 @@
       ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 most-specific-type.
   •order: style=inline > embed<style> > external<link>?@import.
     ›cascade rule?declaration > previous ones.
+  •inheritance: »els builded in hie|rar|čhical structure.
+      ›Ançe|stors ? Des|cen|dants: high?low hierarchy lvl.
+      ›parent?child: one hierarchy lvl high?low.
+      ›sib|lings: same hierarchy level.
+    »Descendants inherit some Ancestors properties font?color?… not border?background?…, & overrided by descendents styles.
+      ›some relative measurement em?rem?% inherit as absolute px
 
-★measurement(length):
-  *absolute units: •real: in, cm, mm, q'uarter(=mm/4)74≠Safari
-    •print: pt(point=in/72), pc(picas=12pt=in/6)
-    •ppi resolution depending: px(pixel=in/96~135)
-  *relative units: •rootElement m_width: rem(%→<html>)
-      ›defined by UA-origin, can be adjusted by User.
-    •Element m_width: em(%→parent) (like percentage)
-      ›if el{font-size:10px}, then 1em=100%=10px| 1rem=16px'd
-      ›h1:2em| h2:1.5em| h3:1.2em| h4:1em| h5:.85em| h6:.65em
-    •current 0_width:ch(0→same_parent)
-    •current x_height: ex(x→same_parent)
-    •viewport: vw|vh|vmin|vmax
+★length measurement: •absolute: ›screen: pixel:px=in/(ppi≈96).
+    ›real: in?≈2.54cm, mm?=4q'quarter≠Safari19.
+    ›print: point:pt=in/(dpi≈72), pica:pc=12pt≈in/6.
+  •relative: ›rem=html:root{font-size}, User can adjust it!!.
+    »em=el{font-size}, just in typography em=.parent{font-size}.
+      ›h1=2em h2=1.5em h3=1.2em h4=1em h5=.85em h6=.65em.
+    ›ex=el{x-height}, ch=el{0-width}
+    ›viewport: vw?vh?vmin?vmax.
       <meta name=viewport content='w=device-w, initial-scale=1'>
 
 ★functions: ›can be: ±#| length| %| <time:s?ms>| <angle>| <frequency:Hz?kHz>| nested min?max?calc?clamp(<math-operations>)
