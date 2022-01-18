@@ -1,7 +1,6 @@
-
-
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
 ★markup:
-  <table style=position:relative>
+  <table style=position:relative cellspacing=0'2d>
     <captipn style=caption-side:top'd|bottom>title</caption>
     <thead style=position:sticky;top:0>
       <tr>
@@ -32,9 +31,13 @@
    <th scope=row|column|rowgroup|colgroup>…</th>
    <td headers="th1id th2id …">…</td>
 
-★style:
-  table-layout: fixed; border-collapse: collapse;
-
+★style: display:table'd-UA|inline-table;
+  table-layout:auto'd|fixed(apply width, else first row width);
+  /*auto: ignore width, slowly calculate & set wider row width*/
+  border-collapse↓:separate'd|collapse;
+  ›if (b-collapse↓:separate) {empty-cells:show'd|hide;
+    b-spacing↓: h=v'length| h v;     /*<table cellspacing=2d>*/}
+•caption{caption-side:top'd|bottom}
 
 
 

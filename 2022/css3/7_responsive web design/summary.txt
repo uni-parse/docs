@@ -5,6 +5,7 @@
   •responsive img & embedded-media: {max-inline-size:100%}.
  *media queries: •internal: @media query1, query2, …{rules}
     »query: type|and? features| not?only type'R [and features]?
+      ›type: all'd| screen?print| speech≠supportedYet.
       ›features: feature [and feature]…?.
         »feature(name [: value]?): (aspect-ratio: w/h'ex16) (max?min-|w?h: length) (orientation: portrite?landscape)
         (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)
@@ -12,7 +13,6 @@
         (grid: 0=bitmap?1=grid) (color|: #8d(8bit=256)'0noColor)
         (any-|pointer'both|: none?coarse'touch?fine'noTouch)
         (any-|hover|: none?hover'noTouch)
-      ›type: all'd| screen?print| speech≠supportedYet.
     »operators: ›,(=or): at least one query return true.
       ›and: all individual-features & type must return true.
       ›not: negation #sum of next type&features before ,(=or).
@@ -35,7 +35,15 @@
   •navigation: onMobile: size≥44px, use <select?optgroup>, 
     ›or offset canvas(left:-100%;) by js.addEventListener.
   •image: multi srcset, small to big, crop important content.
-    ›use sprite to limite http requests.
+    »sprite: http-requests↓ size↑, 1 huge img contain all imgs.
+     <ul> <li><a>facebook</a></li> <li><a>twitter</a></li> </ul>
+    ›css: ul a{display:inline-block; width:40px;height:40px;
+      background:url(social.webp) 0 0/cover norepeat border-box;
+      -webkit-background-clip:border-box; 
+      white-space:nowrap; text-indent:100%; overflow:hidden}
+    ul a:nth-child(2){background-position:0 -40px}
+    »% fix: ›bg-size: calc(imgW/w*100%) calc(imgH/h*100%);
+      ›bg-position: calc(x/imgX*100%) calc(y/imgY*100%);
   •form: use flexbox, labels, size≥44px, no unnecessary info.
   •table: use table,td{overflow-x:auto}. 
   •intractive-media: onMobile add <a href=apps>: tel, email, youtube, facebook, map, pdf, ….

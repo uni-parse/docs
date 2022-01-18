@@ -1,4 +1,5 @@
   
+  self-taught
   demonstration demo
   quarter 1/4
   environment

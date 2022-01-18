@@ -5,7 +5,7 @@ curly brace {}
 parentheses ()
 hyphen manius dash -
 underLine underscore _
-tilde ~
+tilde(selda) ~
 multiply star aste'risk *
 carat ^
 equal =
@@ -14,7 +14,7 @@ slashBare back-slash \
 bar |
 single and duble pair quotes "" ''
 right & left an'gled bracket <>
-exclamention  !
+exclamention !
 hash #
 period dot .
 equality ===

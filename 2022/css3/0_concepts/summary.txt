@@ -54,3 +54,9 @@
 ★defualt environment: various browsers = various UA-origins.
   ›initial & fix most UA-origin styles: @import 'reset.css';
   ›override UA-origin by author-origin: @import 'normalize.css';
+
+★@supports condition=[test [and?or test]…?| not test] {rules}
+  ›t: (condition)|(--custom?-prefix-?property:val)|selector(s…?)
+  ›ex: @supports not(not (test)) and?or (not (test)){@media}.
+
+★@charset "UTF-8?iso-8859-15";      /*must be first rule, "≠'*/

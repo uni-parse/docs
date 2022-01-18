@@ -5,28 +5,27 @@
     <meta name=viewport content='width=device-width, initial-scale=1, maximum-scale=2'>
     <meta name=color-scheme content='only dark'>
     <meta charset=uft-8>
-    <link href=4.css media='(grid), not screen and (grid)' rel=stylesheet>
+    <!-- <link href=4.css media='(grid), not screen and (grid)' rel=stylesheet> -->
     <script src=picturefill.min.js></script>
     <style>/*
       @import 'newreset-min.css';/*
       @import 'reset-min.css';
       @import 'normalize-min.css';*/
-      @import '1.css' not screen and (grid:0), (pointer);
-      @import '2.css' only print;
+      /* @import '1.css' not screen and (grid:0), (pointer);*/
+      @import '4.css';
       html,*{box-sizing:border-box}
       body{
         background:#333;
         color:#aaa;
         text-align:center;
-        margin:;
       }
       img{max-inline-size: 100%}
       @media /*not screen and (grid:0) and (grid:1), (grid:1) */
        (any-pointer){
         img{max-inline-size:15%}
       }
-      p{display:inline-block; width:40%;
-        font: 12px sans-serif;
+      p{display:inline-block; width:clamp(45ch, 100%, 75ch);
+        font: 1em sans-serif;
         border: thin yellow solid;
         overflow:visible;
         word-break:break-all;
@@ -48,14 +47,46 @@
       :is(div,a){border-color:green}
       div{display:block; width:100%;
           border:solid red thin;
+      }
+      @supports (background-image: -webkit-image-set(url(1.png) 1x)) {
+        @media screen{
+          p{border-radius: .5em}
         }
+      }
       body div{border-color:cyan}
       :is(div,a){border-color:yellow}
+i{display:inline-block; margin:2px}
+.icon-1 {
+  background-image: url(images/sprite.webp);
+  background-position: -600px -600px;
+  width: 194px;
+  height: 196px;
+}
+.icon-2 {
+  background-image: url(images/sprite.webp);
+  background-position: 0px 0px;
+  width: 600px;
+  height: 600px;
+}
+.icon-3 {
+  background-image: url(images/sprite.webp);
+  background-position: -600px 0px;
+  width: 600px;
+  height: 600px;
+}
+.icon-4 {
+  background-image: url(images/sprite.webp);
+  background-position: 0px -600px;
+  width: 600px;
+  height: 600px;
+}
+.b.c+p{color:violet}
+.d{color:yellow}
     </style>
   </head>
   <body>
     <div class=a>
-    <p>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p>
+    <p class='b c'>12345678901234567890123456789012345678901234<span>5678901234567890123456789012345</span>67890</p>
     <p>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm<span>mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm</span>mmmmm</p>
     </div>
     <picture>
@@ -67,5 +98,11 @@
     <section>
       MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM
     </section>
+    <article>
+      <i class="icon-1"></i>
+      <i class="icon-2"></i>
+      <i class="icon-3"></i>
+      <i class="icon-4"></i>
+    </article>
   </body>
 </html>

@@ -1,6 +1,4 @@
-
-★demo:
-
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
 ★form attributes:
   •name='<formname>': for javascript & php
   •accept-charset=utf-8|ISO-8859-1|ISO-8859-8|ASCII|…
@@ -101,8 +99,7 @@
 *<input type=submit value=submit>
 *<input type=image src= alt=submit width=40 height=~> no-value
 *<button type=submit'd(|button|reset) value=submit>txt|img</button> •button are dynamic.innerhtml & styled::after|before
-*reset (useless):
-  •<input type=reset value=reset>
+*reset (useless): •<input type=reset value=reset>
   •<button type=reset value=reset></button>
 
 ★accessibility: •<fieldset> <legend>group-description</legend>
@@ -110,8 +107,17 @@
 *labels: •<label>description <input> description</label>
   •<label for=input_id>description</lebel> <input id=input_id>
 
-★form styling:
-*selectors: :chacked :defualt :disabled :enabled :in-range :out-of-range :valid :invalid :required :optional :read-only :read-write :placeholder-shown ::placeholder :indeterminate
-textarea{resize:both'd|horizontal|vertical|initial|none'r;}
-is(form,input):valid|invalid{/*max|minlength, required*/}
-input, textarea{caret-color:red;} /*alerted vertical-line*/
+★form styling: html{box-sizing:border-box}
+  *,*::before,*::after{box-sizing:inherite}
+  form{max-width:40em} fieldset{border:none; padding:0}
+  ul{list-style-type:none} li{display:flex; flex-wrap:wrap}
+  label{flex:0 0 8em} label:is(.checkbox,.radio){flex:auto}
+  fieldset,textarea,input{flex:1 1 20em}          /*320px=20em*/
+  input,textarea,:is(input,textarea)::placeholder{font:inherite}
+  legend{width:1px;height:1px;overflow:hidden}
+   /*›screenReader repeat legend on each option, make it short*/
+•extra: [type=text?password?email?tel?url?search?select],textarea {border|-radius; margin; padding; background; …}
+  textarea{resize: none'd}    /*both'd-UA|horizontal|vertical*/
+  input, textarea{caret-color: red} /*alerted vertical-line*/
+  is(form,input):in?valid{/*target: max?minlength, required*/}
+•selectors: :focus?hover?active :in?valid :required?optional :enabled?disabled :default?checked :read-only?write :out-of?in-range [type=number] :placeholder-shown ::placeholder ::selection≠Ios15 :indeterminate=[checkbox,radio≠S19,progress]

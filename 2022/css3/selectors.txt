@@ -1,32 +1,13 @@
 
-
- selectors priority//
-
-
-  ★user-reader !important > author !important > author > user-reader > user-agent
-
- »author: specificy > position > order
-
-  *position: inline > embedded > external
-  
-  *specificy weight:
-   ids nth > class + pseudo-class nth > indi|vidual elements nth
-   [ids] [classes+pseudoClasses] [els]
-
-
-
-
-  *element s: e{}
-  *grouped s: e1, e2, …{}
-  *identify s: e#id, #id{}
-  *classify s: .class, e.class{}
-  *contextual (combinators) s:
-    •descondant s: ancestors el{} 
-      ex:e0 e{} == e0 … e(i) … e(i+n) e{}
-    •direct child s: … > parent > child{}
-    •next-sibling s: e + only-one-next-e{}
-    •subsequent-sibling s: e ~ all-next-e{}
-  *universal s: #section *{}
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
+★general: selecor1, s2, …{grouped els}
+  *{universal asterisk target all els, (0,0,0)}
+  tag{element (0,0,1)}
+  .class1.c2.…{classify els(0,#,0)} #id{identifyUniqeEl (1.0.0)}
+  ›contextual combinators: unaffect specifisity.
+    s1s2…{same target} parent-s>child-s{direct child}
+    ancestor-s s{descondant}, ex[s0 s{}→ s0 s(i) s(i+n) s{}].
+    s1+s2{only next sibling} s1~s2{all subsequent siblings}
 
 
 ★pseudo classes:
@@ -104,7 +85,7 @@
 
 
 ★pseudo elements:
-    •e::selection{} whene user select text 83% -moz-0.7%
+    •e::selection{} whene user select text 83≠Ios15 -moz-0.7%
     •text::first-letter{}
     •text::first-line{}
     •e::before{content="text|s-characters|url(no-quotations)";}
@@ -130,12 +111,3 @@
        css: [title|="bill"]{color:#999;}
         the second abbreviation who selelected 
         becuose "bill" are single word separated by hyphen.
-
-
-
-
-
-
-
-
-

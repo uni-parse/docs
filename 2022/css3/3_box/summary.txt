@@ -54,6 +54,7 @@
     ›b-<side>-style: none'd| hidden| solid| double| dotted| dashed| groove| ridge| inset| outset;
 
 *b-collapse(table): collapse'd|separate;
+*b-spacing↓(table): h=v'length| h v;
 *b-radius: <cR>(circle)| <hR>/<vR>(ellipse); length0d|%
  (unapply inner table when {b-collopse: collapse'd})
   •cR|hR|vR: all|tl=br tr=bl|tl tr=bl br|tl tr br bl;

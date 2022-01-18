@@ -22,6 +22,18 @@ const browserSync = require('browser-sync').create();
 //const asciify = require('asciify-image');
 const webp = require('gulp-webp');
 //const htmlVal = require('gulp-w3c-html-validator');
+const spritesmith = require('gulp.spritesmith');
+
+
+// sprite images
+function spriteTask(){
+  return src('src/images/*')
+    .pipe(spritesmith({imgName: 'sprite.png', cssName: 'sprite.css'}))
+    .pipe(dest('build/images/'));
+}
+
+
+
  /*
 //html validator
 function htmlV(){
@@ -286,7 +298,7 @@ exports.img = imgTask;
 exports.webp = webpTask;
 //exports.art = asciiTask;
 //exports.val = htmlV;
-
+exports.sprite = spriteTask;
 
 
 
