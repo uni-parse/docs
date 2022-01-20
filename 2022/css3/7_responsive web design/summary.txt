@@ -38,7 +38,7 @@
     »sprite: http-requests↓ size↑, 1 huge img contain all imgs.
      <ul> <li><a>facebook</a></li> <li><a>twitter</a></li> </ul>
     ›css: ul a{display:inline-block; width:40px;height:40px;
-      background:url(social.webp) 0 0/cover norepeat border-box;
+      background:url(social.webp) 0 0/cover no-repeat border-box;
       -webkit-background-clip:border-box; 
       white-space:nowrap; text-indent:100%; overflow:hidden}
     ul a:nth-child(2){background-position:0 -40px}

@@ -5,10 +5,13 @@ curly brace {}
 parentheses ()
 hyphen manius dash -
 underLine underscore _
-tilde(selda) ~
+tilde(telda) ~
 multiply star aste'risk *
-carat ^
+carat(as carrot in spelling) ^
 equal =
+ampersand &
+dollar $
+euro €
 slash division /
 slashBare back-slash \
 bar |

@@ -1,16 +1,61 @@
-
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
-★general: selecor1, s2, …{grouped els}
-  *{universal asterisk target all els, (0,0,0)}
-  tag{element (0,0,1)}
-  .class1.c2.…{classify els(0,#,0)} #id{identifyUniqeEl (1.0.0)}
+★specificity'selector-weight: (specific# ,> generic#).
+  •(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
+    ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
+    ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 most-specific-type.
+
+★basic: *{universal asterisk target all els, (0,0,0)}
+  tag{(0,0,1)} .classifyEls{(0,1,0)} #uniqueIdentify{(1.0.0)}
+  [attribute]{(0,1,0)} [att=v]{} [att=v i]{caseInsencitive lv4}
+    [att*=Vpart]{…v…} [att~=spaceV]{… v …} [att|=hyphenV]{…-v-…}
+    [att^=valPrefix]{v…} [att$=valSufix]{…v} /*tilde~, caret^*/
   ›contextual combinators: unaffect specifisity.
-    s1s2…{same target} parent-s>child-s{direct child}
-    ancestor-s s{descondant}, ex[s0 s{}→ s0 s(i) s(i+n) s{}].
+    s1s2…{specific} s1,s2,…{group} sParent>sChild{direct child}
+    sAncestor sDescondant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
     s1+s2{only next sibling} s1~s2{all subsequent siblings}
+
+★pseudoElement: elPart, can be used once in each selector::End.
+  ::selection≠Ios15?{color;bg-color;text-decorationCSS2?shadow}
+  :?::first-letter/*of line1 of #block-lvl-els*/{vertical-align;
+    font;text-decoraionCS3?shadow?transform;letter?word-spacing;
+    line-height;margin;padding;border;box-shadow;float;color;bg}
+    ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
+  :?::first-line/*of #block-lvl-els*/{as ::first-letter except:
+    ≠margin;padding;border;box-shadow;float}
+  :?::before?after/*≠replacedEls*/{display:inline'd;content:;}
+    »content:none|normal|
+    [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
+      »counter(name,style?) counters(name,'nest separater',sty?)
+       ›style: disq|circle|square|lower?upper-roman?alpha=latin |decimal?-leading-zero|lower-greek'αβγ|urdu'ar#-moz4|…
+    ›.paren/*=child1*/{ counter-reset: none'd|[name ±#0d?] …;
+      el{ counter-increment: none'd|[name ±#1d?] …}
+      el:nth-child(#){ counter-re?set≠S19:<reset>}}//reset=set+1
+  ::marker≠S19{}
+
+
+  *form:
+    •i::placeholder{} select placeholder #text
+  l4•i:placeholder-shown{} /* pseudo-class */
+      select input|textarea who its placeholder are displaying
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 ★pseudo classes:
+
   *states: order required
     •unvisited: a:link{}
     •visited: a:visited{}
@@ -28,6 +73,15 @@
     •e:
      
   *structure:
+  l4•:is(el, [att], :pseudo-class, …) p{}
+      select any <p> inside <el1> & [att] & :pseudo-class & …
+      Note :is(::pseudo-elements) invalid !!
+  l4•:where(el1, el2, :pseudo-class, …) p:hover{}
+      same as :is(), but have different specificy weight:
+        :is() el{} → [0][1][1]
+        :where() el{} → [0][0][1]
+        el{} → [0][0][1] + order
+      "el{}" can override ":were() el{}", but not ":is() el{}"
     •:root{--variables:values;}brefer to <html>with high specify
     •e:empty{} have no content even space except comments
     •pr:first-child{}
@@ -46,15 +100,7 @@
       select any pr have 1 child
     •pr:only-of-type{}
       select any descondant-type who dont havd siblings
-  l4•:is(el, [att], :pseudo-class, …) p{}
-      select any <p> inside <el1> & [att] & :pseudo-class & …
-      Note :is(::pseudo-elements) invalid !!
-  l4•:where(el1, el2, :pseudo-class, …) p:hover{}
-      same as :is(), but have different specificy weight:
-        :is() el{} → [0][1][1]
-        :where() el{} → [0][0][1]
-        el{} → [0][0][1] + order
-      "el{}" can override ":were() el{}", but not ":is() el{}"
+  
       
   *form:
     •i:checked{} or :checked{}
@@ -82,32 +128,3 @@
   *language:
    •q:lang(en|fr|ar){quotates:'«' '”';} 
      target att: lang="" or what meta incloded, en'd
-
-
-★pseudo elements:
-    •e::selection{} whene user select text 83≠Ios15 -moz-0.7%
-    •text::first-letter{}
-    •text::first-line{}
-    •e::before{content="text|s-characters|url(no-quotations)";}
-    •e::after{content="";}
-  *form:
-    •i::placeholder{} select placeholder #text
-  l4•i:placeholder-shown{} /* pseudo-class */
-      select input|textarea who its placeholder are displaying
-    
-
-★attributes seldctors:
-    •e[att][]…{}
-    •e[att=val][]…{}
-  l4•e[att=val i][]…{} case-Insencitive
-      ›ex: img[src=img.webp i]{}, mean src='(img|Img|IMG).webp'
-    •e[att~="part of val"][]…{}
-    •e[att^="prefix of val"][]…{}
-    •e[att$="suffix of val"][]…{}
-    •e[att|="single word of val"][]…{}
-      ex: 
-       html:<abbr title="phantombill">pb</abbr>
-            <abbr title="bill-ab">ba</abbr>
-       css: [title|="bill"]{color:#999;}
-        the second abbreviation who selelected 
-        becuose "bill" are single word separated by hyphen.

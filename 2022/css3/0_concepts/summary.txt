@@ -10,7 +10,7 @@
 
 ★priorite: origin > specificity > order > inheritance.
   •origin: User?>Author !important > Author > User > UA > w3.
-  •selector specificity weight: (specific# ,> generic#).
+  •specificity'selector-weight: (specific# ,> generic#).
     »(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
       ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
       ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 most-specific-type.
