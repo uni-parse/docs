@@ -1,4 +1,4 @@
-
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
 ★font↓: sys|style weight stretch variant size/line-height family
   ›size|family required by order, values #before size can be unordered & omitted(→initial), including line-height.
   ›variant: must be just css2.1 value (normal|small-caps)
@@ -6,14 +6,21 @@
   •system-operation keywords(no-ex): (encapsulated list-values)
     menu| icon| caption| small-caption| message-box| status-bar.
 
+*@font-face {font-family: 'Define|reName';          /*required*/
+  src:  local(Rosemary),…,       /*avoid unnecessary downloads*/
+    url(f.svg=S19) format('svg'),url(f.woff?2) format('woff?2'),
+    url(f.ttf?otf) format('truetype?opentype');
+  font-variant?stretch?weight?style:/*optional*/;/*↓descriptor*/
+  size-adjust≠S19s1:%100d; line-gap-override≠S19: normal|%Ex125;
+  descent?ascent-override≠S19:normal|%E125;//baseline→bottom?top
+  font-display: auto'd-UA|block |swap |fallback |optional;
+    ›block: hide #0000 5s, swap. ›swap: fallback until loaded.
+    ›fallback: swap≈3s, else use fallback(untill reload).
+    ›optional: block≈100ms, else use fallback(even if reloaded).
+  } selector{font-family: 'Defined Name',…, generic_fallback}
+
 *font-family: •generic_families: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(for headers), system-ui(defualt).
   •non-generic-families: Capitalized & 'multi word' between quotations & generic_fallback separated by commas(,).
-  •external file: @font-face {font-family: 'Define|reName';
-      src:  local(Rosemary),…,   /*avoid unnecessary downloads*/
-        url(f.svg) format('svg'),              /*19%onlySafari*/
-        url(f.woff?2) format('woff?2'),      /*96≠OperaMini1.5*/
-        url(ttf|otf) format('truetype|opentype')          /*97*/
-    p{font-family: 'Defined Name',…, generic_fallback;}
 
 *font-size: font-families have different initial sizes ≠ 16px !!
   •keywirds: ›relative to inherited Val: smaller.85 larger1.2

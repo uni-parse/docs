@@ -2,6 +2,26 @@ html, * {
   box-sizing: border-box;
 }
 
+@font-face {
+  font-family: web;
+  src: url(font/LeagueMonoVariable.woff2), url(Rosemary.ttf);
+  size-adjust: 100%;
+  font-display: fallback;
+  line-gap-override: normal;
+  descent-override: 0%;
+  ascent-override: 70%;
+}
+@font-face {
+  font-family: ink;
+  src: local(Ink Free);
+  descent-override: normal;
+}
+em {
+  display: inline-block;
+  width: 50%;
+  font: bold 2em web, ink, sans-serif;
+}
+
 body {
   background: #333;
   color: #aaa;
@@ -20,7 +40,6 @@ img {
 p {
   display: inline-block;
   width: clamp(45ch, 100%, 75ch);
-  font: 1em sans-serif;
   border: thin yellow solid;
   overflow: visible;
   word-break: break-all;
@@ -146,6 +165,7 @@ div p::before {
   width: 1em;
   height: 1em;
 }
+
 @supports (content: counter(somthing)) and (counter-reset: somthing -5 a 5 f s) {
   @media screen {
     p {
@@ -181,4 +201,9 @@ body > ol:last-of-type li::marker {
 }
 body > ol:last-of-type li::before {
   content: counters(l2, ".") " = " counters(l2, ".", lower-roman);
+}
+
+video::cue {
+  color: cyan;
+  font: 1.2em web, ink, serif;
 }

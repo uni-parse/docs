@@ -28,6 +28,35 @@
     •subsequent-sibling s: e ~ all-next-e{}
   *universal s: #section *{}
 
+★pseudo elements:
+    •e::selection{} whene user select text 83% -moz-0.7%
+    •text::first-letter{}
+    •text::first-line{}
+    •e::before{content="text|s-characters|url(no-quotations)";}
+    •e::after{content="";}
+  *form:
+    •i::placeholder{} select placeholder #text
+  l4•i:placeholder-shown{} /* pseudo-class */
+      select input|textarea who its placeholder are displaying
+    
+
+★attributes seldctors:
+    •e[att][]…{}
+    •e[att=val][]…{}
+  l4•e[att=val i][]…{} case-Insencitive
+      ›ex: img[src=img.webp i]{}, mean src='(img|Img|IMG).webp'
+    •e[att~="part of val"][]…{}
+    •e[att^="prefix of val"][]…{}
+    •e[att$="suffix of val"][]…{}
+    •e[att|="single word of val"][]…{}
+      ex: 
+       html:<abbr title="phantombill">pb</abbr>
+            <abbr title="bill-ab">ba</abbr>
+       css: [title|="bill"]{color:#999;}
+        the second abbreviation who selelected 
+        becuose "bill" are single word separated by hyphen.
+
+
 
 ★pseudo classes:
   *states: order required
@@ -101,41 +130,3 @@
   *language:
    •q:lang(en|fr|ar){quotates:'«' '”';} 
      target att: lang="" or what meta incloded, en'd
-
-
-★pseudo elements:
-    •e::selection{} whene user select text 83% -moz-0.7%
-    •text::first-letter{}
-    •text::first-line{}
-    •e::before{content="text|s-characters|url(no-quotations)";}
-    •e::after{content="";}
-  *form:
-    •i::placeholder{} select placeholder #text
-  l4•i:placeholder-shown{} /* pseudo-class */
-      select input|textarea who its placeholder are displaying
-    
-
-★attributes seldctors:
-    •e[att][]…{}
-    •e[att=val][]…{}
-  l4•e[att=val i][]…{} case-Insencitive
-      ›ex: img[src=img.webp i]{}, mean src='(img|Img|IMG).webp'
-    •e[att~="part of val"][]…{}
-    •e[att^="prefix of val"][]…{}
-    •e[att$="suffix of val"][]…{}
-    •e[att|="single word of val"][]…{}
-      ex: 
-       html:<abbr title="phantombill">pb</abbr>
-            <abbr title="bill-ab">ba</abbr>
-       css: [title|="bill"]{color:#999;}
-        the second abbreviation who selelected 
-        becuose "bill" are single word separated by hyphen.
-
-
-
-
-
-
-
-
-

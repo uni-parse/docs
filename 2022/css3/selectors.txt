@@ -1,11 +1,11 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
 ★specificity'selector-weight: (specific# ,> generic#).
   •(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
     ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
-    ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 most-specific-type.
+    ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 heavy-specific-type.
 
 ★basic: *{universal asterisk target all els, (0,0,0)}
-  tag{(0,0,1)} .classifyEls{(0,1,0)} #uniqueIdentify{(1.0.0)}
+  tag{(0,0,1)} .classifyEls{(0,1,0)} #uniqueIdentify{(1,0,0)}
   [attribute]{(0,1,0)} [att=v]{} [att=v i]{caseInsencitive lv4}
     [att*=Vpart]{…v…} [att~=spaceV]{… v …} [att|=hyphenV]{…-v-…}
     [att^=valPrefix]{v…} [att$=valSufix]{…v} /*tilde~, caret^*/
@@ -14,32 +14,29 @@
     sAncestor sDescondant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
     s1+s2{only next sibling} s1~s2{all subsequent siblings}
 
-★pseudoElement: elPart, can be used once in each selector::End.
-  ::selection≠Ios15?{color;bg-color;text-decorationCSS2?shadow}
+★pseudoElement(0,0,1): elPart, used? once in each selector::End
+  ::selection≠Ios15?{color;bg-color;text-shadow?decorationCSS2}
   :?::first-letter/*of line1 of #block-lvl-els*/{vertical-align;
-    font;text-decoraionCS3?shadow?transform;letter?word-spacing;
+    font;text-shadow?transform?decoration?-*;letter?word-spacing
     line-height;margin;padding;border;box-shadow;float;color;bg}
     ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
-  :?::first-line/*of #block-lvl-els*/{as ::first-letter except:
-    ≠margin;padding;border;box-shadow;float}
-  :?::before?after/*≠replacedEls*/{display:inline'd;content:;}
-    »content:none|normal|
+  :?::first-line/*#block-lvl-els*/{
+    <::first-letter>≠margin;padding;border;box-shadow;float}
+  ::placeholder/*input?textarea*/{<::line1>-*;color:lightgray'd}
+  :?::before?after/*≠replacedEls*/{content; display:inline'd}
+    »content: none| normal|
     [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
       »counter(name,style?) counters(name,'nest separater',sty?)
        ›style: disq|circle|square|lower?upper-roman?alpha=latin |decimal?-leading-zero|lower-greek'αβγ|urdu'ar#-moz4|…
     ›.paren/*=child1*/{ counter-reset: none'd|[name ±#0d?] …;
       el{ counter-increment: none'd|[name ±#1d?] …}
       el:nth-child(#){ counter-re?set≠S19:<reset>}}//reset=set+1
-  ::marker≠S19{}
-
-
-  *form:
-    •i::placeholder{} select placeholder #text
-  l4•i:placeholder-shown{} /* pseudo-class */
-      select input|textarea who its placeholder are displaying
-
-
-
+  ::marker≠S19{font;white-space;color;direction;content:;}
+    ›applyTo: li| summary| el?::pseudoElement{display:list-item}
+  ::cue?cue(selector)≠F4{bg;color;opacity;visibility;font;
+    text-shadow?decoration?-*;line-height;white-space;outline}
+    ›style track.Vtt of vedio, bg apply individually to each cue
+  
 
 
 
@@ -55,7 +52,6 @@
 
 
 ★pseudo classes:
-
   *states: order required
     •unvisited: a:link{}
     •visited: a:visited{}
@@ -124,7 +120,9 @@
       if it not have att: readonly, content'editable
   l4•i:indeterminate + label{}
       unselected i[type=checkbox], i[type=radio](77gs-noSafari), <progress></progress>
-      
+  l4•i:placeholder-shown{} /* pseudo-class */
+      select input|textarea who its placeholder are displaying
+
   *language:
    •q:lang(en|fr|ar){quotates:'«' '”';} 
      target att: lang="" or what meta incloded, en'd

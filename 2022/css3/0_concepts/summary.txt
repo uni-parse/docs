@@ -1,4 +1,4 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ± © § Ø ƒ † ⁰ ₱
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
 ★insurting cascading style sheet: link|@import|style|style=
  <head>
    •<link href=external.css rel=stylesheet media=> <!--cached-->
@@ -13,7 +13,7 @@
   •specificity'selector-weight: (specific# ,> generic#).
     »(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
       ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
-      ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 most-specific-type.
+      ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 heavy-specific-type.
   •order: style=inline > embed<style> > external<link>?@import.
     ›cascade rule?declaration > previous ones.
   •inheritance: »els builded in hie|rar|čhical structure.

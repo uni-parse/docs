@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title></title>
+    <title>media</title>
     <meta charset="uft-8">
     <style>
       body{
@@ -46,11 +46,11 @@ video::-webkit-media-text-track-display { overflow: visible !important; box-sizi
   </object>
   <hr>
   
-  <video width=500 controls playsinline loop muted preload="auto" poster="gaara.webp">
+  <video width=500 autoplay controls playsinline loop muted preload=auto poster=gaara.webp>
     <source type=video/webm src=v.webm>
-    <source type=video/mp4 src=v.mp4>
+    <source type=video/mp4 src=track.mp4>
     <source type=video/ogg src=windtunnel.ogg>
-    <track defualt label=English kind=captions srclang=en src=t.vtt>
+    <track default label=English kind=captions srclang=en src=track.vtt>
     fallback
   </video>
   nhkj

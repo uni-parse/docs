@@ -1,16 +1,36 @@
 html,*{box-sizing:border-box}
+ @font-face {
+  font-family: web;
+   src: url(font/LeagueMonoVariable.woff2), url(Rosemary.ttf);
+  //font-variant:;
+  //font-stretch:;
+  //font-weight:;
+  //style:;
+   size-adjust: 100%;
+   font-display: fallback;
+   line-gap-override: normal;
+   descent-override: 0%; //bottom to baseline height
+   ascent-override: 70%; //top to baseline height
+}
+@font-face {
+  font-family: ink;
+  src: local(Ink Free);
+  descent-override: normal; //bottom to baseline height
+}
+em{display:inline-block; width: 50%;
+  font: bold 2em web,ink,sans-serif;
+}
       body{
         background:#333;
         color:#aaa;
         text-align:center;
-      } 
+      }
       img{max-inline-size: 100%}
       @media /*not screen and (grid:0) and (grid:1), (grid:1) */
        (any-pointer){
         img{max-inline-size:15%}
       }
       p{display:inline-block; width:clamp(45ch, 100%, 75ch);
-        font: 1em sans-serif;
         border: thin yellow solid;
         overflow:visible;
         word-break:break-all;
@@ -35,7 +55,7 @@ html,*{box-sizing:border-box}
           border:solid red thin;
           background: -webkit-image-set(url(gaara.webp) 1x) center/contain no-repeat;
       }
-      
+
       body div{border-color:cyan}
       :is(div,a){border-color:yellow}
 i{display:inline-block; margin:2px}
@@ -65,16 +85,15 @@ i{display:inline-block; margin:2px}
 }
 /* .b.c+p{color:violet} */
 [class*=ab]{color:yellow}
-:lang(ar){direction: rtl; color: green} 
+:lang(ar){direction: rtl; color: green}
 div{counter-reset: p 0;
   p{counter-increment: p -5}
   p:first-child{counter-set: p 2} // no safari 19% gs.
-  p::before{background:olivedrab; 
+  p::before{background:olivedrab;
     content: 'intro ' counter(p, decimal-leading-zero) ': ';
     min-inline-size: 1em; min-block-size: 1em;
-    width: 1em; height: 1em; 
+    width: 1em; height: 1em;
   }
-  p::after{}
 }
 @supports (content: counter(somthing)) and
 (counter-reset: somthing -5 a 5 f s){
@@ -85,7 +104,7 @@ div{counter-reset: p 0;
  ol{text-align: left;}
  body>ol:first-of-type {counter-reset: l1;
    li {counter-increment: l1} // required
-   li::after {content: '[' counter(l1) ']=[' 
+   li::after {content: '[' counter(l1) ']=['
              counter(l1, lower-roman) ']'}
  }
 body>ol:last-of-type {counter-reset: l2;
@@ -93,4 +112,9 @@ body>ol:last-of-type {counter-reset: l2;
   li {counter-increment: l2}
   li::marker {content:counters(l2, '.', upper-roman) ') '}
   li::before {content:counters(l2, '.') ' = ' counters(l2, '.',lower-roman)}
+}
+video::cue{
+  color:cyan;
+  font: 1.2em web,ink,serif;
+
 }
