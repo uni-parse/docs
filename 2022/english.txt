@@ -1,4 +1,5 @@
   
+  immediately 0s
   descent↓ ascent↑ 
   self-taught
   demonstration demo

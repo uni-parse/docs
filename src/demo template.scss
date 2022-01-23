@@ -1,13 +1,9 @@
-html, * {
-  box-sizing: border-box;
+html,*{box-sizing:border-box}
+body{
+  background:#333;
+  color:#aaa;
+  text-align:center;
 }
-
-body {
-  background: #333;
-  color: #aaa;
-  text-align: center;
-}
-
 hyphen-::part(tab) {
   color: #0c0dcc;
   border-bottom: #0000 solid 2px;
@@ -23,7 +19,10 @@ hyphen-::part(tab):hover:active {
 }
 
 hyphen-::part(tab):focus {
-  box-shadow: 0 0 0 1px #0a84ff inset, 0 0 0 1px #0a84ff, 0 0 0 4px rgba(10, 132, 255, 0.3);
+  box-shadow:
+    0 0 0 1px #0a84ff inset,
+    0 0 0 1px #0a84ff,
+    0 0 0 4px rgba(10, 132, 255, 0.3);
 }
 
 hyphen-::part(tab active) {

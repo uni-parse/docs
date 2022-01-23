@@ -212,7 +212,7 @@
       »document.getElementsByTagName('h2');// 1|collection
       »document.getElementsByClassName('box red');//1|collection
       »document.querySelector('ul#nav li.fb');// 1|collection
-      »document.querySelectorAll('nav a', 'li>a');//1|collection
+      »document.querySelectorAll('s1, …', …);//collection
     •Note: we can'not access collection of elements at ones, insted we can access it by index:
       var selector = document.querySelector('ul#nav li.fb');
       var selectors = document.querySelectorAll('img', 'svg');

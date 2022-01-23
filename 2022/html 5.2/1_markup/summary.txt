@@ -29,6 +29,16 @@
 
 ★<style media=all'd></style>
 
+★<noscript> <a>fallback if scripting desabled</a> </noscript>
+*script: •src=url/file.js
+  •type=module(ES6)| text/javascript| application/json| …
+  •nomodule: execute fallback.js #only if #Unsupported ES2015
+  •async|defer(require src=): download script in parallel to page parsing, executed #Before(async)|After(defer) parsing end
+    ›without async|defer: download & executed script immediately & blocking parsing(تحليل) until done.
+  •crossorigin= anonymous| use-credentials
+  •referrerpolicy(80noIos)= unsafe-url no-referrer no-referrer-when-downgrade origin origin-when-cross-origin same-origin strict-origin strict-origin-when-cross-origin
+  •integrity=filehash(https://www.srihash.org/), block if source manipulated by attackers, required crossorigin=anonymous
+
 
 ★block-level elements: as <div></div>
   •p: paragraph
@@ -125,36 +135,10 @@
     <p>hello <i><bdi>بلال</bdi></i></p>
 
 
-★attractive elements:
-*script: •src=url/file.js
-  •type=module(ES6)| text/javascript| application/json| …
-  •nomodule: execute fallback.js #only if #Unsupported ES2015
-  •async|defer(require src=): download script in parallel to page parsing, executed #Before(async)|After(defer) parsing end
-    ›without async|defer: download & executed script immediately & blocking parsing(تحليل) until done.
-  •crossorigin= anonymous| use-credentials
-  •referrerpolicy(80noIos)= unsafe-url no-referrer no-referrer-when-downgrade origin origin-when-cross-origin same-origin strict-origin strict-origin-when-cross-origin
-  •integrity=filehash(https://www.srihash.org/), block if source manipulated by attackers, required crossorigin=anonymous
-  
-*<noscript> <a>fallback if scripting desabled</a> </noscript>
-*<template id=tem>    <!--unrendered markup used by js-->
-  <style> /*have its own styles*/ </style>
-  <slot name=placeholderName> <!--undefined fallback--> </slot>…
- </template>
-<script> customElements.define('bill',class extends HTMLElement{
-  constructor(){ super();
-    var tem=document.getElementById('tem').content,
-      shadowRoot = this.attachShadow({mode:'open'})
-      .appendChild(tem.cloneNode(true));}
-  });/*for non-slots just: el.appendChild(tem.cloneNode(true))*/
-</script> <noscript>please enable java script</noscript>
-<bill><span slot=placeholderName>update argument</span>…</bill>
-
-
 ★Accommodating Non-Western Languages (mack it internationaized)
   1•use unicode: <meta charset="uft-8">
-  2•declaring the language: <html lang="en">
-  3•use lang-direction: 
-    <p>in arabic 'I love u' is: <i dir="rtl">احبك</i></p>
+  2•declaring the language: <html lang=en>
+  3•use lang-direction: <p>I love u: <i dir=rtl>احبك</i></p>
   4•for asian languages(top-down) use: <ruby> <rp> <rt>
 
 ★aria: accessible rich internet aplication, have role='', states and properties (↑accessibility)

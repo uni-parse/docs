@@ -30,9 +30,9 @@
         .getElement ById('idName') // return just 1 element
         .getElement s ByClassName('c1 c2 …')//els share same c's
         .getElement s ByTagName('tag')
-        .querySelector('cssSelector')
+        .querySelector('selector')
       »usefull:
-        .querySelectorAll('cssSselector1, selector2, …')
+        .querySelectorAll('s1, …', …)
         
     •manipulate methods:
       »demo:

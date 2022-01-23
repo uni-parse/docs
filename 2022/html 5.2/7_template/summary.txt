@@ -1,0 +1,16 @@
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+★<template id=tem>           <!--unrendered markup used by js-->
+  <style> ::part(pn1 …){} /*have its own styles*/ </style>
+  <div part='n1 …'> content </div>…              <!--unSloted-->
+  <slot name=placeholderName> <!--undefined fallback--> </slot>…
+ </template>
+
+<script> var tem=document.getElementById('tem');
+  customElements.define('bill',class extends HTMLElement{
+    constructor(){ super();
+      shadowRoot = this.attachShadow({mode:'open'})
+      .appendChild(tem.content.cloneNode(true));
+    }//unSlots: el.appendChild(tem.content.cloneNode(true))
+  }); </script> <noscript>please enable java script</noscript>
+
+<bill><span slot=placeholderName>update argument</span>…</bill>

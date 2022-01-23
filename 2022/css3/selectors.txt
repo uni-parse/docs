@@ -36,8 +36,8 @@
   ::cue?cue(selector)≠F4{bg;color;opacity;visibility;font;
     text-shadow?decoration?-*;line-height;white-space;outline}
     ›style track.Vtt of vedio, bg apply individually to each cue
-  
-
+  ::part(n1 …){/*<template> <shadowTree-el part='n1 …'>*/}
+  ::sloted{}
 
 
 
