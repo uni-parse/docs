@@ -1,13 +1,1 @@
-<!doctype html><html lang=en><head><title>template</title><meta content="width=device-width,initial-scale=1,maximum-scale=2" name=viewport><meta content="only dark" name=color-scheme><meta charset=uft-8><style>*,html{box-sizing:border-box}body{background:#333;color:#aaa}::part(input){border:#888 solid .2em;color:#ff00ff;border-radius:30% 5%;caret-color:#25a725;text-align:center}::part(input)::placeholder{color:#ff4500;font:inherit}::part(input)::selection{color:peru;background:purple}</style><template id=shadowHost><style>::slotted(*){color:#ff0}h2{color:#9acd32;text-transform:capitalize}</style><dl><dt><h2><slot name=item>undefined type</slot></h2></dt><dd>amount: <input part="input count" placeholder=amount step=5 type=number></dd><dd>vip: <input part="input vip" placeholder="yes or no"></dd></dl></template><script>var shadowHost = window.document.querySelector('#shadowHost');
-      //why we creating class ??
-      class className extends HTMLElement{
-        constructor(){
-          super();// ??
-          //enable shadowHost in template, globalDOM-access=open
-          this.attachShadow({mode:'open'});
-          this.shadowRoot.appendChild(shadowHost.content.cloneNode(true));
-         //this.shadowRoot.createElement('div').cloneNode(true);
-        }
-      }
-      //custom-name must have hyphen-
-      customElements.define('custom-name', className);</script></head><body><custom-name><span slot=item>chocolate</span></custom-name></body></html>
+<!doctype html><html lang=en><head><title>selectors</title><meta content="width=device-width,initial-scale=1,maximum-scale=2" name=viewport><meta content="only dark" name=color-scheme><meta charset=uft-8><style>*,html{box-sizing:border-box}body{background:#333;color:#aaa}a:any-link{color:khaki;font:revert}a:visited{color:#99cd324f;font:revert}a:link{color:#f08080;font:revert}a:hover{font:revert;font-weight:700;border:revert}a:focus{font:revert;font-style:italic;outline:0;border:revert}a:active{font:revert;border:thin dotted}:target{text-decoration:overline #0ff dashed}</style></head><body><a tabindex=1>no href</a><br><a href=#>href=#?index.html</a><br><i id=fragment>fragment</i><br><a href=#fragment>href=#fragment</a><br><a href=/index1.html>href=/somthing.html</a></body></html>

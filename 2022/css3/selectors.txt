@@ -14,7 +14,7 @@
     sAncestor sDescondant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
     s1+s2{only next sibling} s1~s2{all subsequent siblings}
 
-★pseudoElement(0,0,1): elPart, used? once in each selector::End
+★pseudoElement(0,0,1): part of el, basicSelector::onceInEnd.
   ::selection≠Ios15?{color;bg-color;text-shadow?decorationCSS2}
   :?::first-letter/*of line1 of #block-lvl-els*/{vertical-align;
     font;text-shadow?transform?decoration?-*;letter?word-spacing
@@ -38,7 +38,50 @@
     ›style track.Vtt of vedio, bg apply individually to each cue
   ::part(n1 …){/*<template><shadowTree-el part='n1 …'>*/}
   ::slotted(*|selector){/*under <template><slot><targets>*/}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+★pseudoClasses: state of el.
+  :lang(en'd?…){quotes;??} /*<el lang=en?…>*/
   
+  order: any-link> link?visited> focus?hover> active.
+
+ •location: 
+  :any-link?link≠visited{}/*<a?area href=>,in S19 <link href=>*/
+    :visited{color;bg-c;border-<side?>-c;outlne-c;column-rule-c;text-decoration?emphasis-c}{fill?stroke}/*access History*/
+  :
+
+
+
+
+  •selected: a:focus{}
+l4•selected-descondant a:focus-whithin{}
+    ›ex: <div style=:focus-whithin{}> <a></a>…<input> </div>
+         <!-- select div if any els inside it selected -->
+  •:hover{}
+  •while clicking: a:active{}
+  •:target{}
+    html: <e id=fragment></e>…<a href=#fragment></a>…
+    url: website.io#fragment
+    ›Note: to clear target click on / html: <a href=#></a>
 
 
 
@@ -49,25 +92,6 @@
 
 
 
-
-
-★pseudo classes:
-  *states: order required
-    •unvisited: a:link{}
-    •visited: a:visited{}
-  l4•visited|unvisited: a:any-link{}
-    •selected: a:focus{}
-  l4•selected-descondant a:focus-whithin{}
-      ›ex: <div style=:focus-whithin{}> <a></a>…<input> </div>
-           <!-- select div if any els inside it selected -->
-    •hovered: a:hover{}
-    •while clicking: a:active{}
-    •e:target{} 
-      html: <e id="e-id"></e>…<a href="#e-id"></a>…
-      url: website.io#e-id
-      ›Note: to clear target click on / html: <a href="#"></a>
-    •e:
-     
   *structure:
   l4•:is(el, [att], :pseudo-class, …) p{}
       select any <p> inside <el1> & [att] & :pseudo-class & …
@@ -96,8 +120,16 @@
       select any pr have 1 child
     •pr:only-of-type{}
       select any descondant-type who dont havd siblings
-  
-      
+
+
+
+
+
+
+
+
+
+
   *form:
     •i:checked{} or :checked{}
       if user select|check it.
@@ -123,6 +155,4 @@
   l4•i:placeholder-shown{} /* pseudo-class */
       select input|textarea who its placeholder are displaying
 
-  *language:
-   •q:lang(en|fr|ar){quotates:'«' '”';} 
-     target att: lang="" or what meta incloded, en'd
+  
