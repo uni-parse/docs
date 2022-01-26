@@ -37,7 +37,7 @@
     text-shadow?decoration?-*;line-height;white-space;outline}
     ›style track.Vtt of vedio, bg apply individually to each cue
   ::part(n1 …){/*<template><shadowTree-el part='n1 …'>*/}
-  ::slotted(*|selector){/*under <template><slot>*/}
+  ::slotted(*|selector){/*under <template><slot><targets>*/}
   
 
 

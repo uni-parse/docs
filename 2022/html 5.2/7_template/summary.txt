@@ -1,16 +1,23 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
-★<template id=tem>           <!--unrendered markup used by js-->
-  <style> ::part(pn1 …){} /*have its own styles*/ </style>
-  <div part='n1 …'> content </div>…              <!--unSloted-->
-  <slot name=placeholderName> <!--undefined fallback--> </slot>…
- </template>
-
-<script> var tem=document.getElementById('tem');
-  customElements.define('bill',class extends HTMLElement{
-    constructor(){ super();
-      shadowRoot = this.attachShadow({mode:'open'})
-      .appendChild(tem.content.cloneNode(true));
-    }//unSlots: el.appendChild(tem.content.cloneNode(true))
-  }); </script> <noscript>please enable java script</noscript>
-
-<bill><span slot=placeholderName>update argument</span>…</bill>
+★demo: <head><style>::part(input amount){}</style>
+  <template id=shadowHost> <style>::slotted(*){} …{}</style>
+    <dl> <dt><h2><slot name=item>undefined</slot></h2></dt>
+        <dd>amount: <input part='input amount'></dd>
+        <dd>vip: <input part='input vip'</dd> </dl></template>
+  <script> var host = document.querySelector('#shadowHost');
+    class className extends HTMLElement{ constructor(){ super();
+      this.attachShadow({mode:'open'});//globalDOM-access=open
+      this.shadowRoot.appendChild(host.content.cloneNode(true)}}
+    customElements.define('custom-el/*#hyphen-*/', className);
+  </script></head> <body>
+    <custom-el> <span slot=item>chocolate</span> </custom-el>
+★Document-Object-Model: is API allow js to access html.nodes.
+  •all UA shared the global object window.document.
+  •template=shadowHost=shadowRoot of scopped shadowDOM Tree.
+    ›can be in head or body.
+  •attachShadow({mode:'open'}): allow access to&from globalDOM.
+    »::part(name1 …) give globalDOM access to shadowDOM:
+      ›target: <template> <el part='n …'(as class)> </template>.
+    »::slotted(*|selector) give shadowDOM access to globalDOM:
+      ›target: <custom-el><el slot=placeholder</el></custom-el>.
+      ›argument: <template> <slot name=placeholder> </template>.

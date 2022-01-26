@@ -1,14 +1,13 @@
-<!doctype html><html lang=en><head><title>template</title><meta content="width=device-width,initial-scale=1,maximum-scale=2" name=viewport><meta content="only dark" name=color-scheme><meta charset=uft-8><style>@import 'style.css';</style></head><body><template id=tem><style>*,::after,::before{box-sizing:border-box;padding:1rem}:host{display:flex}</style><div part="tab active">Tab 1</div><div part=tab>Tab 2</div><div part=tab>Tab 3</div></template><script>var tem = document.querySelector('#tem');
-globalThis.customElements.define('hyphen-', class extends HTMLElement {
-  constructor() {
-    super();
-    this.attachShadow({mode:'open'});
-    this.shadowRoot.appendChild(tem.content);
-  }
-});alert('done');
-// var tem=document.getElementById('tem');
-// customElements.define('bill',class extends HTMLElement{
-//   constructor(){ super();
-//     div.appendChild(tem.content.cloneNode(true));
-//   }
-// });</script><noscript>please enable java script</noscript><hyphen-></hyphen-></body></html>
+<!doctype html><html lang=en><head><title>template</title><meta content="width=device-width,initial-scale=1,maximum-scale=2" name=viewport><meta content="only dark" name=color-scheme><meta charset=uft-8><style>*,html{box-sizing:border-box}body{background:#333;color:#aaa}::part(input){border:#888 solid .2em;color:#ff00ff;border-radius:30% 5%;caret-color:#25a725;text-align:center}::part(input)::placeholder{color:#ff4500;font:inherit}::part(input)::selection{color:peru;background:purple}</style><template id=shadowHost><style>::slotted(*){color:#ff0}h2{color:#9acd32;text-transform:capitalize}</style><dl><dt><h2><slot name=item>undefined type</slot></h2></dt><dd>amount: <input part="input count" placeholder=amount step=5 type=number></dd><dd>vip: <input part="input vip" placeholder="yes or no"></dd></dl></template><script>var shadowHost = window.document.querySelector('#shadowHost');
+      //why we creating class ??
+      class className extends HTMLElement{
+        constructor(){
+          super();// ??
+          //enable shadowHost in template, globalDOM-access=open
+          this.attachShadow({mode:'open'});
+          this.shadowRoot.appendChild(shadowHost.content.cloneNode(true));
+         //this.shadowRoot.createElement('div').cloneNode(true);
+        }
+      }
+      //custom-name must have hyphen-
+      customElements.define('custom-name', className);</script></head><body><custom-name><span slot=item>chocolate</span></custom-name></body></html>
