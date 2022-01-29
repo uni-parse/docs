@@ -23,61 +23,54 @@
 
 
 ★form shared controls_attributes:
-  •name=variable(#required) •form=form_id(outside form): i
-  nput textarea select(name=array[]) output meter fieldset button progress(form only)
+  •name=variable(#required) •form=form_id(outside form): input textarea select(name=array[]) output meter fieldset button progress(form only)
   •value=value: input textarea option progress meter button
   •disabled (unEditable unsended color:gray): input textarea select optgroup fieldset button
-  •maxlength=#|minlength=# (#characters): textarea <input type=text|password|search|email|tel|url|?>
-  •placeholder=hint: textarea <input type=text|password|search|email|tel|url|number>
-  •size=#(width:#characters): <input type=text|password|search|email|tel|url>
+  •max?minlength=#characters: <textarea> <i type=text|pw|search|email|tel|url>
+  •placeholder=hint: textarea <i type=text|pw|search|email|tel|url|number>
+  •size'w=#characters: <i type=text|pw|search|email|tel|url>
   •inputmode=text'd|decimal|numeric|tel|search|email|url|none (86%gs-noDesktopSafari): textarea input
   •readonly(unEditable sended) •required •autofocus(+button) •autocomplete=on|off|value(only input): textarea input select
     ›value=name|honorific-prefix|given-name|additional-name|family-name|honorific-suffix|nickname|email|username|new-password|current-password|one-time-code|organization|-title|street-address|address-line1~3|address-level1~4|country|-name|postal-code|'cc'-name|-given-name|-additional-name|-family-name|-number|-csc|-type|'cc-exp'|-month|-year|'transaction'-currency|-amount|language|'bday'|-day|-month|-year|impp|url|photo|sex|'tel'|-country-code|-national|-area-code|-local|-extension
   
-  •dirname=name(send <name>=rtl|ltr 92%gs-noFirefox): textarea <input type=text|search>
-  •min|max=#: <input type=number(±#)|range|time|date|month|week|datetime-local> progress(only max) meter(±#)
-  •pattern=regExp: <inp type=text|password|email|search|tel|url>
+  •dirname=name(send <name>=rtl|ltr 92%gs-noFirefox): textarea <i type=text|search>
+  •min|max=#: <i type=number(±#)|range|time|date|month|week|datetime-local> progress(only max) meter(±#)
+  •pattern=regExp: <inp type=text|pw|email|search|tel|url>
     »password: (?=.*[0-9|a-z|A-Z])()…{exact#|min#,|min#,max#} 
-      ›ex: pattern=(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,} title="enter 8 characters or more, with one or more number and uppercase and lowercase letter"
-    »email: pattern=[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$ title=name@address.domain
-    »search: pattern=[^'\x22]+ title='(") (&apos;) invalid'
-    »url: pattern=https?://.+ title='Include http(s)://'
+      ›ex: pattern='(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}' title='enter 8 characters or more, with one or more number and uppercase and lowercase letter'
+    »email: pattern='[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$' title='name@address.domain'
+    »search: pattern="[^'\x22]+" title='(") (&apos;) invalid'
+    »url: pattern='https?://.+' title='Include http(s)://'
 
 
 ★form controls:
-*line-text: <input type=text'd|password|search|email|tel|url>
+*line-text: <i type=text'd|password|search|email|tel|url>
 *multiline:<textarea rows=# cols=# wrap=soft|hard>val</textarea>
   •soft'd: unsend auto-line-breaks characters
   •hard: send auto-line-breaks (cols=# required)
 *radio|checkbox button: 
-  •<input type=radio name=groupName value=required checked>
-  •<input type=checkbox name=groupName value=required checked>
+  •<i type=radio name=groupName value=required checked>
+  •<i type=checkbox name=groupName value=required checked>
 *numeric inputs:
-  •<input type=number min=±#(allowed #€R) max=±#>
+  •<i type=number min=±#(allowed #€R) max=±#>
     ›not supported by mobile agents.
-  •<input type=range min= max= step=any|#>
-*times:
-  •<input type=time value=hh:mm:ss.fff>
-  •<input type=date value=yyyy-mm-dd>
-  •<input type=datetime-local value=yyyy-mm-ddThh:mm:ss.fff>
-  •<input type=month value=yyyy-mm>
-  •<input type=week value="yyyy-Www: 2021-W45">
-  »T|W must be uppercase, prefix single number by 0(4:30→04:30)   
-*menu: 
-  <select name=choice|choices[] size=#(options before scroll the rest) multiple>
+  •<i type=range min= max= step=any|#>
+*times: <input type= min?max≈value-format step=#60sD>
+  ›type=time value=hh:mm:|ss|.f~fff ›type=date value=yyyy-mm-dd
+  ›type=datetime-local value=yyyy-mm-ddThh:mm|:ss|.f~fff
+  ›type=month≠S4F4 value=yyyy-mm ›type=week≠S19F4 value=yyyy-Www
+  »T|W must be uppercase, prefix single number by 0(4:30→04:30)
+*menu: <select name=choice|choices[] size=#(options before scroll the rest) multiple>
     <optgroup label=header>
       <option selected>value</option> …
     </optgroup> …
   </select>
-*drop-down input suggestions:
-  <input type=all(not hidden|password|checkbox|radio|file) list=suggestions_id>
-  <datalist id=suggestions_id>
-    <option value=suggested1> <option value=suggested2> …
-  </datalist>
-*color picker: <input type=color>
-*upload: <input type=file accept=image/*|audio|video|(other-formats-type) capture|capture=user(front_camera)|environment(back) multiple>
+*drop-down: <datalist id=x> <option value=suggest1>… </datalist>
+  <i list=x type=all≠hidden|pw|checkbox|radio|file> 
+*color picker: <i type=color>
+*upload: <i type=file accept=image/*|audio|video|(other-formats-type) capture|capture=user(front_camera)|environment(back) multiple>
   •required: <form method=post enctype=multipart/form-data>
-*hidden background control: <input type=hidden>
+*hidden background control: <i type=hidden>
   •not appear in user interface,#Worning !! he can access it
 *need js behavior:
   •<progress max=#(required ex:100) value=#></progress>
@@ -87,8 +80,8 @@
     ›high: Indicates the upper bound of the measured range
     ›optimum: between min&low(green|yellow|orange)| low&high(yellow|green|yellow)| high&max(orange|yellow|green)
   •output: <form oninput="o.value = a.valueAsNumber + b.valueAsNumber" onsubmit="return false">
-      <input type=number name=a step=any> + 
-      <input type=number name=b step=any> = 
+      <i type=number name=a step=any> + 
+      <i type=number name=b step=any> = 
       <output name=o for="a b"></output></form>
     ›addEventListener() required id= as replacement to name=
 
@@ -96,10 +89,10 @@
 ★form submit: (no name=att) 
 *shared submit_attributes: (overrid form_attributes)
   •formaction, formenctype, formmethod, formnovalidate, formtarget
-*<input type=submit value=submit>
-*<input type=image src= alt=submit width=40 height=~> no-value
+*<i type=submit value=submit>
+*<i type=image src= alt=submit width=40 height=~> no-value
 *<button type=submit'd(|button|reset) value=submit>txt|img</button> •button are dynamic.innerhtml & styled::after|before
-*reset (useless): •<input type=reset value=reset>
+*reset (useless): •<i type=reset value=reset>
   •<button type=reset value=reset></button>
 
 ★accessibility: •<fieldset> <legend>group-description</legend>
@@ -116,7 +109,7 @@
   input,textarea,:is(input,textarea)::placeholder{font:inherite}
   legend{width:1px;height:1px;overflow:hidden}
    /*›screenReader repeat legend on each option, make it short*/
-•extra: [type=text?password?email?tel?url?search?select],textarea {border|-radius; margin; padding; background; …}
+•extra: [type=text?pw?email?tel?url?search?select],textarea {border|-radius; margin; padding; background; …}
   textarea{resize: none'd}    /*both'd-UA|horizontal|vertical*/
   input, textarea{caret-color: red} /*alerted vertical-line*/
   is(form,input):in?valid{/*target: max?minlength, required*/}

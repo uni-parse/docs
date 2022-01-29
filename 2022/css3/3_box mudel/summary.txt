@@ -51,7 +51,7 @@
   •b-<style|width|color>: all|v h|t h b|t r b l;
     ›b-<side>-color: <color>;
     ›b-<side>-width: length| thin| medium'd| thick;
-    ›b-<side>-style: none'd| hidden| solid| double| dotted| dashed| groove| ridge| inset| outset;
+    ›b-<side>-style: none'd| hidden| solid| double| dotted| dashed| groove'normal| ridge'clicked| inset| outset;
 
 *b-collapse(table): collapse'd|separate;
 *b-spacing↓(table): h=v'length| h v;

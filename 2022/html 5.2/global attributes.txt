@@ -1,5 +1,4 @@
-
-
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
   •class, id, style 52~56%
   •dir=ltr|rtl|auto 52%
   •lang=en 53%
@@ -8,11 +7,10 @@
   •spellcheck=true|false 45% + 50%-partial-support(mobile)
     check of text grammar valid
   •title='' 53%
-  •accesskey=B 53% (js_api://el.accessKey='B'; 93%) 
-    to use alt + B
+  •accesskey55=B, js93: el.accessKey='B'; usage: alt+B.
+  •tabindex=±#≤32767, +# before> +#+1 before> 0, -# ≠ tabFocus.
   •hidden 99% (css://display: none;)
   •translate=no|yes 92%-noFirefox
-  •tabindex=# 94%
   •draggable|draggable=false 58%
-  •contenteditable=true|false 58% (js_api://el.contentEditable='true|false' 98%)
+  •contenteditable58|=t?f, js98: el.contentEditable='true?false'
   •slot=placeholderName of template(as argument of function)

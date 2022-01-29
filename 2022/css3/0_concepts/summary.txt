@@ -20,7 +20,7 @@
       ›Ançe|stors ? Des|cen|dants: high?low hierarchy lvl.
       ›parent?child: one hierarchy lvl high?low.
       ›sib|lings: same hierarchy level.
-    »Descendants inherit some Ancestors properties font?color?… not border?background?…, & overrided by descendents styles.
+    »Descendants inherit some Ancestors properties font?color?… not border?background?…, & overrided by descendants styles.
       ›some relative measurement em?rem?% inherit as absolute px
 
 ★length measurement: •absolute: ›screen: pixel:px=in/(ppi≈96).

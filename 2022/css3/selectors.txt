@@ -6,12 +6,12 @@
 
 ★basic: *{universal asterisk target all els, (0,0,0)}
   tag{(0,0,1)} .classifyEls{(0,1,0)} #uniqueIdentify{(1,0,0)}
-  [attribute]{(0,1,0)} [att=v]{} [att=v i]{caseInsencitive lv4}
+  [attribute]{(0,1,0)}   [att=v]{}    [… i]{caseInsencitive lv4}
     [att*=Vpart]{…v…} [att~=spaceV]{… v …} [att|=hyphenV]{…-v-…}
-    [att^=valPrefix]{v…} [att$=valSufix]{…v} /*tilde~, caret^*/
+    [att^=valPrefix]{v…} [att$=valSufix]{…v}  /*tilde~, caret^*/
   ›contextual combinators: unaffect specifisity.
     s1s2…{specific} s1,s2,…{group} sParent>sChild{direct child}
-    sAncestor sDescondant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
+    sAncestor sDescendant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
     s1+s2{only next sibling} s1~s2{all subsequent siblings}
 
 ★pseudoElement(0,0,1): part of el, basicSelector::onceInEnd.
@@ -22,8 +22,8 @@
     ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
   :?::first-line/*#block-lvl-els*/{
     <::first-letter>≠margin;padding;border;box-shadow;float}
-  ::placeholder/*input?textarea*/{<::line1>-*;color:lightgray'd}
-  :?::before?after/*≠replacedEls*/{content; display:inline'd}
+  ::placeholder{<::line1>-*;color:lightgray'd}/*input?textarea*/
+  :?::before?after{content; display:inline'd}   /*≠replacedEls*/
     »content: none| normal|
     [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
       »counter(name,style?) counters(name,'nest separater',sty?)
@@ -36,123 +36,80 @@
   ::cue?cue(selector)≠F4{bg;color;opacity;visibility;font;
     text-shadow?decoration?-*;line-height;white-space;outline}
     ›style track.Vtt of vedio, bg apply individually to each cue
-  ::part(n1 …){/*<template><shadowTree-el part='n1 …'>*/}
-  ::slotted(*|selector){/*under <template><slot><targets>*/}
+  ::part(n1 …){}       /*<template><shadowTree-el part='n1 …'>*/
+  ::slotted(*|selector){}    /*under <template><slot><targets>*/
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
-★pseudoClasses: state of el.
-  :lang(en'd?…){quotes;??} /*<el lang=en?…>*/
-  
-  order: any-link> link?visited> focus?hover> active.
-
- •location: 
+★pseudoClass(0,1,0): state of el.
+  :lang(en'd?…){quotes; …??}                  /*<el lang=en?…>*/
+ *order: any-link> link> visited> hover> focus?-*> active.
+ •location: :scope{}/*inCss=:root, inJS=el who call the method*/
+    //ex: el.querySelector?All|closest|matches(':scope>div')
   :any-link?link≠visited{}/*<a?area href=>,in S19 <link href=>*/
-    :visited{color;bg-c;border-<side?>-c;outlne-c;column-rule-c;text-decoration?emphasis-c}{fill?stroke}/*access History*/
-  :
+    :visited{color;bg-c;border-<side?>-c;outlne-c;column-rule-c;text-decoration?emphasis-c}{fill?stroke}  /*access History*/
+  :target{}/*<el id=fragment> URL#fragment ←<a href=#fragment>*/
 
+ •user action: :active{}                      /*while clicking*/
+  :hover{}   /*after el?pseudoElement, have some mobile issues*/
+  :focus?-within?-visible≠S19{}
+    ›onClick?tab+Enter <a href=#fragment> focus <el id=fragment>
+    :focus-within{}  /*= (el:focus) #and (el descendant:focus)*/
+    :focus-visible≠S19{}| :focus:not(:f-visible){outline:none;…}
+      ›if user set always-focus=visible in settings.
+      ›user navigate by tab?arrow?key-keyboard ≠ mouse?finger.
+        <el accesskey55=B>, js93: el.accessKey='B'; usage: alt+B
+        <el tabindex=±#≤32767>, +# before> +#+1 > 0, -#≠tabFocus
+      ›els required keyboard to function as <input type=text?…>.
+      ›script el.focus() after :focus-visible ≠ :not(:f-visible)
 
-
-
-  •selected: a:focus{}
-l4•selected-descondant a:focus-whithin{}
-    ›ex: <div style=:focus-whithin{}> <a></a>…<input> </div>
-         <!-- select div if any els inside it selected -->
-  •:hover{}
-  •while clicking: a:active{}
-  •:target{}
-    html: <e id=fragment></e>…<a href=#fragment></a>…
-    url: website.io#fragment
-    ›Note: to clear target click on / html: <a href=#></a>
-
-
-
-
-
-
-
-
-
-
-  *structure:
-  l4•:is(el, [att], :pseudo-class, …) p{}
-      select any <p> inside <el1> & [att] & :pseudo-class & …
-      Note :is(::pseudo-elements) invalid !!
-  l4•:where(el1, el2, :pseudo-class, …) p:hover{}
-      same as :is(), but have different specificy weight:
-        :is() el{} → [0][1][1]
-        :where() el{} → [0][0][1]
-        el{} → [0][0][1] + order
-      "el{}" can override ":were() el{}", but not ":is() el{}"
-    •:root{--variables:values;}brefer to <html>with high specify
-    •e:empty{} have no content even space except comments
-    •pr:first-child{}
-    •pr:last-child{}
-      »body>el:last-child{} not-work !!!
-    •pr:first-of-type{}
-    •pr:last-of-type{}
-    •pr:not(#child1-selector):not(.another:last-child)…{}
-    •pr:nth-child(even=2n+1|obb=2n|(a€Ž)n+(b≥0)):nth-child(an+b)…{}
-      »ex: pr:nth-child(4n+60):nth(-4n+80){}
-        select 60,64,68,72,76 and 80 from 100
-    •pr:nth-last-child(an+b)…{}
-    •pr:nth-first-of-type(an+b)…{}
-    •pr:nth-last-of-type(an+b)…{}
-    •pr:only-child{}
-      select any pr have 1 child
-    •pr:only-of-type{}
-      select any descondant-type who dont havd siblings
-
-
-
-
-
-
-
-
-
-
-  *form:
-    •i:checked{} or :checked{}
-      if user select|check it.
-  l4•i:default{} or :default{}
-      if it have att: checked|selected|type="image|submit"
-      to select labels :default+label{}
-    •i:disabled{opacity:.3;} 
-      if it have att: disabled
-    •i:enabled{} if it not disabled.
-  l4•i:in-range{} match att; min max (type=number|time's…)
-  l4•i:out-of-range{}
-      do not match att: min max (required type=number)
-  l4•form,i:valid{}           (maxlength=|minlength=|required)
-  l4•form,i:invalid{} if user input incorrect for  requirement.
-  l4•i:required{} if it have att: required
-  l4•i:optional{} if it do not have att: required
-  l4•i:read-only{} 
-      if it have att: readonly(d'*:not(input))
-  l4•i:read-write{} 
-      if it not have att: readonly, content'editable
-  l4•i:indeterminate + label{}
-      unselected i[type=checkbox], i[type=radio](77gs-noSafari), <progress></progress>
-  l4•i:placeholder-shown{} /* pseudo-class */
-      select input|textarea who its placeholder are displaying
-
+ •input: :-webkit27-autofill{≠ color|bg-image?color}
+  :placeholder-shown{} <input?textarea placeholder=>before input
+  :disabled≠enabled{opacity:.3d}        <form-control disabled>:
+    input button textarea select optgroup option fieldset≠Edge4
+  :checked|+label{}/*=on:<i type=radio?checkox> <option>≠style*/
+  :default|+label::after{content:' (default)'; …}  /*+disabled*/
+    ›<option selected>       <input type=radio?checkbox checked>
+    ›first form <button type=sumbit'd> or <i type=image?submit>
+  :indeterminate|+label{} <progress> <i type=radio≠S19?checkbox>
+    var c=document.querySelectorAll('[type=checkbox]');
+    for (var i=0; i<c.length; i++) {c[i].indeterminate=true}
+  :read-write{} <any-el≠input contenteditable>        <textarea>
+    <input type=text?pw?email?tel?url?search?number?time's>
+  :read-only{} <any-el≠input>          <input?textarea readonly>
+    <input type=radio?checkbox?submit?image?file?range?color>
+  :required≠optional{} <input?textarea?select required>
+  :in≠valid{}  <i?textarea?select max?minlength≠select required>
+    <i max?min?step?value=times-format patern=>           <form>
+  :in-range≠out-of-range{} <i type=number?range?time's min?max=>
+ 
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+ •structure:
   
+
+
+  :is(el, [att], :pseudo-class, …) p{}
+   select any <p> inside <el1> & [att] & :pseudo-class & …
+   Note :is(::pseudo-elements) invalid !!
+  :where(el1, el2, :pseudo-class, …) p:hover{}
+   same as :is(), but have different specificy weight:
+     :is() el{} → [0][1][1]
+     :where() el{} → [0][0][1]
+     el{} → [0][0][1] + order
+   "el{}" can override ":were() el{}", but not ":is() el{}"
+  :root{--variables:values;}brefer to <html>with high specify
+  e:empty{} have no content even space except comments
+  pr:first-child{}
+  pr:last-child{}
+   »body>el:last-child{} not-work !!!
+  pr:first-of-type{}
+  pr:last-of-type{}
+  pr:not(#child1-selector):not(.another:last-child)…{}
+  pr:nth-child(even=2n+1|obb=2n|(a€Ž)n+(b≥0)):nth-child(an+b){}
+   »ex: pr:nth-child(4n+60):nth(-4n+80){}
+     select 60,64,68,72,76 and 80 from 100
+  pr:nth-last-child(an+b)…{}
+  pr:nth-first-of-type(an+b)…{}
+  pr:nth-last-of-type(an+b)…{}
+  pr:only-child{}
+   select any pr have 1 child
+  pr:only-of-type{}
+   select any descendant-type who dont havd siblings
