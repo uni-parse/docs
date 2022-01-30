@@ -1,0 +1,31 @@
+@charset "UTF-8";
+:valid + label::after {
+  content: " ✓";
+  color: green;
+}
+
+:invalid + label::after {
+  content: " ✖";
+  color: red;
+}
+
+:in-range + label {
+  color: green;
+}
+
+:out-of-range + label {
+  color: red;
+}
+
+div:empty {
+  box-shadow: 0 0 2px 1px yellowgreen;
+  height: 5em;
+}
+
+body > :first-child {
+  border: solid red;
+}
+
+ul ::selection {
+  color: #c8ff00;
+}

@@ -53,9 +53,9 @@
   •<i type=checkbox name=groupName value=required checked>
 *numeric inputs:
   •<i type=number min=±#(allowed #€R) max=±#>
-    ›not supported by mobile agents.
+    ›mobile≠supported min?max?step| increment?decrement buttons.
   •<i type=range min= max= step=any|#>
-*times: <input type= min?max≈value-format step=#60sD>
+*times: <input type= min?max≈value-format step=#60sD€Z'ex.001>
   ›type=time value=hh:mm:|ss|.f~fff ›type=date value=yyyy-mm-dd
   ›type=datetime-local value=yyyy-mm-ddThh:mm|:ss|.f~fff
   ›type=month≠S4F4 value=yyyy-mm ›type=week≠S19F4 value=yyyy-Www
@@ -113,4 +113,4 @@
   textarea{resize: none'd}    /*both'd-UA|horizontal|vertical*/
   input, textarea{caret-color: red} /*alerted vertical-line*/
   is(form,input):in?valid{/*target: max?minlength, required*/}
-•selectors: :focus?hover?active :in?valid :required?optional :enabled?disabled :default?checked :read-only?write :out-of?in-range [type=number] :placeholder-shown ::placeholder ::selection≠Ios15 :indeterminate=[checkbox,radio≠S19,progress]
+•selectors: :focus?hover?active :in?valid :required?optional :enabled?disabled :default?checked :read-only?write :out-of?in-range [type=number] :placeholder-shown ::placeholder ::selection≠Ios15 :indeterminate

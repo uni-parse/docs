@@ -7,19 +7,24 @@
     <meta charset=uft-8> <!--
     <Script src=polyfill.min3a72.js></Script>
     <script src=picturefill.min.js></script> -->
-<style>
+<style>@import 'style.css';
 html,*{box-sizing:border-box}
 body{
   background:#333;
   color:#aaa;
 }
-:valid+label::after{content: ' ✓';color: green;}
-:invalid+label::after{content:' ✖';color: red;}
-:in-range+label{color: green;}
-:out-of-range+label{color: red;}
 </style>
 </head>
 <body>
+<header>
+  <ul>
+    <li><a>1</a></li>
+    <li class=a><a>2</a></li>
+    <li><a>3</a></li>
+    <li><a>4</a></li>
+  </ul>
+</header>
+<main>
 <form>
   <fieldset>
     <input type=checkbox name=a required><label>label</label>
@@ -38,7 +43,7 @@ body{
   <input type=tel required><label>tel</label><br>
   <input type=number required max=300><label>number</label><br>
   <input type=range required><label>range</label><br>
-  <input type=time required><label>time</label><br>
+  <input type=time step=.5 required><label>time</label><br>
   <input type=date required><label>date</label><br>
   <input type=datetime-local max='2000-01-15T22:40:10.99' value='2000-01-15T22:40:10.909' required><label>datetime-local</label><br>
   <input type=month required value='2000-01-1515'><label>month</label><br>
@@ -53,7 +58,8 @@ body{
     <option>2</option>
   </select><label>select</label>
 </form>
-
+<div><!--gulp.htmlmin removed space!!-->       </div>
+</main>
 
 
 
