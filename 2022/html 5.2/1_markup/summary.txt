@@ -153,16 +153,9 @@
   <  &lt; less-than
   "  &quot; quotation (unnecessary)
   '  &apos; apostroph (unnecessary)
+     &#32; U+0020 space character
      &nbsp; non-break space 
      &ensp; en space
      &emsp; em space
      &zwj; zero width joiner: to connect two words in arabic or hindi
      &zwnj: zero width non-joiner: to neighbor two words without connecting in arabic & hindi
-      
-      
-      
-      
-      
-
-
-

@@ -47,6 +47,11 @@
   :host{} <custom-el>                  /*from inside shadowDOM*/
   :host(*|1s≠combined){}rel→globalDOM, S19≠slotted?:host>.local
   :host-context≠S19F4(*|1s≠combined){}//s=globalDOM.ancestor
+  
+
+
+  :fullscreen≠Ios14
+  @page{:first?left?right≠F4}
 
  •structure: :root{--cusom-property:val}<html>specificity(0,1,0)
   :empty{} ≠childEls|text+space, except comments|content=''
@@ -94,5 +99,3 @@
   :in≠valid{}  <i?textarea?select max?minlength≠select required>
     <i max?min?step?value=times-format patern=>           <form>
   :in-range≠out-of-range{} <i type=number?range?time's min?max=>
-
- •extra: :fullscreen≠Ios14{} @page :first?left?right≠F4 {}

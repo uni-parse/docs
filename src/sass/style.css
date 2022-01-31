@@ -29,3 +29,7 @@ body > :first-child {
 ul ::selection {
   color: #c8ff00;
 }
+
+:defined {
+  color: darkcyan;
+}

@@ -16,8 +16,12 @@
   •template=shadowHost=shadowRoot of scopped shadowDOM Tree.
     ›can be in head or body.
   •attachShadow({mode:'open'}): allow access to&from globalDOM.
-    »::part(name1 …) give globalDOM access to shadowDOM:
+    »::part(name1 …) target shadowDOM from globalDOM:
       ›target: <template> <el part='n …'(as class)> </template>.
-    »::slotted(*|selector) give shadowDOM access to globalDOM:
+    »::slotted(*|1s≠combined) target globalDOM from shadowDOM:
       ›target: <custom-el><el slot=placeholder</el></custom-el>.
       ›argument: <template> <slot name=placeholder> </template>.
+    ›:host target <custom-el> who in globalDOM from shadowDOM.
+     :host(*|1s≠combined){} rel→globalDOM, S19≠slotted?:host>s
+     :host-context≠S19F4(*|1s≠combined){}//s=globalDOM.ancestor
+  •:not(:defined){display:none} target <custom-el> until <script src='//customElements.define()' defer> parsing=100%

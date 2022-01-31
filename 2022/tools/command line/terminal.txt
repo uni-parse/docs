@@ -1,0 +1,53 @@
+
+
+★command line (terminal):
+  *syntext: 
+   prompt{path $|# 'command flags… arguments…' && 'another line-command'… <Enter>}
+     »ex: prompt{~ # ep -w magiskroot.net <Enter>}
+    •prompt: input|output field.
+    •path: working directory|…tail of wirking directory
+    •command:
+    •flag: addition information, offten abbreviated by first letter prefixed by one dash, and can be fullName prefixed by double dash.
+      »ex: {-f, --force} both do same function.
+    •argument:
+    
+  *navigation:
+    •pwd(print working directory): show full path from /(root)
+    •ls(list): list (files & directories) in current working directory.
+      »ls -l(list list): list (files & directories) with mofe informations.(permissions, dates, 
+      »ls -a(list all): show the hidden .dotFiles
+    •cd toPath: 
+      »from root(prefixed by /): cd / |cd /path/…
+      »home: cd ~ |cd 'space character'|cd|cd $home
+      »back: cd .. |cd ../../../…
+      »current directory: $ cd .
+      
+  *editing:
+    •mv(move)|cp(copt): move|copy sources(directories|files) to another directory
+      »syntext: mv|cp flags… sources… Directory
+        ›ex: mv|cp -u -f source1 source2 directory
+      »flages:
+        ›-u, --update: override just old versions & non-existing files.
+        ›-t,--target-directory: 
+         _Note syntext changed !!!: mv -t directory sources…
+          .ex: mv|cp -t . /path/file path/directory …
+    •rm(remove):
+      »syntext: rm flags… files(not directories)…
+      »flages:
+        ›-r,-R: remove directories and its content.
+        ›-d,--dir: remove directories just if it is empty !!!
+    •mkdir(make directory): creat empty directories just if it not existed
+      »syntext: mkdir flags… newDirNames…
+      »flags:
+        ›-p,--parents: non-prompt-errors if [nowDirNames] same as some [existingDirNames].
+        
+  *usefull commands:
+    •clear, exit, whoami,su…
+    
+    
+    
+   
+   
+   
+   
+   

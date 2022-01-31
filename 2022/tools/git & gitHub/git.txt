@@ -1,0 +1,107 @@
+
+// install git
+$ pkg i git && git --version
+$ git --help
+
+// setup git userName & email (team member)
+$ git config --global user.email "abanibilal4@gmail.com" && git config --global user.name "phantombill"
+
+
+
+
+// explain workflow...................................
+
+
+// creat working directory "my-project/"
+$ mkdir my-project && cd my-project
+
+// creat hidden repository ".git/", that commit to master branch by default
+$ git init
+
+// update(add|remove|edit) "$ touch → creat fole|files"
+$ touch index.html style.css script.js
+
+//check available files to staging (staging: green; none: red)
+$ git status
+  // add exceptions to be ignored frome workflow.
+$ touch .gitignore
+  // then edit ".gitignore" by textEditore (ex all log files)
+  .gitignore://line-1: *.log
+  // now if we add file.log & check by [$ git status], then the prompt will say: no files available to staging(ignored file.log)
+
+// add file or files frome [working directory]→[staging area]
+$ git add index.html && git add style.css
+  //or add all
+$ git add .
+
+// 
+
+// add versions of working flow frome [staging area] → [current branch](master'd) "-m: message"
+$ git commit -m "message descripts changes happend to last version"
+  // check all commits: dates, ids, authers, messages, branches
+  $ git log
+
+
+// explain branchs....................................
+
+
+
+// creat new-branch from the current branch(in this case master)
+$ git branch navStyle
+
+// switch the working directorh frome master→navStyle branch
+$ git checkout navStyle
+
+// check the available branchs & the current branch (green & prefixed by asterisk *)
+$ git branch
+
+// update(add|remove|edit) & stage & commit without affect master branch
+$ rm style.css && touch style.scss
+  // edit style.scss then convert to style.css by gulp(task runner)
+$ git add . && git commit -m "initial styling navigation"
+$ …
+$ git add . && git commit -m "final styling navigation"
+
+// save changes after meeting our purpose frome navStyle→master branch
+  // switch to target branch (in this case master)
+$ git checkout master 
+  // merge 
+$ git merge navStyle -m "merge navigator style"
+
+// delete the new-branch after merge
+$ git branch -d navStyle
+  // if we wanna delete branch without merge
+$ git branch -D navStyle
+
+
+
+// if the target branch changed(commited or merged by another branch), while we still devloping of fixing our branch, then we have two options:
+  // option1: merge frome target branch(in this case master), "no hestoric"
+$ git checkout navStyle && git merge master
+  // option2: rebase our branch on head-commit(latest version in current time) of target branch(in this case master), "dangerous"
+$ git rebase master
+
+
+
+// copy open source repository to my-accont repositorie's
+1.open in browser: 'https://github.com/username/TargetRepositoryName'
+2.rotate screen to landscape orientation
+3.click on fork button at top right
+
+// copy remoted-repository(my-accont|open-source) to be local-repository
+$ git clone https://github.com/username/TargetRepositoryName to/local/path
+$ git clone https://github.com/phantombill/website.github.io ~/my-project/
+
+// after update the local-repository, we can make pull request, to open discussion before puch(remote merge)
+$ touch a.txt && git add . && git commit -m "change"
+$ git pull ???needTest???
+
+// after pull discussion done, we can puch the changes to the remoted-repository(in this case 'main' --not-master)
+$ git push -u origin main
+  // then input:
+  username: phantombill
+  password: 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
+
+
+
+

@@ -1,0 +1,25 @@
+
+
+★gitHub: one of a lot servers that hosting git (free just for poplic project)
+
+★git: is version controll programe(can be offline)
+  *git terminologies:
+    •workflow: local copy of main repo'sitory, where change happend.
+    
+    •git repository:
+      »local repository: hidden in working directory, store commits-metadata(changes logs), and screenshots, and versions copies.
+      »remoted repository: lives in server (like github), or on another machin(local laptop).
+    
+    •staging: before commiting changes we need to enable git to tracking files, by adding changed files to local index.
+      »by enter in terminal: $ git add <filename|.(all)>
+    
+    •commit: after staging, we can commit them to local repository.
+      »the commit is log|save|record all changes happend in metadata(as version),
+      »including the team member email, username, date & time, descriptive message, and uniqu id (7~40 caracter of hexadecimal).
+     
+    •branch: is stack of sequential commits end with 'head' commit(latest'd|last reordered)
+      »master|default|source branch: is the offical version of project, and is deployable
+      »new branchs: copied from current branch to developing new feature or to fix bug,
+    
+    •merge: is adding all commits of branch to another branch
+    •puch:
