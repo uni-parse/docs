@@ -1,4 +1,5 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  compile=translate sass→css
   in≠exCluding.
   immediately 0s
   descent↓ ascent↑ 
@@ -39,5 +40,4 @@
   Deprecated de|pre|kated (no more supported)
   cubic مكعب
   api application programming interface
-  
   

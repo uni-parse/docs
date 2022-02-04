@@ -1,0 +1,81 @@
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+scss= superset of css, sass= indent syntax style sheet.
+★variables: :root{$var-name:value;} s{property: $var-name;}
+★nesting: s0{p:v; s01{p:v; s011{p:v} &.a s012{p:v}}}
+★partials: _pName.scss≠compiled→css called by @use rule.
+ ›@use 'pName'; before any rule≠≈@forward|$var, rel→current.scss
+★modules: @use 'src/module'; p:module.$var; @include module.mName; (+funcion)
+★@mixin mName($var:iV){p1:$var;…} s{@include mName?($var:v);…}
+★%sharedName{p1:v;…}≠compiled→css, s{@extend %sharedName;…}
+★operators: +-*%,@use 'sass:math' math.div(600px, 960px) 
+ 100%;
+
+★sass stylesheet stracture:
+  •statement0= selector{statement1;statement2}
+  •statement= style-rule, property-declaration
+ *univarsal statements: used anywhere
+  •declaraion: $variable:value
+  •flow control: @if @else @each @for @while
+  •@error @warn @debug
+ *css statements: used anywhere except in @function
+  •style rule selector{}
+  •css at-rule @media @fon-face @supports @keyframes
+  •@include (call @mixin)
+  •@at-root
+ *top-lvl statements: top-lvl at stylesheet|css statement
+  •modyle loads @use
+  •@import
+  •@mixin (definition)
+  •@function (definition)
+ *other statements:
+  •property-declaration used in style-rule or some @at-rule
+  •@extend used only in style-rule
+
+ *sassScript: are expression can be in right of 
+  •property:expression; $variable:expression; 
+  •@function?mixin?if(expression)
+ *sassScript can be:
+  •number: 12|12px
+  •string: 'url'|bold
+  •color: #00f|blue
+  •boolean: true|false
+  •null
+  •values-list: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
+  •maps: ('background': red, 'foreground': pink)
+ *operators
+  •== !=
+  •+ - * / %
+  •< > <= >=
+  •and or not
+  •string concatenate + - /
+  •( )
+ *other sassScript=expressions
+  •$var
+  •function calls: var(--custom-property) nth($list, 1)
+  •special function: calc() url()
+  •parent selector: &
+  •!important
+
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+★comments: /*!preserve /*Øif compressed //ØleftLine ///ØsassDoc
+★style rules: as css selector{declarations=property:value;} +
+  •nesting:
+    ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
+    ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
+    ›&parent, @at-root
+    »properties: s{border-*} = s{border:{style:solid;size:thin}}
+      ›s{margin:1em{left:0}}
+      ›
+  •#{interpolation}:
+    ›can inject #{sassScript expression} in selector:
+      @mixin mName($s,$v:' ✖'){&>#{$v1}:after{content:$v}} 
+      @include mName(':valid',' ✓'); @include mName(':invalid');
+    ›can mixed with &parent-selecttor, @at-root, s-function()
+    ›can injected as|in propertyName:
+      @mixin mName($property,$val,$prefixes){
+        @each $prefix in $prefixes{-#{$prefix}-#{$propery}:$val}
+        #{$property}: $val}
+      .selector{@include mName(background-clip,text,moz webkit)}
+  •
+  •
+  •

@@ -1,9 +1,6 @@
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+★install:
 
-
-★instalation:
-pkg install dart && pub global activate sass && export PATH="$PATH":"$HOME/.pub-cache/bin"
-  
-  
 ★terminal command line use:
   *syntext: 
     •$ sass flags path/inputName.scss path/outputName.css
@@ -13,11 +10,12 @@ pkg install dart && pub global activate sass && export PATH="$PATH":"$HOME/.pub-
     •-w: watch if input.scss changed, then update output.css in real time at background.
     •--no-source-map: dont comment & dont creat map file
     •--update: affect just older files.css
-    
-    
+
+https://twitter.com/sleepyb3d?lang=en
+
 ★sass(syn'tactical'ly awe'some style sheet):
   *introduction: sass are preprocessor language, have awesome syntext (powerfull & ease then css), we need to converted it(.scss|.sass) to .css by (nodejs-sass|dart-sass) through terminal based on bash.
-  
+
   *demo:
     •nesting:
       ul{
@@ -48,22 +46,10 @@ pkg install dart && pub global activate sass && export PATH="$PATH":"$HOME/.pub-
       »ex2:
         @mixin bg($origin-box, $clip-box){
           background-origin: $origin-box;
-          -webkit-background-clip: $area-box; /*95% gs*/
-          background-clip: $area-box; /*3.5% gs*/
+          -webkit-background-clip: $clip-box; /*95% gs*/
+          background-clip: $clip-box; /*3.5% gs*/
         }
         h1{
           background: linear-gradient(orange, red, purple);
           @include bg(content-box, text);
         }
-
-
-
-
-
-
-
-
-
-
-
-

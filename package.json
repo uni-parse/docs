@@ -32,7 +32,8 @@
     "lodash": "^4.17.21",
     "postcss": "^8.4.5",
     "postcss-preset-env": "^7.1.0",
-    "sass": "^1.49.0",
+    "sass": "^1.49.7",
+    "sass-embedded": "^1.49.7",
     "source-map-resolve": "^0.6.0",
     "uuid": "^8.3.2"
   },

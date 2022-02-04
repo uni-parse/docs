@@ -1,3 +1,4 @@
+@use 'partial';
 :valid+label::after{content: ' ✓';color: green;}
 :invalid+label::after{content:' ✖';color: red;}
 :in-range+label{color: green;}
@@ -10,4 +11,5 @@ body>:first-child{border: solid red;} // invalid body≠parent
 
 ul ::selection{color: #c8ff00;}
 //:root ul a{color: #c744d8;}
-:defined{color: darkcyan;}
+//:defined{color: darkcyan;}
+body{ul{text-align:center;li{a{color:red;}&.a a{color:aqua}}}}

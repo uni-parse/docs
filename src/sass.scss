@@ -1,0 +1,12 @@
+@use 'partial';
+@use 'variables';
+@mixin mName($n,$v:' ✖'){>:nth-child(#{$n}):after{content:$v}}
+div{@include mName(3,' ✓'); @include mName(2);}
+body{>div{background:{ image: url(gaara.webp);
+  position: center; size: contain; repeat: no-repeat;}}}
+body>div>{@at-root div:first-of-type{
+  background-color: #010c;
+  margin:.5em{left:0}
+}}
+h1{color: variables.$c1;}h2{color: variables.$c2;}
+h3{color: variables.$c3;}h4{color: variables.$c4;}

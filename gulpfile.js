@@ -2,7 +2,7 @@
 // concts.......................
 
 const {src, dest, watch, series, parallel} = require('gulp');
-const sass = require('gulp-sass')(require('sass'));
+
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 const autoprefixer = require('autoprefixer');
@@ -121,7 +121,8 @@ function htmlTask(){
 
 
 
-
+//const sass = require('gulp-sass')(require('sass'));
+const sass = require('gulp-sass')(require('sass-embedded'));
 // sass→css task
 function sassTask(){
   var plugins = [ 
@@ -131,7 +132,7 @@ function sassTask(){
   ];
   return src('src/*.scss', {sourcemaps: false})
  //.pipe(sourcemaps.init())
-    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(sass.sync({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(concat('style.css'))
     .pipe(dest('src/sass'))
     .pipe(postcss(plugins))

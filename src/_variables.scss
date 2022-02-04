@@ -1,0 +1,6 @@
+/*comment*/ /*!loud comment*/
+$hue:90; //silent comment
+$c1:hsla($hue, 100%, 50%, 0.25);
+$c2:hsla($hue, 100%, 50%, 0.5);
+$c3:hsla($hue, 100%, 50%, 0.75);
+$c4:hsla($hue, 100%, 50%, 1);

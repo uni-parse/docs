@@ -8,11 +8,6 @@
     <Script src=polyfill.min3a72.js></Script>
     <script src=picturefill.min.js></script> -->
 <style>@import 'style.css';
-html,*{box-sizing:border-box}
-body{
-  background:#333;
-  color:#aaa;
-}
 </style>
 </head>
 <body>
