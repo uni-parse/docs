@@ -1,4 +1,5 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  digit=# (dijit)
   compile=translate sass→css
   in≠exCluding.
   immediately 0s

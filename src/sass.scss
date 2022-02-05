@@ -1,12 +1,30 @@
+@use 'variables' with ($var: 'configured ');
 @use 'partial';
-@use 'variables';
-@mixin mName($n,$v:' ✖'){>:nth-child(#{$n}):after{content:$v}}
-div{@include mName(3,' ✓'); @include mName(2);}
-body{>div{background:{ image: url(gaara.webp);
-  position: center; size: contain; repeat: no-repeat;}}}
+@use 'sass:meta'; @use 'sass:selector';
+p::before{content:variables.$var;color:#0f0}
+h1{color: variables.$c1;}h2{color: variables.$c2;}
+h3{color: variables.$c3;}h4{color: variables.$c4;}
+
+@mixin a($n,$v:' ✖',$c:false){
+  >:nth-child(#{$n}):after{content:$v;color:if($c,#0f0,red)}
+}
+body>div{@include a(3,' ✓',true); @include a(2)}
+body{>div{background: url(gaara.webp) center/contain no-repeat}}
 body>div>{@at-root div:first-of-type{
   background-color: #010c;
   margin:.5em{left:0}
 }}
-h1{color: variables.$c1;}h2{color: variables.$c2;}
-h3{color: variables.$c3;}h4{color: variables.$c4;}
+
+@mixin b{#{if(&,'&.a','.a')}{color:#07f}}
+.b{@include b}//.b.a{color:#07f}
+@mixin c{#{if(&,'&.a','.a:before')}{content: '♪ ';color:#827}}
+@include c;//.a:before{content: '♪';color:#827}
+
+@mixin d($child){@at-root #{selector.unify(&,$child)}{@content}}
+body .div0 .a{
+  @include d('h2::first-letter'){color: #008cff;}
+  @include d('.b::first-letter'){color: #0f0;}
+}
+
+
+

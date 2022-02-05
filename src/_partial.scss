@@ -1,8 +1,20 @@
+@use 'sass:meta';
 html{
     box-sizing:border-box
     *:before,*:after{box-sizing: inherit;font:inherit;}
 }
-body{
-  background:#222;
-  color:#aaa;
+$font: 'Rose Mary';
+:root{
+  --font-invalid: $font;
+  --font-noQuotes: #{$font};/*!not recommended by mdn*/
+  --font: #{meta.inspect($font)};
 }
+@font-face {
+  font-family: var(--font);
+  src: url(Rosemary.ttf);
+}
+body{
+  font: 1em var(--font),serif;
+  background:#222; color:#aaa;
+}
+::selection{color: currentColor; background-color: #440b55;}

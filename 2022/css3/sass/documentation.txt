@@ -7,8 +7,7 @@ scss= superset of css, sass= indent syntax style sheet.
 ★modules: @use 'src/module'; p:module.$var; @include module.mName; (+funcion)
 ★@mixin mName($var:iV){p1:$var;…} s{@include mName?($var:v);…}
 ★%sharedName{p1:v;…}≠compiled→css, s{@extend %sharedName;…}
-★operators: +-*%,@use 'sass:math' math.div(600px, 960px) 
- 100%;
+★operators: +-*%,@use 'sass:math' math.div(600px, 960px) * 100%;
 
 ★sass stylesheet stracture:
   •statement0= selector{statement1;statement2}
@@ -42,6 +41,7 @@ scss= superset of css, sass= indent syntax style sheet.
   •null
   •values-list: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
   •maps: ('background': red, 'foreground': pink)
+  •can contain &
  *operators
   •== !=
   •+ - * / %
@@ -51,31 +51,86 @@ scss= superset of css, sass= indent syntax style sheet.
   •( )
  *other sassScript=expressions
   •$var
-  •function calls: var(--custom-property) nth($list, 1)
+  •function calls: var(--custom-property) nth($list, 1) if()
   •special function: calc() url()
   •parent selector: &
   •!important
 
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
-★comments: /*!preserve /*Øif compressed //ØleftLine ///ØsassDoc
+★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
 ★style rules: as css selector{declarations=property:value;} +
-  •nesting:
-    ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
-    ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
-    ›&parent, @at-root
-    »properties: s{border-*} = s{border:{style:solid;size:thin}}
-      ›s{margin:1em{left:0}}
-      ›
-  •#{interpolation}:
-    ›can inject #{sassScript expression} in selector:
-      @mixin mName($s,$v:' ✖'){&>#{$v1}:after{content:$v}} 
-      @include mName(':valid',' ✓'); @include mName(':invalid');
-    ›can mixed with &parent-selecttor, @at-root, s-function()
-    ›can injected as|in propertyName:
-      @mixin mName($property,$val,$prefixes){
-        @each $prefix in $prefixes{-#{$prefix}-#{$propery}:$val}
-        #{$property}: $val}
-      .selector{@include mName(background-clip,text,moz webkit)}
-  •
-  •
-  •
+•nesting:
+  ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
+  ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
+  »parent&: &=outer-selector, can be after|before|argumentOf s
+    s0{s1{ul :is(&, s3):hover{}}}//&=s0 s1
+    ›suffix: .a__b--c-d{} = .a{&__b{&--c{&-d{}}}}
+    ›in sassScript: s0,s1{parent-selector:&}//&=s0,s1
+    ›outside style-rule: & return null(=false)
+     @mixin b{#{if(&,'&.a:before','.a:before')}{content:'♪ '}}
+      .b{@include c}//.b.a:before{content: '♪ '}
+      @include c;//.a:before{content: '♪ '}
+    ›unify with another selector://'s0… s4'+'.a'{}=s0… s4.a{}
+      @mixin a($s){@at-root #{selector.unify(&,$s)}{@content}}
+      .f :valid{
+        @include a('[type=tel]'){}//.f [type=tel]:valid{}
+        @include a('input:after'){}//.f input:valid:after{}
+      }
+  »@at-root: remove outer selector, s0{@at-root div{}}//div{}
+    ›by default nesting include outer selector even if & used
+  »properties: s{border-*} = s{border:{style:solid;size:thin}}
+    ›s{margin:1em{left:0}}
+
+•#{interpolation}:
+  ›can inject #{sassScript expression} in selector:
+    @mixin a($s,$v:' ✖'){&>#{$v1}:after{content:$v}} 
+    @include a(':valid',' ✓'); @include a(':invalid');
+  ›can mixed with &parent-selector, @at-root, s-function()
+  ›can contain #{if()}
+  ›can injected as|in propertyName:
+    @mixin mName($property,$val,$prefixes){
+      @each $prefix in $prefixes{-#{$prefix}-#{$propery}:$val}
+      #{$property}: $val}
+    .selector{@include mName(background-clip,text,moz webkit)}
+  ›can injected as :root{--custom-property: #{$value};}
+  »issue: interpolation return unquoted string.
+    ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
+
+•propery: can be nested, interpolated, hidden:
+  ›@mixin mName($c:false){color:if($c,#0f0,null)}
+    s0{@include mName}/*Ø*/ s1{@include mName(true)}/*#0f0*/
+
+•placeholders: (css.class + sass:superPower)
+  ›can grouped with other selectors: s0, %placeholder{}
+  ›can nest other selectors: %placeholder{p:v;&:hover{}}
+  ›called by s{@extent %placeholder;}
+
+•css variables:
+  ›declared only inside rules
+  ›can have different values on different els: 
+    el{p:var(--custom-property, fallback-value)}
+  ›updating is value affect with both old|new usages.
+  ›
+  ›
+•sass variables:
+  ›can declared anywhere, in|out rules, before|after top-rules.
+  ›can contain other variables: $v1: $v2 * $v3;
+  ›can have only 1 value at time.
+  ›updating is value affect just new≠old usages
+  ›hyphen=underScore: $var-name=$var_name
+  ›!defualt flag used in new-$var|$var:null, else old value used
+  »configuring modules: @use 'url' with ($var1:val1,$var2:val2);
+    ›$vars must be declared by !default at stylesheet top #lvl.
+  ›build-in variables cannot be modified: 
+    @use 'sass:<build-in>'; <build-in>.$var: '≠update';//invalid
+  »scope: ›local: declared & accessed just in same block.
+    ›global: declared at stylesheet top lvl, accessed anywhere.
+  »shadowing: if global $var updated in block, we will creat two scopes, global(unEffected) and its local(updated) shadow.
+    ›to assign value globaly from local scope add !global flag.
+  ›
+  ›
+•flow control rules: 
+  ›@if 
+  ›@each 
+  ›@while 
+  ›@for
+… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱

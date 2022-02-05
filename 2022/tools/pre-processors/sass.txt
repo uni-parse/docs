@@ -11,7 +11,6 @@
     •--no-source-map: dont comment & dont creat map file
     •--update: affect just older files.css
 
-https://twitter.com/sleepyb3d?lang=en
 
 ★sass(syn'tactical'ly awe'some style sheet):
   *introduction: sass are preprocessor language, have awesome syntext (powerfull & ease then css), we need to converted it(.scss|.sass) to .css by (nodejs-sass|dart-sass) through terminal based on bash.

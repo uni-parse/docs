@@ -1,5 +1,5 @@
 
-★color: currentcolor, rgb|a(r,g,b|,a), hsl|a(h,s,l|,a), #rgb|a = #rrggbb|aa (#hexaDecimal #101010 ≠ #111 = #111111)
+★color: currentcolor, rgb?a(r,g,b,a?|r g b/a?), hsl?a(h,s,l,a?|h s l/a?), #rgb|a = #rrggbb|aa (#hexaDecimal #101010 ≠ #111 = #111111)
   •red|green|blue≤100%|255|#f, alpha≤100%|1|#f, hue≤360|<angle>, saturate(100'd)|lightness(50'd)≤100%
     ›angle: 360deg'rees = 1turn = 400grad'ians = 2(π→#)rad'ians
 *color painting areas: (in body|html bg cover entir viewport)
