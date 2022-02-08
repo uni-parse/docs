@@ -114,13 +114,15 @@ scss= superset of css, sass= indent syntax style sheet.
 •sass variables:
   ›can declared anywhere, in|out rules, before|after top-rules.
   ›can contain other variables: $v1: $v2 * $v3;
-  ›can have only 1 value at time.
+  »can have only 1 value at time: 
+    ›$map: ('key':'value',…)
+    ›$list: i1 …|,…|/… or (i1 …|,…|/…) or [i1 …|,…|/…]
   ›updating is value affect just new≠old usages
   ›hyphen=underScore: $var-name=$var_name
   ›!defualt flag used in new-$var|$var:null, else old value used
   »configuring modules: @use 'url' with ($var1:val1,$var2:val2);
     ›$vars must be declared by !default at stylesheet top #lvl.
-  ›build-in variables cannot be modified: 
+  ›build-in module variables cannot be modified: 
     @use 'sass:<build-in>'; <build-in>.$var: '≠update';//invalid
   »scope: ›local: declared & accessed just in same block.
     ›global: declared at stylesheet top lvl, accessed anywhere.
@@ -128,9 +130,81 @@ scss= superset of css, sass= indent syntax style sheet.
     ›to assign value globaly from local scope add !global flag.
   ›
   ›
-•flow control rules: 
-  ›@if 
-  ›@each 
-  ›@while 
-  ›@for
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+•flow control rules:
+  »@if|@else if|@else <expression>{}
+    ›@mixin a($a,b){p:v;
+      @if $a>$b{}@else if not $a{}@else if string.index($a,' '){} @else {@error 'Unknown value #{$a}.';}}
+    ›any value=true including 0|''|[], except null=false.
+  »@each <variable> in <expression>{}
+    $list:1,2,3,4;
+    @each $v in $list{h#{$v}{color:hsl(calc($v*10) 100% 50%)}}
+    »sass list: can be Ø=()=[]| 1item=(1item,)=[1item]| #items
+      ›separators: el1,…|10px …|1px/…|[n1 …]
+      ›all sass:list.functions
+    ›
+  »@while:
+  »@fo:
+•build-in module: 
+  »global functions: hsl()
+    ›rgb?a($color, $alpha), only $alpha used: rgb(#0005,1)=#000
+    ›if($condition, $return-if-true, $return-if-false)
+  »@use 'sass:math';
+    ›.div: .s{width: math.div(600px, 960px) * 100%;}
+    ›
+    ›
+    ›
+    ›
+    ›
+  »@use 'sass:string';
+    ›.index: .s{@if string.index($string,' '){}}//return #|null
+    ›
+    ›
+    ›
+    ›
+  »@use 'sass:color';
+    ›
+    ›
+    ›
+    ›
+    ›
+  »@use 'sass:list';
+    ›
+    ›
+    ›
+    ›
+    ›
+  »@use 'sass:map';
+    »get((key:value),key)//value ›get((k:(ka:va)),k)//(ka:va)
+      ›get((k:(ka:(ka1:va1))), k,ka,ka1)//va1
+    »set((k:v),k,update)//(k:update)
+      ›set((k:v),kPlus,vPlus)//(k:v, kPlus:vPlus)
+    ›merge((k1:(ka:va)),(k1:(kb:vb),k2:v2))//(k1:(kb:vb),k2:v2)
+      
+    ›
+    ›
+  »@use 'sass:selector';
+    ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
+    ›
+    ›
+    ›
+    ›
+  »@use 'sass:meta';
+    ›.inspect: .s{--custom-property: #{meta.inspect($quoted)};}
+    ›
+    ›
+    ›
+    ›
+
+•terminal:
+  ›@debug <expression>//path/file.scss:#(line) Debug: <combile>
+  ›@error <expression>: stops compiling, in @mixin|function
+    //Error: <compile>
+    //       |
+    //#(line)| …@include mName();…
+    //       |
+   //path/file.scss #:#(line:column) root stylesheet(or mName())
+  ›@warn <expression>: don't stops compiling, in @mixin|function
+    //Warning: <compile>
+    //path/file.scss #:#(@warn) mname()
+    //path/file.scss #:#(@include) root stylesheet
+… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱

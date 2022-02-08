@@ -1,30 +1,67 @@
-@use 'variables' with ($var: 'configured ');
-@use 'partial';
-@use 'sass:meta'; @use 'sass:selector';
-p::before{content:variables.$var;color:#0f0}
-h1{color: variables.$c1;}h2{color: variables.$c2;}
-h3{color: variables.$c3;}h4{color: variables.$c4;}
+@use 'partial';@use 'sass:map';
+@mixin a($a,$b){
+  color: rgb(0, 255, 170);
+  @if $b >= 10{color: rgb(229, 255, 0)}
+  @else if $a==false{color: red}
+  //@else{@debug '💡 ($a,$b):' ($a,$b);}
+  //@else{@warn '⚠️ ($a,$b):' ($a,$b);}
+  //@else{@error '⚠️ ($a,$b):' ($a,$b);}
+}h1{@include a(true,9);}
 
-@mixin a($n,$v:' ✖',$c:false){
-  >:nth-child(#{$n}):after{content:$v;color:if($c,#0f0,red)}
+$selectors: 1,2,3,4;
+@each $n in $selectors{
+  h#{$n}{color: hsl(calc($n*10) 100% 50%);}
 }
-body>div{@include a(3,' ✓',true); @include a(2)}
-body{>div{background: url(gaara.webp) center/contain no-repeat}}
-body>div>{@at-root div:first-of-type{
-  background-color: #010c;
-  margin:.5em{left:0}
-}}
+//@debug map.get((key:value),key);@debug map.get((k:(ka:va)),k);
+//@debug map.get((k:(ka:(ka1:va1))), k,ka,ka1);
 
-@mixin b{#{if(&,'&.a','.a')}{color:#07f}}
-.b{@include b}//.b.a{color:#07f}
-@mixin c{#{if(&,'&.a','.a:before')}{content: '♪ ';color:#827}}
-@include c;//.a:before{content: '♪';color:#827}
-
-@mixin d($child){@at-root #{selector.unify(&,$child)}{@content}}
-body .div0 .a{
-  @include d('h2::first-letter'){color: #008cff;}
-  @include d('.b::first-letter'){color: #0f0;}
-}
+//@debug map.set((k:v),k,update);
+//@debug map.set((k:v),kPlus,vPlus);
+$m1:(k1:v1,k2:(ka:va)); $m2:(k2:(kb:vb),k3:v3);
+@debug map.merge($m1,$m2);
+@debug map.deep-merge($m2,$m1);
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// @use 'variables' with ($var: 'configured ');
+// @use 'sass:meta'; @use 'sass:selector';
+// p::before{content:variables.$var;color:#0f0}
+// h1{color: variables.$c1;}h2{color: variables.$c2;}
+// h3{color: variables.$c3;}h4{color: variables.$c4;}
+
+// @mixin a($n,$v:' ✖',$c:false){
+//   >:nth-child(#{$n}):after{content:$v;color:if($c,#0f0,red)}
+// }
+// body>div{@include a(3,' ✓',true); @include a(2)}
+// body{>div{background: url(gaara.webp) center/contain no-repeat}}
+// body>div>{@at-root div:first-of-type{
+//   background-color: #010c;
+//   margin:.5em{left:0}
+// }}
+
+// @mixin b{#{if(&,'&.a','.a')}{color:#07f}}
+// .b{@include b}//.b.a{color:#07f}
+// @mixin c{#{if(&,'&.a','.a:before')}{content: '♪ ';color:#827}}
+// @include c;//.a:before{content: '♪';color:#827}
+
+// @mixin d($child){@at-root #{selector.unify(&,$child)}{@content}}
+// body .div0 .a{
+//   @include d('h2::first-letter'){color: #008cff;}
+//   @include d('.b::first-letter'){color: #0f0;}
+// }
