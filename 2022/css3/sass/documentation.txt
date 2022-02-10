@@ -171,10 +171,11 @@ scss= superset of css, sass= indent syntax style sheet.
     ›
     ›
     ›
-  »@use 'sass:list'; 
+  »@use 'sass:list';
     »issue invaid-lists(currently): i1/… (i1/…) [i1/…] [i1,…] 
       ›fix→sass2: calc(/)=math.dev(), /separator=list.slash()
     »$list: item $s …| ($l|k:V,…|i1,|Ø)| [$l|i1|Ø]; $s:&#32|,|/;
+    »slash(i1,…)//i1/… ›slash(i1 i2,i3 i4)//i1 i2/i3 i4
     »append($list,$v,$separator?:auto'd|space=d1|comma|slash)
       ›append(i1 i2,i3,$separator:$s)//i1 $s i2 $s i3
       ›append(($l),in,$separator:$s)//i1 $s … $s in
@@ -183,17 +184,22 @@ scss= superset of css, sass= indent syntax style sheet.
       ›append((k:v,…),kn vn,$separator:space)//(k v) (…) (kn vn)
     »join($list1,$list2,$separator?,$bracketed?:auto|true|false)
       ›auto'd: $separator=$l1,$l2,space $bracketed=$l1,false
+    »length($list)//#
+      ›length((k1:v1,k2:v2))//2
     »index($list,in)//n
       ›index((ka:va,kb:vb), kb vb)//2
       ›index((i1,i2),iUndefined)//null
-    »length($list)//#
-      ›length((k1:v1,k2:v2))//2
+    »nth($list,±#)//item±#
+      ›list.nth((k1:v1,k2:v2,k3:v3,k4:v4),-2);//k3 v3
+    »set-nth($list,±#,$v)//return $list copy & replace i±#→$v
+      ›set-nth((k1:v1,k2:v2),-1,ku update)//k1 v1,ku update
+      ›set-nth(i1 i2,3,update)//Error: $n: Invalid index
     ›is-bracketed($list)//boolean
     ›separator($list)//space?comma?slash
-    »nth()
-    »set-nth()
-    »slash()
-    »zip()
+    »zip($list1,…)//$list=$subList1,…
+      ›return: comma-separator $list, space-separator $subLists
+      ›$sublists nth = smallest list.length($list#)
+      ›zip(a1 a2,(b1,b2,b3),[c1 c2 c3]) //a1 b1 c1, a2 b2 c2
   »@use 'sass:map'; $map:(<expression>:<expression>, …);
     »get((key:value),key)//value
       ›get((k:(ka:(ka1:va1))), k,ka,ka1)//va1
