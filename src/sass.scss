@@ -15,8 +15,8 @@ $selectors: 1,2,3,4;
 $l1:  a b;  $la:  a,b;  //$la1:  a/b;
 $l2: (a b); $lb: (a,b); //$la2: (a/b);
 $l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
-//@debug list.append($l1,c); @debug list.append($l2,c);
-//@debug list.append($la,c); @debug list.append($lb,c);
+
+//@debug list.slash(i1 i2,i3 i4);
 
 //@debug list.append((i1,),v); @debug list.append([i1],v);
 //@debug list.append((),empty); @debug list.append([],empty);
@@ -34,33 +34,25 @@ $l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
 //@debug list.join(i1 i2,(i3,i4), $separator:slash, $bracketed:1);
 //@debug list.join((k:v),(ka:va),$separator:space,$bracketed:1);
 
+//@debug list.length([i1 i2 i3]);
+//@debug list.length((k1:v1,k2:v2));
+
 //@debug list.index((i1 i2), i2);
 //@debug list.index((i1,i2), i2);
 //@debug list.index((ka:va,kb:vb), kb vb);
 
-//@debug list.length([i1 i2 i3]);
-//@debug list.length((k1:v1,k2:v2));
+//@debug list.nth([i1 i2 i3 i4],-2);
+//@debug list.nth((k1:v1,k2:v2,k3:v3),-1);
+
+//@debug list.set-nth(i1 i2 i3,2,vb);
+//@debug list.set-nth((k1:v1,k2:v2),-1,kb vb);
+//@debug list.set-nth(i1 i2,3,update);//error
 
 //@debug list.is-bracketed([i1 i2]);
 //@debug list.separator(());
 
-//@debug list.nth();
-//@debug list.set-nth();
-//@debug list.slash();
-//@debug list.zip();
-
-
-
-
-
-
-//@debug list.();
-//@debug list.();
-//@debug list.();
-//@debug list.();
-//@debug list.();
-
-
+//@debug list.zip(a1 a2 a3,(b1,b2,b3),[c1 c2 c3]);
+//@debug list.zip(a1 a2,(b1,b2,b3),[c1 c2 c3]);
 
 
 
