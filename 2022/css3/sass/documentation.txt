@@ -39,7 +39,7 @@ scss= superset of css, sass= indent syntax style sheet.
   •color: #00f|blue
   •boolean: true|false
   •null
-  •values-list: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
+  •lists: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
   •maps: ('background': red, 'foreground': pink)
   •can contain &
  *operators
@@ -116,7 +116,7 @@ scss= superset of css, sass= indent syntax style sheet.
   ›can contain other variables: $v1: $v2 * $v3;
   »can have only 1 value at time: 
     ›$map: ('key':'value',…)
-    ›$list: i1 …|,…|/… or (i1 …|,…|/…) or [i1 …|,…|/…]
+    ›$list: item1 …|,…|/… or (i1 …|,…|/…) or [i1 …|,…|/…]
   ›updating is value affect just new≠old usages
   ›hyphen=underScore: $var-name=$var_name
   ›!defualt flag used in new-$var|$var:null, else old value used
@@ -143,11 +143,15 @@ scss= superset of css, sass= indent syntax style sheet.
       ›all sass:list.functions
     ›
   »@while:
-  »@fo:
+  »@for:
 •build-in module: 
   »global functions: hsl()
     ›rgb?a($color, $alpha), only $alpha used: rgb(#0005,1)=#000
     ›if($condition, $return-if-true, $return-if-false)
+    »≠recommended: ›map-get?has-key?merge?remove?keys?values()
+      ›append?index?is-bracketed?join?length?list-separator?nth?
+        set-nth?zip
+      ›
   »@use 'sass:math';
     ›.div: .s{width: math.div(600px, 960px) * 100%;}
     ›
@@ -167,21 +171,47 @@ scss= superset of css, sass= indent syntax style sheet.
     ›
     ›
     ›
-  »@use 'sass:list';
-    ›
-    ›
-    ›
-    ›
-    ›
-  »@use 'sass:map';
-    »get((key:value),key)//value ›get((k:(ka:va)),k)//(ka:va)
+  »@use 'sass:list'; 
+    »issue invaid-lists(currently): i1/… (i1/…) [i1/…] [i1,…] 
+      ›fix→sass2: calc(/)=math.dev(), /separator=list.slash()
+    »$list: item $s …| ($l|k:V,…|i1,|Ø)| [$l|i1|Ø]; $s:&#32|,|/;
+    »append($list,$v,$separator?:auto'd|space=d1|comma|slash)
+      ›append(i1 i2,i3,$separator:$s)//i1 $s i2 $s i3
+      ›append(($l),in,$separator:$s)//i1 $s … $s in
+      ›append([$l],in,$separator:$s)//[i1 $s … $s in]
+      ›append((k:v,…),kn vn,$separator:$s)//k v $s … $s kn vn
+      ›append((k:v,…),kn vn,$separator:space)//(k v) (…) (kn vn)
+    »join($list1,$list2,$separator?,$bracketed?:auto|true|false)
+      ›auto'd: $separator=$l1,$l2,space $bracketed=$l1,false
+    »index($list,in)//n
+      ›index((ka:va,kb:vb), kb vb)//2
+      ›index((i1,i2),iUndefined)//null
+    »length($list)//#
+      ›length((k1:v1,k2:v2))//2
+    ›is-bracketed($list)//boolean
+    ›separator($list)//space?comma?slash
+    »nth()
+    »set-nth()
+    »slash()
+    »zip()
+  »@use 'sass:map'; $map:(<expression>:<expression>, …);
+    »get((key:value),key)//value
       ›get((k:(ka:(ka1:va1))), k,ka,ka1)//va1
     »set((k:v),k,update)//(k:update)
+      ›set((k0: (k:v)), k0,k,update)//(k0: (k:update))
       ›set((k:v),kPlus,vPlus)//(k:v, kPlus:vPlus)
-    ›merge((k1:(ka:va)),(k1:(kb:vb),k2:v2))//(k1:(kb:vb),k2:v2)
-      
-    ›
-    ›
+    »merge((k:v,k1:v1),(k:update,k2:v2))//(k:update,k1:v1,k2:v2)
+      ›merge((k0:(k:v)), k0,k,(ku:update))//(k0:(k:(ku:update)))
+      ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
+      ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
+    »remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored)//(k1:v1)
+      ›deep-remove((k:(ka:va,krm:vrm)), k,krm)//(k: (ka:va))
+    »has-key((k:v), k1)//false
+      ›has-key((k: (ka:va)), k,ka)//true
+    »keys((k1:v1, k2:v2, k3:v3))//k1,k2,k3
+      ›keys((k:(ka:va,kb:vb), k1:v1))//k,k1
+    »values((k1:v1, k2:v2, k3:v3))//v1,v2,v3
+      ›values((k:(ka:va,kb:vb), k1:v1))//(ka:va,kb:vb),v1
   »@use 'sass:selector';
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
     ›
@@ -207,4 +237,4 @@ scss= superset of css, sass= indent syntax style sheet.
     //Warning: <compile>
     //path/file.scss #:#(@warn) mname()
     //path/file.scss #:#(@include) root stylesheet
-… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓✗✖ Ø † ⁰ ₱

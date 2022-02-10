@@ -1,7 +1,8 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  bracketed braa|ki|ted
   digit=# (dijit)
   compile=translate sass→css
-  in≠exCluding.
+  in≠exCluding
   immediately 0s
   descent↓ ascent↑ 
   self-taught
