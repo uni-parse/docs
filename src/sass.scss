@@ -1,4 +1,4 @@
-@use 'partial';@use 'sass:map';@use 'sass:list';
+@use 'partial';@use 'sass:map';@use 'sass:list';@use 'sass:string';
 @mixin a($a,$b){
   color: rgb(0 255 170);
   @if $b >= 10{color: rgb(229 255 0)}
@@ -12,9 +12,27 @@ $selectors: 1,2,3,4;
 @each $n in $selectors{
   h#{$n}{color: hsl(calc($n*10) 100% 50%)}
 }
-$l1:  a b;  $la:  a,b;  //$la1:  a/b;
-$l2: (a b); $lb: (a,b); //$la2: (a/b);
-$l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
+
+//@debug string.quote();
+//@debug string.index();
+//@debug string.insert();
+//@debug string.length();
+//@debug string.slice();
+//@debug string.to-upper-case();
+//@debug string.to-lower-case();
+//@debug string.unique-id();
+//@debug string.unquote();
+
+
+
+
+
+
+
+
+//$l1:  a b;  $la:  a,b;  //$la1:  a/b;
+//$l2: (a b); $lb: (a,b); //$la2: (a/b);
+//$l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
 
 //@debug list.slash(i1 i2,i3 i4);
 
@@ -39,6 +57,7 @@ $l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
 
 //@debug list.index((i1 i2), i2);
 //@debug list.index((i1,i2), i2);
+//@debug list.index(i1 i2 i2 i3,i2);//2
 //@debug list.index((ka:va,kb:vb), kb vb);
 
 //@debug list.nth([i1 i2 i3 i4],-2);
@@ -59,7 +78,14 @@ $l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
 
 
 
+//@debug map.keys((k1:v1,k2:v2,k3:v3));
+//@debug map.keys((k: (ka:va,kb:vb), k1:v1));//k,k1
 
+//@debug map.has-key((k:v), k);
+//@debug map.has-key((k:(ka:va)), k,ka);
+
+//@debug map.values((k1:v1, k2:v2, k3:v3));
+//@debug map.values((k: (ka:va,kb:vb), k1:v1));
 
 //@debug map.get((key:value),key);@debug map.get((k:(ka:va)),k);
 //@debug map.get((k:(ka:(ka1:va1))), k,ka,ka1);
@@ -69,24 +95,13 @@ $l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
 //@debug map.set((k0: (k:v)), k0,k,update);
 //@debug map.set((k:v),kPlus,vPlus);
 
+//@debug map.remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored);
+//@debug map.deep-remove((k:(ka:va,krm:vrm)), k,krm);
+
 //@debug map.merge((k:v,k1:v1), (k:update,k2:v2));
 //@debug map.merge((k0:(k:v)), k0,k,(ku:update));
 //@debug map.merge((k0:(k:v)), k0,(ka:va));
 //@debug map.deep-merge((k:(ka:va)),(k:(kb:vb)));
-
-//@debug map.remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored);
-//@debug map.deep-remove((k:(ka:va,krm:vrm)), k,krm);
-
-//@debug map.has-key((k:v), k);
-//@debug map.has-key((k:(ka:va)), k,ka);
-
-//@debug map.keys((k1:v1,k2:v2,k3:v3));
-//@debug map.keys((k: (ka:va,kb:vb), k1:v1));//k,k1
-
-//@debug map.values((k1:v1, k2:v2, k3:v3));
-//@debug map.values((k: (ka:va,kb:vb), k1:v1));
-
-
 
 
 

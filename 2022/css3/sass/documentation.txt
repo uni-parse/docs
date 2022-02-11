@@ -160,11 +160,16 @@ scss= superset of css, sass= indent syntax style sheet.
     ›
     ›
   »@use 'sass:string';
-    ›.index: .s{@if string.index($string,' '){}}//return #|null
-    ›
-    ›
-    ›
-    ›
+    »quote()
+    »index()
+      ›
+    »insert()
+    »length()
+    »slice()
+    »to-upper-case()
+    »to-lower-case()
+    »unique-id()
+    »unquote()
   »@use 'sass:color';
     ›
     ›
@@ -188,6 +193,7 @@ scss= superset of css, sass= indent syntax style sheet.
       ›length((k1:v1,k2:v2))//2
     »index($list,in)//n
       ›index((ka:va,kb:vb), kb vb)//2
+      ›index(i1 i2 i2 i2 i3,i2)//2 (index of first same item)
       ›index((i1,i2),iUndefined)//null
     »nth($list,±#)//item±#
       ›list.nth((k1:v1,k2:v2,k3:v3,k4:v4),-2);//k3 v3
@@ -200,24 +206,26 @@ scss= superset of css, sass= indent syntax style sheet.
       ›return: comma-separator $list, space-separator $subLists
       ›$sublists nth = smallest list.length($list#)
       ›zip(a1 a2,(b1,b2,b3),[c1 c2 c3]) //a1 b1 c1, a2 b2 c2
-  »@use 'sass:map'; $map:(<expression>:<expression>, …);
+  »@use 'sass:map'; 
+    »$map:(<expression>:<expression>, …);
+      ›
+    »keys((k1:v1, k2:v2, k3:v3))//k1,k2,k3
+      ›keys((k:(ka:va,kb:vb), k1:v1))//k,k1
+    »has-key((k:v), k1)//false
+      ›has-key((k: (ka:va)), k,ka)//true
+    »values((k1:v1, k2:v2, k3:v3))//v1,v2,v3
+      ›values((k:(ka:va,kb:vb), k1:v1))//(ka:va,kb:vb),v1
     »get((key:value),key)//value
       ›get((k:(ka:(ka1:va1))), k,ka,ka1)//va1
     »set((k:v),k,update)//(k:update)
       ›set((k0: (k:v)), k0,k,update)//(k0: (k:update))
       ›set((k:v),kPlus,vPlus)//(k:v, kPlus:vPlus)
+    »remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored)//(k1:v1)
+      ›deep-remove((k:(ka:va,krm:vrm)), k,krm)//(k: (ka:va))
     »merge((k:v,k1:v1),(k:update,k2:v2))//(k:update,k1:v1,k2:v2)
       ›merge((k0:(k:v)), k0,k,(ku:update))//(k0:(k:(ku:update)))
       ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
       ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
-    »remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored)//(k1:v1)
-      ›deep-remove((k:(ka:va,krm:vrm)), k,krm)//(k: (ka:va))
-    »has-key((k:v), k1)//false
-      ›has-key((k: (ka:va)), k,ka)//true
-    »keys((k1:v1, k2:v2, k3:v3))//k1,k2,k3
-      ›keys((k:(ka:va,kb:vb), k1:v1))//k,k1
-    »values((k1:v1, k2:v2, k3:v3))//v1,v2,v3
-      ›values((k:(ka:va,kb:vb), k1:v1))//(ka:va,kb:vb),v1
   »@use 'sass:selector';
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
     ›
