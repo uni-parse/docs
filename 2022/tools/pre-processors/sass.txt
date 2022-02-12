@@ -1,8 +1,8 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
 ★install:
 
-https://www.youtube.com/watch?v=lwZiu6nSl5o
-34:13
+https://www.youtube.com/watch?v=G4s0XgNJA6w
+36:13
 
 $ npm install -g sass-migrator
 $ sass-migrator division **/*.scss

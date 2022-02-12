@@ -1,4 +1,4 @@
-@use 'partial';@use 'sass:map';@use 'sass:list';@use 'sass:string';
+@use 'partial';@use 'sass:map';@use 'sass:list';@use 'sass:string';@use 'sass:meta';@use 'sass:math';
 @mixin a($a,$b){
   color: rgb(0 255 170);
   @if $b >= 10{color: rgb(229 255 0)}
@@ -7,21 +7,112 @@
   //@else{@warn '⚠️ ($a,$b):' ($a,$b);}
   //@else{@error '⚠️ ($a,$b):' ($a,$b);}
 }h1{@include a(true,9);}
+//@debug if(condition,✓,✖);
 
-$selectors: 1,2,3,4;
-@each $n in $selectors{
-  h#{$n}{color: hsl(calc($n*10) 100% 50%)}
-}
+@mixin list($args...){
+  @each $arg in $args{
+    h#{$arg}{color: hsl(calc($arg*10) 100% 50%)}
+  }
+}@include list(1,2,3,4);
 
-//@debug string.quote();
-//@debug string.index();
-//@debug string.insert();
-//@debug string.length();
-//@debug string.slice();
-//@debug string.to-upper-case();
-//@debug string.to-lower-case();
-//@debug string.unique-id();
-//@debug string.unquote();
+@mixin nest($nest...){
+  @each $a,$b,$c in $nest{
+    #{$a}:before{color:$b;content:'' + $c + ' '}
+  }
+}//@include nest(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›]);
+@each $a,$b,$c in (h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›]){#{$a}:before{color:$b;content:'' + $c + ' '}}
+
+@mixin map($args...){
+  //@debug meta.keywords($args);
+  @each $k,$v in meta.keywords($args){
+    #{$k}:after{content:' ' + $v}
+  }
+}//@include map($h1:1,$h2:2,$h3:3,$h4:4);
+@for $i from 4 through 1{h#{$i}:after{content:' ' + $i}}
+
+//@each $c in (red blue){.#{'' + $c}{color:$c}}//list
+//@each $k,$v in (invalid:✖,valid:✓) {##{'' + $k}:before{content:$v}}
+
+//@for $i from 1 to 5{h#{$i}::first-letter{color:cyan}};
+//@for $i from 1 through 4{h#{$i}::first-letter{color:cyan}};
+//@for $i from 4 to 0{h#{$i}::first-letter{color:cyan}};
+//@for $i from 4 through 1{h#{$i}::first-letter{color:cyan}};
+
+//@while $condation-true{}
+
+
+
+
+
+
+//@debug math.$e;//e=2.7182818285
+//@debug math.$pi;//π=3.1415926536
+
+//@debug math.ceil(4);//4
+//@debug math.ceil(4.01);//5
+
+//@debug math.clamp();
+//@debug math.floor();
+//@debug math.max();
+//@debug math.min();
+//@debug math.round();
+
+
+
+//@debug math.as();
+//@debug math.hypot();
+
+
+
+//@debug math.log();
+//@debug math.pow();
+//@debug math.sqrt();
+//@debug math.cos();
+//@debug math.sin();
+//@debug math.tan();
+//@debug math.acos();
+//@debug math.asin();
+//@debug math.atan();
+//@debug math.atan2();
+
+
+
+//@debug math.compatible();
+//@debug math.is-unitless();
+//@debug math.unit();
+
+
+
+//@debug math.div();
+//@debug math.percentage();
+//@debug math.random();
+
+
+
+
+
+
+
+
+//@debug string.length('welcom to my life');
+
+//@debug meta.inspect(string.index('hello world',world));
+//@debug meta.inspect(string.index('hello world',undefined));
+
+//@debug meta.inspect(string.slice('hello world',-5));
+//@debug meta.inspect(string.slice('I love you',3,6));
+
+//@debug meta.inspect(string.insert('I\'am good','not ',-5));
+//@debug meta.inspect(string.insert('hello',' world',100));
+//@debug meta.inspect(string.insert('world','hello ',-100));
+
+//@debug meta.inspect(string.quote(BILL));
+//@debug meta.inspect(string.unquote('BILL'));
+
+//@debug meta.inspect(string.to-upper-case(Bill));
+//@debug meta.inspect(string.to-lower-case(Bill));
+
+//@debug meta.inspect(string.unique-id());
 
 
 
@@ -33,6 +124,24 @@ $selectors: 1,2,3,4;
 //$l1:  a b;  $la:  a,b;  //$la1:  a/b;
 //$l2: (a b); $lb: (a,b); //$la2: (a/b);
 //$l3: [a b]; //$lc: [a,b]; $la3: [a/b];//sass2.0.0
+
+//@debug list.is-bracketed([i1 i2]);
+//@debug list.separator(());
+
+//@debug list.length([i1 i2 i3]);
+//@debug list.length((k1:v1,k2:v2));
+
+//@debug list.index((i1 i2), i2);
+//@debug list.index((i1,i2), i2);
+//@debug list.index(i1 i2 i2 i3,i2);//2
+//@debug list.index((ka:va,kb:vb), kb vb);
+
+//@debug list.nth([i1 i2 i3 i4],-2);
+//@debug list.nth((k1:v1,k2:v2,k3:v3),-1);
+
+//@debug list.set-nth(i1 i2 i3,2,vb);
+//@debug list.set-nth((k1:v1,k2:v2),-1,kb vb);
+//@debug list.set-nth(i1 i2,3,update);//error
 
 //@debug list.slash(i1 i2,i3 i4);
 
@@ -52,26 +161,9 @@ $selectors: 1,2,3,4;
 //@debug list.join(i1 i2,(i3,i4), $separator:slash, $bracketed:1);
 //@debug list.join((k:v),(ka:va),$separator:space,$bracketed:1);
 
-//@debug list.length([i1 i2 i3]);
-//@debug list.length((k1:v1,k2:v2));
-
-//@debug list.index((i1 i2), i2);
-//@debug list.index((i1,i2), i2);
-//@debug list.index(i1 i2 i2 i3,i2);//2
-//@debug list.index((ka:va,kb:vb), kb vb);
-
-//@debug list.nth([i1 i2 i3 i4],-2);
-//@debug list.nth((k1:v1,k2:v2,k3:v3),-1);
-
-//@debug list.set-nth(i1 i2 i3,2,vb);
-//@debug list.set-nth((k1:v1,k2:v2),-1,kb vb);
-//@debug list.set-nth(i1 i2,3,update);//error
-
-//@debug list.is-bracketed([i1 i2]);
-//@debug list.separator(());
-
 //@debug list.zip(a1 a2 a3,(b1,b2,b3),[c1 c2 c3]);
 //@debug list.zip(a1 a2,(b1,b2,b3),[c1 c2 c3]);
+
 
 
 
