@@ -164,17 +164,50 @@ scss= superset of css, sass= indent syntax style sheet.
     ›list-separator|is-bracketed|length|index|set-?nth|append|join|zip
     ›un?quote|str-length?index?slice?insert|to-upper?lower-case|unique-id
 
-•build-in module: 
+•build-in module:
   »@use 'sass:math';
     »variables: ›math.$e//2.7182818285 ›math.$pi//π=3.1415926536
-    »ceil(#.f≠0)//#+1 ›ceil(4)//4 ›ceil(4.01)//5
-    »clamp($min,)
-    »floor()
-    »max()
-    »min()
-    »round()
-    ›.div: .s{width: math.div(600px, 960px) * 100%;}
-… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓✗✖ Ø † ⁰ ₱
+   •Bound'ing funcs:
+    »clamp($min,$number,$max)//$min>#>$max
+      »$min,$number,$max must be all unitless or have:
+        ›compatible units: in|cm|mm|q≠s19|pc|pt|px
+        ›same unit: rem|em|ch|ex|%|vw|vh|vmin|vmax|dpi|ppi|x|…
+      ›clamp(-10,0,10)//0 ›clamp(-5…,-10…,5…)//-5…
+      ›clamp(calc(1pc/1pt)*1q,calc(96px/(1in/1cm)),10mm)//10mm
+    »min?max($v...)//smallest?biggest-val
+      ›$v... must have compatible|same units, unitless
+    ›ceil?floor(#.f)//#+1?# ›round(#.f≥5|#.f<5)//#+1|#
+      ›fraction≠0, # can be either unitless or with #unit.
+   •Distance funcs:
+    ›abs(±#|±#unit)//absolute: +#|+#unit
+    »hypot($lengths...)//√($l1²+…)
+      ›$l... must have compatible(1st used)|same units, unitless
+      ›hypot($ox)//1D:$om(x)=√($ox²)=math.abs($ox)
+      ›hypot($ox,$oy)//2D:$om(x,y)=√($ox²+$oy²)
+      ›hypot($ox,$oy,$oz)//3D:$om(x,y,z)=√($ox²+$oy²+$oz²)
+   •Exponential funcs:
+    »sqrt(+#)//squareRoot:math.pow(+#,.5)=√# ›sqrt(-#)//NaN
+    »pow($base:±#,$exponent:±#)//power^
+      ›pow(±#,$exp≥1)//±#^$exp ›pow(±#,0)//1 
+      ›pow(+#,$exp€]-1,0[U]0,1[)//(1/$exp)√#| √-#→NaN
+      ›pow(±#,$exp≤-1)//(1/(#^$exp))
+      ›pow(math.$e,)
+    »log($number, $base?:null=math.$e)//logarithm(ln'd natural)
+      ›log(math.$e| math.$e, null| math.$e, math.$e)//1
+      ›log
+
+… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
+
+    
+    »cos()
+    »sin()
+    »tan()
+    »acos()
+    »asin()
+    »atan()
+    »atan2()
+   •›.div: .s{width: math.div(600px, 960px) * 100%;}
+… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
 
   »@use 'sass:string';
     »issue:all sass buildIn.funcs return unquoted string
@@ -183,7 +216,7 @@ scss= superset of css, sass= indent syntax style sheet.
     »index($string,$subString)//first $subString letter nth|null
       ›index('hello world',world);//7
       ›index('hello world',undefined);//null
-    »slice($string, $start-at:±#, $end-at?:±#)//return slice of $string
+    »slice($str, ±#startAt, ±#endAt?:-1D)//return slice of $str
       ›slice('hello world',-5)//'world'
       ›slice('I love you',3,6)//'love'
     »insert($string, $insert, ±#)//insert string on ±index

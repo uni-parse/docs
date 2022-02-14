@@ -1,4 +1,9 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  
+  Exponentiation(ekspəˌnen(t)SHēˈāSH(ə)n) Exponent اس x²
+  tri'angle(Λ) rect'angle(♦)
+  either(Ithar) اما
+  ceil(sēl)≠floor
   bracketed braa|ki|ted
   digit=# (dijit)
   compile=translate sass→css
@@ -7,7 +12,7 @@
   descent↓ ascent↑ 
   self-taught
   demonstration demo
-  quarter 1/4
+  quarter 1/4 kwôrdər
   environment
   advantage≠disadvantage مزايا سلبيات
   indi'vidual فردي
@@ -37,8 +42,6 @@
   synchonized مزامنة
   identical مطابق
   Ajax asynchronous javascript and xml
-  rect'angle(♦) tri'angle(Λ)
-  Exponentiation Exponent اس x²
   Deprecated de|pre|kated (no more supported)
   cubic مكعب
   api application programming interface

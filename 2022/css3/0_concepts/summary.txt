@@ -33,12 +33,12 @@
     ›viewport: vw?vh?vmin?vmax.
       <meta name=viewport content='w=device-w, initial-scale=1'>
 
-★functions: ›can be: ±#| length| %| <time:s?ms>| <angle>| <frequency:Hz?kHz>| nested min?max?calc?clamp(<math-operations>)
+★functions: ›can be: ±#| length| %| <time:s?ms>| <angle>| nested min?max?calc?clamp(<math-operations>)
   ›math operators: ±v1 ± ±v2 ± ±v3…| ±v*±#*±#…| ±v/±#/±#…
-•calc(<math-operators>): set sum of math operator.
-•min?max(mo1, mo2, …): set smallest?largest unordered sum.
-•clamp(mo1,mo2,mo3):set middle(rel sum) limited by min & max sum
-•var(--custom-property, fallback-value): store reused value of custom property declared in :root{--c-p: val;}.
+  •calc(<math-operators>): set sum of math operator.
+  •min?max(mo1, mo2, …): set smallest?largest unordered sum.
+  •clamp(mo1,mo2,mo3):set middle(rel sum) limited by min&max sum
+  •var(--custom-property, fallback-value): store reused value of custom property declared in :root{--c-p: val;}.
 
 ★global values: •demo:     /*w3-css initial: *{display:inline}*/
     body{font-size:13px}         /*UA-origin: p{display:block}*/

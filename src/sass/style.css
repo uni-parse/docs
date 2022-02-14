@@ -1,1 +1,84 @@
-﻿html box-sizing:border-box *:before,html *:after{box-sizing:inherit;font:inherit}:root{--font-invalid: $font;--font-noQuotes: Rose Mary;/*!not recommended by mdn*/--font: "Rose Mary"}@font-face{font-family:var(--font);src:url(Rosemary.ttf)}body{font:1em var(--font),serif;background:#222;color:#aaa}::selection{color:currentColor;background-color:#440b55}h1{color:#0fa}h1{color:#ff2b00}h2{color:#f50}h3{color:#ff8000}h4{color:#fa0}h1:before{color:#fff;content:"★ "}h2:before{color:#ff0;content:"▶ "}h3:before{color:lime;content:"» "}h4:before{color:aqua;content:"› "}h4:after{content:" 4"}h3:after{content:" 3"}h2:after{content:" 2"}h1:after{content:" 1"}
+@charset "UTF-8";
+html box-sizing:border-box *:before,
+html *:after {
+  box-sizing: inherit;
+  font: inherit;
+}
+
+:root {
+  --font-invalid: $font;
+  --font-noQuotes: Rose Mary;
+  /*!not recommended by mdn*/
+  --font: "Rose Mary";
+}
+
+@font-face {
+  font-family: var(--font);
+  src: url(Rosemary.ttf);
+}
+body {
+  font: 1em var(--font), serif;
+  background: #222;
+  color: #aaa;
+}
+
+::selection {
+  color: currentColor;
+  background-color: #440b55;
+}
+
+h1 {
+  color: #00ffaa;
+}
+
+h1 {
+  color: #ff2b00;
+}
+
+h2 {
+  color: #ff5500;
+}
+
+h3 {
+  color: #ff8000;
+}
+
+h4 {
+  color: #ffaa00;
+}
+
+h1:before {
+  color: #fff;
+  content: "★ ";
+}
+
+h2:before {
+  color: #ff0;
+  content: "▶ ";
+}
+
+h3:before {
+  color: #0f0;
+  content: "» ";
+}
+
+h4:before {
+  color: cyan;
+  content: "› ";
+}
+
+h4:after {
+  content: " 4";
+}
+
+h3:after {
+  content: " 3";
+}
+
+h2:after {
+  content: " 2";
+}
+
+h1:after {
+  content: " 1";
+}

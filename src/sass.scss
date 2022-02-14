@@ -45,28 +45,41 @@
 
 
 
+
+
+
 //@debug math.$e;//e=2.7182818285
 //@debug math.$pi;//π=3.1415926536
 
-//@debug math.ceil(4);//4
-//@debug math.ceil(4.01);//5
+//@debug math.clamp(-10,0,10);//@debug math.clamp(-5…,10…,5…);
+//@debug math.clamp(calc(1pc/1pt)*1q,calc(96px/(1in/1cm)),10mm);
 
-//@debug math.clamp();
-//@debug math.floor();
-//@debug math.max();
-//@debug math.min();
-//@debug math.round();
+//@debug math.max(10,100,0,-50);//@debug math.min(10,100,0,-50);
+//@debug math.max(1in,1cm,96px);//@debug math.min(-10…,10…);
 
-
-
-//@debug math.as();
-//@debug math.hypot();
+//@debug math.ceil(4.00001);//5 //@debug math.floor(4.99999);//4
+//@debug math.round(4.4999em); //4 //@debug math.round(4.5%);//5
 
 
+//@debug math.abs(-10%);
 
+//@debug math.hypot(1,2);//√(1+4)=√5≈2.2360679775
+//@debug math.hypot(-10cm,1in,1mm);
+//@debug math.hypot(10…,-2…,1…,20…);
+//@debug math.hypot(-2.2m,2.4m,1.6m);
+
+
+//@debug math.sqrt(169); @debug math.pow(169,.5);
+
+//@debug math.sqrt(-1); @debug math.pow(-1,.5);//NaN
+//@debug math.pow(3,-3); @debug calc(1/27);
+//@debug math.pow(-995,0);//1
+
+//@debug math.log(math.$e);//@debug math.log(math.$e,null);
+//@debug math.log(math.$e,math.$e);
 //@debug math.log();
-//@debug math.pow();
-//@debug math.sqrt();
+@debug math.pow(math.$e,calc(-1/math.$e));
+
 //@debug math.cos();
 //@debug math.sin();
 //@debug math.tan();
@@ -86,6 +99,10 @@
 //@debug math.div();
 //@debug math.percentage();
 //@debug math.random();
+
+
+
+
 
 
 

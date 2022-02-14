@@ -106,6 +106,19 @@ function sassTask(){
     .pipe(dest('build'));
 }
 
+//sassWatch
+function onlySassTask(){
+  return src('src/*.scss', {sourcemaps: false})
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(concat('style.css'))
+    .pipe(dest('src/sass'))
+}function sassWatchTask(cd){
+  watch('src/**/*.scss', onlySassTask);
+  cd();
+  console.log('~~Hi~phantombill~~processing: watching !!!');
+}
+
+
 // javascript task
 function jsTask(){
   return src('src/*.js', {sourcemaps: false})
@@ -209,6 +222,7 @@ exports.default = series(
   watchTask
 );
 exports.w = watchTask;
+exports.sass =sassWatchTask;
 exports.html = htmlTask;
 exports.js = jsTask;
 exports.css = sassTask;
