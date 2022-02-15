@@ -70,17 +70,24 @@
 
 
 //@debug math.sqrt(169); @debug math.pow(169,.5);
-
 //@debug math.sqrt(-1); @debug math.pow(-1,.5);//NaN
+
 //@debug math.pow(3,-3); @debug calc(1/27);
 //@debug math.pow(-995,0);//1
+//@debug math.pow(math.$e,-9999);//→0
+//@debug math.pow(math.$e,-1); @debug calc(1/math.$e);
+//@debug math.pow(math.$e,1);//e
 
 //@debug math.log(math.$e);//@debug math.log(math.$e,null);
 //@debug math.log(math.$e,math.$e);
-//@debug math.log();
-@debug math.pow(math.$e,calc(-1/math.$e));
+//@debug math.log(0);//-Infinity
+//@debug math.log(-1);//NaN
+//@debug math.log(1,.1);//0
+//@debug math.log(0,.1);//Infinity
+
 
 //@debug math.cos();
+
 //@debug math.sin();
 //@debug math.tan();
 //@debug math.acos();

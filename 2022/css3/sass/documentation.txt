@@ -166,7 +166,7 @@ scss= superset of css, sass= indent syntax style sheet.
 
 •build-in module:
   »@use 'sass:math';
-    »variables: ›math.$e//2.7182818285 ›math.$pi//π=3.1415926536
+    »variables: ›math.$e//Euler#=2.718… ›math.$pi//π=3.14…
    •Bound'ing funcs:
     »clamp($min,$number,$max)//$min>#>$max
       »$min,$number,$max must be all unitless or have:
@@ -186,19 +186,20 @@ scss= superset of css, sass= indent syntax style sheet.
       ›hypot($ox,$oy)//2D:$om(x,y)=√($ox²+$oy²)
       ›hypot($ox,$oy,$oz)//3D:$om(x,y,z)=√($ox²+$oy²+$oz²)
    •Exponential funcs:
-    »sqrt(+#)//squareRoot:math.pow(+#,.5)=√# ›sqrt(-#)//NaN
-    »pow($base:±#,$exponent:±#)//power^
-      ›pow(±#,$exp≥1)//±#^$exp ›pow(±#,0)//1 
-      ›pow(+#,$exp€]-1,0[U]0,1[)//(1/$exp)√#| √-#→NaN
-      ›pow(±#,$exp≤-1)//(1/(#^$exp))
-      ›pow(math.$e,)
-    »log($number, $base?:null=math.$e)//logarithm(ln'd natural)
-      ›log(math.$e| math.$e, null| math.$e, math.$e)//1
-      ›log
-
-… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
-
-    
+    »sqrt(+#)//squareRoot:pow(#,.5)=√# √+∞→∞slow ›sqrt(-#)//NaN 
+    »pow($base,$exp)=$result ›log($result:+#,$base:null)=$exp
+      »pow($base:±#,$exponent:±#)//power(^carat)
+        ›pow(-#,$exp:odd)//-… ›pow(-#,$exp:even)//+…
+        ›pow(+#,$exp:]-1,0[U]0,1[)//(1/$exp)√#| √-#→NaN
+        ›pow(±#,$exp:[1,+∞[)//±#^$exp ›pow(±#,$exp:0)//1
+        ›pow(±#,$exp:]-∞,-1])//1÷(±#^math.abs($exp))
+        »pow(math.$e,±x)//e^-∞→0 e^-1=1/e e^0=1 e^1=e e^+∞→∞fast
+      »log($result:+#, $base?:null=math.$e)//ln=logarithmNatural
+        ›log($b^#,$b)//# ›log(1)//0
+        ›log(0,$b:]1,∞[)//-Infinity ›log(→+∞,$b:]1,∞[)//→+∞slow
+        ›log(0,$b:]0,1[)//Infinity ›log(→+∞,$b:]0,1[)//→-∞slow
+        »ln-#=NaN ln0=-Infinity ln0.f=-# ln1=0 lne=1 ln+∞→∞slow
+   •Trigonometric funcs:
     »cos()
     »sin()
     »tan()
@@ -206,6 +207,8 @@ scss= superset of css, sass= indent syntax style sheet.
     »asin()
     »atan()
     »atan2()
+… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
+
    •›.div: .s{width: math.div(600px, 960px) * 100%;}
 … ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
 
