@@ -86,10 +86,21 @@
 //@debug math.log(0,.1);//Infinity
 
 
-//@debug math.cos();
+// @debug math.cos(math.$pi);
+// @debug math.cos(math.$pi*1rad);
+// @debug math.cos(180deg);
+// @debug math.cos(200grad);
+// @debug math.cos(.5turn);
+//@debug math.pow(math.cos(7),2) + math.pow(math.sin(7),2);//1
+//@debug math.cos(math.$pi);
 
-//@debug math.sin();
-//@debug math.tan();
+//@debug math.sin(calc(math.$pi/2));
+//@debug math.tan(calc(math.$pi/-2));//-Indiniy
+//@debug math.tan(calc(math.$pi/4));
+//@debug math.tan(calc(-1*math.$pi/4));
+//@debug calc(math.sqrt(2)/2); @debug calc(math.sqrt(3)/2);
+//@debug math.tan(calc(math.$pi/3)); @debug math.sqrt(3);
+
 //@debug math.acos();
 //@debug math.asin();
 //@debug math.atan();

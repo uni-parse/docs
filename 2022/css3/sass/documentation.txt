@@ -200,12 +200,19 @@ scss= superset of css, sass= indent syntax style sheet.
         ›log(0,$b:]0,1[)//Infinity ›log(→+∞,$b:]0,1[)//→-∞slow
         »ln-#=NaN ln0=-Infinity ln0.f=-# ln1=0 lne=1 ln+∞→∞slow
    •Trigonometric funcs:
-    »cos()
-    »sin()
-    »tan()
-    »acos()
-    »asin()
-    »atan()
+    »in right triangle90⁰: hypotenuse=√(adjacet²+opposite²)
+      ›soh cah toa: Cosine=Adj/Hyp Sine=Opp/Hyp Tangent=Opp/Adj
+    »cos?sin?tan(±#=rad|<angle>)//k€Z
+      ›tan(X≠π/2+kπ)=sinX/cosX ›cos-X=cosX sin?tan-X=-sin?tanX 
+      ›cos(2kπ± 0|π/6|π/4|π/3|π/2|π)=1|√3/2|√2/2|1/2|0|-1
+      ›sin(2kπ± 0|π/6|π/4|π/3|π/2|π)=(±) 0|1/2|√2/2|√3/2|1|0
+      ›tan(kπ± 0|π/6|π/4|π/3|π/2)=(±) 0|√3/3|1|√3|→Infinity'fast
+      ›cos²X+sin²X=1 ›cos2X=cos²X-sin²X sin2X=2cosX.sinX
+      ›tan(±X+kπ)=±tanX cos?sin(2kπ+ X|X+π)=(+|-)cos?sinX
+      ›cos?sin(-X+π/2)=other(X) cos(X+π/2)=-sinX sin(X+π/2)=cosX
+      ›cosA±B=cosA.cosB(-±)sinA.sinB sinA±B=sinA.cosB±sinB.cosA
+      ›cos(2kπ±X)=Y sin(2kπ+ X|-X+π)=Y tan(kπ+X)=Y
+    »acos?asin?atan()
     »atan2()
 … ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
 
