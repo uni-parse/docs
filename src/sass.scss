@@ -51,17 +51,27 @@
 //@debug math.$e;//e=2.7182818285
 //@debug math.$pi;//π=3.1415926536
 
-//@debug math.clamp(-10,0,10);//@debug math.clamp(-5…,10…,5…);
-//@debug math.clamp(calc(1pc/1pt)*1q,calc(96px/(1in/1cm)),10mm);
-
 //@debug math.max(10,100,0,-50);//@debug math.min(10,100,0,-50);
 //@debug math.max(1in,1cm,96px);//@debug math.min(-10…,10…);
+//@debug math.max(.5turn,210grad,10deg);//210grad
 
-//@debug math.ceil(4.00001);//5 //@debug math.floor(4.99999);//4
-//@debug math.round(4.4999em); //4 //@debug math.round(4.5%);//5
+//@debug math.clamp(-10,0,10);//@debug math.clamp(-5…,10…,5…);
+//@debug math.clamp(calc(1pc/1pt)*1q,calc(96px/(1in/1cm)),10mm);
+//@debug math.clamp(100grad,.75turn,math.$pi*1rad);//π
+//@debug math.clamp(1cm,10mm,1in);//1cm
+
+//@debug math.ceil(4.00001);//5
+//@debug math.ceil(-4.00001);//-4
+//@debug math.floor(4.99999);//4
+//@debug math.floor(-4.99999);//-5
+//@debug math.round(4.4999em);//4em
+//@debug math.round(-4.4999em);//-4em
+//@debug math.round(4.5%);//5%
+//@debug math.round(-4.5%);//-5%
 
 
-//@debug math.abs(-10%);
+
+//@debug math.abs(-10a);
 
 //@debug math.hypot(1,2);//√(1+4)=√5≈2.2360679775
 //@debug math.hypot(-10cm,1in,1mm);
@@ -101,20 +111,32 @@
 //@debug calc(math.sqrt(2)/2); @debug calc(math.sqrt(3)/2);
 //@debug math.tan(calc(math.$pi/3)); @debug math.sqrt(3);
 
-//@debug math.acos();
-//@debug math.asin();
-//@debug math.atan();
-//@debug math.atan2();
+//@debug math.acos(calc(math.sqrt(3)/2));
+//@debug math.asin(calc(math.sqrt(3)/2));
+//@debug math.atan(1);
+
+//@debug math.atan2(1,1);
+//@debug math.atan2(-1,1);
+//@debug math.atan2(1,-1);
+//@debug math.atan2(2,2);
+//@debug math.atan2(2a,2a);
 
 
+//@debug math.is-unitless(1);//true
+//@debug math.is-unitless(1a);//false
 
-//@debug math.compatible();
-//@debug math.is-unitless();
-//@debug math.unit();
+//@debug meta.inspect(math.unit(1));//''
+//@debug meta.inspect(math.unit(1a));//'a'
+
+//@debug math.compatible(1,2turn);
+//@debug math.compatible(-1,2);
+//@debug math.compatible(1a,5);//true issue
+//@debug math.compatible(-1a,2a);
 
 
 
 //@debug math.div();
+
 //@debug math.percentage();
 //@debug math.random();
 
