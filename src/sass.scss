@@ -48,17 +48,34 @@
 
 
 
+
+
+
+
+
+
+
 //@debug math.$e;//e=2.7182818285
 //@debug math.$pi;//π=3.1415926536
+
+
 
 //@debug math.max(10,100,0,-50);//@debug math.min(10,100,0,-50);
 //@debug math.max(1in,1cm,96px);//@debug math.min(-10…,10…);
 //@debug math.max(.5turn,210grad,10deg);//210grad
+//@debug math.min(1s,1s - 1ms,.1);//.1 issue
+//@debug math.min(1a,2a,3,4);//1a issue
+//@debug math.max(1a,2a,3,4);//4 issue
+//@debug math.max(1cm,10mm,3,4);//4 issue
+//@debug math.max(10mm,1cm,3,4);//10mm issue
+//@debug math.max(1cm,10mm,.5,1);//1cm
+  //@debug math.max(1,1cm,10mm,40q,.5);// unexpected issue
 
 //@debug math.clamp(-10,0,10);//@debug math.clamp(-5…,10…,5…);
 //@debug math.clamp(calc(1pc/1pt)*1q,calc(96px/(1in/1cm)),10mm);
 //@debug math.clamp(100grad,.75turn,math.$pi*1rad);//π
 //@debug math.clamp(1cm,10mm,1in);//1cm
+//@debug math.clamp(500ms,.7s,1s);
 
 //@debug math.ceil(4.00001);//5
 //@debug math.ceil(-4.00001);//-4
@@ -77,6 +94,9 @@
 //@debug math.hypot(-10cm,1in,1mm);
 //@debug math.hypot(10…,-2…,1…,20…);
 //@debug math.hypot(-2.2m,2.4m,1.6m);
+//@debug math.hypot(3s,4000ms);//5s
+//@debug math.hypot(3000ms,4s);//5000ms
+
 
 
 //@debug math.sqrt(169); @debug math.pow(169,.5);
@@ -96,9 +116,10 @@
 //@debug math.log(0,.1);//Infinity
 
 
+
 // @debug math.cos(math.$pi);
 // @debug math.cos(math.$pi*1rad);
-// @debug math.cos(180deg);
+//@debug math.cos(180deg);
 // @debug math.cos(200grad);
 // @debug math.cos(.5turn);
 //@debug math.pow(math.cos(7),2) + math.pow(math.sin(7),2);//1
@@ -122,25 +143,34 @@
 //@debug math.atan2(2a,2a);
 
 
+
 //@debug math.is-unitless(1);//true
 //@debug math.is-unitless(1a);//false
 
 //@debug meta.inspect(math.unit(1));//''
 //@debug meta.inspect(math.unit(1a));//'a'
 
-//@debug math.compatible(1,2turn);
-//@debug math.compatible(-1,2);
+//@debug math.compatible(1s,2turn);//false
+//@debug math.compatible(-1,2);//true
 //@debug math.compatible(1a,5);//true issue
-//@debug math.compatible(-1a,2a);
+//@debug math.compatible(-1a,2a);//true
+//@debug math.compatible(-1s,2ms);//true
 
 
 
-//@debug math.div();
+//@debug math.div(4,2);//@debug math.div(4a,2a); //2
+//@debug math.div(4a,2b);//2a/b
+//@debug math.div(4a,2);//2a
+//@debug math.div(4,2a);//2a^-1
+//@debug math.div(4s,2000ms);//4s/2s=2
+  //@debug math.div(4000ms,2s);//4000ms/2000ms=2
 
-//@debug math.percentage();
-//@debug math.random();
+//@debug math.percentage(-.2);//-20%
 
-
+//@debug math.random();//.f
+//@debug math.random(5);//5
+//@debug math.random($limit:1);//1
+//@debug math.random($limit:5);//1?2?3?4?5
 
 
 

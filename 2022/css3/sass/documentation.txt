@@ -167,16 +167,19 @@ scss= superset of css, sass= indent syntax style sheet.
 •build-in module:
   »@use 'sass:math';
     »variables: ›math.$e//Euler#=2.718… ›math.$pi//π=3.14…
-    ›compatibleUnits $all...: <angle:±#rad?grad?deg?turn>
-      <absoluteLength:±#in?cm?mm?q?pt?pc?px>
+    »compatibleUnits $all...: <angle:±#rad?grad?deg?turn>
+      <absoluteLength:±#in?cm?mm?q?pt?pc?px> <time:±#s?ms>
       <sameUnit:±#rem?em?ch?ex?%?vw?vh?vmin?vmax?dpi?ppi?x?any…>
+      ›all math.funcs return first compatible ±#unit
    •Units funcs: ›is-unitless(±#|±#anyUnit)//boolean
     ›unit(±#|±#anyUnit)//''|'anyUnit'
     »compatible($arg1,$arg2)//boolean
       ›both:±#unitless|compatible//true both:uncompatible//false
-      ›issue: $arg:±# and other ±#anyUnite…//true
+      ›issue: compatible(±#,±#anyUnite)//true
    •Bound'ing funcs:
-    ›min?max($v...)//small?biggest, all$v…:±#unitless?compatible
+    »min?max($l...)//small?biggest, all$i:±#unitless?compatible
+      ›issue: min?max(#...,$compatible...)
+        //small?biggest #|$compatible=use1stUnit, #…rel→1stUnit
     »clamp($min,$number,$max)//all must be ±#unitless?compatible
       ›clamp($min,≥$number|$number≥,$max)//$min|$max
       ›clamp($min,<$number<,$max)//$number
@@ -220,15 +223,12 @@ scss= superset of css, sass= indent syntax style sheet.
     »atan2($y:±#|±#Unite,$x:±#|±#SameUnit)//<angle:±#deg>
       ›atan2(sinx,cosx)
    •other funcs:
-    »div($number1,$number2)//$number1/$number2
-    
-
-
-… ★ • › » ⚠️💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
-
-   •›.div: .s{width: math.div(600px, 960px) * 100%;}
-… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ²√⇆ π ♪ ≠ ≈ ≤∞≥ ± © ✓✗✖ Ø † ⁰ ₱
-
+    »div($dividend,$divisor)//$quotient:$devidend/$divisor
+      ›div(6a,2|6,2a|6a,2b)//3a|3a^-1|3a/b
+      ›both unitless|compatible//±#
+    ›percentage(±#€Z)//±#*100%
+    »random($limit?:null)
+      ›random(Ø| #€N≠0| $limit:#≥1€N)//]0,1[| #| [1,$limit]€N
   »@use 'sass:string';
     »issue:all sass buildIn.funcs return unquoted string
       ›fix: meta.inspect(string.func(/**/))
@@ -340,4 +340,5 @@ scss= superset of css, sass= indent syntax style sheet.
     //Warning: <compile>
     //path/file.scss #:#(@warn) mname()
     //path/file.scss #:#(@include) root stylesheet
-… ★ • › » ⚠️ 💡 × ÷ € ← → ↑ ↓ ▶ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓✗✖ Ø † ⁰ ₱
+
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
