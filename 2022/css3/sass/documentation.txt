@@ -22,7 +22,7 @@ scss= superset of css, sass= indent syntax style sheet.
   •@include (call @mixin)
   •@at-root
  *top-lvl statements: top-lvl at stylesheet|css statement
-  •modyle loads @use
+  •modyle loads @use//meta.load.css() can be anywhere
   •@import
   •@mixin (definition)
   •@function (definition)
@@ -157,14 +157,120 @@ scss= superset of css, sass= indent syntax style sheet.
     ›@for $i from 10 through 5{}//$i:10→9→8→7→6→5
   »@while <expression>{}
    ?›required math
+
+•@at rules:
+  »@function <name>(<args...>){<universal statements>@return}
+    ›top-lvl statement
+    ›func-name = func_name 
+    ›$var:value !global;//discouraged!!
+    ›arguments required on call, optional if $var:initialized
+      can refer to previous ones ($arg1,$arg2:$arg1*2)
+      $args-name must be meanfull for other devs
+      can be argument list if last arg: ($arg1,$arg2,$args...)
+      meta.keywords() transform ($args...) to map () without $
+      pass list on calling func-name(args…)
+        $args:(ka:a,kb:b); @debug func($args...);//(ka:a,kb:b)
+    ›@return stops function & ignore subsequence code-block
+      & return result represedant the called function.
+      →r1 @else r2: @function n(a…){@if c{@return r1}@return r2}
+    ›other build-in functions module.func()
+      funcs: plain css functions: url() *-gradient() …
+      custom-functoin: gilpfile.js//sass.render?Sync({})
+    ›@function pow($base,$exponent:1){$result:1;
+      @for $_ from 1 through $exponent{$result:$result*$base}
+      @return $result} .left{left:pow(4,3)*1px}
+  »@mixin <name>|<name>(<args…>){<any-statements≠top-lvl>}
+    ›indent syntax: =<mixin-name>{} +<mixin-name>;
+    ›can encapsulate styles included in style-rule
+    ›can encapsulate style-rules included in top-lvl stylesheet?statements
+    ›can serve to modify variables.
+    ›called by @include <name>|<name>(<args…>)
+    ›<mixin-name>=<mixin_name>
+    ›arguments: as @function
+    »@content block: can include multple @content
+      ›can have neighbors styles inside its {}
+      ›@mixin name{s{@content}}@include name{/*injected*/}
+      ›{@content} recognize only {local-scope variables} not outside its {block} even neighbors from same mixin body
+      »pass @mixin ($args…) to @content
+        @mixin n($headings...){
+          @each $h in $headings{#{$h}:after{@content($h)}}
+        };@include n(h1,h2,h3,h4) using ($h){content:'' +$h}
+
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
 •global functions: hsl()
   ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
   ›if($condition, $return-if-true, $return-if-false)
   »≠recommended: ›map-get?values|keys?has-key|remove?merge
     ›list-separator|is-bracketed|length|index|set-?nth|append|join|zip
     ›un?quote|str-length?index?slice?insert|to-upper?lower-case|unique-id
+    ›comparable?unitless?unit|ceil?floor?round?max?min|abs|random?persentage
+    ›call?get-function|inspect|keywords|type-of|feature?function??mixin?content?global-?variable-exists
 
 •build-in module:
+  »@use 'sass:meta';
+   •mixins:
+    »load-css('module-url',$with?:null)//@use 'm' with ($v:u,)
+      ›@include load-css('path/moduleName',$with:('v':update,…))
+      »like @use: ›cannot configurate module alredy loaded.
+        ›module loaded only once by @use or meta.load-css()
+      »unlike @use: ›used enywhere, even can nest style-rule
+        ›unprovide members from loaded module to the current one
+        ›url can be unquoted string, $variable, #{interpolation}
+   •functions:
+    »calc-name?args(calc?clamp?min?max($args…))//'calc?…'|$args…
+      ›calc-name(min(1,2,3))//'min' calc-args(min(1,2,3))//1,2,3
+    »call(meta.get-function(),$args…)//get-function($args…)
+      »get-function($name,$css:false,$module:null)
+        ›get-function(n)//refer→ @function defined currently.
+        ›get-function(n,true?any)//refer→ plain-css function
+        ›get-function(n,false?null,namespace)//build-in|_partial
+          required @use 'namespace=build-in|_partial.scss';
+          not @include meta.load-css()
+      »call($get-function,$args…)//get-function($args…)=result
+        ›meta.call(meta.get-function(pow,null,math),3,2)//3^2=9
+        ›meta.call(meta.get-function(myFunct,null,myFile),3,2)
+          //myFile.myFunc(3,2)=<result>
+    »feature-exists($feature)//boolean
+      ›global-variable-shadowing ›extend-selector-pseudoclass
+      ›units-level-3 ›at-error ›custom-property
+    »function-exists($name,$module:null)//boolean
+      ›$module:namespace required @use 'namespace'; ≠load-css()
+    »mixin-exists($name,$module:null)//boolean
+      ›$module:namespace required @use 'namespace'; ≠load-css()
+    »content-exists()//boolean
+      ›@mixin n{@content;@debug meta.content-exists()}
+        @include n;//false     @include n{};//true
+      ›Error: content-exists() may only be called within a mixin
+    ›variable-exists($name:≠$)//boolean(current-scope)
+    »global-variable-exists($name:≠$,$module:null)//boolean
+      ›$module:namespace required @use 'namespace'; ≠load-css()
+      ›global-variable-exists(pi,math)//true
+      ›global-variable-exists(myVar,myFile)//true
+        »module-functions()
+    »module-functions($module)//map
+      ›$module:namespace required @use 'namespace'; ≠load-css()
+      ›module-functions(myFile);
+        //('myFunc': get-function('myFunc'))
+      ›module-functions(meta);
+        //('type-of': get-function('type-of'), …)
+      ›call(map.get(meta.module-functions(math),pow),3,2)//3^2=9
+    »module-variables($module)//map
+      ›$module:namespace required @use 'namespace'; ≠load-css()
+      ›module-variables(myFile);//("myVar": v)
+      ›module-variables(meta);//()
+      ›module-variables(math);
+        //('e': 2.7182818285, 'pi': 3.1415926536)
+    ›keywords($args:(ignored,$varName:v,…))//(varName:v,…)
+    »inspect($value)//$value regardless if valid css or not
+      ›@debug 'str';/*str*/ @debug meta.inspect('str');//'str'
+    »type-of($value)//type-of $value
+      ›null→null ›±#|±#unit|math.tan(±π/2)=±Infinity→number
+      ›true|false→bool ›unquoted|'quoted'→string
+      ›red|#f00|rgb(255,0,0)|hsl(0,100%,50%)→color
+      ›e s…|(e s…|e1,|Ø)|[e s…|e1|Ø]→list
+      ›@mixin?function n($args...){}→arglist
+      ›(k:v,…)|meta.keywords($args:())→map
+      ›get-function($name)→function
   »@use 'sass:math';
     »variables: ›math.$e//Euler#=2.718… ›math.$pi//π=3.14…
     »compatibleUnits $all...: <angle:±#rad?grad?deg?turn>
@@ -247,16 +353,33 @@ scss= superset of css, sass= indent syntax style sheet.
     ›to-upper-case('Bill')//'BILL' ›to-lower-case(Bill)//bill
     ›unique-id()//ufw2ymw(≠ ufw2ybm ≠ …)
   »@use 'sass:color';
-    ›
-    ›
-    ›
-    ›
-    ›
+    ›red?green?blue|alpha|hue($c)//0~255|0~1|0~360deg
+    ›saturation?lightness?whiteness?blackness($c)//0~100%
+    »change($c,$red:null,$green:null,$blue:null,$hue:null,$saturation:null,$lightness:null,$whiteness:null,$blackness:null,$alpha:null)
+      ›error: don't Enter at once all args of rgb?hsl?hwb()
+      ›$red?green?blue:0~255 ›$hue:(-360~360 +360k)deg?//k€Z
+      ›$saturation?lightness?whiteness?blackness:0~100% 
+      ›$alpha:0~1
+    »adjust(<color.change args>)
+      ›error: don't Enter at once all args of rgb?hsl?hwb()
+      ›$red?green?blue:-255~255 ›$hue:(-360~360 +360k)deg?//k€Z
+      ›$saturation?lightness?whiteness?blackness:-100~100%
+      ›$alpha:-1~1
+    »invert($c,$weight:0~100%d|0~100)//-(#%)$c
+      ›invert($c,0|50|100)//$c|gray|-$c
+      ›invert(hsl(334,100%,53%,.2));//hsl(154,100%,47%,.2)
+    »complement()
+    »mix()
+    »scale()
+    »hwb()
+    »ie-hex-str()
+    »grayscale()
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
   »@use 'sass:list';
-    »issue invaid-lists(currently): i1/… (i1/…) [# …|i1,…|i1/…] 
+    »issue invaid-lists(currently): e1/… (e1/…) [# …|e1,…|e1/…] 
       ›fix→sass2: calc(/)=math.dev(), /separator=list.slash()
-    »$list: item $s …| ($l|k:V,…|i1,|Ø)| [$l|i1|Ø]; $s:&#32|,|/;
-      ›@mixin a($l...){@each $i in $l{.#{'' + $i}{color:$i}}}
+    »$list: elem $s …| ($l|k:V,…|e1,|Ø)| [$l|e1|Ø]; $s:&#32|,|/;
+      ›@mixin a($l...){@each $e in $l{.#{'' + $e}{color:$e}}}
       ›@mixin n($nest...){ @each $a,$b,$c in $nest
         {#{$a}:before {color:$b; content:'' + $c + ' '}}
       }@include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
@@ -266,20 +389,20 @@ scss= superset of css, sass= indent syntax style sheet.
     ›separator($list)//space?comma?slash
     »length($list)//#
       ›length((k1:v1,k2:v2))//2
-    »index($list,in)//n (index start counte from 1≠0)
+    »index($list,en)//n (index start counte from 1≠0)
       ›index((ka:va,kb:vb), kb vb)//2
-      ›index(i1 i2 i2 i2 i3,i2)//2 (index of first same item)
-      ›index((i1,i2),iUndefined)//null
-    »nth($list,±#)//item±#
+      ›index(e1 e2 e2 e2 e3,e2)//2 (index of first same element)
+      ›index((e1,e2),eUndefined)//null
+    »nth($list,±#)//element.nth(±#)
       ›list.nth((k1:v1,k2:v2,k3:v3,k4:v4),-2);//k3 v3
-    »set-nth($list,±#,$v)//return $list copy & replace i±#→$v
+    »set-nth($list,±#,$v)//return $list copy & replace e±#→$v
       ›set-nth((k1:v1,k2:v2),-1,ku update)//k1 v1,ku update
-      ›set-nth(i1 i2,3,update)//Error: $n: Invalid index
-    ›slash(i1,…)//i1/… ›slash(i1 i2,i3 i4)//i1 i2/i3 i4
+      ›set-nth(e1 e2,3,update)//Error: $n: Invalid index
+    ›slash(e1,…)//e1/… ›slash(e1 e2,e3 e4)//e1 e2/e3 e4
     »append($list,$v,$separator?:auto'd|space=d1|comma|slash)
-      ›append(i1 i2,i3,$separator:$s)//i1 $s i2 $s i3
-      ›append(($l),in,$separator:$s)//i1 $s … $s in
-      ›append([$l],in,$separator:$s)//[i1 $s … $s in]
+      ›append(e1 e2,e3,$separator:$s)//e1 $s e2 $s e3
+      ›append(($l),en,$separator:$s)//e1 $s … $s en
+      ›append([$l],en,$separator:$s)//[e1 $s … $s en]
       ›append((k:v,…),kn vn,$separator:$s)//k v $s … $s kn vn
       ›append((k:v,…),kn vn,$separator:space)//(k v) (…) (kn vn)
     »join($list1,$list2,$separator?,$bracketed?:auto|true|false)
@@ -317,12 +440,6 @@ scss= superset of css, sass= indent syntax style sheet.
       ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
   »@use 'sass:selector';
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
-    ›
-    ›
-    ›
-    ›
-  »@use 'sass:meta';
-    ›.inspect: .s{--custom-property: #{meta.inspect($quoted)};}
     ›
     ›
     ›

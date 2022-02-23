@@ -1,4 +1,20 @@
 @charset "UTF-8";
+h1:after {
+  content: " 1";
+}
+
+h2:after {
+  content: " 2";
+}
+
+h3:after {
+  content: " 3";
+}
+
+h4:after {
+  content: " 4";
+}
+
 html box-sizing:border-box *:before,
 html *:after {
   box-sizing: inherit;
@@ -6,18 +22,15 @@ html *:after {
 }
 
 :root {
-  --font-invalid: $font;
-  --font-noQuotes: Rose Mary;
-  /*!not recommended by mdn*/
-  --font: "Rose Mary";
+  --font: monospace;
 }
 
 @font-face {
-  font-family: var(--font);
+  font-family: "Rose Mary";
   src: url(Rosemary.ttf);
 }
 body {
-  font: 1em var(--font), serif;
+  font: 1em var(--font), sans-serif;
   background: #222;
   color: #aaa;
 }
@@ -81,4 +94,24 @@ h2:after {
 
 h1:after {
   content: " 1";
+}
+
+li:first-child:before {
+  content: "💡Fun fact ";
+  color: #bf0;
+}
+
+li:first-child:after {
+  content: " End💡";
+  color: #bf0;
+}
+
+li:nth-child(2):before {
+  content: "⚠️Head Up! ";
+  color: #f40;
+}
+
+li:nth-child(2):after {
+  content: " End⚠️";
+  color: #f40;
 }

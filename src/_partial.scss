@@ -3,18 +3,18 @@ html{
     box-sizing:border-box
     *:before,*:after{box-sizing: inherit;font:inherit;}
 }
-$font: 'Rose Mary';
+$font: 'Rose Mary' !default;
 :root{
-  --font-invalid: $font;
-  --font-noQuotes: #{$font};/*!not recommended by mdn*/
+  //--font-invalid: $font;
+  //--font-noQuotes: #{$font};/*!not recommended by mdn*/
   --font: #{meta.inspect($font)};
 }
 @font-face {
-  font-family: var(--font);
+  font-family: 'Rose Mary';
   src: url(Rosemary.ttf);
 }
 body{
-  font: 1em var(--font),serif;
+  font: 1em var(--font),sans-serif;
   background:#222; color:#aaa;
 }
 ::selection{color: currentColor; background-color: #440b55;}
