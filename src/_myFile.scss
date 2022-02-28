@@ -3,7 +3,10 @@ $myVar:v;
 @function myFunc($args...){
   $c:0; @each $arg in $args{$c: $c + $arg} @return $c
 };
+@function a($a,$b){@return $a + $b};
 @mixin myMixin($hs...){
   @each $h in $hs{#{$h}:after{@content($h)}}
 };@include myMixin(h1,h2,h3,h4) using ($h){content:' ' + 
   meta.call(meta.get-function(slice,null,string),$h,2)};
+%myPlaceholder{text-transform:uppercase}
+%_myPrivatePlaseholder::first-letter{font-size: 1.5em}

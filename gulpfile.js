@@ -222,7 +222,7 @@ exports.default = series(
   watchTask
 );
 exports.w = watchTask;
-exports.sass =sassWatchTask;
+exports.sass = series(onlySassTask,sassWatchTask);
 exports.html = htmlTask;
 exports.js = jsTask;
 exports.css = sassTask;

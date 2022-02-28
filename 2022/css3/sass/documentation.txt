@@ -17,38 +17,94 @@ scss= superset of css, sass= indent syntax style sheet.
   •flow control: @if @else @each @for @while
   •@error @warn @debug
  *css statements: used anywhere except in @function
-  •style rule selector{}
+  •style-rule: selector{}
   •css at-rule @media @fon-face @supports @keyframes
   •@include (call @mixin)
   •@at-root
  *top-lvl statements: top-lvl at stylesheet|css statement
-  •modyle loads @use//meta.load.css() can be anywhere
+  •modyle loads @use//meta.load.css() can be nested anywhere
   •@import
   •@mixin (definition)
   •@function (definition)
  *other statements:
-  •property-declaration used in style-rule or some @at-rule
+  •property-declaration used in style-rule or some css @rules
   •@extend used only in style-rule
 
  *sassScript: are expression can be in right of 
   •property:expression; $variable:expression; 
   •@function?mixin?if(expression)
- *sassScript can be:
-  •number: 12|12px
-  •string: 'url'|bold
+ *value not literal-number: (n?operator)|$v|func()|?…
+ *literals(static expressions):
+  •number: ±#|±#unit(%=unit)|±#complexUnit
+    ›±#.f=<number> ±#=<integer>(≠±#.0)
+    »precision: ›math.funcs() use full number
+      ›css generated math.round(number*1e10)*1e-10
+      ›some operators(!= == <=>) use math.ceil(n*1e11)*1e-11
+    ›complex unit: #q*rad/s*sm quorter-radians per square-second
+    »compatibleUnits $all...: <angle:±#rad?grad?deg?turn>
+      <absoluteLength:±#in?cm?mm?q?pt?pc?px> <time:±#s?ms>
+      <sameUnit:±#rem?em?ch?ex?%?vw?vh?vmin?vmax?dpi?ppi?x?any…>
+      ›all math.funcs return first compatible ±#unit
+    ›css: ±#1e±#2//±#1*math.pow(10,±#2) |2e-2=2*math.pow(10,-2)
+  •string: sequence of characters 'quoted'|unquoted
+    »escapes: not all characters can be represented literally
+      ›by its \hexadecimal: \22=" \27=' \a9=©
+        \0~6: � ☺ ☻ ♥ ♦ ♣ ♠
+        \b~c: ♂ ♀
+        \e~1a: ♫ ☼ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓ →
+        \1c~1f: ∟↔▲▼
+    ›
+    ›
   •color: #00f|blue
   •boolean: true|false
   •null
   •lists: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
   •maps: ('background': red, 'foreground': pink)
   •can contain &
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
  *operators
-  •== !=
-  •+ - * / %
-  •< > <= >=
-  •and or not
+  •equality operators: == !=
+   ›numbers can be unitless or compatible, -1in==-96px=T 2==2=T
+   ›strings can un?quoted by '?", hi=='hi'|"hi"=T
+   ›colors (red|green|blue|alpha), #80808033==rgb(gray,.2)=T
+   ›lists (els|order|separator|bracketed), (e1,e2)==[e3 e2 e1]=F
+   ›maps (keys|values), (k1:v1,k2:v2)==(k1:v1,k2:v2)=T
+   ›boolean?null (must eqaul to themselves), null==false=F
+   ›function (name|reference)
+    meta.get-function(a,null,m1)==meta.get-function(b,null,m1)=F
+    meta.get-function(a,null,m1)==meta.get-function(a,null,m2)=F
+  •numeric operators: <expression> +|-|*|% <expression>
+   ›numbers can be both unitless or compatible(return1stUnit)
+   »%reminder=devidend/divisor-quotient (r+kn)%n=r //k€Z
+    ›k%1=0 #.f%1=f -#.f%1=1-f ±#%0=NaN (±#unit%0=NaNunit)
+   »+addition, -subtract, %modulo: ›numbers cant be incompatible
+    ›if one number unitless, he will take the other number unit
+    ›1+1q=2q 2-1q=1q 9%7q=2q 1s+|-|%1q//error:1s 1q incompatible
+   ›unary operators: ±<expression> -(-3in + 96px)//2in
+   »(-)??=hyphen| subtrac?unaryNegation operator:
+    ›add space before & after - subtract, before -unary negation
+    ›wrap (-$unary-negation) in space-s-list, else -subtracting
+    »(-) by its position: ›<expr>-n//subtract ›-ident-//hyphen
+      ›-n//negative-number ›-(≠literal number)//unary-negation
+      ›1 -$n 2 (-$n)//1=subtract 2=unary-negation (space-s-list)
+   »(/) by its position: n/n→separator except in:(division+warn)
+    ›one|both n1/n2 ≠literan-number
+    ›@function f(){@return n/n};f(); $v:n/n; (n/n)
+    ›n/n = <expression> of other operator(≠/division)
+    ›ex: @function d($a){@return $a/2};
+      $v:16/2;@debug (4/2*4)/(2) $v/d(4) (8/2) d(8);//4 4 4 4|6W
+  •relational operators(numbers): < > <= >=
+   ›numbers can be both unitless or compatible
+   ›if just one number unitless, he will be united as the other.
+   ›<expression> <|<=|>|>= <expression>, 1<2=T 3q<1mm=T 1<=2q=T
+    @debug 100px > 10s;//Error: Incompatible units px and s.
+  •boolean operators: and or not
+   ›not <expression>//oppsite-boolean notT=F notF=T
+   ›<expression> and <expression>//T&T=T T&F|F&F=F
+   ›<expression> or <expression>//TorT|TorF=T ForF=F
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
   •string concatenate + - /
-  •( )
+  •( ) used to separate operators|lists
  *other sassScript=expressions
   •$var
   •function calls: var(--custom-property) nth($list, 1) if()
@@ -80,7 +136,7 @@ scss= superset of css, sass= indent syntax style sheet.
   »properties: s{border-*} = s{border:{style:solid;size:thin}}
     ›s{margin:1em{left:0}}
 
-•#{interpolation}:
+•#{interpolation}: return unquoted string-type #not number-type
   ›can inject #{sassScript expression} in selector:
     @mixin a($s,$v:' ✖'){&>#{$v1}:after{content:$v}} 
     @include a(':valid',' ✓'); @include a(':invalid');
@@ -98,11 +154,6 @@ scss= superset of css, sass= indent syntax style sheet.
 •propery: can be nested, interpolated, hidden:
   ›@mixin mName($c:false){color:if($c,#0f0,null)}
     s0{@include mName}/*Ø*/ s1{@include mName(true)}/*#0f0*/
-
-•placeholders: (css.class + sass:superPower)
-  ›can grouped with other selectors: s0, %placeholder{}
-  ›can nest other selectors: %placeholder{p:v;&:hover{}}
-  ›called by s{@extent %placeholder;}
 
 •css variables:
   ›declared only inside rules
@@ -131,34 +182,22 @@ scss= superset of css, sass= indent syntax style sheet.
   ›
   ›
 
-•flow control rules:
-  »@else? if not? <expression>{}
-    ›@mixin a($a,b){p:v;
-      @if $a>$b{} @else if not $a{}@else if string.index($a,' ')
-      {} @else {@error 'Unknown value #{$a}.';}}
-    ›any value=true including 0|''|()|[], except null=false.
-  »@each <variable?,…> in <expression>{}
-    ›@each $item in $list{.#{'' + $item}{color:$item}}
-    ›@mixin l($list...){@each $i in $list
-      {.#{'' + $i}{color:$i}}} @include l(red, green);
-    ›@each $a,$b,$c in ([a1 a2 a3],$subList2,(c1,c2,c3))
-      {#{$a}:before {color:$b;content:'' + $c + ' '}}
-    ›@mixin n($nest...){ @each $a,$b,$c in $nest
-      {#{$a}:before{color:$b;content:'' + $c + ' '}}
-     }@include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
-    ›@each $key,$value in $map {##{$key:before{content:$value}}
-    ›@mixin m($map...){ @each $k,$v in meta.keywords($map)
-      {#{$k}:after{content:' ' + $v}} } @include m($h1:1,$h2:2);
-  »@for $i from <expression> to|through <expression>{}
-    ›can descent↓ or ascent↑, to=exclude|through=include last #
-    ›@for $i from 5 to 10{}     //$i:5→6→7→8→9
-    ›@for $i from 5 through 10{}//$i:5→6→7→8→9→10
-    ›@for $i from 10 to 5{}     //$i:10→9→8→7→6
-    ›@for $i from 10 through 5{}//$i:10→9→8→7→6→5
-  »@while <expression>{}
-   ?›required math
-
 •@at rules:
+  »@use 'url|build-in'
+    ›@use must come before any rule except @forward & $vars
+    ›modules = load other styesheets
+    ›modules compiled once no matter how many times loaded
+    »members = mixins functions variables
+      ›loading: c.func()?$var, @include <ns>.mixin?()
+      ›private members: start with -?_ accessed only currently.
+    »namespace by default last component of url without _|.scss
+      ›@use 'url' as <ns>|* → <ns>.<member>|<member>
+    »configuring:
+      ›$v: initial !default//url ›@use 'url' with ($v:update,)
+      ›
+
+ ▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+
   »@function <name>(<args...>){<universal statements>@return}
     ›top-lvl statement
     ›func-name = func_name 
@@ -184,7 +223,7 @@ scss= superset of css, sass= indent syntax style sheet.
     ›can encapsulate styles included in style-rule
     ›can encapsulate style-rules included in top-lvl stylesheet?statements
     ›can serve to modify variables.
-    ›called by @include <name>|<name>(<args…>)
+    ›called by @include <namespace>?. <name>|<name>(<args…>)
     ›<mixin-name>=<mixin_name>
     ›arguments: as @function
     »@content block: can include multple @content
@@ -195,8 +234,61 @@ scss= superset of css, sass= indent syntax style sheet.
         @mixin n($headings...){
           @each $h in $headings{#{$h}:after{@content($h)}}
         };@include n(h1,h2,h3,h4) using ($h){content:'' +$h}
+  »@extend <selector>
+    »extender styled same cascade as all extendee appears.
+      ›s0{…;<inner&:not(&--extra)>{…}} s1{@extend s0;…}//&=s0,s1
+        .a{…a;&--extra{}&+.ns{}} :is(.a,#id){} .b{@extend .a;…b}
+          //.a,.b{…a;&+.ns{}:is(&,#id){}} .a{&--extra{}} .b{…b}
+      ›.a nav.b{@extend .c}
+        .c--ignored,p.c{}//.c--ignored,p.c{}(p&nav incompatible)
+        .d .c{}//.d .c, .d .a nav.b,.a .d nav.b{} (.d .a|.a .d?)
+        div.a .c//section.a .c,div.a nav.b{}(div.a match .a els)
+    »%placeholder as .class but ≠compiled to css untill extended
+      ›%-?_privatePlceholder extended just in current stylesheet
+      ›can grouped & nest other selectors: s0,%ph{s1{}}
+    »extension scope
+      ›
 
-▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+ ▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+ •flow control:
+  »@else? if not? <expression>{}
+    ›@mixin a($a,b){p:v;
+      @if $a>$b{} @else if not $a{}@else if string.index($a,' ')
+      {} @else {@error 'Unknown value #{$a}.';}}
+    ›any value=true including 0|''|()|[], except null=false.
+  »@each <variable?,…> in <expression>{}
+    ›@each $item in $list{.#{'' + $item}{color:$item}}
+    ›@mixin l($list...){@each $i in $list
+      {.#{'' + $i}{color:$i}}} @include l(red, green);
+    ›@each $a,$b,$c in ([a1 a2 a3],$subList2,(c1,c2,c3))
+      {#{$a}:before {color:$b;content:'' + $c + ' '}}
+    ›@mixin n($nest...){ @each $a,$b,$c in $nest
+      {#{$a}:before{color:$b;content:'' + $c + ' '}}
+     }@include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
+    ›@each $key,$value in $map {##{$key:before{content:$value}}
+    ›@mixin m($map...){ @each $k,$v in meta.keywords($map)
+      {#{$k}:after{content:' ' + $v}} } @include m($h1:1,$h2:2);
+  »@for $i from <expression> to|through <expression>{}
+    ›can descent↓ or ascent↑, to=exclude|through=include last #
+    ›@for $i from 5 to 10{}     //$i:5→6→7→8→9
+    ›@for $i from 5 through 10{}//$i:5→6→7→8→9→10
+    ›@for $i from 10 to 5{}     //$i:10→9→8→7→6
+    ›@for $i from 10 through 5{}//$i:10→9→8→7→6→5
+  »@while <expression>{}
+   ?›required math
+ •terminal:
+  ›@debug <expression>//path/file.scss:#(line) Debug: <combile>
+  ›@error <expression>: stops compiling, in @mixin|function
+    //Error: <compile>
+    //       |
+    //#(line)| …@include mName();…
+    //       |
+   //path/file.scss #:#(line:column) root stylesheet(or mName())
+  ›@warn <expression>: don't stops compiling, in @mixin|function
+    //Warning: <compile>
+    //path/file.scss #:#(@warn) mname()
+    //path/file.scss #:#(@include) root stylesheet
+
 •global functions: hsl()
   ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
   ›if($condition, $return-if-true, $return-if-false)
@@ -205,65 +297,39 @@ scss= superset of css, sass= indent syntax style sheet.
     ›un?quote|str-length?index?slice?insert|to-upper?lower-case|unique-id
     ›comparable?unitless?unit|ceil?floor?round?max?min|abs|random?persentage
     ›call?get-function|inspect|keywords|type-of|feature?function??mixin?content?global-?variable-exists
-
-•build-in module:
-  »@use 'sass:meta';
-   •mixins:
+    ›adjust-color?hue| change?scale-color| alpha?opacity| red?green?blue?hue| complement|darken|desaturate|grayscale|invert|lighten|lightness|mic|opacify|fade-in?out|transparetize|saturate|saturation|ie-hex-str|
+▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+•build-in modules:
+  »@use 'sass:meta'; 16=1l+12q(6+2+2+1+1)+3m
     »load-css('module-url',$with?:null)//@use 'm' with ($v:u,)
       ›@include load-css('path/moduleName',$with:('v':update,…))
       »like @use: ›cannot configurate module alredy loaded.
         ›module loaded only once by @use or meta.load-css()
       »unlike @use: ›used enywhere, even can nest style-rule
         ›unprovide members from loaded module to the current one
+          error: namespace.$var|func()|mixin()
         ›url can be unquoted string, $variable, #{interpolation}
-   •functions:
-    »calc-name?args(calc?clamp?min?max($args…))//'calc?…'|$args…
-      ›calc-name(min(1,2,3))//'min' calc-args(min(1,2,3))//1,2,3
-    »call(meta.get-function(),$args…)//get-function($args…)
-      »get-function($name,$css:false,$module:null)
-        ›get-function(n)//refer→ @function defined currently.
-        ›get-function(n,true?any)//refer→ plain-css function
-        ›get-function(n,false?null,namespace)//build-in|_partial
-          required @use 'namespace=build-in|_partial.scss';
-          not @include meta.load-css()
-      »call($get-function,$args…)//get-function($args…)=result
-        ›meta.call(meta.get-function(pow,null,math),3,2)//3^2=9
-        ›meta.call(meta.get-function(myFunct,null,myFile),3,2)
-          //myFile.myFunc(3,2)=<result>
     »feature-exists($feature)//boolean
       ›global-variable-shadowing ›extend-selector-pseudoclass
       ›units-level-3 ›at-error ›custom-property
-    »function-exists($name,$module:null)//boolean
-      ›$module:namespace required @use 'namespace'; ≠load-css()
-    »mixin-exists($name,$module:null)//boolean
-      ›$module:namespace required @use 'namespace'; ≠load-css()
+    ›function?mixin-exists($name,$module:null)//boolean
     »content-exists()//boolean
       ›@mixin n{@content;@debug meta.content-exists()}
         @include n;//false     @include n{};//true
       ›Error: content-exists() may only be called within a mixin
     ›variable-exists($name:≠$)//boolean(current-scope)
     »global-variable-exists($name:≠$,$module:null)//boolean
-      ›$module:namespace required @use 'namespace'; ≠load-css()
       ›global-variable-exists(pi,math)//true
       ›global-variable-exists(myVar,myFile)//true
-        »module-functions()
-    »module-functions($module)//map
-      ›$module:namespace required @use 'namespace'; ≠load-css()
-      ›module-functions(myFile);
-        //('myFunc': get-function('myFunc'))
-      ›module-functions(meta);
-        //('type-of': get-function('type-of'), …)
+    »module-functions?variables($module)//map
+      ›m-variables(myFile);//("myVar": v)
+      ›m-functions(myFile);//('myFunc': get-function('myFunc'))
+      ›m-variables(meta|math)//()|('e':2.7182818285,'pi':3.141…)
+      ›m-functions(meta)//('type-of':get-function('type-of'),…)
       ›call(map.get(meta.module-functions(math),pow),3,2)//3^2=9
-    »module-variables($module)//map
-      ›$module:namespace required @use 'namespace'; ≠load-css()
-      ›module-variables(myFile);//("myVar": v)
-      ›module-variables(meta);//()
-      ›module-variables(math);
-        //('e': 2.7182818285, 'pi': 3.1415926536)
-    ›keywords($args:(ignored,$varName:v,…))//(varName:v,…)
-    »inspect($value)//$value regardless if valid css or not
-      ›@debug 'str';/*str*/ @debug meta.inspect('str');//'str'
-    »type-of($value)//type-of $value
+    »calc-name?args(calc?clamp?min?max($args…))//'calc?…'|$args…
+      ›calc-name(min(1,2,3))//'min' calc-args(min(1,2,3))//1,2,3
+    »type-of($value)//type-of $value 1/9
       ›null→null ›±#|±#unit|math.tan(±π/2)=±Infinity→number
       ›true|false→bool ›unquoted|'quoted'→string
       ›red|#f00|rgb(255,0,0)|hsl(0,100%,50%)→color
@@ -271,18 +337,28 @@ scss= superset of css, sass= indent syntax style sheet.
       ›@mixin?function n($args...){}→arglist
       ›(k:v,…)|meta.keywords($args:())→map
       ›get-function($name)→function
-  »@use 'sass:math';
+    »call(meta.get-function(),$args…)//func($args…)
+      »get-function($name,$css:false,$module:null)
+        ›get-function(n)//refer→ @function defined currently.
+        ›get-function(n,true?any)//refer→ plain-css function
+        ›get-function(n,false?null,namespace)//build-in|_partial
+          required @use 'namespace=build-in|_partial.scss';
+          not @include meta.load-css()
+      »call($get-function,$args…)//func($args…)=result
+        ›meta.call(meta.get-function(pow,null,math),3,2)//3^2=9
+        ›meta.call(meta.get-function(myFunct,null,myFile),3,2)
+          //myFile.myFunc(3,2)=result
+    ›keywords($args:(ignored,$varName:v,…))//(varName:v,…)
+    »inspect($value)//$value regardless if valid css or not
+      ›@debug 'str';/*str*/ @debug meta.inspect('str');//'str'
+  »@use 'sass:math'; 24+3u+6b+2d+3e+7t+3o
     »variables: ›math.$e//Euler#=2.718… ›math.$pi//π=3.14…
-    »compatibleUnits $all...: <angle:±#rad?grad?deg?turn>
-      <absoluteLength:±#in?cm?mm?q?pt?pc?px> <time:±#s?ms>
-      <sameUnit:±#rem?em?ch?ex?%?vw?vh?vmin?vmax?dpi?ppi?x?any…>
-      ›all math.funcs return first compatible ±#unit
-   •Units funcs: ›is-unitless(±#|±#anyUnit)//boolean
+   •Units funcs: 3 ›is-unitless(±#|±#anyUnit)//boolean
     ›unit(±#|±#anyUnit)//''|'anyUnit'
     »compatible($arg1,$arg2)//boolean
-      ›both:±#unitless|compatible//true both:uncompatible//false
+      ›both:±#unitless|compatible//true both:incompatible//false
       ›issue: compatible(±#,±#anyUnite)//true
-   •Bound'ing funcs:
+   •Bound'ing funcs: 6=3+3
     »min?max($l...)//small?biggest, all$i:±#unitless?compatible
       ›issue: min?max(#...,$compatible...)
         //small?biggest #|$compatible=use1stUnit, #…rel→1stUnit
@@ -292,12 +368,12 @@ scss= superset of css, sass= indent syntax style sheet.
     »ceil?floor(#.f)//#+1?# ›round(#.f≥5|#.f<5)//#+1|#
       ›ceil?floor(-#.f)//-#?-#-1 ›round(-#.f≥5|<5)//-#-1|-#
       ›fraction≠0, # can be either unitless or with #anyUnit.
-   •Distance funcs: ›abs(±#|±#anyUnit)//absolute: +#|+#anyUnit
+   •Distance funcs: 2 ›abs(±#|±#anyUnit)//absolute: +#|+#anyUnit
     »hypot($lengths...)//√($l1²+…) all$l…:±#?±#compatible=use1st
       ›hypot($ox)//1D:$om(x)=√($ox²)=math.abs($ox)
       ›hypot($ox,$oy)//2D:$om(x,y)=√($ox²+$oy²)
       ›hypot($ox,$oy,$oz)//3D:$om(x,y,z)=√($ox²+$oy²+$oz²)
-   •Exponential funcs:
+   •Exponential funcs: 3
     »sqrt(+#)//squareRoot:pow(#,.5)=√# √+∞→∞slow ›sqrt(-#)//NaN 
     »pow($base,$exp)=$result ›log($result:+#,$base:null)=$exp
       »pow($base:±#,$exponent:±#)//power(^carat)
@@ -306,12 +382,13 @@ scss= superset of css, sass= indent syntax style sheet.
         ›pow(±#,$exp:[1,+∞[)//±#^$exp ›pow(±#,$exp:0)//1
         ›pow(±#,$exp:]-∞,-1])//1÷(±#^math.abs($exp))
         »pow(math.$e,±x)//e^-∞→0 e^-1=1/e e^0=1 e^1=e e^+∞→∞fast
-      »log($result:+#, $base?:null=math.$e)//ln=logarithmNatural
+        ›±#1e±#2//±#1*math.pow(10,±#2) |2e-2=2*math.pow(10,-2)
+      »log($result:+#, $base:null=math.$e)//ln=logarithmNatural
         ›log($b^#,$b)//# ›log(1)//0
         ›log(0,$b:]1,∞[)//-Infinity ›log(→+∞,$b:]1,∞[)//→+∞slow
         ›log(0,$b:]0,1[)//Infinity ›log(→+∞,$b:]0,1[)//→-∞slow
         »ln-#=NaN ln0=-Infinity ln0.f=-# ln1=0 lne=1 ln+∞→∞slow
-   •Trigonometric funcs:
+   •Trigonometric funcs: 7=3+3+1
     »in right triangle90⁰: hypotenuse=√(adjacet²+opposite²)
       ›soh cah toa: Cosine=Adj/Hyp Sine=Opp/Hyp Tangent=Opp/Adj
     »cos?sin?tan(±#=rad|<angle>)//$result:±# (k€Z)
@@ -328,14 +405,14 @@ scss= superset of css, sass= indent syntax style sheet.
       ›acos?asin($result:[-1,1])//else:NaNdeg
     »atan2($y:±#|±#Unite,$x:±#|±#SameUnit)//<angle:±#deg>
       ›atan2(sinx,cosx)
-   •other funcs:
+   •other funcs: 3
     »div($dividend,$divisor)//$quotient:$devidend/$divisor
       ›div(6a,2|6,2a|6a,2b)//3a|3a^-1|3a/b
       ›both unitless|compatible//±#
     ›percentage(±#€Z)//±#*100%
-    »random($limit?:null)
+    »random($limit:null)
       ›random(Ø| #€N≠0| $limit:#≥1€N)//]0,1[| #| [1,$limit]€N
-  »@use 'sass:string';
+  »@use 'sass:string'; 9=3q+6m
     »issue:all sass buildIn.funcs return unquoted string
       ›fix: meta.inspect(string.func(/**/))
     ›length($string)//#
@@ -352,7 +429,7 @@ scss= superset of css, sass= indent syntax style sheet.
     ›quote(str|'str')//'str' ›unquote(str|'str')//str
     ›to-upper-case('Bill')//'BILL' ›to-lower-case(Bill)//bill
     ›unique-id()//ufw2ymw(≠ ufw2ybm ≠ …)
-  »@use 'sass:color';
+  »@use 'sass:color';//18=9q+3M+6m
     ›red?green?blue|alpha|hue($c)//0~255|0~1|0~360deg
     ›saturation?lightness?whiteness?blackness($c)//0~100%
     »change($c,$red:null,$green:null,$blue:null,$hue:null,$saturation:null,$lightness:null,$whiteness:null,$blackness:null,$alpha:null)
@@ -360,22 +437,34 @@ scss= superset of css, sass= indent syntax style sheet.
       ›$red?green?blue:0~255 ›$hue:(-360~360 +360k)deg?//k€Z
       ›$saturation?lightness?whiteness?blackness:0~100% 
       ›$alpha:0~1
-    »adjust(<color.change args>)
+    »adjust(<color.change-args>)
       ›error: don't Enter at once all args of rgb?hsl?hwb()
       ›$red?green?blue:-255~255 ›$hue:(-360~360 +360k)deg?//k€Z
       ›$saturation?lightness?whiteness?blackness:-100~100%
       ›$alpha:-1~1
+    »scale(<color.change-args≠$hue:-100~100%>)
+      ›#% add percentage-amount of [currentVal,maximumVal]
+      ›-#% subtract percentage-amount of [minimumVal,currentVal]
+      ›scale(#300,$red:50%)//#900 +33%[51,255]=255-102=153d=99h
+      ›scale(#300,$red:-33%)//#200 -33%[0,51]=51-17=34dec=22hex
+      ›scale(#300,$alpha:-80%)//#3003 -80%[0,1]=1-.8=.2dec=33hex
+    »grayscale($c)//color.change($c,$saturation:0%)
+      ›grayscale(hsl($h,$s, $lightness:0|20|100%))//#000|333|fff
+    ›complement($c)//adjust($c,$hue:180)
     »invert($c,$weight:0~100%d|0~100)//-(#%)$c
       ›invert($c,0|50|100)//$c|gray|-$c
-      ›invert(hsl(334,100%,53%,.2));//hsl(154,100%,47%,.2)
-    »complement()
-    »mix()
-    »scale()
-    »hwb()
-    »ie-hex-str()
-    »grayscale()
-▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
-  »@use 'sass:list';
+      ›invert(hsl(0,100%,53%,.2));//hsl(180,100%,47%,.2)
+      ›adjust(hsl(0,100%,53%,2),$hue:180,$lightness:-6%)
+    »hwb($hue,$whiteness,$blackness,$alpha?)
+      ›hwb(#,0%,0%)//change($c:any,$hue:#)
+      ›hwb($hue,$same,$same)//gray
+      ›hwb(180,1%,0%|180,0%,1%);//#00ffff→#03ffff|#00fcfc
+    ›ie-hex-str($c)//#AARRGGBB
+    »mix($c1,$c2,$weight:0~50d~100%|0~100)
+      ›mix($c1,$c2, 0|50|100)//$c2| $mix| $c1
+      ›mix(#603,#045);//#324 (6+0 0+4 3+5)/2
+      ›mix(#6031,#0455);//#252b4933 $alpha affect mixed rgb
+  »@use 'sass:list'; 10=5q+5m
     »issue invaid-lists(currently): e1/… (e1/…) [# …|e1,…|e1/…] 
       ›fix→sass2: calc(/)=math.dev(), /separator=list.slash()
     »$list: elem $s …| ($l|k:V,…|e1,|Ø)| [$l|e1|Ø]; $s:&#32|,|/;
@@ -411,7 +500,7 @@ scss= superset of css, sass= indent syntax style sheet.
       ›return: comma-separator $list, space-separator $subLists
       ›$sublists nth = smallest list.length($list#)
       ›zip(a1 a2,(b1,b2,b3),[c1 c2 c3]) //a1 b1 c1, a2 b2 c2
-  »@use 'sass:map';
+  »@use 'sass:map'; 9=4q+5m
     »$map:(<expression>:<expression>, …);
       ›(unique-key:associated-value) can be empty ()
       ›recommended to quote 'keys', avoid confuse with colorName
@@ -433,29 +522,26 @@ scss= superset of css, sass= indent syntax style sheet.
       ›set((k0: (k:v)), k0,k,update)//(k0: (k:update))
       ›set((k:v),kPlus,vPlus)//(k:v, kPlus:vPlus)
     »remove((k1:v1, k2:v2, k3:v3), k2, k3, kIgnored)//(k1:v1)
-      ›deep-remove((k:(ka:va,krm:vrm)), k,krm)//(k: (ka:va))
+    ›deep-remove((k:(ka:va,krm:vrm)), k,krm)//(k: (ka:va))
     »merge((k:v,k1:v1),(k:update,k2:v2))//(k:update,k1:v1,k2:v2)
       ›merge((k0:(k:v)), k0,k,(ku:update))//(k0:(k:(ku:update)))
       ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
-      ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
+    ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
   »@use 'sass:selector';
+    ›selector-funcs() args: un?quoted strings.
+    »is-superselector($super,$sub)//boolean
+      ›can contain %placeholder but not &.parent
+      ›$super matches ≥ $sub els//true,else false
+      ›is-superselector(a,'a.a,nav a%b:after');//true
+    »append($selectors...)//selector?-list
+      ›can contain %placeholder but not &.parent
+      ›append(s0,'s1,s2','sa,sb')//s0s1sa,s0s1sb,s0s2sa,s0s2sb
+      ›append(nav a,'.a p,%b p',':after,:before')//nav a.a p:after,nav a.a p:before,nav a%b p:after,nav a%b p:before
+    »nest($selectors...)//selector?-list
+      ›can contain %placeholde, &.parent≠arg1
+      ›nest(ul,'li%a','&:hover')//(ul li%a:hover,)
+    »extend($selector,$extendee,$extender)
+      ›
+      ›
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
-    ›
-    ›
-    ›
-    ›
-
-•terminal:
-  ›@debug <expression>//path/file.scss:#(line) Debug: <combile>
-  ›@error <expression>: stops compiling, in @mixin|function
-    //Error: <compile>
-    //       |
-    //#(line)| …@include mName();…
-    //       |
-   //path/file.scss #:#(line:column) root stylesheet(or mName())
-  ›@warn <expression>: don't stops compiling, in @mixin|function
-    //Warning: <compile>
-    //path/file.scss #:#(@warn) mname()
-    //path/file.scss #:#(@include) root stylesheet
-
 ▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱

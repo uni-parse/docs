@@ -1,7 +1,9 @@
 @use 'sass:map';@use 'sass:list';@use 'sass:string';
 @use 'sass:meta';@use 'sass:math';@use 'sass:color';
+@use 'sass:selector';
 //@use 'partial';//@use 'partial' with ($font:serif,);
 @use 'myFile';//@include meta.load-css(myFile);
+@include myFile.myMixin(h1,h2);
 //@include meta.load-css(partial,$with:('font':sans-serif,));
 $module:partial;//can be unquoted two
 //@include meta.load-css(#{$module},$with:('font':monospace,));
@@ -71,44 +73,174 @@ $module:partial;//can be unquoted two
 };@include mixin1('li:first-child',1){color:#bf0}
 @include mixin1('li:nth-child(2)'){color:#f40}
 
-//@debug meta.module-functions(color);
 
-//@debug color.red(teal);//0
-//@debug color.green(teal);//128
-//@debug color.blue(teal);//128
-//@debug color.alpha(#fbc5);//.333333
-//@debug color.hue(#fbc5);//346deg
+//@debug meta.module-functions(selector);
 
-//@debug color.saturation(#6115);//71.42%
-  //@debug color.saturation(#5445);//11.11%
-//@debug color.lightness(#ff00);//50%
-  //@debug color.lightness(#ff10);//53.3333%
-  //@debug color.lightness(#ffe0);//96.6666%
-//@debug color.whiteness(#5445);//26.66666%
-  //@debug color.whiteness(#fee5);//93.333%
-//@debug color.blackness(#5445);//66.66666%
-  //@debug color.blackness(#fee5);//0%
+//@debug selector.is-superselector(a,'a.a,nav a%b:after');//true
 
-//@debug color.adjust(#f00,$red:-255);//black
-//@debug color.adjust(#f00,$hue:-36060);//magenta
-//@debug color.adjust(#f00,$saturation:-100%);//gray
-//@debug color.adjust(#f001,$alpha:.2);//#f004
+//@debug selector.append(nav a,'.a p,%b p',':after,:before');
 
-//@debug color.change(#f00,$hue:-36060);//magenta
-//@debug color.change(#f00,$saturation:0%);//gray
-//@debug color.change(#f001,$alpha:0);//red
+//@debug selector.nest(ul,'li%a','&:hover');
 
-//@debug color.invert(white);//black
-//@debug color.invert(aqua,33);//#54abab
-//@debug color.invert(hsl(0,100%,51%,.2));//hsl(154,100%,47%,.2)
+//@debug selector.extend();
 
-//@debug color.blackness();
-//@debug color.grayscale();
-//@debug color.mix();
-//@debug color.scale();
-//@debug color.hwb();
-//@debug color.ie-hex-str();
-//@debug color.complement();
+//@debug selector.parse();
+//@debug selector.replace();
+//@debug selector.unify();
+//@debug selector.simple-selectors();
+
+
+
+
+//@debug (-1in==-96px);
+//@debug (-1==-1);
+//@debug (-1a==-1a);
+
+//@debug ''=='';
+//@debug ""=='';
+//@debug "hello"=='hello'==true!=hello;
+//@debug "hello"==hello;
+
+//@debug #80808033==rgb(gray,.2);
+
+//@debug [e1 e2]==[e1 e2];//true
+//@debug [e1 e2]==[e2 e1];//false
+//@debug (e1 e2)==(e1,e2);//false
+//@debug (e1 e2)==[e1 e2];//false
+
+//@debug (k1:v1,k2:v2)==(k1:v1,k2:v2);
+
+//@debug null==false;//false
+//@debug false==false;//true
+
+@function a($a,$b){@return $a + $b};
+@function b($a,$b){@return $a + $b};
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(a,null,null);//true
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(b,null,null);//false
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(a,null,myFile);//false
+
+
+//@debug 3q<1mm;//true
+//@debug 3q<=3;//true
+//@debug 1px > 1s;//Error:1px and 1s have incompatible units.
+
+
+//@debug 2q%4;@debug 6q%4;@debug -2q%4;//2q (r+kn)%n=r
+//@debug .2q % 1;/*.2q*/@debug -.2q % 1;//.8q
+//@debug -11q % 0;//NaNq
+
+//@debug 1q + 2;//3q
+//@debug 1q - 2;//-1q
+//@debug 1s + 1px;//Error: 1s and 1px have incompatible units.
+//@debug 1s - 1px;//Error: 1s and 1px have incompatible units.
+//@debug 1s % 1px;//Error: 1s and 1px have incompatible units.
+
+//@debug 1q*2q;//2q*q
+//@debug 1s*2q;//2s*q
+//@debug 1q*2;//2q
+//@debug 1*2q;//2q
+
+//@debug -identifier-1;//both hyphen
+//@debug 1-identifier-1;//1=hyphen 2=subtract
+//@debug -1unit-1;//1=unary-negation 2=subtract
+//$v:10;@debug 1 -$v 2 (-$v);//1=subtract 2=unary-negation
+//$v:10;@debug 1 - $v -($v + 0) 2 (-$v) -(math.ceil(2));
+
+//@debug 8q/2mm;@debug list.slash(8q,2mm);//8q/2mm separator
+@function d($a){@return $a/2};
+//$v:16/2;@debug (4/2*4)/(2) $v/d(4) (8/2) d(8);//4 4 4 4|6(div+W)
+//@debug 1in/96px == 1;//true divition Warn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  //literal static-expressions ...............................
+//@debug 3e-2;@debug 3*math.pow(10,-2);
+//$v:math.div(5q*2q,1s);@debug $v are meta.type-of($v);
+  //10q*q/s are number
+
+//@debug .12345678905;//.1234567891
+//@debug .123456789049;//.1234567890
+//@debug math.round(.12345678905*1e10)*1e-10;//.1234567891
+//@debug math.round(.123456789049*1e10)*1e-10;//.1234567890
+//@debug .123456789011 == .123456789019;//true
+//@debug .123456789011 >= .123456789019; // true
+//@debug math.ceil(.123456789041*1e11)*1e-11 == math.ceil(.123456789049*1e11)*1e-11;//true
+//@debug math.ceil(.123456789011*1e11)*1e-11 >= math.ceil(.123456789019*1e11)*1e-11;//true
+//@debug math.div(1,1e11);//0
+//@debug .1234567890123*1e13;//1234567890123
+
+//h1{&:after{content: '\1f46d 👭 \👭'}}
+//@debug '\1f46d 👭 \👭 \22 \27 \a9  © \c' ;
+@function a(){
+  //@for $i from 0 through 9{
+  //  $s: string.insert($s,'\\#{$i} ',-1);
+  //}
+  $hex:0 1 2 3 4 5 6 7 8 9 a b c d e f;
+  $hexs:0 1 2 3 4 5 6 7 8 9 a b c d e f 10 11 12 13 14 15 16 17 18 19 1a 1b 1c 1d 1e 1f 20 21 22 23 24 25 26 27 28 29 2a 2b 2c 2d 2e 2f 30;
+  $hexs: ();
+  @each $h in $hex {
+    $hh:$h;
+    @each $h in $hex {
+      $hexs: list.append($hexs,string.unquote('#{$hh}#{$h}'));
+    }
+  }
+  $s:'';
+  @for $i from 1 through list.length($hexs){
+    $s: string.insert($s,'\\#{list.nth($hexs, $i)}  ',-1);
+  }
+  @return $s;
+}
+//@debug a();
+@debug '\22';
+//@debug '\00  \01  \02  \03  \04  \05  \06  \07  \08  \09  \0a  \0b  \0c  \0d  \0e  \0f  \10  \11  \12  \13  \14  \15  \16  \17  \18  \19  \1a  \1b  \1c  \1d  \1e  \1f  \20  \21  \22  \23  \24  \25  \26  \27  \28  \29  \2a  \2b  \2c  \2d  \2e  \2f  \30  \31  \32  \33  \34  \35  \36  \37  \38  \39  \3a  \3b  \3c  \3d  \3e  \3f  \40  \41  \42  \43  \44  \45  \46  \47  \48  \49  \4a  \4b  \4c  \4d  \4e  \4f  \50  \51  \52  \53  \54  \55  \56  \57  \58  \59  \5a  \5b  \5c  \5d  \5e  \5f  \60  \61  \62  \63  \64  \65  \66  \67  \68  \69  \6a  \6b  \6c  \6d  \6e  \6f  \70  \71  \72  \73  \74  \75  \76  \77  \78  \79  \7a  \7b  \7c  \7d  \7e  \7f  \80  \81  \82  \83  \84  \85  \86  \87  \88  \89  \8a  \8b  \8c  \8d  \8e  \8f  \90  \91  \92  \93  \94  \95  \96  \97  \98  \99  \9a  \9b  \9c  \9d  \9e  \9f  \a0  \a1  \a2  \a3  \a4  \a5  \a6  \a7  \a8  \a9  \aa  \ab  \ac  \ad  \ae  \af  \b0  \b1  \b2  \b3  \b4  \b5  \b6  \b7  \b8  \b9  \ba  \bb  \bc  \bd  \be  \bf  \c0  \c1  \c2  \c3  \c4  \c5  \c6  \c7  \c8  \c9  \ca  \cb  \cc  \cd  \ce  \cf  \d0  \d1  \d2  \d3  \d4  \d5  \d6  \d7  \d8  \d9  \da  \db  \dc  \dd  \de  \df  \e0  \e1  \e2  \e3  \e4  \e5  \e6  \e7  \e8  \e9  \ea  \eb  \ec  \ed  \ee  \ef  \f0  \f1  \f2  \f3  \f4  \f5  \f6  \f7  \f8  \f9  \fa  \fb  \fc  \fd  \fe  \ff';
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+
+
+
+
+
+
 
 
 

@@ -1,4 +1,4 @@
-@use 'sass:meta';
+@use 'sass:meta';@use 'sass:color';@use 'myFile';
 html{
     box-sizing:border-box
     *:before,*:after{box-sizing: inherit;font:inherit;}
@@ -18,3 +18,19 @@ body{
   background:#222; color:#aaa;
 }
 ::selection{color: currentColor; background-color: #440b55;}
+.error{
+  $c: color.change(#f09,$hue:30);margin-top:1ch;
+  background-color: $c; font:bolder 1.5em 'Rose Mary';
+  color: color.invert($c);//@at-root color.invert($c);
+  :is(&):hover{background-color:color.invert($c);color:$c}
+  &::before{content:'★'}
+  :is(&,#somthing) output{font-style: italic}
+  //&+section{border:solid}
+  &--unextended{text-transform: uppercase}
+  &--serious{
+    @extend .error;@extend %myPlaceholder;@extend %-privatePh;
+    letter-spacing:.2ch;
+  }
+}
+%-privatePh::first-letter{font-size: 1.5em}
+%ph{text-transform:uppercase}

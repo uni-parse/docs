@@ -1,4 +1,9 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  integer number without fractions
+  identifier
+  radians|gradians|degrees|turn
+  private≠public
+  extend extendee extender
   guaranteed
   immediately
   monitor digital screen
@@ -13,6 +18,7 @@
   ceil(sēl)≠floor
   bracketed braa|ki|ted
   digit=# (dijit)
+  component = part of
   compile=translate sass→css
   in≠exCluding
   immediately 0s
