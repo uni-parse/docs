@@ -48,20 +48,51 @@ scss= superset of css, sass= indent syntax style sheet.
     ›css: ±#1e±#2//±#1*math.pow(10,±#2) |2e-2=2*math.pow(10,-2)
   •string: sequence of characters 'quoted'|unquoted
     »escapes: not all characters can be represented literally
-      ›by its \hexadecimal: \22=" \27=' \a9=©
-        \0~6: � ☺ ☻ ♥ ♦ ♣ ♠
-        \b~c: ♂ ♀
-        \e~1a: ♫ ☼ ► ◄ ↕ ‼ ¶ § ▬ ↨ ↑ ↓ →
-        \1c~1f: ∟↔▲▼
-    ›
-    ›
-  •color: #00f|blue
+      ›by its \hex 8delete 9tab a=newLine 20space 22" 27' a9©
+        \0~6:�☺☻♥♦♣♠ \b~c:♂♀ \e~1a:♫☼►◄↕‼¶§▬↨↑↓→ \1c~1f:∟↔▲▼
+        \21~2f:!"#$%&'()*+,-./ \30~39:0123456789 \3a~40::;<=>?@
+        \41~5a:ABCDEFGHIJKLMNOPQRSTUVWXYZ \5b~60:[\]^_`
+        \61~7a:abcdefghijklmnopqrstuvwxyz \7b~7f:{|}~⌂
+        \a1~ac:¡¢£¤¥¦§¨©ª«¬ \ae~bf:®¯°±²³´µ¶·¸¹º»¼½¾¿
+        \c0~ff:ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ …
+      ›any character(≠hex:0~f) can be escaped \" \<newLine> \#{}
+      ›space after \hex #ignored, '\3 ♥'=\3♥=♥♥, '\3  ♥'=♥ ♥
+      »unquoted: (look at diagram: unquoted string.png)
+        »digram(e=escape): ›-- [e? [a~Z0~9_-|≠ascii] e?]…?
+          ›-? [e? [a~Z_|≠ascii] e?] [e? [a~Z0~9_-|≠ascii] e?]…?
+        »if valid identifier return <str>: \a9=© \1F46D=👭
+          ›else if printable character return \<str>: \21=\!
+          ›else return lowercase \hex+space: (♫) xx\Exx=xx\e xx
+    ›quoted: '\'\a\\…#{<expression>}'='\'\a\\…<result>…'
+    ›unquoted(diagram): ≠ color-name| null| boolean| and?or?not
+  •color: #hexadecimal|colorName|rgb?hsl()
+    »rgb?a($c,$a| $r,$g,$b,$alpha:1| $r $g $b/$a?)
+      ›$red?green?blue: 0~255|0~100% ›$alpha: 0~1|0~100%
+    »hsl?a($h,$s,$l,$alpha:1| $h $s $l/$a?)
+      ›$hue: ±0~360?deg ›$saturation?lightness: 0~100%
   •boolean: true|false
   •null
-  •lists: 1em .5em red|1em Rosemary, sans-serif|[l=end] 
+  •lists: 1em .5em red|1em Rosemary, sans-serif|[l=end]
+    »issue invaid-lists(currently): e1/… (e1/…) [# …|e1,…|e1/…] 
+      ›fix→sass2: /div=calc?math.div() /separator=list.slash()
+    »$list: e$s…| (Ø|e,|e$s…|k:V,…)| [Ø|e|e$s…]; $s:,| |/;
+      ›argList: @function?mixin a($l...){@each $_ in $l{}}
+      ›nested argList: @each $a,$b,… in $l{}
+        ›ex: @mixin n($nest...){ @each $a,$b,$c in $nest{
+          #{$a}:before {color:$b; content:'' + $c + ' '}}}
+       @include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
+      ›immutablility: all list.funcs() return #copy of org $list
   •maps: ('background': red, 'foreground': pink)
+    »$map:(<expression>:<expression>, …);
+      ›(unique-key:associated-value) can be empty ()
+      ›recommended to quote 'keys', avoid confuse with colorName
+      ›immutablility: all map.funcs() return #copy of org $map
+      ›@each $k,$v in $map {.#{'' + $k}:before{content:$v}}
+      ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global;}
+      ›@mixin m($m...){ @each $k,$v in meta.keywords($m)
+        {#{$k}:after{content:' ' + $v}}}@include m($h1:1,$h2:2);
   •can contain &
-▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
  *operators
   •equality operators: == !=
    ›numbers can be unitless or compatible, -1in==-96px=T 2==2=T
@@ -102,9 +133,10 @@ scss= superset of css, sass= indent syntax style sheet.
    ›not <expression>//oppsite-boolean notT=F notF=T
    ›<expression> and <expression>//T&T=T T&F|F&F=F
    ›<expression> or <expression>//TorT|TorF=T ForF=F
-▶★•»›…⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱
+
   •string concatenate + - /
   •( ) used to separate operators|lists
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
  *other sassScript=expressions
   •$var
   •function calls: var(--custom-property) nth($list, 1) if()
@@ -257,9 +289,9 @@ scss= superset of css, sass= indent syntax style sheet.
       {} @else {@error 'Unknown value #{$a}.';}}
     ›any value=true including 0|''|()|[], except null=false.
   »@each <variable?,…> in <expression>{}
-    ›@each $item in $list{.#{'' + $item}{color:$item}}
-    ›@mixin l($list...){@each $i in $list
-      {.#{'' + $i}{color:$i}}} @include l(red, green);
+    ›@each $e in $list{.#{'' + $e}{color:$e}}
+    ›@mixin l($list...){@each $e in $list
+      {.#{'' + $e}{color:$e}}} @include l(red, green);
     ›@each $a,$b,$c in ([a1 a2 a3],$subList2,(c1,c2,c3))
       {#{$a}:before {color:$b;content:'' + $c + ' '}}
     ›@mixin n($nest...){ @each $a,$b,$c in $nest
@@ -464,16 +496,7 @@ scss= superset of css, sass= indent syntax style sheet.
       ›mix($c1,$c2, 0|50|100)//$c2| $mix| $c1
       ›mix(#603,#045);//#324 (6+0 0+4 3+5)/2
       ›mix(#6031,#0455);//#252b4933 $alpha affect mixed rgb
-  »@use 'sass:list'; 10=5q+5m
-    »issue invaid-lists(currently): e1/… (e1/…) [# …|e1,…|e1/…] 
-      ›fix→sass2: calc(/)=math.dev(), /separator=list.slash()
-    »$list: elem $s …| ($l|k:V,…|e1,|Ø)| [$l|e1|Ø]; $s:&#32|,|/;
-      ›@mixin a($l...){@each $e in $l{.#{'' + $e}{color:$e}}}
-      ›@mixin n($nest...){ @each $a,$b,$c in $nest
-        {#{$a}:before {color:$b; content:'' + $c + ' '}}
-      }@include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
-      ›can use list.index() in: @if not?| @else if not?| if()
-      ›immutablility: all list.funcs() return #copy of org $list
+  »@use 'sass:list'; 10=5q+5m (immutable: return copy)
     ›is-bracketed($list)//boolean
     ›separator($list)//space?comma?slash
     »length($list)//#
@@ -501,14 +524,6 @@ scss= superset of css, sass= indent syntax style sheet.
       ›$sublists nth = smallest list.length($list#)
       ›zip(a1 a2,(b1,b2,b3),[c1 c2 c3]) //a1 b1 c1, a2 b2 c2
   »@use 'sass:map'; 9=4q+5m
-    »$map:(<expression>:<expression>, …);
-      ›(unique-key:associated-value) can be empty ()
-      ›recommended to quote 'keys', avoid confuse with colorName
-      ›immutablility: all map.funcs() return #copy of org $map
-      ›@each $k,$v in $map {.#{'' + $k}:before{content:$v}}
-      ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global;}
-      ›@mixin m($m...){ @each $k,$v in meta.keywords($m)
-        {#{$k}:after{content:' ' + $v}}}@include m($h1:1,$h2:2);
     »keys((k1:v1, k2:v2, k3:v3))//k1,k2,k3
       ›keys((k:(ka:va,kb:vb), k1:v1))//k,k1
     »has-key((k:v), k1)//false
