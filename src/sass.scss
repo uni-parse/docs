@@ -238,12 +238,27 @@ $module:partial;//can be unquoted two
     $l: list.append($l,$a+$b+$c)
   }@return $l;
 }//@debug nest(1 1 1,2 2 2,3 3 3 3 3);//3 6 9
-//@debug ;
-//@debug ;
-//@debug ;
-//@debug ;
-//@debug ;
-//@debug ;
+
+//@debug meta.type-of((bold 18px/2 RoseMary, serif));//list
+
+//$g:a;@debug meta.inspect(''+$g);
+//@debug math.pow(3,calc(4/2));
+//@debug (sans-+serif) (sans - serif); // sans-serif
+//@debug - moz;// -moz
+//@debug / 15px;// /15px
+
+
+
+
+@function scale-below($value, $base, $ratio: 1.618) {
+  @while $value > $base {
+    $value: math.div($value, $ratio);
+  }
+  @return $value;
+}//@debug scale-below(20px, 16px);
+
+@mixin x($l...){ @while list.length($l)<5{}};
+//@include warn(a,a,a,a,a,a,a,);
 //@debug ;
 
 
