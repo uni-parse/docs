@@ -1,5 +1,5 @@
 @use 'sass:meta';@use 'sass:string';
-$myVar:v;
+$myVar:myvalue !default;
 @function myFunc($args...){
   $c:0; @each $arg in $args{$c: $c + $arg} @return $c
 };

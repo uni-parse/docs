@@ -1,4 +1,4 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 scss= superset of css, sass= indent syntax style sheet.
 ★partials: _pName.scss≠compiled→css called by @use rule.
  ›@use 'pName'; before any rule≠≈@forward|$var, rel→current.scss
@@ -166,14 +166,14 @@ scss= superset of css, sass= indent syntax style sheet.
   ›can contain other variables: $v1: $v2 * $v3;
   ›store one value type at a time.
   ›hyphen=underScore: $var-name=$var_name
+  »scope: ›local: declared & accessed only in current block{}.
+    ›global: declared in top#lvl stylesheet, accessed anywhere.
+    ›<local>{$v:assign?update !global} affect global+local scope
+    ›shadowing: <local>{$global:u} updated locally not globally
+    ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
   ›!defualt flag used in new-$var|$var:null, else old value used
   »configuring modules: @use 'url' with ($v:update, …);
     ›$vars must declared in top#lvl stylesheet by !default flag.
-  »scope: ›local: declared & accessed only in current block{}.
-    ›global: declared in top#lvl stylesheet, accessed anywhere.
-    ›<local>{$v:assign?update !global} affect global+local scopes
-    ›shadowing: <local>{$global:u} updated locally not globally
-    ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
   ›build-in module variables cannot be updated
 
 •@at rules:
@@ -187,7 +187,7 @@ scss= superset of css, sass= indent syntax style sheet.
     »namespace by default last component of url without _|.scss
       ›@use 'url' as <ns>|* → <ns>.<member>|<member>
     »configuring:
-      ›$v: initial !default//in-url ›@use 'url' with ($v:update,)
+      ›$v:initial !default//in-url ›@use 'url' with ($v:u,…)
       ›
 
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…

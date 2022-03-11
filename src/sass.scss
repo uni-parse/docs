@@ -2,8 +2,10 @@
 @use 'sass:meta';@use 'sass:math';@use 'sass:color';
 @use 'sass:selector';
 //@use 'partial';//@use 'partial' with ($font:serif,);
-@use 'myFile';//@include meta.load-css(myFile);
-@include myFile.myMixin(h1,h2);
+@use 'myFile' as bill with ($myVar:update,);
+  //@include meta.load-css(myFile);
+//@debug bill.$myVar;
+@include bill.myMixin(h1,h2);
 //@include meta.load-css(partial,$with:('font':sans-serif,));
 $module:partial;//can be unquoted two
 //@include meta.load-css(#{$module},$with:('font':monospace,));
@@ -259,9 +261,20 @@ $module:partial;//can be unquoted two
 $g:global;
 @function f(){ $l:local;
   @if true{$f:update;$g:update} @return $l $g
-};@debug 'f()//'+f()+' global//'+$g;
+};//@debug 'f()//'+f()+' global//'+$g;
 
 
+//@debug $map;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
+//@debug ;
 
 
 
