@@ -38,7 +38,17 @@
   •calc(<math-operators>): set sum of math operator.
   •min?max(mo1, mo2, …): set smallest?largest unordered sum.
   •clamp(mo1,mo2,mo3):set middle(rel sum) limited by min&max sum
-  •var(--custom-property, fallback-value): store reused value of custom property declared in :root{--c-p: val;}.
+  •var(--cp, <fallback>,…): store reused author value
+    ›used only as property value
+    »scope: ›globally: :root{--cp:v} ›locally: el{--cp:v}
+    ›fallback list? returned if --custom-property invalid css.
+  •env(variable,<fallback>,…) use UA value
+    ›used as property|desciptor value, may used in selectors.
+    ›scope: only globally
+    »variables:
+      ›safe-area-inset-<side>: <length> if display≠rectangle, else 0, <meta name=viewport content='viewport-fit=cover'>
+      ›titlebar-area-x?y?width?height ≠F4S19s3: <l> if desktop install pwa(progressive web app) window-controls-overlay api, else 0.
+    ›fallback list? returned if variable unavailable.
 
 ★global values: •demo:     /*w3-css initial: *{display:inline}*/
     body{font-size:13px}         /*UA-origin: p{display:block}*/
@@ -48,7 +58,7 @@
     p:nth-child(4){all: revert} /*font-size:13px;display:block*/
   •revert: set inherit, else UA-origin value, else initial.
   •unset: set inherit, else initial.
-    •inherit: set clocest ancestor #inheritable↓ value.
+    •inherit: set closest ancestor #inheritable↓ value.
     •initial: set default w3-css value(≠UA-origin).
 
 ★defualt environment: various browsers = various UA-origins.

@@ -1,14 +1,8 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
 scss= superset of css, sass= indent syntax style sheet.
-★variables: :root{$var-name:value;} s{property: $var-name;}
-★nesting: s0{p:v; s01{p:v; s011{p:v} &.a s012{p:v}}}
 ★partials: _pName.scss≠compiled→css called by @use rule.
  ›@use 'pName'; before any rule≠≈@forward|$var, rel→current.scss
-★modules: @use 'src/module'; p:module.$var; @include module.mName; (+funcion)
-★@mixin mName($var:iV){p1:$var;…} s{@include mName?($var:v);…}
-★%sharedName{p1:v;…}≠compiled→css, s{@extend %sharedName;…}
-★operators: +-*%,@use 'sass:math' math.div(600px, 960px) * 100%;
-
+★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
 ★sass stylesheet stracture:
   •statement0= selector{statement1;statement2}
   •statement= style-rule, property-declaration
@@ -122,9 +116,8 @@ scss= superset of css, sass= indent syntax style sheet.
     ›Rose+' Mary'='Rose Mary' ›sans - serif=sans-serif//hyphen
     ›unary: - moz=-moz, / 15px=/15px
 
-★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
 ★style rules: as css selector{declarations=property:value;} +
-•nesting:
+ •nesting:
   ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
   ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
   »parent&: &=outer-selector, can be after|before|argumentOf s
@@ -161,36 +154,27 @@ scss= superset of css, sass= indent syntax style sheet.
   »issue: interpolation return unquoted string.
     ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
 
-•propery: can be nested, interpolated, hidden:
-  ›@mixin mName($c:false){color:if($c,#0f0,null)}
-    s0{@include mName}/*Ø*/ s1{@include mName(true)}/*#0f0*/
-
-•css variables:
-  ›declared only inside rules
-  ›can have different values on different els: 
-    el{p:var(--custom-property, fallback-value)}
-  ›updating is value affect with both old|new usages.
-  ›
-  ›
-•sass variables:
-  ›can declared anywhere, in|out rules, before|after top-rules.
+•css variables: ›updating --cp affect both old & new usages.
+  ›--cp declared only inside rules
+  ›store 2 values --cp & falback list?, can used on differ els.
+    var(--cp, <fallback>,…) used as property value
+  ›fallback list? returned if --custom-property invalid css.
+  »scope: ›globally: :root{--cp:v} ›locally: el{--cp:v}
+•sass variables: ›updating its value affect just new≠old usages
+  ›declared anywhere, in|out rules, before|after top-lvl-rules
+  ›used anywhere & within #{interpolation}
   ›can contain other variables: $v1: $v2 * $v3;
-  »can have only 1 value at time: 
-    ›$map: ('key':'value',…)
-    ›$list: item1 …|,…|/… or (i1 …|,…|/…) or [i1 …|,…|/…]
-  ›updating is value affect just new≠old usages
+  ›store one value type at a time.
   ›hyphen=underScore: $var-name=$var_name
   ›!defualt flag used in new-$var|$var:null, else old value used
-  »configuring modules: @use 'url' with ($var1:val1,$var2:val2);
-    ›$vars must be declared by !default at stylesheet top #lvl.
-  ›build-in module variables cannot be modified: 
-    @use 'sass:<build-in>'; <build-in>.$var: '≠update';//invalid
-  »scope: ›local: declared & accessed just in same block.
-    ›global: declared at stylesheet top lvl, accessed anywhere.
-  »shadowing: if global $var updated in block, we will creat two scopes, global(unEffected) and its local(updated) shadow.
-    ›to assign value globaly from local scope add !global flag.
-  ›
-  ›
+  »configuring modules: @use 'url' with ($v:update, …);
+    ›$vars must declared in top#lvl stylesheet by !default flag.
+  »scope: ›local: declared & accessed only in current block{}.
+    ›global: declared in top#lvl stylesheet, accessed anywhere.
+    ›<local>{$v:assign?update !global} affect global+local scopes
+    ›shadowing: <local>{$global:u} updated locally not globally
+    ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
+  ›build-in module variables cannot be updated
 
 •@at rules:
   »@use 'url|build-in'
@@ -203,7 +187,7 @@ scss= superset of css, sass= indent syntax style sheet.
     »namespace by default last component of url without _|.scss
       ›@use 'url' as <ns>|* → <ns>.<member>|<member>
     »configuring:
-      ›$v: initial !default//url ›@use 'url' with ($v:update,)
+      ›$v: initial !default//in-url ›@use 'url' with ($v:update,)
       ›
 
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…

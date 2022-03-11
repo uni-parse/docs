@@ -256,8 +256,10 @@ $module:partial;//can be unquoted two
   }
   @return $value;
 }//@debug scale-below(20px, 16px);
-
-//@debug ;
+$g:global;
+@function f(){ $l:local;
+  @if true{$f:update;$g:update} @return $l $g
+};@debug 'f()//'+f()+' global//'+$g;
 
 
 

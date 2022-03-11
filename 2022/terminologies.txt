@@ -2,7 +2,7 @@
   integer number without fractions
   identifier
   radians|gradians|degrees|turn
-  private≠public
+  private≠public privarity
   extend extendee extender
   guaranteed
   immediately
