@@ -15,22 +15,6 @@ h4:after {
   content: " 4";
 }
 
-h1:after {
-  content: " 1";
-}
-
-h2:after {
-  content: " 2";
-}
-
-h3:after {
-  content: " 3";
-}
-
-h4:after {
-  content: " 4";
-}
-
 .error--serious {
   text-transform: uppercase;
 }
@@ -42,7 +26,7 @@ html *:after {
 }
 
 :root {
-  --font: monospace;
+  --font: "Rose Mary";
 }
 
 @font-face {
@@ -66,24 +50,19 @@ body {
   font: bolder 1.5em "Rose Mary";
   color: #007fff;
 }
-
 :is(.error, .error--serious):hover {
   background-color: #007fff;
   color: #ff8000;
 }
-
 .error::before, .error--serious::before {
   content: "★";
 }
-
 :is(.error, .error--serious, #somthing) output {
   font-style: italic;
 }
-
 .error--unextended {
   text-transform: uppercase;
 }
-
 .error--serious {
   letter-spacing: 0.2ch;
 }

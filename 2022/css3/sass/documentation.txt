@@ -1,7 +1,5 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
 scss= superset of css, sass= indent syntax style sheet.
-★partials: _pName.scss≠compiled→css called by @use rule.
- ›@use 'pName'; before any rule≠≈@forward|$var, rel→current.scss
 ★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
 ★sass stylesheet stracture:
   •statement0= selector{statement1;statement2}
@@ -189,10 +187,13 @@ scss= superset of css, sass= indent syntax style sheet.
     »reassigning variable: a[$v:initial] b[@use 'a';a.$v:update] 
       @use 'a';@use 'b';@debug a.$v;//update
       ›build-in module variables cannot be updated (math.$e?pi)
-    »
-    »
-
-
+    »modules: @use 'url/a';// a.sass a.scss even a.css
+      ›url: must be separated by /≠\ & rel→current.scss
+      ›partial: _n.scss≠compiled→css, @use 'n';
+      ›index: @use 'dest'; dest/[_index.scss[@use 'a'] a[…]] //…
+      ›issue: can't load members through two loads
+        a[$v:i] b[@use 'a'] c[@use 'b';@debug $v]//undefined
+  »@forward
 
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
   »@function <name>(<args...>){<universal statements>@return}
