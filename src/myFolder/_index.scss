@@ -1,1 +1,2 @@
-@use 'partial' as *;//@debug $font;
+@forward 'partial' as p-*;// with ($font:u0 !default);
+@forward 'myFile';

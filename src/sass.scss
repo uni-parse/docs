@@ -1,11 +1,11 @@
 @use 'sass:map';@use 'sass:list';@use 'sass:string';
 @use 'sass:meta';@use 'sass:math';@use 'sass:color';
-@use 'sass:selector'; @use 'myFolder' as *;
+@use 'sass:selector';
+@use 'myFolder' as bill with($p-font:u1);//@debug bill.$p-font;
 //@use 'partial';//@use 'partial' with ($font:serif,);
-@use 'myFile' as bill;//@include meta.load-css(myFile);
 @include bill.myMixin(h1,h2);//@debug $font;//issue cant load members through two loads
 //@include meta.load-css(partial,$with:('font':sans-serif,));
-$module:partial;//can be unquoted two
+//$module:partial;//can be unquoted two
 //@include meta.load-css(#{$module},$with:('font':monospace,));
 //@include meta.load-css(myFolder,$with:('font':monospace,));
 

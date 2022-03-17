@@ -172,28 +172,35 @@ scss= superset of css, sass= indent syntax style sheet.
     ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
 
 •@at rules:
-  »@use 'url|build-in'
+  »@use 'url|build-in' as <nameSpace> with ($configurating:u,…);
     ›@use must come before any rule except @forward & $vars
-    ›module are loaded external styesheet
-    ›modules compiled once no matter how many times loaded
+    »url: must be separated by forward/≠\, rel→current.scss?sass
+      ›partial: _a.scss?sass ≠compiled until loaded, @use 'a';
+      »smart find: @use 'a';// a.sass?scss?css| _a.sass?scss?css
+        ›index: @use 'path';// path/_?index.sass?scss?css
+    »module(loaded external styesheet):
+      ›compiled once no matter how many times loaded
+      »issue: can't load members through two loads
+        a[$v:i] b[@use 'a'] c[@use 'b';@debug $v]//undefined
+        ›fix: a[$v:i] b[@forward 'a'] c[@use 'b';@debug $v]//i
     »namespace by default last component of url without _|.scss
       ›@use 'url' as <ns>|* → <ns>.|<member>
-      »members: mixins functions variables
-        ›loading: <ns>?.func()?$var, @include <ns>?.mixin?()
-        ›private members: start name with -|_ local module access
+    »members: mixins functions variables
+      ›loading: <ns>?.func()?$var, @include <ns>?.mixin?()
+      ›private: start name with -|_ localAccess ≠moduleLoading
     »configuring: ›@use 'a' with ($v:u,…);a[$v:TopLvl !defaul;…]
       ›@use 'b'; @include c($v:update);
         b[$v:i;…;@mixin c($v:null,…){@if $v{$v:$v !global}…}]
-    »reassigning variable: a[$v:initial] b[@use 'a';a.$v:update] 
-      @use 'a';@use 'b';@debug a.$v;//update
+    »reassigning variable: @use 'a';@use 'b';@debug a.$v;//u
+      a[$v:i] b[@use 'a';a.$v:u]
       ›build-in module variables cannot be updated (math.$e?pi)
-    »modules: @use 'url/a';// a.sass a.scss even a.css
-      ›url: must be separated by /≠\ & rel→current.scss
-      ›partial: _n.scss≠compiled→css, @use 'n';
-      ›index: @use 'dest'; dest/[_index.scss[@use 'a'] a[…]] //…
-      ›issue: can't load members through two loads
-        a[$v:i] b[@use 'a'] c[@use 'b';@debug $v]//undefined
-  »@forward
+  »@forward 'url' with ($v:u !default?,…) as <prefix>-*;
+    ›must be topLvl before any rule except $vars
+    ›must combined with @use in order to load public members
+    ›@forward can be @extend|ed even if it isn't @use|d
+    ›prefix: @forward 'url' as <prefix>-*; → <prefix>-<member>
+    ›visability: @forward 'url' hide|show <member(+$)>,…;
+    ›configuring: @forward 'url' with ($v:u !default?,…);
 
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
   »@function <name>(<args...>){<universal statements>@return}
@@ -232,7 +239,7 @@ scss= superset of css, sass= indent syntax style sheet.
         @mixin n($headings...){
           @each $h in $headings{#{$h}:after{@content($h)}}
         };@include n(h1,h2,h3,h4) using ($h){content:'' +$h}
-  »@extend <selector>
+  »@extend <selector> !optional?;
     »extender styled same cascade as all extendee appears.
       ›s0{…;<inner&:not(&--extra)>{…}} s1{@extend s0;…}//&=s0,s1
         .a{…a;&--extra{}&+.ns{}} :is(.a,#id){} .b{@extend .a;…b}
@@ -243,9 +250,14 @@ scss= superset of css, sass= indent syntax style sheet.
         div.a .c//section.a .c,div.a nav.b{}(div.a match .a els)
     »%placeholder as .class but ≠compiled to css untill extended
       ›%-?_privatePlceholder extended just in current stylesheet
-      ›can grouped & nest other selectors: s0,%ph{s1{}}
-    »extension scope
-      ›
+      ›can grouped whith & nest other selectors: s0,%ph{s1{}}
+    »extension scope affect style rules in  upstream modules.
+      ›can extand from @use or @forward(even without @use)
+    »optional vs mandatory: @extend <selector> !optional?;
+      ›if <s> unexiste: manadatory//error optional//doNothing
+    »allowed selectors: only individual
+      ›@extend .a.b|.a .b;//error: write @extend .a,.b|.b insted
+
 
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱… 
  •flow control:

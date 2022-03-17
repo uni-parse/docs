@@ -1,4 +1,4 @@
-@use 'sass:meta';@use 'sass:color';@use '../myFile';
+@use 'sass:meta';@use 'sass:color';@use 'myFile';
 html{
     box-sizing:border-box
     *:before,*:after{box-sizing: inherit;font:inherit;}
