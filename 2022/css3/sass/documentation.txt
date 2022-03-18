@@ -1,4 +1,4 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 scss= superset of css, sass= indent syntax style sheet.
 ★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
 ★sass stylesheet stracture:
@@ -115,7 +115,7 @@ scss= superset of css, sass= indent syntax style sheet.
     ›unary: - moz=-moz, / 15px=/15px
 
 ★style rules: as css selector{declarations=property:value;} +
- •nesting:
+•nesting:
   ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
   ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
   »parent&: &=outer-selector, can be after|before|argumentOf s
@@ -138,17 +138,11 @@ scss= superset of css, sass= indent syntax style sheet.
     ›s{margin:1em{left:0}}
 
 •#{interpolation}: return unquoted string-type #not number-type
-  ›can inject #{sassScript expression} in selector:
-    @mixin a($s,$v:' ✖'){&>#{$v1}:after{content:$v}} 
-    @include a(':valid',' ✓'); @include a(':invalid');
+  ›can inject in selector, propertyName, custom-property-value:
+    #{$selector}{#{$propertyName}:v;--custom-property:#{$value}}
   ›can mixed with &parent-selector, @at-root, s-function()
   ›can contain #{if()}
-  ›can injected as|in propertyName:
-    @mixin mName($property,$val,$prefixes){
-      @each $prefix in $prefixes{-#{$prefix}-#{$propery}:$val}
-      #{$property}: $val}
-    .selector{@include mName(background-clip,text,moz webkit)}
-  ›can injected as :root{--custom-property: #{$value};}
+
   »issue: interpolation return unquoted string.
     ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
 
@@ -188,6 +182,7 @@ scss= superset of css, sass= indent syntax style sheet.
     »members: mixins functions variables
       ›loading: <ns>?.func()?$var, @include <ns>?.mixin?()
       ›private: start name with -|_ localAccess ≠moduleLoading
+      ›same name: same-name = same_name
     »configuring: ›@use 'a' with ($v:u,…);a[$v:TopLvl !defaul;…]
       ›@use 'b'; @include c($v:update);
         b[$v:i;…;@mixin c($v:null,…){@if $v{$v:$v !global}…}]
@@ -201,17 +196,20 @@ scss= superset of css, sass= indent syntax style sheet.
     ›prefix: @forward 'url' as <prefix>-*; → <prefix>-<member>
     ›visability: @forward 'url' hide|show <member(+$)>,…;
     ›configuring: @forward 'url' with ($v:u !default?,…);
+  »@import 'url',…
 
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
-  »@function <name>(<args...>){<universal statements>@return}
+
+
+
+  »@function <name>(<args...>){<universal statements>@return …}
     ›top-lvl statement
-    ›func-name = func_name 
+    ›func-name = func_name
     ›$var:value !global;//discouraged!!
-    ›arguments required on call, optional if $var:initialized
+    ›arguments names must be meanfull for other devs
       can refer to previous ones ($arg1,$arg2:$arg1*2)
-      $args-name must be meanfull for other devs
-      can be argument list if last arg: ($arg1,$arg2,$args...)
-      meta.keywords() transform ($args...) to map () without $
+      optional if $arg:initialized
+      argument-list must be last one: ($arg1,$arg2,$args...)
+      meta.keywords($args) transform $args...→(map without $)
       pass list on calling func-name(args…)
         $args:(ka:a,kb:b); @debug func($args...);//(ka:a,kb:b)
     ›@return stops function & ignore subsequence code-block
@@ -219,11 +217,8 @@ scss= superset of css, sass= indent syntax style sheet.
       →r1 @else r2: @function n(a…){@if c{@return r1}@return r2}
     ›other build-in functions module.func()
       funcs: plain css functions: url() *-gradient() …
-      custom-functoin: gilpfile.js//sass.render?Sync({})
-    ›@function pow($base,$exponent:1){$result:1;
-      @for $_ from 1 through $exponent{$result:$result*$base}
-      @return $result} .left{left:pow(4,3)*1px}
-  »@mixin <name>|<name>(<args…>){<any-statements≠top-lvl>}
+      custom-functoin: golpfile.js//sass.render?Sync({})
+  »@mixin <name>|(<args…>){<statement≠topLvl>;@content(<args…>)}
     ›indent syntax: =<mixin-name>{} +<mixin-name>;
     ›can encapsulate styles included in style-rule
     ›can encapsulate style-rules included in top-lvl stylesheet?statements
@@ -240,26 +235,29 @@ scss= superset of css, sass= indent syntax style sheet.
           @each $h in $headings{#{$h}:after{@content($h)}}
         };@include n(h1,h2,h3,h4) using ($h){content:'' +$h}
   »@extend <selector> !optional?;
-    »extender styled same cascade as all extendee appears.
-      ›s0{…;<inner&:not(&--extra)>{…}} s1{@extend s0;…}//&=s0,s1
-        .a{…a;&--extra{}&+.ns{}} :is(.a,#id){} .b{@extend .a;…b}
-          //.a,.b{…a;&+.ns{}:is(&,#id){}} .a{&--extra{}} .b{…b}
-      ›.a nav.b{@extend .c}
-        .c--ignored,p.c{}//.c--ignored,p.c{}(p&nav incompatible)
-        .d .c{}//.d .c, .d .a nav.b,.a .d nav.b{} (.d .a|.a .d?)
-        div.a .c//section.a .c,div.a nav.b{}(div.a match .a els)
-    »%placeholder as .class but ≠compiled to css untill extended
-      ›%-?_privatePlceholder extended just in current stylesheet
+    ›extender inherit & styled same cascade as all extendee appears even in upstream-scope modules who loaded by @use|@forward(even without @use).
+    ›.a ul.b{@extend .x} /*if below selectors are upstream*/
+      .x--ignored,ol.x{}//.x--ignored,ol.x{}(ol≠ul incompatible)
+      .c .x{}//.c .x, .c .a ul.b,.a .c ul.b{} (.c .a|.a .c)
+      ol.a .x//ol.a .x,ol.a ul.b{} (.a match all ol.a els)
+    »%placeholder as .class but ≠compiled→css untill @extended
       ›can grouped whith & nest other selectors: s0,%ph{s1{}}
-    »extension scope affect style rules in  upstream modules.
-      ›can extand from @use or @forward(even without @use)
-    »optional vs mandatory: @extend <selector> !optional?;
-      ›if <s> unexiste: manadatory//error optional//doNothing
-    »allowed selectors: only individual
-      ›@extend .a.b|.a .b;//error: write @extend .a,.b|.b insted
+      ›%-?_privatePlceholder extended just in current stylesheet
+    »optional vs mandatory: @extend <unexiste-selector>//error
+      @extend <unexiste-selector> !optional//doNothing
+    »limitation: ›.outside{} @media <t>{@extend .outside}//error
+      ›allowed only individual selectors:
+        @extend .a.b|.a .b;//error:write @extend .a,.b|.b insted
+      ›html heuristic: ≠generate all possible combinations
+        each ancestors selectors actes as one container
+        .a .b li{…} .c .d dd{@extend li}
+          //.a .b li, .a .b .c .d dd, .c .d .a .b dd{…}
+  »@at-root <selector> (with?without: rule?media)
+    remove outer selector, s0{@at-root div{}}//div{}
+    ›by default nesting include outer selector even if & used
+  required selector.funcs
 
 
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱… 
  •flow control:
   ›@if not? <exp>{} @else if not? <exp>{} … @else{}
     @mixin a($a,b){ p:v;@if $a>$b{} @else if not $a{}
@@ -517,20 +515,24 @@ scss= superset of css, sass= indent syntax style sheet.
       ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
     ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
   »@use 'sass:selector';
-    ›selector-funcs() args: un?quoted strings.
+    ›all functions args: un?quoted-str can contain %ph but≠&
     »is-superselector($super,$sub)//boolean
-      ›can contain %placeholder but not &.parent
-      ›$super matches ≥ $sub els//true,else false
-      ›is-superselector(a,'a.a,nav a%b:after');//true
-    »append($selectors...)//selector?-list
-      ›can contain %placeholder but not &.parent
-      ›append(s0,'s1,s2','sa,sb')//s0s1sa,s0s1sb,s0s2sa,s0s2sb
-      ›append(nav a,'.a p,%b p',':after,:before')//nav a.a p:after,nav a.a p:before,nav a%b p:after,nav a%b p:before
-    »nest($selectors...)//selector?-list
-      ›can contain %placeholde, &.parent≠arg1
-      ›nest(ul,'li%a','&:hover')//(ul li%a:hover,)
+      ›if($super matches≥ $sub els≠::pseudoElement, true, false)
+        is-superselector(a,'a%b,a.b,a#b,b a,:is(a)');//true
+    ›append($s...)//list(selector)
+      append(s0,'s1,s2','sa,sb')//s0s1sa,s0s1sb,s0s2sa,s0s2sb
+        append(ul a,'.b p,%b p',':after,:before')//ul a.b p:after,ul a.b p:before,ul a%b p:after,ul a%b p:before
+    ›nest($s...)//list(selector), $s can contain %ph, &≠arg1
+      nest(ul,'li%a','&:hover')//(ul li%a:hover,)
     »extend($selector,$extendee,$extender)
+      #{$selector}{} #{$extender}{@extend $extendee !optional}
+        selector.extend('.m a%b','%b','.n .b,a.c')
+          //.m a%b, .m .n a.b, .n .m a.b, .m a.c
+      ›if $selector ≠contain $extendee //return just $selector
+        selector.extend('.selector',.unmatched,.any)//.selector
+    »replace($selector,$original,$replacement)//list(selector)
       ›
-      ›
+
+
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
