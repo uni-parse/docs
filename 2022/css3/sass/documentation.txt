@@ -524,15 +524,20 @@ scss= superset of css, sass= indent syntax style sheet.
         append(ul a,'.b p,%b p',':after,:before')//ul a.b p:after,ul a.b p:before,ul a%b p:after,ul a%b p:before
     ›nest($s...)//list(selector), $s can contain %ph, &≠arg1
       nest(ul,'li%a','&:hover')//(ul li%a:hover,)
-    »extend($selector,$extendee,$extender)
-      #{$selector}{} #{$extender}{@extend $extendee !optional}
+    »extend($selector,$extendee,$extender)list(selector)
+      ›replace any $extendee in $selector → $extendee, $extender
+      ›#{$selector}{} #{$extender}{@extend $extendee !optional}
         selector.extend('.m a%b','%b','.n .b,a.c')
           //.m a%b, .m .n a.b, .n .m a.b, .m a.c
       ›if $selector ≠contain $extendee //return just $selector
         selector.extend('.selector',.unmatched,.any)//.selector
     »replace($selector,$original,$replacement)//list(selector)
-      ›
-
+      ›replace any $orininal in $delector → $replacement
+      ›use same @extend intelligent-unification
+        selector.replace('.m a%b','%b','.n .b,a.c')
+          //.m .n a.b, .n .m a.b, .m a.c
+      ›if $selector ≠contain $original //return just $selector
+        selector.replace('.selector',.unmatched,.any)//.selector
 
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…

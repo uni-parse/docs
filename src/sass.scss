@@ -89,9 +89,9 @@
 //@debug meta.type-of(selector.nest(ul,'li%a'));//list
 //#{selector.nest(ul,li)}{color:red}; //ul li{color:red}
 
-//@debug selector.extend('.m a%b','%b','.n .b,a.c');
+@debug selector.extend('.m a%b','%b','.n .b,a.c');
 
-//@debug selector.replace();
+@debug selector.replace('.m a%b','%b','.n .b,a.c');
 
 //@debug selector.parse();
 //@debug selector.unify();
