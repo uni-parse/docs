@@ -538,6 +538,8 @@ scss= superset of css, sass= indent syntax style sheet.
           //.m .n a.b, .n .m a.b, .m a.c
       ›if $selector ≠contain $original //return just $selector
         selector.replace('.selector',.unmatched,.any)//.selector
+    »parse($selector)//list(selector)
+      ›
 
     ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
