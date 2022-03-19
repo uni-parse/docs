@@ -73,7 +73,6 @@
 };@include mixin1('li:first-child',1){color:#bf0}
 @include mixin1('li:nth-child(2)'){color:#f40}
 
-
 //@debug meta.module-functions(selector);
 
 //@debug selector.is-superselector(a,'ul a.a');//true
@@ -90,13 +89,16 @@
 //#{selector.nest(ul,li)}{color:red}; //ul li{color:red}
 
 //@debug selector.extend('.m a%b','%b','.n .b,a.c');
+//@debug selector.extend('ul.b a.b','.b','%b');
 //@debug selector.replace('.m a%b','%b','.n .b,a.c');
 
-@debug selector.parse('.a a:hover, .b p');
-@debug selector.parse(body div ul a);
+//@debug selector.parse('.a a:hover,.b p');//.a a:hover,.b p
 
-//@debug selector.unify();
-//@debug selector.simple-selectors();
+//@debug selector.simple-selectors('a%b:hover');
+
+//@debug selector.unify('.m .n a.b','.j .k a%b');
+//@debug selector.unify('a%b','p%b');//null
+
 
 
 

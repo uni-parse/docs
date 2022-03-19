@@ -69,6 +69,7 @@ scss= superset of css, sass= indent syntax style sheet.
       ›fix→sass2: /div=calc?math.div() /separator=list.slash()
   •map: (Ø|<exp>:<exp>,…); ›recommended: ('unique key':value,…)
     ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global}
+ 
  *operators: ›order: unary(not ± /),*%/,+-,<=>,== !=,and,or.
   •() used to separate operators|lists|unquoted-str
   •equality operators: == !=
@@ -252,10 +253,10 @@ scss= superset of css, sass= indent syntax style sheet.
         each ancestors selectors actes as one container
         .a .b li{…} .c .d dd{@extend li}
           //.a .b li, .a .b .c .d dd, .c .d .a .b dd{…}
-  »@at-root <selector> (with?without: rule?media)
+  »@at-root <selector> (with?without: rule?all?<@ruleName>)
     remove outer selector, s0{@at-root div{}}//div{}
     ›by default nesting include outer selector even if & used
-  required selector.funcs
+  
 
 
  •flow control:
@@ -293,16 +294,6 @@ scss= superset of css, sass= indent syntax style sheet.
     //path/file.scss #:#(@warn) mname()
     //path/file.scss #:#(@include) root stylesheet
 
-•global functions: hsl()
-  ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
-  ›if($condition, $return-if-true, $return-if-false)
-  »≠recommended: ›map-get?values|keys?has-key|remove?merge
-    ›list-separator|is-bracketed|length|index|set-?nth|append|join|zip
-    ›un?quote|str-length?index?slice?insert|to-upper?lower-case|unique-id
-    ›comparable?unitless?unit|ceil?floor?round?max?min|abs|random?persentage
-    ›call?get-function|inspect|keywords|type-of|feature?function??mixin?content?global-?variable-exists
-    ›adjust-color?hue| change?scale-color| alpha?opacity| red?green?blue?hue| complement|darken|desaturate|grayscale|invert|lighten|lightness|mic|opacify|fade-in?out|transparetize|saturate|saturation|ie-hex-str|
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 •build-in modules:
   »@use 'sass:meta'; 16=1l+12q(6+2+2+1+1)+3m
     »load-css('module-url',$with?:null)//@use 'm' with ($v:u,)
@@ -341,6 +332,7 @@ scss= superset of css, sass= indent syntax style sheet.
       ›@mixin?function n($args...){}→arglist
       ›(k:v,…)|meta.keywords($args:())→map
       ›get-function($name)→function
+      ›calc?clamp?min?max()→calculation
     »call(meta.get-function(),$args…)//func($args…)
       »get-function($name,$css:false,$module:null)
         ›get-function(n)//refer→ @function defined currently.
@@ -515,31 +507,41 @@ scss= superset of css, sass= indent syntax style sheet.
       ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
     ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
   »@use 'sass:selector';
-    ›all functions args: un?quoted-str can contain %ph but≠&
+    ›$args: un?quoted-str can contain %ph but≠&;
+      many ancestors parse as one container
     »is-superselector($super,$sub)//boolean
       ›if($super matches≥ $sub els≠::pseudoElement, true, false)
         is-superselector(a,'a%b,a.b,a#b,b a,:is(a)');//true
+    ›parse($selector)//list(selector format)
+    ›semple-selectors($selector≠[space|,])//list(selector)
+      selector.simple-selectors('a%b:hover')//a, %b, :hover
     ›append($s...)//list(selector)
       append(s0,'s1,s2','sa,sb')//s0s1sa,s0s1sb,s0s2sa,s0s2sb
         append(ul a,'.b p,%b p',':after,:before')//ul a.b p:after,ul a.b p:before,ul a%b p:after,ul a%b p:before
     ›nest($s...)//list(selector), $s can contain %ph, &≠arg1
       nest(ul,'li%a','&:hover')//(ul li%a:hover,)
-    »extend($selector,$extendee,$extender)list(selector)
-      ›replace any $extendee in $selector → $extendee, $extender
-      ›#{$selector}{} #{$extender}{@extend $extendee !optional}
-        selector.extend('.m a%b','%b','.n .b,a.c')
-          //.m a%b, .m .n a.b, .n .m a.b, .m a.c
-      ›if $selector ≠contain $extendee //return just $selector
-        selector.extend('.selector',.unmatched,.any)//.selector
-    »replace($selector,$original,$replacement)//list(selector)
-      ›replace any $orininal in $delector → $replacement
-      ›use same @extend intelligent-unification
+    »extend?replace()//list(selector)
+      ›selector.extend?replace('.s','.unmatched','.any')//.s
+      »extend($s,$extendee,$extender)
+        //$s, but any $extendee in $s → $extendee,$extender
+        ›#{$s}{} #{$extender}{@extend #{$extendee} !optional}
+          selector.extend('.m a%b','%b','.n .b,a.c')
+            //.m a%b, .m .n a.b, .n .m a.b, .m a.c
+      ›replace($s,$origin,$replace)//$s,any $origin € $s→$replace
         selector.replace('.m a%b','%b','.n .b,a.c')
           //.m .n a.b, .n .m a.b, .m a.c
-      ›if $selector ≠contain $original //return just $selector
-        selector.replace('.selector',.unmatched,.any)//.selector
-    »parse($selector)//list(selector)
-      ›
+    ›unify($selector1, $selector2)//null|list(selector)
+      selector.unify(a,p)//null
+      selector.unify('.m .n a.b','.j .k a%b')
+        //.m .n .j .k a.b%b, .j .k .m .n a.b%b
 
-    ›.unify: s0 s1{@at-root #{selector.unify(&,'.child')}{/**/}}
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+•global functions: hsl()
+  ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
+  ›if($condition, $return-if-true, $return-if-false)
+  »≠recommended: ›map-get?values|keys?has-key|remove?merge
+    ›list-separator|is-bracketed|length|index|set-?nth|append|join|zip
+    ›un?quote|str-length?index?slice?insert|to-upper?lower-case|unique-id
+    ›comparable?unitless?unit|ceil?floor?round?max?min|abs|random?persentage
+    ›call?get-function|inspect|keywords|type-of|feature?function??mixin?content?global-?variable-exists
+    ›adjust-color?hue| change?scale-color| alpha?opacity| red?green?blue?hue| complement|darken|desaturate|grayscale|invert|lighten|lightness|mic|opacify|fade-in?out|transparetize|saturate|saturation|ie-hex-str
+    ›selector-parse?append?nest?extend?replace?unify|is-superselector|simple-selectors

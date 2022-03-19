@@ -71,6 +71,11 @@
 //@debug meta.call(meta.get-function(myFunc,null,myFile),3,2);
   //myFile.myFunc(3,2)=<result:3+2=5>
 
+//@debug meta.type-of(calc(5px + 5%));//calculation
+//@debug meta.type-of(clamp(50px,50%,200in));//calculation
+//@debug meta.type-of(max(50px,50%));//calculation
+//@debug meta.type-of(min(50px,50%));//calculation
+
 //@debug meta.feature-exists(global-variable-shadowing);
 //@debug meta.feature-exists(extend-selector-pseudoclass);
 //@debug meta.feature-exists(units-level-3);
