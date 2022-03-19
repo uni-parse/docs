@@ -253,12 +253,13 @@ scss= superset of css, sass= indent syntax style sheet.
         each ancestors selectors actes as one container
         .a .b li{…} .c .d dd{@extend li}
           //.a .b li, .a .b .c .d dd, .c .d .a .b dd{…}
-  »@at-root <selector> (with?without: rule?all?<@ruleName>)
-    remove outer selector, s0{@at-root div{}}//div{}
-    ›by default nesting include outer selector even if & used
-  
+  »@at-root <selector> (with?without: rule?all?<@ruleName>, …)
+    ›remove outer nesting selector, s0{@at-root div{}}//div{}
+    ›
+    ›
+    ›
 
-
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
  •flow control:
   ›@if not? <exp>{} @else if not? <exp>{} … @else{}
     @mixin a($a,b){ p:v;@if $a>$b{} @else if not $a{}

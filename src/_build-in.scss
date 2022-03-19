@@ -1,3 +1,37 @@
+//@debug meta.module-functions(selector);
+
+//@debug selector.is-superselector(a,'ul a.a');//true
+//@debug selector.is-superselector('a.a',a);//false
+//@debug selector.is-superselector(a,b);//false
+//@debug selector.is-superselector(a,'ul a.a:not(a.a)');//true
+//@debug selector.is-superselector(a,'a:after');//false
+//@debug selector.is-superselector(a,'a%b,a.b,a#b,b a,:is(a)');//true
+
+//@debug selector.append(ul a,'.b p,%b p',':after,:before');
+
+//@debug selector.nest(ul,'li%a','&:hover');
+//@debug meta.type-of(selector.nest(ul,'li%a'));//list
+//#{selector.nest(ul,li)}{color:red}; //ul li{color:red}
+
+//@debug selector.extend('.m a%b','%b','.n .b,a.c');
+//@debug selector.extend('ul.b a.b','.b','%b');
+//@debug selector.replace('.m a%b','%b','.n .b,a.c');
+
+//@debug selector.parse('.a a:hover,.b p');//.a a:hover,.b p
+
+//@debug selector.simple-selectors('a%b:hover');
+
+//@debug selector.unify('.m .n a.b','.j .k a%b');
+//@debug selector.unify('a%b','p%b');//null
+
+
+
+
+
+
+
+
+
 //@debug color.red(teal);//0
 //@debug color.green(teal);//128
 //@debug color.blue(teal);//128
