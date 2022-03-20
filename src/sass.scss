@@ -102,9 +102,11 @@
 };//@debug z(1,.5) ;//z(1,.5) z(-1,-2) z(a);
 $va:' again';
 /*!hello#{$va}*/
+.s{--cp:value;@debug --cp;}
 
 
-
+//@debug #{$font};//1em,R M|1em,'R M'
+//@debug #{meta.inspect($font)};//1em,R M|1em,'R M
 
 
 

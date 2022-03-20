@@ -153,3 +153,6 @@ li:nth-child(2):after {
   }
 }
 /*!hello again*/
+.s {
+  --cp:value;
+}
