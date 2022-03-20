@@ -146,3 +146,10 @@ li:nth-child(2):after {
   content: " End⚠️";
   color: #f40;
 }
+
+@media print {
+  .styleRule {
+    width: 8in;
+  }
+}
+/*!hello again*/

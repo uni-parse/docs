@@ -117,8 +117,8 @@ scss= superset of css, sass= indent syntax style sheet.
 
 ★style rules: as css selector{declarations=property:value;} +
 •nesting:
-  ›s-lists: s0>sa, s0>sb, s1>sa, s1>sb{} = s0,s1{sa,sb{}}
-  ›s-combinators: s0>s1{} = s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}}
+  ›s-lists: s0,s1{sa,sb{}}//s0 sa, s0 sb, s1 sa, s1 sb{}
+  ›s-combinators: s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}} //s0>s1{}
   »parent&: &=outer-selector, can be after|before|argumentOf s
     s0{s1{ul :is(&, s3):hover{}}}//&=s0 s1
     ›suffix: .a__b--c-d{} = .a{&__b{&--c{&-d{}}}}
@@ -129,20 +129,18 @@ scss= superset of css, sass= indent syntax style sheet.
       @include c;//.a:before{content: '♪ '}
     ›unify with another selector://'s0… s4'+'.a'{}=s0… s4.a{}
       @mixin a($s){@at-root #{selector.unify(&,$s)}{@content}}
-      .f :valid{
-        @include a('[type=tel]'){}//.f [type=tel]:valid{}
-        @include a('input:after'){}//.f input:valid:after{}
-      }
+      .f :valid{@include a('[type=tel]'){}//.f [type=tel]:valid{}
+        @include a('input:after'){}//.f input:valid:after{} }
   »@at-root: remove outer selector, s0{@at-root div{}}//div{}
     ›by default nesting include outer selector even if & used
   »properties: s{border-*} = s{border:{style:solid;size:thin}}
     ›s{margin:1em{left:0}}
 
-•#{interpolation}: return unquoted string-type #not number-type
-  ›can inject in selector, propertyName, custom-property-value:
-    #{$selector}{#{$propertyName}:v;--custom-property:#{$value}}
-  ›can mixed with &parent-selector, @at-root, s-function()
-  ›can contain #{if()}
+•interpolation: #{<exp +if()>}//return type-of unquoted-str≠number
+  ›can inject in: selector, propertyName, custom-property-value
+  ,css @rules & funcs(), @extend, un?quoted-str, /*!loud-comment:
+    @keyframes #{$name}{/*!'animate #{$component}'*/
+      to{.#{$s}{#{$pn}:url('path/#{if($c,$str,"")}');--cp:#{$v}}}}
 
   »issue: interpolation return unquoted string.
     ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
@@ -197,11 +195,6 @@ scss= superset of css, sass= indent syntax style sheet.
     ›prefix: @forward 'url' as <prefix>-*; → <prefix>-<member>
     ›visability: @forward 'url' hide|show <member(+$)>,…;
     ›configuring: @forward 'url' with ($v:u !default?,…);
-  »@import 'url',…
-
-
-
-
   »@function <name>(<args...>){<universal statements>@return …}
     ›top-lvl statement
     ›func-name = func_name
@@ -253,13 +246,9 @@ scss= superset of css, sass= indent syntax style sheet.
         each ancestors selectors actes as one container
         .a .b li{…} .c .d dd{@extend li}
           //.a .b li, .a .b .c .d dd, .c .d .a .b dd{…}
-  »@at-root <selector> (with?without: rule?all?<@ruleName>, …)
-    ›remove outer nesting selector, s0{@at-root div{}}//div{}
-    ›
-    ›
-    ›
-
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+  »@at-root <selector>|(with?without: rule?all?<@ruleName>, …){}
+    ›remove outer nesting selector: .s0{@at-root .s1{}}//.s1{}
+    @media print{.s{@at-root (with:rule|without:media){…}}//.s{…}
  •flow control:
   ›@if not? <exp>{} @else if not? <exp>{} … @else{}
     @mixin a($a,b){ p:v;@if $a>$b{} @else if not $a{}
@@ -283,17 +272,13 @@ scss= superset of css, sass= indent syntax style sheet.
     ›@for $i from 10 through 5{}//$i:10→9→8→7→6→5
   ›@while <exp>{}
  •terminal:
-  ›@debug <expression>//path/file.scss:#(line) Debug: <combile>
-  ›@error <expression>: stops compiling, in @mixin|function
-    //Error: <compile>
-    //       |
-    //#(line)| …@include mName();…
-    //       |
-   //path/file.scss #:#(line:column) root stylesheet(or mName())
-  ›@warn <expression>: don't stops compiling, in @mixin|function
-    //Warning: <compile>
-    //path/file.scss #:#(@warn) mname()
-    //path/file.scss #:#(@include) root stylesheet
+  ›@debug <exp>//path/file.scss:#(line) Debug: <combile>
+  ›@warn?error(stops-compile) <exp>: used in @function?mixin
+    @function z($a...){ $s:0; @each $_ in $a{
+      @if meta.type-of($_) != number{@error '#{$_}' ≠ number}
+      @else if $_ < 0{@warn '#{$_}<0';$s:$s + $_}@else{$s:$s + $_}
+     }@return $s
+    };//@debug z(1,-2);/*warn:-2<0*/@debug z(1,a);//error:a≠number
 
 •build-in modules:
   »@use 'sass:meta'; 16=1l+12q(6+2+2+1+1)+3m

@@ -82,28 +82,26 @@
 
 
 //.outer{
-//  @at-root  .child{color: #0f0}
-//  //@at-root (with: rule){color: #0f0}
-//
-//}
-//
-//@media print {
-//  .page {
-//    width: 8in;
-//
-//    @at-root (without: media) {
-//      color: #111;
-//    }
-//
-//    @at-root (with: rule) {
-//      font-size: 1.2em;
-//    }
-//  }
+//  @at-root .child{color: #0f0}
+//  @at-root (without: media){color: #0f0}
 //}
 
+@media print{
+  .styleRule {width: 8in;
+    //@at-root (without: media){color: #111}
+    //@at-root (with: media){color: #999}//error: invalid css
+    //@at-root (with: rule){font-size: 1.2em}
+  }
+}
 
-
-
+@function z($a...){ $s:0;
+  @each $_ in $a{ //@debug meta.type-of($_);
+    @if meta.type-of($_) != number{@error '#{$_}' invalid number}
+    @else if $_<0{@warn '#{$_} < 0';$s:$s + $_}@else{$s:$s + $_}
+  }@return $s
+};//@debug z(1,.5) ;//z(1,.5) z(-1,-2) z(a);
+$va:' again';
+/*!hello#{$va}*/
 
 
 
