@@ -1,0 +1,9 @@
+@use 'sass:color' as *;
+
+@function black($color,$percentage){
+    @return adjust($color,$blackness:$percentage * 1%)
+};
+@function white($color,$percentage){
+    @return adjust($color,$whiteness:$percentage * 1%)
+};
+@mixin size($width,$height:$width){width:$width;height:$height}

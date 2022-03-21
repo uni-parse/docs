@@ -152,7 +152,14 @@ li:nth-child(2):after {
     width: 8in;
   }
 }
+@media print {
+  .styleRule {
+    color: red;
+  }
+}
+
 /*!hello again*/
 .s {
   --cp:value;
+  /*@debug --cp;*/
 }

@@ -1,3 +1,93 @@
+//@debug (-1in==-96px);
+//@debug (-1==-1);
+//@debug (-1a==-1a);
+
+//@debug ''=='';
+//@debug ""=='';
+//@debug "hello"=='hello'==true!=hello;
+//@debug "hello"==hello;
+
+//@debug #80808033==rgb(gray,.2);
+
+//@debug [e1 e2]==[e1 e2];//true
+//@debug [e1 e2]==[e2 e1];//false
+//@debug (e1 e2)==(e1,e2);//false
+//@debug (e1 e2)==[e1 e2];//false
+
+//@debug (k1:v1,k2:v2)==(k1:v1,k2:v2);
+
+//@debug null==false;//false
+//@debug false==false;//true
+
+@function a($a,$b){@return $a + $b};
+@function b($a,$b){@return $a + $b};
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(a,null,null);//true
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(b,null,null);//false
+//@debug meta.get-function(a,null,null)
+//  == meta.get-function(a,null,myFile);//false
+
+
+//@debug 3q<1mm;//true
+//@debug 3q<=3;//true
+//@debug 1px > 1s;//Error:1px and 1s have incompatible units.
+
+
+//@debug 2q%4;@debug 6q%4;@debug -2q%4;//2q (r+kn)%n=r
+//@debug .2q % 1;/*.2q*/@debug -.2q % 1;//.8q
+//@debug -11q % 0;//NaNq
+
+//@debug 1q + 2;//3q
+//@debug 1q - 2;//-1q
+//@debug 1s + 1px;//Error: 1s and 1px have incompatible units.
+//@debug 1s - 1px;//Error: 1s and 1px have incompatible units.
+//@debug 1s % 1px;//Error: 1s and 1px have incompatible units.
+
+//@debug 1q*2q;//2q*q
+//@debug 1s*2q;//2s*q
+//@debug 1q*2;//2q
+//@debug 1*2q;//2q
+
+//@debug -identifier-1;//both hyphen
+//@debug 1-identifier-1;//1=hyphen 2=subtract
+//@debug -1unit-1;//1=unary-negation 2=subtract
+//$v:10;@debug 1 -$v 2 (-$v);//1=subtract 2=unary-negation
+//$v:10;@debug 1 - $v -($v + 0) 2 (-$v) -(math.ceil(2));
+
+//@debug 8q/2mm;@debug list.slash(8q,2mm);//8q/2mm separator
+@function d($a){@return $a/2};
+//$v:16/2;@debug (4/2*4)/(2) $v/d(4) (8/2) d(8);//4 4 4 4|6(div+W)
+//@debug 1in/96px == 1;//true divition Warn
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 //@debug meta.module-functions(selector);
 
 //@debug selector.is-superselector(a,'ul a.a');//true

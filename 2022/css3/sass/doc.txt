@@ -21,7 +21,6 @@ scss= superset of css, sass= indent syntax style sheet.
  *other statements:
   •property-declaration used in style-rule or some css @rules
   •@extend used only in style-rule
-
  *sassScript: <expression> used in:
   ›property:<exp>; $variable:<exp>; 
   ›@function?mixin(<exp>){} ›@if?each?for?while
@@ -69,7 +68,6 @@ scss= superset of css, sass= indent syntax style sheet.
       ›fix→sass2: /div=calc?math.div() /separator=list.slash()
   •map: (Ø|<exp>:<exp>,…); ›recommended: ('unique key':value,…)
     ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global}
- 
  *operators: ›order: unary(not ± /),*%/,+-,<=>,== !=,and,or.
   •() used to separate operators|lists|unquoted-str
   •equality operators: == !=
@@ -114,9 +112,8 @@ scss= superset of css, sass= indent syntax style sheet.
   •string concatenate <exp> +|-|/ <exp>
     ›Rose+' Mary'='Rose Mary' ›sans - serif=sans-serif//hyphen
     ›unary: - moz=-moz, / 15px=/15px
-
-★style rules: as css selector{declarations=property:value;} +
-•nesting:
+★style rules: as css selector{declarations=property:value;} +:
+ •nesting:
   ›s-lists: s0,s1{sa,sb{}}//s0 sa, s0 sb, s1 sa, s1 sb{}
   ›s-combinators: s0>{s1{}}| s0{>s1{}}| s0{>{s1{}}} //s0>s1{}
   »parent&: &=outer-selector, can be after|before|argumentOf s
@@ -136,7 +133,7 @@ scss= superset of css, sass= indent syntax style sheet.
   »properties: s{border-*} = s{border:{style:solid;size:thin}}
     ›s{margin:1em{left:0}}
 
-•interpolation: #{<exp +if()>}//return type-of unquoted-str≠number
+ •interpolation: #{<exp +if()>}//return type-of unquoted-str≠number
   ›can inject in: selector, propertyName, custom-property-value
   ,css @rules & funcs(), @extend, un?quoted-str, /*!loud-comment:
     @keyframes #{$name}{/*!'animate #{$component}'*/
@@ -145,13 +142,13 @@ scss= superset of css, sass= indent syntax style sheet.
   »issue: interpolation return unquoted string.
     ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
 
-•css variables: ›updating --cp affect both old & new usages.
+ •css variables: ›updating --cp affect both old & new usages.
   ›--cp declared only inside rules
   ›store 2 values --cp & falback list?, can used on differ els.
     var(--cp, <fallback>,…) used as property value
   ›fallback list? returned if --custom-property invalid css.
   »scope: ›globally: :root{--cp:v} ›locally: el{--cp:v}
-•sass variables: ›updating its value affect just new≠old usages
+ •sass variables: ›updating its value affect just new≠old usages
   ›declared anywhere, in|out rules, before|after top-lvl-rules
   ›used anywhere & within #{interpolation}
   ›can contain other variables: $v1: $v2 * $v3;
@@ -164,7 +161,7 @@ scss= superset of css, sass= indent syntax style sheet.
     ›shadowing: <local>{$global:u} updated locally not globally
     ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
 
-•@at rules:
+ •@at rules:
   »@use 'url|build-in' as <nameSpace> with ($configurating:u,…);
     ›@use must come before any rule except @forward & $vars
     »url: must be separated by forward/≠\, rel→current.scss?sass
@@ -249,11 +246,10 @@ scss= superset of css, sass= indent syntax style sheet.
   »@at-root <selector>|(with?without: rule?all?<@ruleName>, …){}
     ›remove outer nesting selector: .s0{@at-root .s1{}}//.s1{}
     @media print{.s{@at-root (with:rule|without:media){…}}//.s{…}
- •flow control:
-  ›@if not? <exp>{} @else if not? <exp>{} … @else{}
+  •flow control:›@if not? <exp>{} @else if not? <exp>{}… @else{}
     @mixin a($a,b){ p:v;@if $a>$b{} @else if not $a{}
       @else if string.index($a,' '){} @else {@error '?? #{$a}'}}
-  »@each $v,…? in <exp>{}
+   »@each $v,…? in <exp>{}
     ›@each $e in $list{.#{''+$e}{color:$e}}
     ›@each $key,$value in $map {##{$key}:before{content:$value}}
     ›@each $a,$b,$c in ([a1 a2 a3],$subList2,(c1,c2,c3))
@@ -264,23 +260,22 @@ scss= superset of css, sass= indent syntax style sheet.
     ›nested argList: @mixin n($nest...){ @each $a,$b,$c in $nest
       {#{$a}:before{color:$b;content:''+$c+' '}}
      }@include n(h1 #fff ★,(h2 #ff0 ▶),(h3,#0f0,»),[h4 cyan ›])
-  »@for $i from <exp> to|through <exp>{}
+   »@for $i from <exp> to|through <exp>{}
     ›can descent↓ or ascent↑, to=exclude|through=include last #
     ›@for $i from 5 to 10{}     //$i:5→6→7→8→9
     ›@for $i from 5 through 10{}//$i:5→6→7→8→9→10
     ›@for $i from 10 to 5{}     //$i:10→9→8→7→6
     ›@for $i from 10 through 5{}//$i:10→9→8→7→6→5
-  ›@while <exp>{}
- •terminal:
-  ›@debug <exp>//path/file.scss:#(line) Debug: <combile>
-  ›@warn?error(stops-compile) <exp>: used in @function?mixin
+   ›@while <exp>{}
+  •terminal: ›@debug <exp>//Debug: <combile>
+   ›@warn?error(stops-compile) <exp>: used in @function?mixin
     @function z($a...){ $s:0; @each $_ in $a{
       @if meta.type-of($_) != number{@error '#{$_}' ≠ number}
       @else if $_ < 0{@warn '#{$_}<0';$s:$s + $_}@else{$s:$s + $_}
      }@return $s
     };//@debug z(1,-2);/*warn:-2<0*/@debug z(1,a);//error:a≠number
 
-•build-in modules:
+ •build-in modules:
   »@use 'sass:meta'; 16=1l+12q(6+2+2+1+1)+3m
     »load-css('module-url',$with?:null)//@use 'm' with ($v:u,)
       ›@include load-css('path/moduleName',$with:('v':update,…))
@@ -522,7 +517,7 @@ scss= superset of css, sass= indent syntax style sheet.
       selector.unify('.m .n a.b','.j .k a%b')
         //.m .n .j .k a.b%b, .j .k .m .n a.b%b
 
-•global functions: hsl()
+ •global functions: hsl()
   ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
   ›if($condition, $return-if-true, $return-if-false)
   »≠recommended: ›map-get?values|keys?has-key|remove?merge
@@ -532,3 +527,37 @@ scss= superset of css, sass= indent syntax style sheet.
     ›call?get-function|inspect|keywords|type-of|feature?function??mixin?content?global-?variable-exists
     ›adjust-color?hue| change?scale-color| alpha?opacity| red?green?blue?hue| complement|darken|desaturate|grayscale|invert|lighten|lightness|mic|opacify|fade-in?out|transparetize|saturate|saturation|ie-hex-str
     ›selector-parse?append?nest?extend?replace?unify|is-superselector|simple-selectors
+★architecture: 7-1 pattern(7folders 1file=main.scss)
+  ▶abstracts/_variables|functions|mixins|placeholders.scss
+    ►global helpors utilities tools ≠compiled→css
+  ▶vendors/_bootstrap|jquery-ui|normalize?|select2?|….scss
+  ▶venders-extentions/_sameName.scss                  (optional)
+    ►as vendors/ but customized framworks by us(not official).
+  ▶base/_base|reset|typograthy|animations?|….scss
+  ▶layout/_navigation|grid|header|footer|sidebar|forms?|….scss
+  ▶components/_button|media|carousel|cover|dropdown|….scss
+  ▶pages/_home|contact|….scss
+  ▶themes/_themes(default)|admin|….scss               (optional)
+  ▶_shame.scss: contain bugs fixs, temprory !important fixes.
+  ▶main.scss: load all files by @use, //comments
+    order:abstract,vender,base,layout,component,page,theme,shame
+★rwd and breackpoints:
+  ▶name bp: $breackpoints:('medium':(min-width:800px), 'large':(min-width:1000px), 'huge':(min-width:1200px));
+    ►fexable: $breackpoints:('media':'(min-width:800px)',…);
+  ▶mediaQuery manager: @mixin respond-to($breakpoint) {
+    $raw-query: map.get($breakpoints, $breakpoint);
+    @if $raw-query {
+      $query: if(meta.type-of($raw-query) == string,
+        string.unquote($raw-query),meta.inspect($raw-query));
+      @media #{$query} {@content}
+    }@else{@error '#{$breakpoint} not key of $breakpoints map'}}
+  ▶usage: in general .s{@media q{…}}//@media q{.s{…}}
+    .s{@include respond-to(huge){…}}//@media (min-width){.s{…}}
+  ▶
+  ▶
+  ▶
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+
+
+
+
