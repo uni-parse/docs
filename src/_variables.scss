@@ -1,9 +1,14 @@
 /*comment*/ /*!loud comment*/
-$c-0:hsl(90, 100%, 55%); //silent comment
-$c1:rgb($c-0,0.25) !default;
-$c2:rgb($c-0,0.5) !default;
-$c3:rgb($c_0,0.75) !default;
-$c4:rgb($c_0,1) !default;
-p{color: yellow}
-$var: null; $var1: 'previos-value1 ';
-$var: 'value ' !default; $var: 'value1 ' !default;//issue
+$c-0: hsl(90, 100%, 55%); //silent comment
+$c1: rgb($c-0, 0.25) !default;
+$c2: rgb($c-0, 0.5) !default;
+$c3: rgb($c_0, 0.75) !default;
+$c4: rgb($c_0, 1) !default;
+p {
+  position: absolute;
+  color: yellow;
+}
+$var: null;
+$var1: "previos-value1 ";
+$var: "value " !default;
+$var: "value1 " !default; //issue
