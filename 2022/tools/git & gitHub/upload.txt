@@ -2,7 +2,7 @@ apt install git
 
 git config --global user.email "abanibilal4@gmail.com" && git config --global user.name "phantombill"
 
-git clone https://github.com/phantombill/website.github.io website/
+git clone https://github.com/phantombill/new-website new-website/
 
 git add *
 git status
