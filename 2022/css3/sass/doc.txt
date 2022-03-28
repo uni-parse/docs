@@ -407,40 +407,7 @@ scss= superset of css, sass= indent syntax style sheet.
     ›quote(str|'str')//'str' ›unquote(str|'str')//str
     ›to-upper-case('Bill')//'BILL' ›to-lower-case(Bill)//bill
     ›unique-id()//ufw2ymw(≠ ufw2ybm ≠ …)
-  »@use 'sass:color';//18=9q+3M+6m
-    ›red?green?blue|alpha|hue($c)//0~255|0~1|0~360deg
-    ›saturation?lightness?whiteness?blackness($c)//0~100%
-    »change($c,$red:null,$green:null,$blue:null,$hue:null,$saturation:null,$lightness:null,$whiteness:null,$blackness:null,$alpha:null)
-      ›error: don't Enter at once all args of rgb?hsl?hwb()
-      ›$red?green?blue:0~255 ›$hue:(-360~360 +360k)deg?//k€Z
-      ›$saturation?lightness?whiteness?blackness:0~100% 
-      ›$alpha:0~1
-    »adjust(<color.change-args>)
-      ›error: don't Enter at once all args of rgb?hsl?hwb()
-      ›$red?green?blue:-255~255 ›$hue:(-360~360 +360k)deg?//k€Z
-      ›$saturation?lightness?whiteness?blackness:-100~100%
-      ›$alpha:-1~1
-    »scale(<color.change-args≠$hue:-100~100%>)
-      ›#% add percentage-amount of [currentVal,maximumVal]
-      ›-#% subtract percentage-amount of [minimumVal,currentVal]
-      ›scale(#300,$red:50%)//#900 +33%[51,255]=255-102=153d=99h
-      ›scale(#300,$red:-33%)//#200 -33%[0,51]=51-17=34dec=22hex
-      ›scale(#300,$alpha:-80%)//#3003 -80%[0,1]=1-.8=.2dec=33hex
-    »grayscale($c)//color.change($c,$saturation:0%)
-      ›grayscale(hsl($h,$s, $lightness:0|20|100%))//#000|333|fff
-    ›complement($c)//adjust($c,$hue:180)
-    »invert($c,$weight:0~100%d|0~100)//-(#%)$c
-      ›invert($c,0|50|100)//$c|gray|-$c
-      ›invert(hsl(0,100%,53%,.2));//hsl(180,100%,47%,.2)
-      ›adjust(hsl(0,100%,53%,2),$hue:180,$lightness:-6%)
-    »hwb($hue,$whiteness,$blackness,$alpha?)
-      ›hwb(#,0%,0%)//change($c:any,$hue:#)
-      ›hwb($hue,$same,$same)//gray
-      ›hwb(180,1%,0%|180,0%,1%);//#00ffff→#03ffff|#00fcfc
-    ›ie-hex-str($c)//#AARRGGBB
-    »mix($c1,$c2,$weight:0~50d~100%|0~100)
-      ›mix($c1,$c2, 0|50|100)//$c2| $mix| $c1
-      ›mix(#603,#045);//#324 (6+0 0+4 3+5)/2
+
       ›mix(#6031,#0455);//#252b4933 $alpha affect mixed rgb
   »@use 'sass:list'; 10=5q+5m (immutable: return copy)
     ›is-bracketed($list)//boolean
@@ -488,7 +455,41 @@ scss= superset of css, sass= indent syntax style sheet.
       ›merge((k0:(k:v)), k0,k,(ku:update))//(k0:(k:(ku:update)))
       ›merge((k0:(k:v)), k0,(ka:va))//(k0: (k:v, ka:va))
     ›deep-merge((k:(ka:va)),(k:(kb:vb)))//(k:(kb:kb,ka:va))
-  »@use 'sass:selector';
+  »@use 'sass:color'; 18=9q+3M+6m
+    ›red?green?blue|alpha|hue($c)//0~255|0~1|0~360deg
+    ›saturation?lightness?whiteness?blackness($c)//0~100%
+    »change($c,$red:null,$green:null,$blue:null,$hue:null,$saturation:null,$lightness:null,$whiteness:null,$blackness:null,$alpha:null)
+      ›error: don't Enter at once all args of rgb?hsl?hwb()
+      ›$red?green?blue:0~255 ›$hue:(-360~360 +360k)deg?//k€Z
+      ›$saturation?lightness?whiteness?blackness:0~100% 
+      ›$alpha:0~1
+    »adjust(<color.change-args>)
+      ›error: don't Enter at once all args of rgb?hsl?hwb()
+      ›$red?green?blue:-255~255 ›$hue:(-360~360 +360k)deg?//k€Z
+      ›$saturation?lightness?whiteness?blackness:-100~100%
+      ›$alpha:-1~1
+    »scale(<color.change-args≠$hue:-100~100%>)
+      ›#% add percentage-amount of [currentVal,maximumVal]
+      ›-#% subtract percentage-amount of [minimumVal,currentVal]
+      ›scale(#300,$red:50%)//#900 +33%[51,255]=255-102=153d=99h
+      ›scale(#300,$red:-33%)//#200 -33%[0,51]=51-17=34dec=22hex
+      ›scale(#300,$alpha:-80%)//#3003 -80%[0,1]=1-.8=.2dec=33hex
+    »mix($c1,$c2,$weight:0~50d~100%|0~100)
+      ›mix($c1,$c2, 0|50|100)//$c2| $mix| $c1
+      ›mix(#603,#045);//#324 (6+0 0+4 3+5)/2
+    »hwb($hue,$whiteness,$blackness,$alpha?)
+      ›hwb(#,0%,0%)//change($c:any,$hue:#)
+      ›hwb($hue,$same,$same)//gray
+      ›hwb(180,1%,0%|180,0%,1%);//#00ffff→#03ffff|#00fcfc
+    »invert($c,$weight:0~100%d|0~100)//-(#%)$c
+      ›invert($c,0|50|100)//$c|gray|-$c
+      ›invert(hsl(0,100%,53%,.2));//hsl(180,100%,47%,.2)
+      ›adjust(hsl(0,100%,53%,2),$hue:180,$lightness:-6%)
+    ›complement($c)//adjust($c,$hue:180)
+    »grayscale($c)//color.change($c,$saturation:0%)
+      ›grayscale(hsl($h,$s, $lightness:0|20|100%))//#000|333|fff
+    ›ie-hex-str($c)//#AARRGGBB
+  »@use 'sass:selector'; 9=1q+8m
     ›$args: un?quoted-str can contain %ph but≠&;
       many ancestors parse as one container
     »is-superselector($super,$sub)//boolean
@@ -557,7 +558,3 @@ scss= superset of css, sass= indent syntax style sheet.
   ▶
   ▶
 ★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
-
-
-
-

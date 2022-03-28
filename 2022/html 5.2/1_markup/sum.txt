@@ -3,7 +3,7 @@
  •name=          •content=
   application-name just for webApp site(as online-convertor)
   author(of Doc)   Phantom Bill
-  description      summary (155 character)
+  description      summary (155 character displayed on search)
   generator        identify software used 'link'
   keywords(0%seo!) related, words like, manga, eng sub, boruto
   referrer         (see img)
@@ -19,18 +19,20 @@
   <!--expires          mon, 22 sep 2021 23:59:59 GMT-->
 
 ★link: demo: <link rel=stylesheet href=file.css media='(full)'>
-  <link rel=apple-touch-icon-precomposed href=icon.webp type=image/png>       <link rel=icon href=favicon.ico>
+  <link rel=icon href=favicon.ico type=image/x-icon>
+  <link rel=apple-touch-icon-precomposed href=favicon114.webp type=image/webp sizes=114x114>
+  <link rel=apple-touch-icon-precomposed href=favicon72.webp type=image/webp sizes=72x72>
   <link rel=preload href=myFont.woff2 as=font type=font/woff2 
     crossorigin=anonymous>
-*attributes: type=media/type| title=| media=|
+ *attributes: type=media/type| title=| media=|
   •as=audio|video|track|document(iframe)|object|image|script|style|font|worker|fetch(•crossorigin=anonymous|use-credentials)r
-  •rel=noreferrer| alternate| stylesheet| search(req type=application/ex:opensearchdescription+xml)| help| license|author| next?prev(sequence page)| preconnect91noF| preload| prefetch79noS|…
+  •rel=icon| noreferrer| alternate| stylesheet| search(req type=application/ex:opensearchdescription+xml)| help| license|author| next?prev(sequence page)| preconnect91noF| preload| prefetch79noS|…
   •referrerpolicy=no-referrer|-when-downgrade|unsafe-url|origin|-when-cross-origin
 
 ★<style media=all'd></style>
 
 ★<noscript> <a>fallback if scripting desabled</a> </noscript>
-*script: •src=url/file.js
+ *script: •src=url/file.js
   •type=module(ES6)| text/javascript| application/json| …
   •nomodule: execute fallback.js #only if #Unsupported ES2015
   •async|defer(require src=): download script in parallel to page parsing, executed #Before(async)|After(defer) parsing end
@@ -153,8 +155,9 @@
   <  &lt; less-than
   "  &quot; quotation (unnecessary)
   '  &apos; apostroph (unnecessary)
+     &#9; U+0009 tab character
      &#32; U+0020 space character
-     &nbsp; non-break space 
+     &nbsp; non-break space
      &ensp; en space
      &emsp; em space
      &zwj; zero width joiner: to connect two words in arabic or hindi

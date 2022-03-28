@@ -1,6 +1,8 @@
 
 ★syntax: anchor-link
-  <a href=url target=external_window>content</a>
+  <a href=url target=external_window>
+    <block-el>|short meaningful lable(if not html:resuorce type)
+  </a>
 
 ★attributes:
 *href=url: (HyperText_REFerence = Uniform_Resource_Locator)
@@ -43,6 +45,7 @@
           <a href=url2 target=b></a>   <!--update same iframe-->
         
 *other attributes:
+  •title='display onHover'
   •download|download=<fileRename>: turn ancher→download link
   •rel=alternate|author|bookmark|external|help|license|next|nofollow|noreferrer|prev|search|tag
     ›https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
@@ -51,10 +54,6 @@
     ›ex: text/html image/svg+xml audio/mp3 video/webm
   •ping=tracking_url: (???)
   •referrerpolicy=no-referrer |no-referrer-when-downgrade |origin |origin-when-cross-origin |same-origin|unsafe-url |strict-origin-when-cross-origin (???)
-
-
-
-
 
 
 

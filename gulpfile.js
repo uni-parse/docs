@@ -6,7 +6,7 @@ const rename = require('gulp-rename');
 const htmlmin = require('gulp-htmlmin');
 function htmlTask() {
   return (
-    src('src/pages/**/*.html', { sourcemaps: false })
+    src('src/**/*.html', { sourcemaps: false })
       .pipe(
         htmlmin({
           collapseWhitespace: true,
@@ -33,8 +33,8 @@ function htmlTask() {
 exports.html = htmlTask;
 
 // sass→css task
-//const sass = require('gulp-sass')(require('sass'));
-const sass = require('gulp-sass')(require('sass-embedded'));
+const sass = require('gulp-sass')(require('sass'));
+//const sass = require('gulp-sass')(require('sass-embedded'));
 const postcss = require('gulp-postcss');
 const cssnano = require('cssnano');
 //const autoprefixer = require("autoprefixer");
@@ -219,7 +219,7 @@ exports.sync = serverTask;
 function watchTask(cd) {
   watch('src/sass/**/*.scss', series(sassTask, reloadTask));
   watch('src/js/**/*.js', series(jsTask, reloadTask));
-  watch('src/pages/**/*.html', series(htmlTask, reloadTask));
+  watch('src/**/*.html', series(htmlTask, reloadTask));
   watch('src/images/**/*', series(imgTask, reloadTask));
   //watch('build/**/*', gitTask);
   cd();
