@@ -55,18 +55,21 @@
     •li: list-item, only child of ul|ol: <ol><li value=107></ol>
   •dl: description|definition list
     •dt: Terminolpgy, short in most.
-    •dd: Definition, descript its term
+    •dd: Definition, descript its term, can be multi dd after dt
   •<details open'o> <!--css:details[open]{}, js: event=toggle-->
      <summary d'style=d:li;list-style:disclosure-open?closed> toggle-label </summary> <!--block|inline content--> </details>
      
-  •blockquote: block-quotation, can contain multi block-level elements & have cite=source-url|author|title(↑SEO)
+  •blockquote: block-quotation, can contain multi block-els & have cite=qouteURL|author|title(↑SEO)
     <p>as <cite><a href=https://wikipidia.com/covid-19>wikipidia</a></cite> descripts covid-19</p>
     <blockquote cite=https://wikipidia.com/covid-19 style=quotes:'«' '»' '‹' '›'> <p>p1</p> <p>p2</p> </blockquete>
 
   •pre: display preformatted-markup, keep white_space, monospace, special characters must be escaped!!
-    <pre style=overflow:auto>
-    <p>to store <code>&lt;p&gt;</code> in variable, use:
-      <code>var variable=document.querySelectorAll('p');</code></p></pre>
+    <p>to store <code>&lt;p&gt;</code> in variable, use:</p>
+    <pre style=overflow:auto><code>
+    var variable=document.querySelectorAll('p');
+    variable.addEventListener('click',()=>{
+      function(){alert('done')}
+    });</code></pre>
 
   •figure|figcaption: related images or sources (↑accessibility)
     <figure>
@@ -74,20 +77,22 @@
       <img src=2.webp alt=> <figcaption>d2</figcaption></figure>
 
   •main: just one in page
-  •nav: navigation, contain <a href=#spotId></a>
   •header: intro|summary
+  •nav: navigation, have <a href=#spotId></a>, can be in header
   •article: independent self container, can contain sections & 1header
   •section: dependent to another related sections
-  •aside: related addition information
-  •address: contact informations (emails|telephone|@social-media)
+  •aside: related addition information as links, ads, quotes
+  •address: contact informations (emails|telephone|@social-media), can be in footer or article or body
   •footer: copyright|cyberSecurity|language information
 
 
 ★text-level elements(inline): as <span></span>
   •br: break-line, add return-line
   •wbr: word-break, ability to return-line through long-word
-  •q: inline short-qoutation, have cite=url|author|title
+  •q: inline short-qoutation, cite=quoteURL|author|title (↑SEO)
     <q style=quotes:auto cite=@phantombill>live to yourself by yourself</q>
+  •cite: citation, refer to someone-else-work document|book|article|title, have style=font-style:italic'd
+    <p>as <a href=https://facebook.com/phantombill><cite>phantombill</cite></a>:&#32;<q>live evert day as rhe first try</q></p>
   •em: emphasis, add it to important-meaning
     <p>friendship not exist for <em>ever</em></p><!--sadness-->
     <p>friendship <em>not exist</em> for ever</p><!--negation-->
@@ -103,10 +108,8 @@
     <u>this is not anchor link !!</u>
   •small: legal-text←small-text, addition|legal information
     <p><small>&copy; 2021 all rights reseved</small></p>
-  •abbr: abbreviation, shortcut of long_word|multi-words
+  •abbr: abbreviation, shortcut of long_word|multi-words, onhover display title
     <p>i wanna be <abbr style=font-variant:small-caps title=professional>pro</abbr> developer in <abbr title='Unite Kingdom' style=font-variant:small-caps>UK</abbr></p>
-  •cite: citation, refer to someone-else-work document|book|article|title
-    <p>i wanna read the book <cite><a href=https://twitter.com/DavidFlanagan>Javascript The Definitive Guide</a></cite> at 2022</p>  
   dfn: defining-term, by defualt have no style !!
     <p><dfn>nodejs</dfn>, are javascript <b>framwork</b></p>
 

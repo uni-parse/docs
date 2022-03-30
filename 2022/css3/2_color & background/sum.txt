@@ -12,7 +12,7 @@
     ›omitting quotes, required to \escape: whiteSpace () '"
   •image-set(<image>|'url' type('image/webp|…') #<resolotion>,…)
     ›-ms|moz|webkit-93%, 'url' fallback required.
-    ›safari support just image:url() & resulotion:#x
+    ›all support image:url() & resulotion:#x, exclude type()≠S19
   •linear-gradient(<angle>|to <s|c>, <color> <stop1~2>,c2 s2,…)
     ›side: top:0°|right:90°|bottom'd:±180°|left:-90°.
     ›corner: top right:45°| b r:135°| b l:-135°| t l:-45°.

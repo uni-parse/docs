@@ -220,7 +220,7 @@ function watchTask(cd) {
   watch('src/sass/**/*.scss', series(sassTask, reloadTask));
   watch('src/js/**/*.js', series(jsTask, reloadTask));
   watch('src/**/*.html', series(htmlTask, reloadTask));
-  watch('src/images/**/*', series(imgTask, reloadTask));
+  watch('src/images/**/*', series(webpTask, reloadTask));
   //watch('build/**/*', gitTask);
   cd();
   console.log("hi😎phantombill😄 I'am: watching");
