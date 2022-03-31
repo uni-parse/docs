@@ -32,7 +32,7 @@
         •+Gamma correction channel: adjust brightnessLvl
       ▬based on: (8|24|48-bit rgb-colors) & (16-bit grayscale)
         •png-8: properly for huge flat color areas as icon|logo
-          ›transparency: binarry(on|off) or variable(multi-levels)
+          ›transparency: binary(on|off) or variable(multi-levels)
           ›indexed numbers on each pixel of pallete,
             refer→ 2^(1~8)=2~256color positioned in c-table?map
           »palletes methods: ›Custom ›System
@@ -48,7 +48,7 @@
         •apng: (94%G) animated image better than gif
           ›support 24bit(Truecolor) & alpha channel transparency
     ►gif: (Graphic Interchange format) (useless)
-      ▬properly for large flat areas & binarry transparency
+      ▬properly for large flat areas & binary transparency
       ▬lossless comprition ▬indexed based on 8bit like png8
       ▬interlacing like jpeg progressive ▬animated frames
     ►webp: (web picture) (91% + 3.4% g)
@@ -90,14 +90,33 @@
       <link rel=icon type=image/png sizes=32x32 href=f32.png>
       <link rel=icon type=image/png sizes=16x16 href=f16.png>…
       <link rel=manifest href=/site.webmanifest>
-★production:
-  ▶export formats:
-    ►
-    ►
-    ►
+★production: (photoshop|gimp)
+  ▶export differ formats: (export/save-for-web ctrl+shift+alt+s)
+    ▬transparency: 
+      •png24: save Truecolor-data in 4 channels r, g, b, a
+      •png8✗: save 256color-data in 1 channel rgba(,,, 0~1)
+      •gif|png8: save 256color-data in 1 channel rgba(,,, 0|1)
+        ›issue: on multiLvl generate halo(edgeColor→#fff?#000) not suited to bg-color.
+        ›fix: set matte→none, dither→100%, dither-method→pattern
+    ►jpeg: softEdges|blendColors
+      ▬quality:0~100% lossy ▬progrissive:↓size ▬blur:0~2 ↓size
+      ▬metadata(copyright, source, comment) ▬embed color profile
+    ►png:hardEdge|flateColor •quality:lossless •interlaced:↑size
+        •metadata(copyright,source,comment) •embed color profile
+        •matte(req transparency=Ø, dither=Ø): none(transparent), Eyedropper, Foreground, background, custom color.
+      ▬png24: transparency=variable 256lvl, better opti-method
+      ▬png8: •colorTable:2~256
+        •transparency=variable✗|binary'd|Ø→matte ›dither:0~100%
+          ›ditherMethod(anti-aliasing:smooth edges/bg contrast by matte): none, diffusion(0~100%), pattern, noise.  
+    ►gif(hardEdge|flateColor animation): useless
+      •quality:lossless •colorTable:2~256 •interlaced:↑size
+      •transparency=binary: ›dither:0~100% ›ditherMethod:asPNG8
+      •metadata(copyright,source,comment)
+    ►webp: lossy|lossless better than jpg|png
   ▶responsive:
-    ►
-    ►
+    ►layout:
+    ►high Density:
+    ►artDirection:
   ▶optimization:
     ►
     ►

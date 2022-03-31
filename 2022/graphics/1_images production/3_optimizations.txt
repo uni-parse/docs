@@ -7,7 +7,7 @@
   •use appropriate tools (photoshop|sketch|paintshop pro)
   •use optimizers tools 'gulp-imagemin, gulp-webp'
   
-*optimize jpeg's:
+ *optimize jpeg's:
   •reduce quality: 50~70% generally, 30~40% depending.
   •blur|smooth unnecessary content expect important content.
     ›and blur all content by 0.2
@@ -15,12 +15,12 @@
     ›compression hard-edge = 4 × soft-edges file-size !!!
     ›use png-8 on hard-edges(or webp)
 
-*optimize png-24's: (useless, use png-8|webp)
+ *optimize png-24's: (useless, use png-8|webp)
   •avoid photographs in favore of jpeg's.
   •convert to png-8(with variable transparency)
     ›link: https://tinypng.com/
 
-*optimize png-8|gif:
+ *optimize png-8|gif:
   •reduce table|map coloes: start by 5-bit(32color), & increase as necessary 6-bit(64color), 7-bit(128color).
     ›image→mode→index-color
   •disable dithering or reduce it ≤ 30%
@@ -31,18 +31,17 @@
 
 
 ★optimizations tools:
-*online links:
+ *online links:
   •(optimizilla) https://imagecompression.com
   •(png-8 alpha transparency) https://tinypng.com
 
-*applications:
+ *applications:
   •(imageoptim.com) Mac-only, & svg !!
     ›(trimage.org) linux-only, & svg !!
   •(pnggauntlet.com) Windows-only
   •(www.jpegmini.com)
 
-*task runner:
-  •imagemin & gulp-imagemin & gulp-webp
+ *task runner: imagemin & gulp-imagemin & gulp-webp
 
 
 

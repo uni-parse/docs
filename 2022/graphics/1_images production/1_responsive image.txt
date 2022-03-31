@@ -11,21 +11,18 @@
             (max-width: 480px) 100vw, 
             (max-width: 960px) 70vw, 
             240px'>
-          
     •resizing(manual by photoshop):
       »percentage: 0.01%~100%~↑↑%, resizing width & height by original dimensions ratio.
         ›else set width & height manually.
       »resizing-quality: nearest neighbor, bilinear, bicubic'd, bicubic smooth, bicubic sharper.
-        
     •generate multi img-versions based on file-size:
       »link: https://responsivebreakpoints.com
       »upload original-img, set target:
         ›max-width, min-width
         ›size steps (20kb'recomended|40kb|80kb|…)
         ›more !!
-      »download & copy html markup to document, & done!!!.   
-      
-    •Notes:
+      »download & copy html markup to document, & done!!!.
+   •Notes:
       »chrome testing:
         ›more-tools/Developer-tools/ ctrl+shift+i
         ›Toggle device toolbar ctrl+shift+m
@@ -33,55 +30,6 @@
         ›Network: record-downloads ctrl+r
         ›reload-button/Empty Cache and Hard Reload
       »if browser download img672, and window narrow to 200px, then the browser will downscale img672 insted of download another images with less quality likw img480, img240.
-
-
-
-  *art-direction:
-    •full controll of image content:
-      »link: https://responsivebreakpoints.com
-        ›more info for automatic: https://www.smashingmagazine.com/2016/09/automating-art-direction-with-the-responsive-image-breakpoints-generator/
-      »upload original picture(2400x1600), set target:
-        ›max-width, min-width
-        ›size steps (20kb'recomended|40kb|80kb|…)
-        ›max images up to 40.
-        ›art-direction
-          _support smartphons, tablets, small-laptops, desktops.
-          _select Aspect ratio w:h
-            •crop important content by analysis-methods like face-detection, edges-detection, visual uniqueness.
-          _select css width size by vw unit.
-        ›support retina screens 2x
-      »download & copy html markup to document, & done!!!.
-      
-    •markup:
-        <picture>
-          <!-- smartphone 1:1 100% 1x 2x -->
-          <source
-            media='(max-width: 767px)'
-            sizes='(max-width: 1534px) 100vw, 1534px'
-            srcset='…'>
-            
-          <!-- tablet 4:3 70% 1x 2x -->
-          <source
-            media='(min-width: 768px) and (max-width: 991px)'
-            sizes='(max-width: 1983px) 70vw, 1388px'
-            srcset='…'>
-            
-          <!-- small-laptop 16:9 60% 1x 2x -->
-          <source
-            media='(min-width: 992px) and (max-width: 1199px)'
-            sizes='(max-width: 2400px) 60vw, 1440px'
-            srcset='…'>
-            
-          <!-- larg-desktops original-ratio 40% 1x 2x -->
-          <source
-            sizes='(max-width: 5500px) 40vw, 2200px'
-            srcset='…'>
-            
-          <img src='IEfallback.format' alt=''>
-        </picture>
-
-
-
   *high density desplays: 
     •markup:
       <img src='img.webp' alt='' <!-- 100px -->
@@ -116,6 +64,48 @@
       »free web-app
         ›nodjs: required search or read book rwd-2020 !!
         ›https://docs.google.com/spreadsheets/u/0/d/1e4qdGEoq7tqDCnY7iSSnl3OFoWkzhRfVAly-73A3uCc/htmlview
+  *art-direction:
+    •full controll of image content:
+      »link: https://responsivebreakpoints.com
+        ›more info for automatic: https://www.smashingmagazine.com/2016/09/automating-art-direction-with-the-responsive-image-breakpoints-generator/
+      »upload original picture(2400x1600), set target:
+        ›max-width, min-width
+        ›size steps (20kb'recomended|40kb|80kb|…)
+        ›max images up to 40.
+        ›art-direction
+          _support smartphons, tablets, small-laptops, desktops.
+          _select Aspect ratio w:h
+            •crop important content by analysis-methods like face-detection, edges-detection, visual uniqueness.
+          _select css width size by vw unit.
+        ›support retina screens 2x
+      »download & copy html markup to document, & done!!!.
+    •markup:
+        <picture>
+          <!-- smartphone 1:1 100% 1x 2x -->
+          <source
+            media='(max-width: 767px)'
+            sizes='(max-width: 1534px) 100vw, 1534px'
+            srcset='…'>
+            
+          <!-- tablet 4:3 70% 1x 2x -->
+          <source
+            media='(min-width: 768px) and (max-width: 991px)'
+            sizes='(max-width: 1983px) 70vw, 1388px'
+            srcset='…'>
+            
+          <!-- small-laptop 16:9 60% 1x 2x -->
+          <source
+            media='(min-width: 992px) and (max-width: 1199px)'
+            sizes='(max-width: 2400px) 60vw, 1440px'
+            srcset='…'>
+            
+          <!-- larg-desktops original-ratio 40% 1x 2x -->
+          <source
+            sizes='(max-width: 5500px) 40vw, 2200px'
+            srcset='…'>
+            
+          <img src='IEfallback.format' alt=''>
+        </picture>
 
 
 
