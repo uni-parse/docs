@@ -1,5 +1,6 @@
 node_modules
-old
+old/
+build/
 package-lock.json
 package.json
 gulpfile.js

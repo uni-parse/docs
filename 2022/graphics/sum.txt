@@ -1,0 +1,104 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★basics:
+  ▶sources: create img, use existed img, hire designer
+    ►create one: ▬drawn logo by illustrator
+      ▬capture by camera & edit it by photoshop
+      ▬scan by print & blure dot-pattern & resize to small
+    ►use existed one: all images copyRighted
+      ▬creativecommons.org: free usage|reproducing but shared
+        •unsplash.com: all rights free high resolution & filter
+        •commons.wikimedia.org: all rights free high resolution
+        •flickr.com/creativecommons: some free some non-comarce
+      ▬royall-free: buy license 1once→ ∞duration use|reproduce globaly in milti-projects 10$↑istockphoto 50$↑gettyimages
+      ▬rights-managed: buy license at period in single-project with particular usage in one location: gettyimages.com
+    ►buy css: animations buttons gradients-templates…
+      ▬clipart.com: membership fee, high quality
+      ▬1clipart.com: icons|applications free|low-price
+      ▬thenounproject.com: one color icons free|fee/y
+      ▬iconfinder.com: full colored styles free|fee/m
+  ▶formats: raster=bit-mapped(jpg|png|gif|webp) vector(svg)
+      terminal: $ file img.formatSuffix
+    ►jpeg.org: (Joint Photographics Expert Group)
+      ▬properly for blended color transitions
+      ▬Truecolor based 24bit=rgb*8bit, lossy on each compression
+      ▬progressive #passes low→original=load100% UX↑perfermence
+        •by defualt load linear from top to bottom
+    ►png: (Portable Network Graphics)
+      ▬features: •Lossless compression
+        •transparency: alpha=Multiple-level, binary=on|off
+        •Interluce(progressive) display in multiple passes sizs↑
+        •+Embed text: like copyright meta-information
+        •+Embed ICC: save colorProfileInfo system who create it
+        •+Gamma correction channel: adjust brightnessLvl
+      ▬based on: (8|24|48-bit rgb-colors) & (16-bit grayscale)
+        •png-8: properly for huge flat color areas as icon|logo
+          ›transparency: binarry(on|off) or variable(multi-levels)
+          ›indexed numbers on each pixel of pallete,
+            refer→ 2^(1~8)=2~256color positioned in c-table?map
+          »palletes methods: ›Custom ›System
+            ›Exact: if original colors ≤ 2^8=256.
+              Optimized Octree (Paint Shop Pro Photo only)
+            ›Adaptive: to most used colors.
+              Optimized Median Cut (Paint Shop Pro Photo only)
+            ›Perceptual'phs: Adabtive to human eye sansitivity
+            ›Selective'phs: Perceptual to areas of broad color
+            ›useless: Web Adaptive, Restrictive, or Web216
+        •png-24(Truecolor): properly for multiLvl transparency.
+          ›alpha transparecy channel can have 2^8bit=256lvl.
+        •apng: (94%G) animated image better than gif
+          ›support 24bit(Truecolor) & alpha channel transparency
+    ►gif: (Graphic Interchange format) (useless)
+      ▬properly for large flat areas & binarry transparency
+      ▬lossless comprition ▬indexed based on 8bit like png8
+      ▬interlacing like jpeg progressive ▬animated frames
+    ►webp: (web picture) (91% + 3.4% g)
+      ▬can be lossy|lossless comprition, & 40-70% small ↓size.
+      ▬alpha transparency channel like png-24's
+      ▬animation like git & apng.
+      ▬can store meta & color profile ICC like png's
+      ▬link: developers.google.com/speed/webp
+  ▶resolution: img-r≠important/#px is, print-r=dpi'dotsPerInch
+    ►some high-density screens as retina can display 4px↑ in 1px
+      ▬issues: css-img display narrow on retina, large on normal
+    ►reference-pixel #x(x=scale): 1cssPX=#screenPX
+      ▬screenPX: apple=#point,google=#DP?DIP'deviceIndependentPx
+      ▬ex: .cssimg{width:10px;height:10px} /*96ppi 1x*/
+        •iphone4 326ppi 2x: 20pxScreen, 20PT, 20DP
+        •tablet 130ppi 0.5x: 50pxScreen, 5PT. 5DP
+    ►to avoid blur: set:svg 1x, or at least:raster x1,raster x2
+      ▬<img src=img@1.webp srcset='i@.5.webp .5x, i@2.webp 2x'>
+        //img@1:10x10px i@.5:5x5px i@2:20x20px
+  ▶strategy: ►goals: ▬↓size:✓format,optimize ▬↓http:sprits
+      ▬↓bandwidth & quality:srcset='',sizes=''
+    ►if simple illustration use css: -size, rwd, quality
+      ▬1_<style>: -http/uncached ▬2_external.css: cached/+http
+      ▬links: css-tricks.com/the-shapes-of-css
+        codepen.io/collection/yeDQoX
+    ►else if complex illustration use svg: -size, rwd, quality
+      ▬styled & dynamic: •<object>: cached/+http,≠external.css
+        •inline<svg> organize label optimize:-http/≠cached
+      ▬else optimize: •<svg>:-http/uncached •<img>:cached/+http
+    ►else if must be responsive:
+      ▬few images: choice best format, export multi-sizes by PHs
+      ▬too much imgs: build automatic app on server run on fly
+        to export multi-sizes optimize: •glide.thephpleague.com
+        •cloudfour.com/thinks/image-resizing-services/
+    ►else jest optimize: manually or by server-app.
+  ▶favicon: <link rel=icon type=image/x-icon href=/favicon.ico>
+    ►convert: png?text?emoji→ico: favicon.io/
+    ►collection: <link rel=apple-touch-icon sizes=180x180 href=f.png>
+      <link rel=icon type=image/png sizes=32x32 href=f32.png>
+      <link rel=icon type=image/png sizes=16x16 href=f16.png>…
+      <link rel=manifest href=/site.webmanifest>
+★production:
+  ▶export formats:
+    ►
+    ►
+    ►
+  ▶responsive:
+    ►
+    ►
+  ▶optimization:
+    ►
+    ►
+    ►

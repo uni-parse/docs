@@ -1,0 +1,108 @@
+
+
+*embed bitmapped image:
+  •markup:
+    <body>
+      <svg width='' height='' viewbox=''>
+        <image xlink:href=path/image.webp x='' y='' width='' height='' />
+      </svg>
+    </body>
+
+  •only-inline-svg, not in external.svg (security-reasons)
+
+
+
+*cliping & masking:
+ ••clipping markup:
+    <svg width=600 height=400 viewbox='0 0 600 400'>
+      <defs>
+        <clipPath id=starClip_effect>
+          <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:none />
+        </clipPath>
+      </defs>
+      
+      <image xlink:href=path/image.webp width=600 height=400 style=clip-path:url(#starClip_effect) />
+    </svg>
+    
+  •css/clip-path: 
+    ›display just clip of image
+    ›gs→3%, --webkit-→23%, only-inline-svg→70→96%
+  
+ ••masking markup:
+    <svg width='' height='' viewbox=''>
+      <defs>
+        <linearGradient id=alpha_effect>
+          <stop offset=0 stop-color=#fff />
+          <stop offset=100% stop-color=#000 /> 
+        </linearGradient>
+        <mask id=mask_effect x=0 y=0 width=400 height=381>
+          <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:url(#alpha_effect) />
+        </mask
+      </defs>
+      
+      <image xlink:href=path/img.webp width=600 height=400 style=mask:url(#mask_effect) />
+    </svg>
+    
+  •css/mask: 
+    »clip image like 'css/clip-path' & can add opacity based on solid-color|gradient|image
+      ›rgb-|indexed-colors converted to grayScale-colors
+      ›light-colors(yellow, green) who close to white, thems opacity→1(less-transparency)
+      ›dark-colors(red, blue) who close to black, thems opacity→0(more-transparency)
+    ›gs→3.4%, --webkit-→94→97%
+
+
+
+*filter effects:
+  •markup:
+    <svg width=600 height=600 viewbox='0 0 600 600'>
+      <defs>
+        <filter id=blur>
+          <feGaussianBlur in=SourceGraphic stdDeviation=4 />
+        </filter>
+        
+        <filter id=shadow>
+          <feGaussianBlur in=SourceAlpha stdDeviation=8 result=blur />
+          <feOffset in=blur dx=9 dy=7 result=offsetBlur />
+          <feMerge>
+            <feMergeNode in=offsetBlur />
+            <feMergeNode in=SourceGraphic />
+          </feMerge>
+        </filter>
+      </defs>
+      
+      <ellipse cx=150 cy=500 rx=150 ry=100 style=fill:orange />
+      <ellipse cx=450 cy=500 rx=150 ry=100 style=fill:orange;filter:url(#blur) />
+      
+      <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:orange;filter:url(#shadow) />
+      
+    </svg>
+
+  •description:
+    »attributes:
+      ›in|result: ???.
+      ›stdDeviatBlur: blur-radius amount.
+      ›dx|dy: offset distance.
+      ›rx|ry: ellipse vertical-radius & horizontal-radius.
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
