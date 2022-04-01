@@ -148,7 +148,7 @@
           ›toggle [show device pixel ratio](else: DPR=2x'd).
         •Network: record-downloads ctrl+r
         •reload-button/Empty-Cache and Hard Reload
-    ►art-direction (crop/aspectRatio/format-support):
+    ►art-direction (crope/aspectRatio/format-support):
       <picture>
        <source type=image/avif media=(orientation:portrite)
         sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
@@ -181,9 +181,25 @@
           ›support retina screens 2x
           »art-direction: ›select css width size by vw unit.
             ›device:mobile|tablet|small-laptop|desktop.
-            ›aspect-ratio:w/h crop important content by analys methods as face?edges-detection visual-uniqueness.
+            ›aspect-ratio:w/h crope important content by analys methods as face?edges-detection visual-uniqueness.
         •download & copy html markup to document, & done!!!.
   ▶optimization:
-    ►
-    ►
-    ►
+    ►general strategies: •opt from original-img(high resolution)
+      •crope unnecessary margins •reuse cached imgs if possible
+      •use ✓programs: as photoshop|sketch|paintshop-pro.
+      •use opt server-apps: gulp-imagemin, gulp-webp
+      •online services: imagecompression.com tinypng.com
+        pnggauntlet.com jpegmini.com
+    ►jpeg: •reduce quality: 50~70% generally, 30~40% depending.
+      •blur|smooth unnecessary content expect important content.
+        ›and blur all content by .2
+      •avoid hard-edges(high contrast details), work with   soft-edges(gradient contrast, less details)
+        ›compression hard-edge = 4 × soft-edges file-size !!!
+        ›use png-8 on hard-edges(or webp)
+    ►png24(useless,use png-8|webp): •avoid photographs/use-jpeg
+      •convert to png8(with variable transparency): tinypng.com
+    ►png8|gif: •choice flat-colors imgs (better than dithering).
+      •dithering:disableØ~30% (for blend-colors only)
+        (binary-gradient between two colors, create third new color to table-colors)
+      •table-colors: start 5bit/32color, & increase as necessary
+        ›image→mode→index-color
