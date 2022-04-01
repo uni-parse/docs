@@ -1,26 +1,21 @@
-
-
-★general optimization strategys:
-  •start with original image(high resolution) to opt from it.
-  •limite dimensions: crope unnecessary margins
-  •reusing cached images if possible
-  •use appropriate tools (photoshop|sketch|paintshop pro)
-  •use optimizers tools 'gulp-imagemin, gulp-webp'
-  
- *optimize jpeg's:
-  •reduce quality: 50~70% generally, 30~40% depending.
-  •blur|smooth unnecessary content expect important content.
-    ›and blur all content by 0.2
-  •avoid hard-edges(high contrast details), work with soft-edges(gradient contrast, less details)
-    ›compression hard-edge = 4 × soft-edges file-size !!!
-    ›use png-8 on hard-edges(or webp)
-
- *optimize png-24's: (useless, use png-8|webp)
-  •avoid photographs in favore of jpeg's.
-  •convert to png-8(with variable transparency)
-    ›link: https://tinypng.com/
-
- *optimize png-8|gif:
+★general strategies:
+  •opt from original-img(high resolution)
+  •crope unnecessary margins
+  •reusing cached imgs if possible
+  •use ✓programs: photoshop, sketch, paintshop pro.
+  •use server-app: gulp-imagemin, gulp-webp
+ *jpeg:
+    •reduce quality: 50~70% generally, 30~40% depending.
+    •blur|smooth unnecessary content expect important content.
+      ›and blur all content by 0.2
+    •avoid hard-edges(high contrast details), work with soft-edges(gradient contrast, less details)
+      ›compression hard-edge = 4 × soft-edges file-size !!!
+      ›use png-8 on hard-edges(or webp)
+ *png24: (useless, use png-8|webp)
+    •avoid photographs in favore of jpeg's.
+    •convert to png-8(with variable transparency)
+      ›link: https://tinypng.com/
+ *png8|gif:
   •reduce table|map coloes: start by 5-bit(32color), & increase as necessary 6-bit(64color), 7-bit(128color).
     ›image→mode→index-color
   •disable dithering or reduce it ≤ 30%
@@ -28,38 +23,13 @@
     ›usefull for photogeaphics(blended-colors), not flat-colors.
   •edit images at flat-colors 
     ›better than dithering (blended-colors).
-
-
-★optimizations tools:
+★tools:
  *online links:
   •(optimizilla) https://imagecompression.com
   •(png-8 alpha transparency) https://tinypng.com
-
  *applications:
   •(imageoptim.com) Mac-only, & svg !!
     ›(trimage.org) linux-only, & svg !!
   •(pnggauntlet.com) Windows-only
   •(www.jpegmini.com)
-
  *task runner: imagemin & gulp-imagemin & gulp-webp
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

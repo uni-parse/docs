@@ -113,10 +113,76 @@
       •transparency=binary: ›dither:0~100% ›ditherMethod:asPNG8
       •metadata(copyright,source,comment)
     ►webp: lossy|lossless better than jpg|png
-  ▶responsive:
-    ►layout:
-    ►high Density:
-    ►artDirection:
+  ▶responsive: <meta name=viewport content='width=device-width'>
+    ►high Density: same-size/different-resulotion
+       <img alt='img@.5:50px,img:100px,img@2:200px'
+        srcset='img@.5.webp .5x, img@2.webp 2x' src=img@1.webp>
+      ▬syntax: srcset='img #x,…'//return 1st img@#x≥resolution
+      ▬work at @1x≠2x scale: mathMistakesØ pcPerfermence↑ stable
+      ▬export-as: ctrl+shift+alt+w, click +button, select #x's
+      ▬avoid upscale blur @1x:
+        1•create new layer with target @1x width & height
+        2•add original img ≥ @3x|@2x [file→place linked]
+          ›issue: in Phs-2018 place-linked jpeg file ignored
+          ›fix: convert jpeg to psd before place-linked.
+        3•delete the empty layer & work with the place-linked
+      ▬automatic:•paidServer:cloudinary.com akamai.com kraken.io
+        •free web-app: https://docs.google.com/spreadsheets/u/0/d/1e4qdGEoq7tqDCnY7iSSnl3OFoWkzhRfVAly-73A3uCc/htmlview
+    ►responsive-layout (different-sizes): <img src=fb
+        alt='small420↓,medium421~600,large601~1000,huge1001↑'
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='small 420w,medium 600w,large 800w,huge 1200w'>
+      ▬syntax:    load 1st img have size≥slot of 1st meted query
+        sizes='(query1) slot1,…,sF'//return 1st meted query slot
+        srcset='img1 size1,…'    //return 1st img have size≥slot
+      ▬resizing(manual by photoshop):
+        •percentage:.01~100~↑%, scale by original aspectRatio
+          ›else set width & height manually.
+        •resizing-quality: nearest neighbor, bilinear, bicubic'd, bicubic smooth, bicubic sharper.
+      ▬generate multi-imgs: responsivebreakpoints.com
+        •upload original-img, set target: ›max?min-width
+          ›size steps (20kb'recomended|40kb|80kb|…) ›more!!.
+        •download & copy html markup to document, & done!!!.
+      ▬chrome testing: •more-tools/Developer-tools/ ctrl+shift+i
+        •Toggle device toolbar ctrl+shift+m
+          ›toggle [show device pixel ratio](else: DPR=2x'd).
+        •Network: record-downloads ctrl+r
+        •reload-button/Empty-Cache and Hard Reload
+    ►art-direction (crop/aspectRatio/format-support):
+      <picture>
+       <source type=image/avif media=(orientation:portrite)
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='pr-s.avif 420w,pr-m 600w,pr-l 800w,pr-h 1200w'>
+       <source type=image/webp media=(orientation:portrite)
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='pr-s.webp 420w,pr-m 600w,pr-l 800w,pr-h 1200w'>
+       <img src=landscape-fallback.webp alt=''
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='ls-s.webp 420w,ls-m 600w,ls-l 800w,ls-h 1200w'>
+       </picture>
+     ▬media='query1, query2, …?'
+      •query:type|and? features| not?only type'R [and features]?
+       ›type: all'd| screen?print| speech≠supportedYet.
+       »features: feature [and feature]…?.
+         ›feature=(name [: value]?): (aspect-ratio: w/h'ex16/9) (max?min-|w?h: length) (orientation:portrite?landscape)
+         (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)
+         (display-mode:browser?fullscreen?standalone?minimal-ui)
+         (grid: 0=bitmap?1=grid) (color|:#8d(8bit=256)'0noColor)
+         (any-|pointer'both|: none?coarse'touch?fine'noTouch)
+         (any-|hover|: none?hover'noTouch)
+      •operators: ›,(=or): at least one query return true.
+        ›and: all individual-features & type must return true.
+        ›not: negation #sum of next type&features before ,(=or).
+        ›only: unapply style-block if old-browser≠support @media
+     ▬artice: www.smashingmagazine.com/2016/09/automating-art-direction-with-the-responsive-image-breakpoints-generator/
+     ▬generate multi-imgs: responsivebreakpoints.com
+        •upload original-img, set target: ›max?min-width
+          ›size steps (20kb'recomended|40kb|…) ›max-imgs:40↓ 
+          ›support retina screens 2x
+          »art-direction: ›select css width size by vw unit.
+            ›device:mobile|tablet|small-laptop|desktop.
+            ›aspect-ratio:w/h crop important content by analys methods as face?edges-detection visual-uniqueness.
+        •download & copy html markup to document, & done!!!.
   ▶optimization:
     ►
     ►

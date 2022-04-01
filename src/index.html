@@ -12,5 +12,10 @@
   </head>
   <body>
     <p>hello mame &#32;<a href=path/to/file title=title>link</a></p>
+    <!-- <img srcset='images/4.webp 400w, images/gaara.webp 800w' 
+      sizes='print and (max-width:600px) 100vw' alt=""> -->
+    <picture> <source media='print,print and (max-width:400px),(orientation:portrait)'
+      srcset=images/4.webp> <img src=images/gaara.webp alt=''>
+    </picture>
   </body>
 </html>
