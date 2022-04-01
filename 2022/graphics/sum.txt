@@ -203,4 +203,4 @@
         (binary-gradient between two colors, create third new color to table-colors)
       •table-colors: start 5bit/32color, & increase as necessary
         ›image→mode→index-color
-★svg:
+★svg: 
