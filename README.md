@@ -8,5 +8,5 @@
         <dd>from &#32;<time>2021/06</time>&#32; to &#32;<time>2021/07</time>&#32; I complate first &#32;<a href="https://www.freecodecamp.org/certification/phantombill/responsive-web-design">freecodecamp</a> &#32;sertificate</dd>
         <dd>from &#32;<time>2021/07</time>&#32; to &#32;<time>2021/11</time>&#32; I complete an old &#32;<a href="https://www.amazon.com/Learning-Web-Design-Beginners-JavaScript-dp-1491960205/dp/1491960205/ref=dp_ob_title_bk">book2018</a>
           <ul><li>title: A BEGINNER'S GUIDE TO HTML, CSS, JAVASCRIPT, AND WEB GRAPHICS 5<sup>th</sup> &#32;Edition</li>
-          <li>author: Jennifer Niederst Robbins, 810page</li></ul></dd>
+          <li>author: &#32;<a href=https://twitter.com/jenville>Jennifer</a>&#32; Niederst Robbins, 810page</li></ul></dd>
     </dl>
