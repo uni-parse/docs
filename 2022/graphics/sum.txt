@@ -1,21 +1,21 @@
 ★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 ★basics:
-  ▶sources: create img, use existed img, hire designer
-    ►create one: ▬drawn logo by illustrator
-      ▬capture by camera & edit it by photoshop
-      ▬scan by print & blure dot-pattern & resize to small
-    ►use existed one: all images copyRighted
-      ▬creativecommons.org: free usage|reproducing but shared
-        •unsplash.com: all rights free high resolution & filter
-        •commons.wikimedia.org: all rights free high resolution
-        •flickr.com/creativecommons: some free some non-comarce
-      ▬royall-free: buy license 1once→ ∞duration use|reproduce globaly in milti-projects 10$↑istockphoto 50$↑gettyimages
-      ▬rights-managed: buy license at period in single-project with particular usage in one location: gettyimages.com
-    ►buy css: animations buttons gradients-templates…
-      ▬clipart.com: membership fee, high quality
-      ▬1clipart.com: icons|applications free|low-price
-      ▬thenounproject.com: one color icons free|fee/y
-      ▬iconfinder.com: full colored styles free|fee/m
+  ▶strategy: ►goals: ▬↓size:✓format,optimize ▬↓http:sprits
+      ▬↓bandwidth & quality:srcset='',sizes=''
+    ►if simple illustration use css: -size, rwd, quality
+      ▬1_<style>: -http/uncached ▬2_external.css: cached/+http
+      ▬links: css-tricks.com/the-shapes-of-css
+        codepen.io/collection/yeDQoX
+    ►else if complex illustration use svg: -size, rwd, quality
+      ▬styled & dynamic: •<object>: cached/+http,≠external.css
+        •inline<svg> organize label optimize:-http/≠cached
+      ▬else optimize: •<svg>:-http/uncached •<img>:cached/+http
+    ►else if must be responsive:
+      ▬few images: choice best format, export multi-sizes by PHs
+      ▬too much imgs: build automatic app on server run on fly
+        to export multi-sizes optimize: •glide.thephpleague.com
+        •cloudfour.com/thinks/image-resizing-services/
+    ►else jest optimize: manually or by server-app.
   ▶formats: raster=bit-mapped(jpg|png|gif|webp) vector(svg)
       terminal: $ file img.formatSuffix
     ►jpeg.org: (Joint Photographics Expert Group)
@@ -57,6 +57,22 @@
       ▬animation like git & apng.
       ▬can store meta & color profile ICC like png's
       ▬link: developers.google.com/speed/webp
+  ▶sources: create img, use existed img, hire designer
+    ►create one: ▬drawn logo by illustrator
+      ▬capture by camera & edit it by photoshop
+      ▬scan by print & blure dot-pattern & resize to small
+    ►use existed one: all images copyRighted
+      ▬creativecommons.org: free usage|reproducing but shared
+        •unsplash.com: all rights free high resolution & filter
+        •commons.wikimedia.org: all rights free high resolution
+        •flickr.com/creativecommons: some free some non-comarce
+      ▬royall-free: buy license 1once→ ∞duration use|reproduce globaly in milti-projects 10$↑istockphoto 50$↑gettyimages
+      ▬rights-managed: buy license at period in single-project with particular usage in one location: gettyimages.com
+    ►buy css: animations buttons gradients-templates…
+      ▬clipart.com: membership fee, high quality
+      ▬1clipart.com: icons|applications free|low-price
+      ▬thenounproject.com: one color icons free|fee/y
+      ▬iconfinder.com: full colored styles free|fee/m
   ▶resolution: img-r≠important/#px is, print-r=dpi'dotsPerInch
     ►some high-density screens as retina can display 4px↑ in 1px
       ▬issues: css-img display narrow on retina, large on normal
@@ -68,22 +84,6 @@
     ►to avoid blur: set:svg 1x, or at least:raster x1,raster x2
       ▬<img src=img@1.webp srcset='i@.5.webp .5x, i@2.webp 2x'>
         //img@1:10x10px i@.5:5x5px i@2:20x20px
-  ▶strategy: ►goals: ▬↓size:✓format,optimize ▬↓http:sprits
-      ▬↓bandwidth & quality:srcset='',sizes=''
-    ►if simple illustration use css: -size, rwd, quality
-      ▬1_<style>: -http/uncached ▬2_external.css: cached/+http
-      ▬links: css-tricks.com/the-shapes-of-css
-        codepen.io/collection/yeDQoX
-    ►else if complex illustration use svg: -size, rwd, quality
-      ▬styled & dynamic: •<object>: cached/+http,≠external.css
-        •inline<svg> organize label optimize:-http/≠cached
-      ▬else optimize: •<svg>:-http/uncached •<img>:cached/+http
-    ►else if must be responsive:
-      ▬few images: choice best format, export multi-sizes by PHs
-      ▬too much imgs: build automatic app on server run on fly
-        to export multi-sizes optimize: •glide.thephpleague.com
-        •cloudfour.com/thinks/image-resizing-services/
-    ►else jest optimize: manually or by server-app.
   ▶favicon: <link rel=icon type=image/x-icon href=/favicon.ico>
     ►convert: png?text?emoji→ico: favicon.io/
     ►collection: <link rel=apple-touch-icon sizes=180x180 href=f.png>
@@ -203,3 +203,4 @@
         (binary-gradient between two colors, create third new color to table-colors)
       •table-colors: start 5bit/32color, & increase as necessary
         ›image→mode→index-color
+★svg:
