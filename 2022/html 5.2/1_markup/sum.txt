@@ -100,7 +100,7 @@
     <p><strong>Warning</strong> you don't have plans yet</p>
   •b: keyword←bold, Bring_Attention to keyword not-important & unaffect-meaning
     <p>i have <b>white</b> smartphone, like yours</p>
-  •i: alternative-voice←italic, text in defferent voice|mood|subLanguage|term|idea
+  •i: alternative-voice←italic, text in different voice|mood|subLanguage|term|idea
     <p><i>boboshka</i>, mean grandma in russa</p>
   •s: incorrect-text←strick-through
     <p>to styling html we use <s>css</s> sass</p> 

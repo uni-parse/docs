@@ -13,7 +13,7 @@ $ sass-migrator division **/*.scss
     •$ sass <input.scss>:<output.css> <input/>:<output/> <dir/>
   *flags:
     •-w: watch if input.scss changed, then update output.css in real time at background.
-    •--no-source-map: dont comment & dont creat map file
+    •--no-source-map: dont comment & dont create map file
     •--update: affect just older files.css
 
 

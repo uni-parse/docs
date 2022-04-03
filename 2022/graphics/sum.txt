@@ -203,4 +203,122 @@
         (binary-gradient between two colors, create third new color to table-colors)
       •table-colors: start 5bit/32color, & increase as necessary
         ›image→mode→index-color
-★svg: 
+★svg:
+  ▶introduction:
+    ►xml(eXtensible Markup Language): meta-language
+      •mother of: xhtml→html→html5 svg MathML RSS
+      ▬syntax(#must be): •lowerCase tag|att •proper nest
+        •quote att ≠extraWhiteSpaceIn ≠short(att✗→att='att'✓)
+        •numeric unicode refer to most special characters
+        •contain scripts in CDATA section
+        •enclose els:<empty att='quote'/> <empty att=addSpace />
+    ►svg: ▬els: text clipPath mask •raster:linearGradient filter
+        •drawing: circle rect ellipse path line polyline polygon
+        •organization: g(groupeShapes) use|symbol(reuseDrawings)
+      ▬demo: <?xml version='1.0' encoding='utf-8'?>     <!--1-->
+        <svg version='1.1'                              <!--2-->
+         xmlns:xlink='http://www.w3.org/1999/xlink'
+         width='150' height='200' viewbox='0 0 150 200'>
+        <defs> <radialGradient id='fill_effect'>        <!--3-->
+          <stop offset='0' stop-color='#fff'/>
+          <stop offset='1' stop-color='orange'/>
+        </radialGradient></defs>
+        <g id='icon-drawn'>                             <!--4-->
+          <rect x='25' y='25' width='100' height='100' 
+           fill='lightGreen' stroke='green' stroke-width='2'/>
+          <circle cx='75' cy='75' r='40' fill='url(effect)'/>
+          <path fill='none' stroke='#000' stroke-width='2'
+           d='M 13 100 L 60 50 L 90 90 L 140 30'/>          </g>
+        <text x='25' y='150' fill='#000' font-family='Rosemary' 
+         font-zize='16'>xml &amp; svg</text>              </svg>
+      ▬descrition: (svg use px in measurement)
+        •1: declare external≠inline file, start at line1/letter1
+        •2: <svg> is root-el as <html>:
+          »inline ≠require att version|xmlns|xmlns:xlink=''
+            ›multi xml-langs required att xmlns:xlink=''
+          ›external.svg require att xmlns=''
+        •3: <defs> define els|effects reused by <use>|url(#id)
+        •4: attributes: ›d:path-direction:(M:moveTo L:lineTo)
+          ›x,y|cx,cy'circle?ellipse-center:el→viewboxCoordinates
+          ›r:circleRadius ›stroke:border ›fill:backGround
+  ▶featurs:
+    ►add svg to document:
+      ▬<img>|.css{bg-image:url?image-set()}:
+        cached, fastLoad / ≠external.js?css?rasterImg(security)
+      ▬<iframe|object>: cached, dynamic / ≠style.css, slowLoad
+      ▬inline <svg>: full-DOM-access, ultraFastLoad / uncached
+      ▬svgLoader: load external.svg as inline <svg> without http
+        <head> <script src=svg-loader.min.js async></script>
+        <body> <svg data-src=img.svg></svg>
+    ►styling:
+    ►scripting:
+    ►animations
+    ►
+    ►
+  ▶raster embed: <image xlink:href=url x= y= width= height= />
+    •inline-only ≠external.svg(security-reasons)
+    ►cliping|masking: display clip of img
+      ▬clip: <svg width=600 height=400 viewbox='0 0 600 400'>
+        <defs> <clipPath id=star-shape>
+          <polygon points='390,12 440,154 590,157 470,250 513,
+           393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:none /> </clipPath> </defs>
+        <image xlink:href=img.webp width=600 height=400
+         style=clip-path:url(#star-shape) />       </svg>
+      ▬mask: display clip of img by opacity based on lightness of solid-color|gradient|image, darker-color→+invisibility
+       <defs> <linearGradient id=alpha_effect>
+          <stop offset=0 stop-color=#fff />
+          <stop offset=100% stop-color=#000 /> </linearGradient>
+        <mask id=mask_effect x=0 y=0 width=400 height=381>
+          <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:url(#alpha_effect) />  </mask>      </defs>
+       <image xlink:href=img.webp width=600 height=400
+        style=mask:url(#mask_effect) />
+    ►filter: <svg width=600 height=600 viewbox='0 0 600 600'>
+     <defs> <filter id=blur>
+        <feGaussianBlur in=SourceGraphic stdDeviation=4 />
+       </filter> <filter id=shadow>
+        <feGaussianBlur in=SourceAlpha stdDeviation=8 result=blur />
+        <feOffset in=blur dx=9 dy=7 result=offsetBlur />
+        <feMerge> <feMergeNode in=offsetBlur />
+          <feMergeNode in=SourceGraphic /> </feMerge> </filter>
+      </defs>
+      <ellipse cx=150 cy=500 rx=150 ry=100 style=fill:red />
+      <ellipse cx=450 cy=500 rx=150 ry=100
+       style=fill:red;filter:url(#blur) />
+      <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:red;filter:url(#shadow) />               </svg>
+     ▬attributes: ›rx|ry:ellipse-vertical?horizontal-radius
+      ›stdDeviatBlur:blur-radius-amount ›dx|dy:offset-distance
+  ▶reuse/recycle:
+    <svg> <symbol id=x viewBox='0 0 150 200'> … </symbol>
+      <use xlink:href=#x> </svg>
+    <svg style=width:60vw;height:80vw> <use xlink:href=#x></svg>
+    •<symbol> store els|effects as <defs>, scalable by viewBox=
+    •<use> call <g>|<defs>|<symbol> content.
+  ▶responsive:
+    ►view-control: ▬viewport: as window display slice|full svg
+        •Established by width|height=100%D in <svg|img|iframe>
+      ▬viewBox='minX minY width height': as telescope(pan&zoom)
+        •default→'0 0 viewport-width viewport-height'
+        •panning←↑↓→(move view): minX minY
+        •zooming: ›out-: width > viewport-w, height > viewport-h
+          ›in+: width < viewport-w, height < viewport-h
+        •apply to svg|symbol|pattern|marker|view
+    ►preserveAspectRatio='<align> slice?meet'
+      •indicate how to fit el if viewBox(w:h) have different aspectRatio than viewport(w:h)
+      •default→='xMidYMid meet', preserveAR+alignCenter+contain
+      ▬meet=contain, slice=cover
+      ▬<align>: align coordinates of viewBox & viewport
+        ›none: stretch→viewport, ≠preserveAR, ignore meet?slice
+        ›xMinYMin: viewBox(minX|Y=0):viewport(x|y=0%):   0%   0%
+        ›xMinYMid: minX=0:x=0, minY=height/2:y=vpH/2 :   0%  50%
+        ›xMinYMax: minX=0:x=0, minY=h:y=vpH          :   0% 100%
+        ›xMidYMin: minX=w/2:x=w/2, minY=0:y=0        :  50%   0%
+        ›xMidYMid: minX=w/2:x=w/2, minY=h/2:y=vpH/2  :  50%  50%
+        ›xMidYMax: minX=w/2:x=w/2, minY=h:y=vpH      :  50% 100%
+        ›xMaxYMin: minX=w:x=w, minY=0:y=0            : 100%   0%
+        ›xMaxYMid: minX=w:x=w, minY=h/2:y=vpH/2      : 100%  50%
+        ›xMaxYMax: minX=w:x=w, minY=h:y=vpH          : 100% 100%
+    ►issues: ▬viewBox without viewport(w:h): IE→w=300px,h=150px 
+        •fix: set width=100% height=auto
+      ▬adabtive icon: lose details if scaled-down
+        •fix: ›create sprite.svg have multiVersions
+          @media (max-width:big→Small){svg els{/*change*/}}

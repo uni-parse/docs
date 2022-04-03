@@ -62,7 +62,7 @@
   •Encoding tools: online-audio-converter.com|media.io|www.mediahuman.com/audio-converter/|sbooth.org/Max/(mac)|www.audacityteam.org(multitrack)
 
 
-★canvas: area to creat bitmapped animated atractive graphics by javascript (cant scalable as svg).
+★canvas: area to create bitmapped animated atractive graphics by javascript (cant scalable as svg).
   <canvas widtg="" height="">
     fallback if js not enabled or not supported
   </canvas>
