@@ -1,8 +1,0 @@
-
-
-*tools:
-  •drawing programe: adobe-alliustrator
-  •text editot: visual studio code | atom
-
-
-*

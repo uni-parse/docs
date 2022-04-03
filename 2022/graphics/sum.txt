@@ -250,11 +250,20 @@
       ▬svgLoader: load external.svg as inline <svg> without http
         <head> <script src=svg-loader.min.js async></script>
         <body> <svg data-src=img.svg></svg>
-    ►styling:
-    ►scripting:
-    ►animations
-    ►
-    ►
+    ►styling: overriding inline>embedded>external>svg-attributes
+      •inline:<el style=> •embeded:<head|svg|defs> <style>
+      •external:<svg|iframe|object> <style> @import 'style.css';
+    ►scripting: overriding inline>body>head
+      •inline: <svg><script> <![XDATA[ /*scrits*/ ]]>
+    ►animations: can apply→ <img>|.css{bg-image}
+      •@keyframes|transition:apply→css-properties ≠svg-attribute
+      •js libraries: snapsvg.io svgjs.com velocityjs.org
+        ›path-rendering: github.com/ConnorAtherton/walkway
+          lazylinepainter.info maxwellito.github.io/vivus
+    •Data Visualization: ›github.com/d3/d3/wiki/Gallery
+      ›observablehq.com/@d3/bar-chart-transitions
+    ►accessibility: •<svg|g|anyContainer><title>
+      •<anyEL role=presentation|none|img… ><desc>
   ▶raster embed: <image xlink:href=url x= y= width= height= />
     •inline-only ≠external.svg(security-reasons)
     ►cliping|masking: display clip of img

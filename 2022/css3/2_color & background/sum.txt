@@ -28,7 +28,7 @@
         .farthest-side: °meet farBoxSide, 0meet far h+v sides
         .closest-corner: °|0meet closest boxCorner to <position>
         .farthest-corner'd: °|0meet farthestCorner to <position>
-    »position: as bg-position, but applayTo center(not top left)
+    »position: as bg-position, but applyTo center(not top left)
   •conic-gradient(from <angle> at <position>, <color> <stop>,…);
     ›stop: <angle>|%(relative to 360°)
   •repeating-<linear|radial|conic>-gradient()
@@ -40,7 +40,7 @@
   •x?y: ±length0d| ±%| <side>| center'd;   •h?v: <side>; 
   •offset: ±length| ±%; (omitted h?v→0 {bg-p: hs OF vs|hs vs OF})
   •#%: mean align #% of bg-origin box-w|h, with #% of img-w|h
-  •applay to(top left|0 0) of image, relative to bg-origin box.
+  •applyTo(top left|0 0) of image, relative to bg-origin box.
 *bg-size: cover?contain| w(h=auto)| w h;
   •width|height: auto'd|length|%(r to bg-origin)
     ›auto: preserving image-origin aspect-ratio.

@@ -134,7 +134,7 @@
   •x-descriptor: pixel-ratio(scale) based, for dence-screens
     ›ex: <img src=img.webp alt='' srcset="img.webp@.5 .5x, img@2.webp 2x, …">
 
- *media attributd: art-direction based, like css @media-query
+ *media attribute: art-direction based, like css @media-query
   •ex:<picture><source media='screan and (orientation:portrait)'
     srcset=portrait.webp> <img src=fallback.webp alt=></picture>
  *type attribute: format-type based (unnecessary, webp 95%gs)

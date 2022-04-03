@@ -60,17 +60,17 @@
 ★quotations: blockqoute,q{
    quotes: none|auto(74%noSafari)|'★' '♪'|'«' '»' '‹' '›'}
 ★line-height↓: normal'd|#(em↓)|length-em(px↓)|%(px↓)
-★text-indent: ±em(px↓)|±%↓, applayed to first-#text-line of block-els, negative value required ≤ padding-left, else hidden
+★text-indent: ±em(px↓)|±%↓, applied to first-#text-line of block-els, negative value required ≤ padding-left, else hidden
 ★letter-spacing|word-spacing: normal'd|length(px↓)
 ★text-align↓: start'd|end|left|right|center|justify|match-parent
-  ›applay to block-containers.
+  ›apply to block-containers.
   ›match-parent77noS: as inherit, but start?end→(left?right)↓ depending on parent direction:;|<bdo dir=>.
   •text-align-last: start'd|end|left|right|center|justify;
     ›required text-align:justify (78-noSafari).
 *inline el: •replaced(display:i-block): have t&b edge as img
   •non-replaced(display:inline) as i em: have 5 imagine lines:
     baseline in font-box in logical-box(top&bottom-line)
-*vertical-align≠↓(applay to inline-els|td?th): ±length|±%line-h| baseline'd| middle| sub|super| text-|top?bottom;
+*vertical-align≠↓(apply to inline-els|td?th): ±length|±%line-h| baseline'd| middle| sub|super| text-|top?bottom;
   •explain: align el →with→ parent(non-replaced-inline|tr)
     ›baseline'd: align all baselines & bottom-edges.
     ›length|%: el baseline?b-edge→ parent baseline ± length|%.
@@ -94,7 +94,7 @@ linEnd otherS  hang   hang  nowrap   hang     hang      wrap
   •overflow-x|y: visible'd|hidden|clip(73noS|O)|scroll|auto;
     ›clip: as padding-box hidden, but disable js:el.offsetLeft
   •overflow-wrap↓: normal'd|anywhere(as url)|break-word
-    ›applay only|just when word > flow(width|height) & unbreaked
+    ›apply only|just when word > flow(width|height) & unbreaked
     ›break-word: as anywhere, but dont considered when calculating min-content intrinsic sizes.
   •text-overflow: clip'd| ellipsis(…);
     ›required(overflow:hidden), optional(white-space:nowrap)
