@@ -106,7 +106,7 @@
         •matte(req transparency=Ø, dither=Ø): none(transparent), Eyedropper, Foreground, background, custom color.
       ▬png24: transparency=variable 256lvl, better opti-method
       ▬png8: •colorTable:2~256
-        •transparency=variable✗|binary'd|Ø→matte ›dither:0~100%
+        •transparency=variable✗|binaryⒹ|Ø→matte ›dither:0~100%
           ›ditherMethod(anti-aliasing:smooth edges/bg contrast by matte): none, diffusion(0~100%), pattern, noise.  
     ►gif(hardEdge|flateColor animation): useless
       •quality:lossless •colorTable:2~256 •interlaced:↑size
@@ -138,14 +138,14 @@
       ▬resizing(manual by photoshop):
         •percentage:.01~100~↑%, scale by original aspectRatio
           ›else set width & height manually.
-        •resizing-quality: nearest neighbor, bilinear, bicubic'd, bicubic smooth, bicubic sharper.
+        •resizing-quality: nearest neighbor, bilinear, bicubicⒹ, bicubic smooth, bicubic sharper.
       ▬generate multi-imgs: responsivebreakpoints.com
         •upload original-img, set target: ›max?min-width
           ›size steps (20kb'recomended|40kb|80kb|…) ›more!!.
         •download & copy html markup to document, & done!!!.
       ▬chrome testing: •more-tools/Developer-tools/ ctrl+shift+i
         •Toggle device toolbar ctrl+shift+m
-          ›toggle [show device pixel ratio](else: DPR=2x'd).
+          ›toggle [show device pixel ratio](else: DPR=2xⒹ).
         •Network: record-downloads ctrl+r
         •reload-button/Empty-Cache and Hard Reload
     ►art-direction (crope/aspectRatio/format-support):
@@ -162,7 +162,7 @@
        </picture>
      ▬media='query1, query2, …?'
       •query:type|and? features| not?only type'R [and features]?
-       ›type: all'd| screen?print| speech≠supportedYet.
+       ›type: allⒹ| screen?print| speech≠supportedYet.
        »features: feature [and feature]…?.
          ›feature=(name [: value]?): (aspect-ratio: w/h'ex16/9) (max?min-|w?h: length) (orientation:portrite?landscape)
          (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)

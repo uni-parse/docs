@@ -5,7 +5,7 @@
   •responsive img & embedded-media: {max-inline-size:100%}.
  *media queries: •internal: @media query1, query2, …{rules}
     »query: type|and? features| not?only type'R [and features]?
-      ›type: all'd| screen?print| speech≠supportedYet.
+      ›type: allⒹ| screen?print| speech≠supportedYet.
       ›features: feature [and feature]…?.
         »feature(name [: value]?): (aspect-ratio: w/h'ex16/9) (max?min-|w?h: length) (orientation: portrite?landscape)
         (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)

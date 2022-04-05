@@ -1,0 +1,171 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ†₱…
+★
+  ▶block?inline-box:
+    ►block: •start&end→newLine •apply:w?h •inline-size:100% 
+      •padding?margin: push other els
+    ►inline: •≠newLine •≠apply:w?h •margin?padding?border:
+      vertical|horizontal→un|push other i-els
+    
+    ►block-lvl els: •normal-flow perdencular †o writing-mode.
+      •inline-size: 100%; margin-t?b: initial; (start&end with <br>)
+      •can contain block&inline-lvl els.
+    ►inline els: •normal-flow para//el to writing-mode.
+      •generates next to etch other without white-space.
+      •invalid to contain block-lvl els, even if {display:block}
+      1•unReplaced-i els: ›have content in source-document(b i em…)
+        ›box_Spaces→horizontal(start&end no<br>), no box_Measurement 
+        ›have 5 lines: baseline in font-box in logical-box(t?b-line)
+      2•replaced-i: ›noContent in doc: img object iframe video audio
+        ›have {display: inline-block?table}: input meter progress textarea select svg br wbr
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+★
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+★
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+★
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+★
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+★
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►
+  ▶
+    ►
+    ►
+    ►
+    ►

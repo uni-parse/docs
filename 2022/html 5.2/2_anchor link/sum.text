@@ -15,8 +15,8 @@
       ›subDomains: low lvl eight to left sequenced domans
         _ex: en:4LD m:3LD example:SLD|2LD in (en.m.example.com)
         _can be hostname(computer-network ip(internet protocol)) 
-          .ex: www(world wide web'd #optional)|localhost
-    »port'o: http→:80'd, https→:443'd
+          .ex: www(world wide webⒹ #optional)|localhost
+    »port'o: http→:80Ⓓ, https→:443Ⓓ
   •absolute-url: (scheme required)
     »in_browser: scheme = http(s):, ex:↓ href=http(s)://github.com/phantombill/website.github.io/index.html#skills
     »to_external_programe: scheme = mailto:|tel:
@@ -36,7 +36,7 @@
       2›linking-fragment: <a href=#destination></a>
         ›top-fragment: <a href=#></a>
 
-*target=_self'd|_blank|<reused-name>|_top|_parent:
+*target=_selfⒹ|_blank|<reused-name>|_top|_parent:
   •_blank: open new tab|window
   •<reused-name>: open_new_window or update_same_window|iframe
     ›ex1: <a href=url1 target=a></a>      <!--open new window-->

@@ -1,4 +1,4 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ†₱…
 ★insurting cascading style sheet: link|@import|style|style=
  <head>
    •<link href=external.css rel=stylesheet media=> <!--cached-->
@@ -7,9 +7,8 @@
      /*rules= selector{declaration=properties:values}*/ </style>
  </head><body>
     <tag •style=/*inlineDeclarations*/></tag><body><!--inline-->
-
 ★priorite: origin > specificity > order > inheritance.
-  •origin: User?>Author !important > Author > User > UA > w3.
+  •origin: User›Author !important > Author > User > UA > w3.
   •specificity'selector-weight: (specific# ,> generic#).
     »(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
       ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
@@ -22,7 +21,6 @@
       ›sib|lings: same hierarchy level.
     »Descendants inherit some Ancestors properties font?color?… not border?background?…, & overrided by descendants styles.
       ›some relative measurement em?rem?% inherit as absolute px
-
 ★length measurement: •absolute: ›screen: pixel:px=in/(ppi≈96).
     ›real: in?≈2.54cm, mm?=4q'quarter≠Safari19.
     ›print: point:pt=in/(dpi≈72), pica:pc=12pt≈in/6.
@@ -32,7 +30,6 @@
     ›ex=el{x-height}, ch=el{0-width}
     ›viewport: vw?vh?vmin?vmax.
       <meta name=viewport content='w=device-w, initial-scale=1'>
-
 ★functions: ›can be: ±#| length| %| <time:s?ms>| <angle>| nested min?max?calc?clamp(<math-operations>)
   ›math operators: ±v1 ± ±v2 ± ±v3…| ±v*±#*±#…| ±v/±#/±#…
   •calc(<math-operators>): set sum of math operator.
@@ -49,7 +46,6 @@
       ›safe-area-inset-<side>: <length> if display≠rectangle, else 0, <meta name=viewport content='viewport-fit=cover'>
       ›titlebar-area-x?y?width?height ≠F4S19s3: <l> if desktop install pwa(progressive web app) window-controls-overlay api, else 0.
     ›fallback list? returned if variable unavailable.
-
 ★global values: •demo:     /*w3-css initial: *{display:inline}*/
     body{font-size:13px}         /*UA-origin: p{display:block}*/
     p:nth-child(1){font-size: inherit}                  /*13px*/
@@ -60,13 +56,10 @@
   •unset: set inherit, else initial.
     •inherit: set closest ancestor #inheritable↓ value.
     •initial: set default w3-css value(≠UA-origin).
-
 ★defualt environment: various browsers = various UA-origins.
   ›initial & fix most UA-origin styles: @import 'reset.css';
   ›override UA-origin by author-origin: @import 'normalize.css';
-
 ★@supports condition=[test [and?or test]…?| not test] {rules}
   ›t: (condition)|(--custom?-prefix-?property:val)|selector(s…?)
   ›ex: @supports not(not (test)) and?or (not (test)){@media}.
-
-★@charset "UTF-8?iso-8859-15";      /*must be first rule, "≠'*/
+★@charset "UTF-8?iso-8859-15";       /*must be first rule, "≠'*/

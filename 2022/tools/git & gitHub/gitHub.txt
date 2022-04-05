@@ -17,7 +17,7 @@
       »the commit is log|save|record all changes happend in metadata(as version),
       »including the team member email, username, date & time, descriptive message, and uniqu id (7~40 caracter of hexadecimal).
      
-    •branch: is stack of sequential commits end with 'head' commit(latest'd|last reordered)
+    •branch: is stack of sequential commits end with 'head' commit(latestⒹ|last reordered)
       »master|default|source branch: is the offical version of project, and is deployable
       »new branchs: copied from current branch to developing new feature or to fix bug,
     

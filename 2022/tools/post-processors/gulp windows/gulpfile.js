@@ -36,8 +36,8 @@ function imgTask(){
            //…
          }),  
        imagemin.optipng({
-         optimizationLevel: 7, // 0~7 3'd
-         bitDepthReduction: true, //true'd
+         optimizationLevel: 7, // 0~7 3Ⓓ
+         bitDepthReduction: true, //trueⒹ
          colorTypeReduction: true,
          paletteReduction: true,
          interlaced: false,
@@ -64,8 +64,8 @@ function webpTask(){
            //…
          }),  
        imagemin.optipng({
-         optimizationLevel: 7, // 0~7 3'd
-         bitDepthReduction: true, //true'd
+         optimizationLevel: 7, // 0~7 3Ⓓ
+         bitDepthReduction: true, //trueⒹ
          colorTypeReduction: true,
          paletteReduction: true,
          interlaced: false,
@@ -81,16 +81,16 @@ function webpTask(){
    ))
 	  .pipe(webp({
 	    //preset: defualt, //defualt|photo|picture|drawing|icon
-	    quality: 50, //75'd 0~100
-	    alphaQuality: 40, //100'd 0~100
-	    method: 6, //4'd 0~6 (copression-size vs encoding-speed)
+	    quality: 50, //75Ⓓ 0~100
+	    alphaQuality: 40, //100Ⓓ 0~100
+	    method: 6, //4Ⓓ 0~6 (copression-size vs encoding-speed)
 	    //size: , //by bytes
 	    sns: 80, //amplitude of spatial noise shaping 0~100
 	    //filter: , //deblocking filter strength 0(off)~100
-	    autoFilter: false, //false'd boolean
+	    autoFilter: false, //falseⒹ boolean
 	    sharpness: 0, // 0(sharpest) ~ 7(least sharp)
-	    lossless: false, //false'd boolean
-	    nearLossless: 0, //100'd 0(lossy) ~ 100(lossless)
+	    lossless: false, //falseⒹ boolean
+	    nearLossless: 0, //100Ⓓ 0(lossy) ~ 100(lossless)
 	    //crop: , //object: {x: number, y: #, width: #, height: #}
 	      //resize: , //after crop {width: #, height: #}
 	    //metadata: all, //all|none|exif|icc|xmp

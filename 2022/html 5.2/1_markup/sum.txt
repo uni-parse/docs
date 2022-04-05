@@ -17,7 +17,6 @@
   default-style    name (<style|link title=name>)
   refresh          30 (reload doc every 30s)
   <!--expires          mon, 22 sep 2021 23:59:59 GMT-->
-
 ★link: demo: <link rel=stylesheet href=file.css media='(full)'>
   <link rel=icon href=favicon.ico type=image/x-icon>
   <link rel=apple-touch-icon-precomposed href=favicon114.webp type=image/webp sizes=114x114>
@@ -28,9 +27,7 @@
   •as=audio|video|track|document(iframe)|object|image|script|style|font|worker|fetch(•crossorigin=anonymous|use-credentials)r
   •rel=icon| noreferrer| alternate| stylesheet| search(req type=application/ex:opensearchdescription+xml)| help| license|author| next?prev(sequence page)| preconnect91noF| preload| prefetch79noS|…
   •referrerpolicy=no-referrer|-when-downgrade|unsafe-url|origin|-when-cross-origin
-
-★<style media=all'd></style>
-
+★<style media=allⒹ></style>
 ★<noscript> <a>fallback if scripting desabled</a> </noscript>
  *script: •src=url/file.js
   •type=module(ES6)| text/javascript| application/json| …
@@ -40,8 +37,6 @@
   •crossorigin= anonymous| use-credentials
   •referrerpolicy(80noIos)= unsafe-url no-referrer no-referrer-when-downgrade origin origin-when-cross-origin same-origin strict-origin strict-origin-when-cross-origin
   •integrity=filehash(https://www.srihash.org/), block if source manipulated by attackers, required crossorigin=anonymous
-
-
 ★block-level elements: as <div></div>
   •p: paragraph
   •h1: 1.5em just one in page, •h2 h3 h4 h5 h6: sub-headings.
@@ -84,14 +79,12 @@
   •aside: related addition information as links, ads, quotes
   •address: contact informations (emails|telephone|@social-media), can be in footer or article or body
   •footer: copyright|cyberSecurity|language information
-
-
 ★text-level elements(inline): as <span></span>
   •br: break-line, add return-line
   •wbr: word-break, ability to return-line through long-word
   •q: inline short-qoutation, cite=quoteURL|author|title (↑SEO)
     <q style=quotes:auto cite=@phantombill>live to yourself by yourself</q>
-  •cite: citation, refer to someone-else-work document|book|article|title, have style=font-style:italic'd
+  •cite: citation, refer to someone-else-work document|book|article|title, have style=font-style:italicⒹ
     <p>as <a href=https://facebook.com/phantombill><cite>phantombill</cite></a>:&#32;<q>live evert day as rhe first try</q></p>
   •em: emphasis, add it to important-meaning
     <p>friendship not exist for <em>ever</em></p><!--sadness-->
@@ -138,20 +131,16 @@
     <p> hello billal, and <i><bdo dir=rtl>بلال</bdo></i></p>
   •bdi: BiDirection-isolation, dir=?, 96%gs, for js-variables
     <p>hello <i><bdi>بلال</bdi></i></p>
-
-
 ★Accommodating Non-Western Languages (mack it internationaized)
   1•use unicode: <meta charset="uft-8">
   2•declaring the language: <html lang=en>
   3•use lang-direction: <p>I love u: <i dir=rtl>احبك</i></p>
   4•for asian languages(top-down) use: <ruby> <rp> <rt>
-
 ★aria: accessible rich internet aplication, have role='', states and properties (↑accessibility)
    <ul role=tabpanel>…</ul>
    <div role=img>…</div>
    <iframe role=map></iframe>
    <!--<head|main|…(html5_els) role=unnecessary!!>-->
-
 ★escaping spicial characters:
   &  &emp; empersand
   >  &gt; big-then

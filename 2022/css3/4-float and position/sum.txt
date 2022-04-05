@@ -1,19 +1,19 @@
 
-★float(on below): none'd| left| right; •shape-margin: length| %;
-  •shape-outside: none'd| <img>| <shape-box>| <basic-shape>;
+★float(on below): noneⒹ| left| right; •shape-margin: length| %;
+  •shape-outside: noneⒹ| <img>| <shape-box>| <basic-shape>;
     ›shape-box: content?padding?border?margin-box; (in→b-radius)
     »basic-shape(animated): circle(cr at p)| ellipse(hr vr at p) polygon(<fill-rule>, x1 y1,…)| inset(<offset> round <b-radius>);
-      ›fill-rule: nonzero'd| evenodd(unfill inside);
+      ›fill-rule: nonzeroⒹ| evenodd(unfill inside);
       ›offset(rectangle): all|h v|t h b|t r b l; (±length|±%).
       ›cr|hr?vr: length| %50d| closest?farthest-side;
       ›position(center→top-left): x?y| x y| hs offset vs offset;
-     x?y:length|%|<side>|center'd; hs?vs:<side>; offset:length|%
+     x?y:length|%|<side>|centerⒹ; hs?vs:<side>; offset:length|%
   •shape-image-threshold(animated): 0d~1; required by <gradient>
-  •#blockBelowNeighbor(unWrap){clear: none'd| left| right| both}
-  •issue: if all f-els, height→0, f-els overlap container-box.
+  •#blockBelowNeighbor(unWrap){clear: noneⒹ| left| right| both}
+  •issue: if all-els=f, height→0, f-els overlap container-box.
     ›fix: #container::after{content:'';display:block;clear:both}
     ›fix2: #container-box{ display:flow-root}, inclode all f-els
-*behaviors(normal flow): •block-lvl els: inline-size=w=100%, and generated below etch others in new lines.
+ *behaviors(normal flow): •block-lvl els: inline-size=w=100%, and generated below etch others in new lines.
   •inline els generated next to etch others, parallel to (dir=|direction:), wrap to new lines TtB to fill block-container.
   •float entire el-box(+margin) relative to parent-#content-box.
   •width are #requred by unReplaced-i & block-lvl els.
@@ -23,13 +23,11 @@
   •block-lvl f-els mack below neighbors b-lvl-#content-box wrap.
   •sameSide subsequenced floats render inline to opposite f-side
     ›if container width can't fit, unorder-positioned topest & closest to f-side, (nested floats cause #position issues).
-
 ★clip-path: url()| <shape-box +view-box>| <basic-shape +path()>;
   •apply to svg, just url(), <basic-shape> apply to html.
-
-★position(zi++): static'd| relative| absolute| fixed| sticky;
-*<side>(offset): auto'd| ±length| ±%; (define #both Hs=w, Vs=h)
-*z-index(apply to p-els): auto'd| ±#; (high z-i overlap lower)
+★position(zi++): staticⒹ| relative| absolute| fixed| sticky;
+ *<side>(offset): autoⒹ| ±length| ±%; (define #both Hs=w, Vs=h)
+ *z-index(apply to p-els): autoⒹ| ±#; (high z-i overlap lower)
   ›auto: last el in source have z-index > previos els.
   •relative: preserve original occupied space in normal-flow.
     ›offset rel to original-box(top-left corner).

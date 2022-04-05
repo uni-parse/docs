@@ -1,0 +1,44 @@
+div {
+  display: inline-block;
+  min-inline-size: 30em;
+  block-size: 30em;
+  position: relative;
+  border: 2px red solid;
+  border-left-color: magenta;
+}
+div img {
+  --w: 10em;
+  max-inline-size: var(--w, 10em);
+  position: absolute;
+  inset: calc(50% - var(--w) / 2);
+  inset-inline: calc(50% - var(--w) / 2);
+  inset-inline-start: auto;
+  inset-inline-end: auto;
+  inset-block: auto 1em;
+  inset-block-start: auto;
+  inset-block-end: auto;
+}
+
+h1 {
+  width: -moz-fit-content;
+  width: fit-content;
+  -webkit-background-clip: text;
+          background-clip: text;
+  background-image: -webkit-image-set("a.webp");
+  background-image: image-set("a.webp");
+}
+
+/*
+div {
+  display: inline-block;
+  border: solid 2px red;
+  //inline-size: 30em;
+  //block-size: 30em;
+  img {
+    display: inline-block;
+    max-inline-size: 10em;
+    margin: {
+      inline: 3em //1em;
+    }
+  }
+}*/

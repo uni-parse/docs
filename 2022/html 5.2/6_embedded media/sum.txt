@@ -2,12 +2,10 @@
 ★defualt object|iframe dimensions: width=300 height=150
   •issue: aspectRatio unpreserved, style=width:auto;
   •video: defualt w|h are original dimensions.
-
 ★javascript API: HTMLMediaElement
-
 ★iframe(inline frame): embed another source through window (page|video|audio|image|svg|canvas|map|ads)
   •<iframe name=targetName src=url allowfullscreen(issue)  srcdoc='inline html|xml ex: <a>override src=</a>' title=alt
-    referrerpolicy=no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin'd|unsafe-url
+    referrerpolicy=no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-originⒹ|unsafe-url
    sendbox|sendbox='allow-'downloads≠S19|same-origin|scripts|popups|popups-to-escape-sandbox|presentation|pointer-lock|forms|'-top-navigation'|by-user-activation
     allow(experimental)=fullscreen|geolocation|camera 'none'; microphone 'none'|layout-animations 'none'; unoptimized-images 'none'; oversized-images 'none'; sync-script 'none'; sync-xhr 'none'; unsized-media 'none';>
     <a>fallback</a> </iframe>
@@ -20,7 +18,6 @@
     src=www.youtube.com/embed/ id(v=id) ?autoplay=1|0 &mute=1|0
   •map: menu/shareOrEmbedMap/embedAmap
     src=https://maps.google.com/maps?q= location(ex: blida) &t=&z=9&ie=UTF8&iwloc=&output=embed
-
 ★object useless: (att usemap=#value, <map name=value> image)
  •<object type=image/svg+xml data=url typemustmatch name= form=>
     <image src=fallback alt=>
@@ -30,8 +27,6 @@
     <param name=controller value=false|true>
    </object> 
  •<embed src= type=>: for plug-ins (useless remplaced by object)
-
-
 ★video & audeo:
  •<video src=url controls autoplay|poster=img_url muted loop
     preload=auto|none|metadata playsinline(nonMobileFullscreen)
@@ -60,8 +55,6 @@
      <source type=audio/wav src=url.wav> <!--not optimized-->
      <track>…<a href=download.mp3>alternative</a></audio>
   •Encoding tools: online-audio-converter.com|media.io|www.mediahuman.com/audio-converter/|sbooth.org/Max/(mac)|www.audacityteam.org(multitrack)
-
-
 ★canvas: area to create bitmapped animated atractive graphics by javascript (cant scalable as svg).
   <canvas widtg="" height="">
     fallback if js not enabled or not supported
@@ -75,14 +68,7 @@
     rotate(); scale();
     arc(x, y, arc_radius, angle_radians_beg, angle_radians_end);
   <script≥
-
-
-★style: {aspect-ratio: auto'd| <ratio: #.f|#/#>;}
-    
-
-
-
-
+★style: {aspect-ratio: autoⒹ| <ratio: #.f|#/#>;}
 
 ★image: <img src=images/image.webp alt='' width='' height=''>
   •src(source)=url, absolute-url|relative-url(local)
@@ -91,8 +77,7 @@
   •referrerpolicy
   •sizes
   •srcset
- *css'd: {display:inline-block; vertical-align:baseline}
-
+ *cssⒹ: {display:inline-block; vertical-align:baseline}
 ★svg (scalable vectore graphic):
  *embedded by: <img src=fallback.webp srcset=img.svg alt="">
   •pros: cached, fast-loading, nested in <a>
@@ -107,13 +92,11 @@
  *fallback: by object|picture (unnecessary)
   •ex: <picture> <source type=image/svg+xml srcset=img.svg>
     <img srcset=img.webp alt=''> <!--fallback--> </picture>
-
 ★<map name=mapName> <!--att coordinates x|y|r=#(without px)-->
    <area alt= shape=defualt|rect(angle)|circle|poly(gon)
      coords=x1,y1,x2,y2(rect)|x,y,r(circle)|x1,y1,…xn,yn(poly)
      href= target= download rel= ping= referrerpolicy=> …
  </map> <img usemap=#mapName src= alt=>
-
 ★responsive image:
  *demo: <picture>                            <!--img required-->
   <source type='' media='screan and (orientation:landscape) and (min-width:1280px)'
@@ -141,10 +124,6 @@
   •ex: <picture> <source type=image/svg+xml srcset=img.svg>
     <source type=image/webp srcset=img.webp>
     <img src=fallback.png alt=> </picture>
-
-★suppprt: caniuse.com
-  •<source>|media=''|type='': 51%gs
-  •<picture>|srcset=''|sizes='': 96%gs
 ★polyfill: (support old browsers)
   •link: scottjehl.github.io/picturefill/
   •usage: <head><script src=path/picturefill.js></script></head>

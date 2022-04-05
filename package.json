@@ -45,5 +45,8 @@
     "sass-embedded": "^1.49.9",
     "source-map-resolve": "^0.6.0",
     "uuid": "^8.3.2"
-  }
+  },
+  "browserslist": [
+    "last 2 versions and >= 1% and not IE <= 11"
+  ]
 }

@@ -132,7 +132,6 @@ scss= superset of css, sass= indent syntax style sheet.
     ›by default nesting include outer selector even if & used
   »properties: s{border-*} = s{border:{style:solid;size:thin}}
     ›s{margin:1em{left:0}}
-
  •interpolation: #{<exp +if()>}//return type-of unquoted-str≠number
   ›can inject in: selector, propertyName, custom-property-value
   ,css @rules & funcs(), @extend, un?quoted-str, /*!loud-comment:
@@ -141,7 +140,6 @@ scss= superset of css, sass= indent syntax style sheet.
 
   »issue: interpolation return unquoted string.
     ›fix: @use 'sass:meta'; :root{--font: #{meta.inspect($f)}}
-
  •css variables: ›updating --cp affect both old & new usages.
   ›--cp declared only inside rules
   ›store 2 values --cp & falback list?, can used on differ els.
@@ -160,7 +158,6 @@ scss= superset of css, sass= indent syntax style sheet.
     ›<local>{$v:assign?update !global} affect global+local scopes
     ›shadowing: <local>{$global:u} updated locally not globally
     ›<@flowControll>{$v:u} update only outer-scope $v:assigned?u
-
  •@at rules:
   »@use 'url|build-in' as <nameSpace> with ($configurating:u,…);
     ›@use must come before any rule except @forward & $vars
@@ -274,7 +271,6 @@ scss= superset of css, sass= indent syntax style sheet.
       @else if $_ < 0{@warn '#{$_}<0';$s:$s + $_}@else{$s:$s + $_}
      }@return $s
     };//@debug z(1,-2);/*warn:-2<0*/@debug z(1,a);//error:a≠number
-
  •build-in modules:
   »@use 'sass:meta'; 16=1l+12q(6+2+2+1+1)+3m
     »load-css('module-url',$with?:null)//@use 'm' with ($v:u,)
@@ -424,14 +420,14 @@ scss= superset of css, sass= indent syntax style sheet.
       ›set-nth((k1:v1,k2:v2),-1,ku update)//k1 v1,ku update
       ›set-nth(e1 e2,3,update)//Error: $n: Invalid index
     ›slash(e1,…)//e1/… ›slash(e1 e2,e3 e4)//e1 e2/e3 e4
-    »append($list,$v,$separator?:auto'd|space=d1|comma|slash)
+    »append($list,$v,$separator?:autoⒹ|space=d1|comma|slash)
       ›append(e1 e2,e3,$separator:$s)//e1 $s e2 $s e3
       ›append(($l),en,$separator:$s)//e1 $s … $s en
       ›append([$l],en,$separator:$s)//[e1 $s … $s en]
       ›append((k:v,…),kn vn,$separator:$s)//k v $s … $s kn vn
       ›append((k:v,…),kn vn,$separator:space)//(k v) (…) (kn vn)
     »join($list1,$list2,$separator?,$bracketed?:auto|true|false)
-      ›auto'd: $separator=$l1,$l2,space $bracketed=$l1,false
+      ›autoⒹ: $separator=$l1,$l2,space $bracketed=$l1,false
     »zip($list1,…)//$list=$subList1,…
       ›return: comma-separator $list, space-separator $subLists
       ›$sublists nth = smallest list.length($list#)
@@ -517,7 +513,6 @@ scss= superset of css, sass= indent syntax style sheet.
       selector.unify(a,p)//null
       selector.unify('.m .n a.b','.j .k a%b')
         //.m .n .j .k a.b%b, .j .k .m .n a.b%b
-
  •global functions: hsl()
   ›rgb?a($color, $alpha), last $alpha used: rgb(#0005,1)=#000
   ›if($condition, $return-if-true, $return-if-false)

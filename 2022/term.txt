@@ -63,4 +63,3 @@
   Deprecated de|pre|kated (no more supported)
   cubic مكعب
   api application programming interface
-  

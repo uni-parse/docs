@@ -1,0 +1,34 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★markup: <table style=position:relative cellspacing=0'2d>
+    <captipn style=caption-side:topⒹ|bottom>summary</caption>
+    <thead style=position:sticky;top:0>
+     <tr><th d'style=fw:bold;t-align:center></th>…</tr>…</thead>
+    <tbody> <tr> <td></td>… </tr>… </tbody>…
+    <tfoot> <tr><td colspan=0>note</td></tr> </thead>   </table>
+★spanning: <th|td rowspan=# colspan=#> <!--#€[0,65534], 0=all-->
+★grouping: (useless, instead use css :nth-child(an+b) selector)
+  *rows: by <thead> <tbody>'s <tfoot>
+  *columns: below <caption> add:
+    •simple: <colgroup span=0></colgroup>…
+    •advanced: styling|scripting:
+      <colgroup>
+        <col id=start> <col id=middle span=#>… <col id=end>
+      </colgroup> …
+★accessibility:
+  •add <caption>, or <figure>|<figcaption>
+  •add scope|headers attributes:
+   <th scope=row|column|rowgroup|colgroup>…</th>
+   <td headers="th1id th2id …">…</td>
+★style: display:tableⒹ-UA|inline-table;
+  table-layout:autoⒹ|fixed(apply width, else first row width);
+  /*auto: ignore width, slowly calculate & set wider row width*/
+  border-collapse↓:separateⒹ|collapse;
+  ›if (b-collapse↓:separate) {empty-cells:showⒹ|hide;
+    b-spacing↓: h=v'length| h v;     /*<table cellspacing=2d>*/}
+ •caption{caption-side:topⒹ|bottom}
+ •col, colgroup{background|border|width|visibility}
+
+
+
+
+

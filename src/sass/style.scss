@@ -13,9 +13,6 @@
 //@debug color.lightness(#c5c5c5);
 //
 
-
-
-
 // path {
 //   fill: yellow;
 //   stroke: black;
@@ -29,3 +26,52 @@
 //   outline: 1px solid red;
 // }
 
+//p :nth-child(1){font-size: 3em;color: aqua;}
+
+div {
+  display: inline-block;
+  min-inline-size: 30em;
+  block-size: 30em;
+  position: relative;
+  border: 2px red solid {
+    left: {
+      color: magenta;
+    }
+  }
+  img {
+    --w: 10em;
+    max-inline-size: var(--w, 10em);
+    position: absolute;
+    inset: calc(50% - var(--w) / 2) {
+      inline: calc(50% - var(--w) / 2) {
+        start: auto;
+        end: auto;
+      }
+      block: auto 1em {
+        start: auto;
+        end: auto;
+      }
+    }
+  }
+}
+h1{
+  width: fit-content;
+  background: {
+    clip: text;
+    image: image-set('a.webp')
+  }
+}
+/*
+div {
+  display: inline-block;
+  border: solid 2px red;
+  //inline-size: 30em;
+  //block-size: 30em;
+  img {
+    display: inline-block;
+    max-inline-size: 10em;
+    margin: {
+      inline: 3em //1em;
+    }
+  }
+}*/

@@ -4,12 +4,12 @@
   •accept-charset=utf-8|ISO-8859-1|ISO-8859-8|ASCII|…
     ›recommended: utf-8
     ›if omitted inherite <meta charset=''>
-  •autocomplete=on'd|off: apply to input|select|textarea
+  •autocomplete=onⒹ|off: apply to input|select|textarea
   •rel=value(see img)
     ›https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
   •action=appURL.php|.jsp: application_url(server|local_offline)
   •method=get|post|dialog: http_method
-    ›get'd: send #1 unencrypted limitted characters request.
+    ›getⒹ: send #1 unencrypted limitted characters request.
       (appURL?name1=value1&name2=value2&…)
     ›post: send several encrypted unlimited characters requests.
     ›dialog: if form inside <dialog> 73%gs-noSafaru|firefox
@@ -19,7 +19,7 @@
     ›html5 debugging: 'text/plain'
     »addition: if method=post, enctype is MIME_type (Multipurpose Internet Mail Extensions)
   •novalidate: boolean att, if omitted it #is validate inputs.
-  •target=_self'd|_blank|_parent|_top|<reusedName>
+  •target=_selfⒹ|_blank|_parent|_top|<reusedName>
 
 
 ★form shared controls_attributes:
@@ -29,7 +29,7 @@
   •max?minlength=#characters: <textarea> <i type=text|pw|search|email|tel|url>
   •placeholder=hint: textarea <i type=text|pw|search|email|tel|url|number>
   •size'w=#characters: <i type=text|pw|search|email|tel|url>
-  •inputmode=text'd|decimal|numeric|tel|search|email|url|none (86%gs-noDesktopSafari): textarea input
+  •inputmode=textⒹ|decimal|numeric|tel|search|email|url|none (86%gs-noDesktopSafari): textarea input
   •readonly(unEditable sended) •required •autofocus(+button) •autocomplete=on|off|value(only input): textarea input select
     ›value=name|honorific-prefix|given-name|additional-name|family-name|honorific-suffix|nickname|email|username|new-password|current-password|one-time-code|organization|-title|street-address|address-line1~3|address-level1~4|country|-name|postal-code|'cc'-name|-given-name|-additional-name|-family-name|-number|-csc|-type|'cc-exp'|-month|-year|'transaction'-currency|-amount|language|'bday'|-day|-month|-year|impp|url|photo|sex|'tel'|-country-code|-national|-area-code|-local|-extension
   
@@ -44,9 +44,9 @@
 
 
 ★form controls:
-*line-text: <i type=text'd|password|search|email|tel|url>
+*line-text: <i type=textⒹ|password|search|email|tel|url>
 *multiline:<textarea rows=# cols=# wrap=soft|hard>val</textarea>
-  •soft'd: unsend auto-line-breaks characters
+  •softⒹ: unsend auto-line-breaks characters
   •hard: send auto-line-breaks (cols=# required)
 *radio|checkbox button: 
   •<i type=radio name=groupName value=required checked>
@@ -75,7 +75,7 @@
 *need js behavior:
   •<progress max=#(required ex:100) value=#></progress>
   •<meter min=# max=# low=# high=# optimum=# value=#></meter>
-    ›min=0'd < low < high < max=1'd, ±#€Ž
+    ›min=0Ⓓ < low < high < max=1Ⓓ, ±#€Ž
     ›low: Indicates the lower bound of the measured range
     ›high: Indicates the upper bound of the measured range
     ›optimum: between min&low(green|yellow|orange)| low&high(yellow|green|yellow)| high&max(orange|yellow|green)
@@ -91,7 +91,7 @@
   •formaction, formenctype, formmethod, formnovalidate, formtarget
 *<i type=submit value=submit>
 *<i type=image src= alt=submit width=40 height=~> no-value
-*<button type=submit'd(|button|reset) value=submit>txt|img</button> •button are dynamic.innerhtml & styled::after|before
+*<button type=submitⒹ(|button|reset) value=submit>txt|img</button> •button are dynamic.innerhtml & styled::after|before
 *reset (useless): •<i type=reset value=reset>
   •<button type=reset value=reset></button>
 
@@ -110,7 +110,7 @@
   legend{width:1px;height:1px;overflow:hidden}
    /*›screenReader repeat legend on each option, make it short*/
 •extra: [type=text?pw?email?tel?url?search?select],textarea {border|-radius; margin; padding; background; …}
-  textarea{resize: none'd}    /*both'd-UA|horizontal|vertical*/
+  textarea{resize: noneⒹ}    /*bothⒹ-UA|horizontal|vertical*/
   input, textarea{caret-color: red} /*alerted vertical-line*/
   is(form,input):in?valid{/*target: max?minlength, required*/}
 •selectors: :focus?hover?active :in?valid :required?optional :enabled?disabled :default?checked :read-only?write :out-of?in-range [type=number] :placeholder-shown ::placeholder ::selection≠Ios15 :indeterminate

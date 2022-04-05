@@ -21,14 +21,14 @@
     ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
   :?::first-line/*#block-lvl-els*/{
     <::first-letter>≠margin;padding;border;box-shadow;float}
-  ::placeholder{<::line1>-*;color:lightgray'd}/*input?textarea*/
-  :?::before?after{content; display:inline'd}   /*≠replacedEls*/
+  ::placeholder{<::line1>-*;color:lightgrayⒹ}/*input?textarea*/
+  :?::before?after{content; display:inlineⒹ}   /*≠replacedEls*/
     »content: none| normal|
     [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
       »counter(name,style?) counters(name,'nest separater',sty?)
        ›style: disq|circle|square|lower?upper-roman?alpha=latin |decimal?-leading-zero|lower-greek'αβγ|urdu'ar#-moz4|…
-    ›.paren/*=child1*/{ counter-reset: none'd|[name ±#0d?] …;
-      el{ counter-increment: none'd|[name ±#1d?] …}
+    ›.paren/*=child1*/{ counter-reset: noneⒹ|[name ±#0d?] …;
+      el{ counter-increment: noneⒹ|[name ±#1d?] …}
       el:nth-child(#){ counter-re?set≠S19:<reset>}}//reset=set+1
   ::marker≠S19{font;white-space;color;direction;content:;}
     ›applyTo: li| summary| el?::pseudoElement{display:list-item}
@@ -87,7 +87,7 @@
   :checked|+label{}/*=on:<i type=radio?checkox> <option>≠style*/
   :default|+label::after{content:' (default)'; …}  /*+disabled*/
     ›<option selected>       <input type=radio?checkbox checked>
-    ›first form <button type=sumbit'd> or <i type=image?submit>
+    ›first form <button type=sumbitⒹ> or <i type=image?submit>
   :indeterminate|+label{} <progress> <i type=radio≠S19?checkbox>
     var c=document.querySelectorAll('[type=checkbox]');
     for (var i=0; i<c.length; i++) {c[i].indeterminate=true}

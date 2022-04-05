@@ -36,7 +36,7 @@ $ git add .
 
 // 
 
-// add versions of working flow frome [staging area] → [current branch](master'd) "-m: message"
+// add versions of working flow frome [staging area] → [current branch](masterⒹ) "-m: message"
 $ git commit -m "message descripts changes happend to last version"
   // check all commits: dates, ids, authers, messages, branches
   $ git log

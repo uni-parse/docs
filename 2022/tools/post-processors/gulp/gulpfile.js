@@ -28,8 +28,8 @@ function imgTask(){
     .pipe(
       imagemin([/*
         imagemin.optipng({
-          optimizationLevel: 5, // 0~7 3'd
-          bitDepthReduction: true, //true'd
+          optimizationLevel: 5, // 0~7 3Ⓓ
+          bitDepthReduction: true, //trueⒹ
           colorTypeReduction: true,
           paletteReduction: true,
           interlaced: false,

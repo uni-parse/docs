@@ -1,17 +1,17 @@
 
 ★★controll space+layout outside-items-content:
 ★container{ •display: inline-|flex; •f-flow: <fDir>? <fWrap>?;
-  •f-direction(as writing-mode|direction): row'd?column|-reverse
-  •f-wrap: nowrap'd|wrap|-reverse; (rel to cross-start?end)
+  •f-direction(as writing-mode|direction): rowⒹ?column|-reverse
+  •f-wrap: nowrapⒹ|wrap|-reverse; (rel to cross-start?end)
 *alignment: •place-content: <align=justify-content>|<a-c> <j-c>;
- •justify-content(main-axis): flex-|start'd?end88≠s&O| center| left?right90≠samsung2.8| space-between?around(gap=2edge)?evenly;
+ •justify-content(main-axis): flex-|startⒹ?end88≠s&O| center| left?right90≠samsung2.8| space-between?around(gap=2edge)?evenly;
    ›target items rel to container, overrided by{margin<flex}.
- •align-content(cross-axis): stretch'd| <j-c≠l?r>(s?e69≠S&s&O);
+ •align-content(cross-axis): stretchⒹ| <j-c≠l?r>(s?e69≠S&s&O);
    ›target all track-lines→container, req f-wrap≠unwrap;
- •align-items(cross-axis): stretch'd|flex?self-|start?end70≠S&s| center| baseline; ›target all items rel to its lines.
+ •align-items(cross-axis): stretchⒹ|flex?self-|start?end70≠S&s| center| baseline; ›target all items rel to its lines.
    ›f-|start?end based on direction of container, self-* on item
 ★items{ •order: ±#0d; (by default ordered as in source).
- •align-self(cross-axis): auto'd| <align-items>;
+ •align-self(cross-axis): autoⒹ| <align-items>;
    ›target individual item rel to its line, override align-items
  •margin-<side>(both-axis): auto(fill available space);
    ›overriding: justify-content < margin-<side>(main-axis).
@@ -24,21 +24,21 @@
   •f-grow: #0.0d; override{margin>justify-content}
     ›fill available space to before=after main-size(w?h<f-basis)
   •f-shrink: #1d; if space unfit, wrap line to multi short lines
-  •f-basis: auto'd| length| %(main-axis);
-    ›auto→w?h, if w?h:auto'd, f-basis: item-content-main-size
+  •f-basis: autoⒹ| length| %(main-axis);
+    ›auto→w?h, if w?h:autoⒹ, f-basis: item-content-main-size
     »if length|% < item-content-main-size, f-basis: auto;
       ›if w|h < item-content-main-axis, content overlap its box (fix: overflow|-wrap| word-break).
 
 ★★★container{ *display: inline-|grid;
 *grid: <g-template>| auto-flow dense? <track-size>…/<gt-columns>
                    | <gt-rows>/auto-flow dense? <track-size>…;
-  •g-auto-flow: row'd?column dense?(unorder holes-fill);
-    •g-auto-rows?columns: <track-size(auto'd)>…;
-•g-template: none'd| <gt-rows>/<gt-columns>|
+  •g-auto-flow: rowⒹ?column dense?(unorder holes-fill);
+    •g-auto-rows?columns: <track-size(autoⒹ)>…;
+•g-template: noneⒹ| <gt-rows>/<gt-columns>|
    [ln? <string> <track-size>? ln?]… / <track-list≠repeat>;
   ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\escapedChara]?…;
     _if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
-  •g-template-rows?columns: none'd| <track-list>| <auto-t-list>;
+  •g-template-rows?columns: noneⒹ| <track-list>| <auto-t-list>;
     »track-list: [ln? <track-size?repeat>]… ln?;
       ›track-size: <breadth>| fit-content(length?%)|
                    minmax(<breadth≠fr>, <breadth>);
@@ -52,7 +52,7 @@
                            | minmax(<breadth≠fr>, length?%);
       ›fixed-repeat: repeat(#,[ln? <fixed-size>]… ln?);
       ›auto-repeat:repeat(auto-fill?fit,[ln? <fixed-size>]… ln?)
-  •g-template-areas: none'd| <string1> <s2> …; ›ex: gta: 'a a b'
+  •g-template-areas: noneⒹ| <string1> <s2> …; ›ex: gta: 'a a b'
     ›string: represent row cells= character+|.(empty);   'a a .'
     ›every #rectangle area generates 4 line-names (reverse too!) 
       _top?left-line=[areaName-start], b?r-line=[areaName-end]
@@ -62,15 +62,15 @@
     ›issue(overflow): gaps added to space-between?around?evenly
 •g-|gap'a: r=c|r c; •g-|row?column-gap: normal(1em)d| +length?%;
 •place-items: <align=justify-items>| <a-i> <j-i>;
-  •j?a-items: normal'd| <a-i(full-support)>| left?right(≠a-i);
+  •j?a-items: normalⒹ| <a-i(full-support)>| left?right(≠a-i);
     ›target all items-boxes→areas.
     ›normal=stretch'unreplaced-els, n=start'block?replaced-els.
-★items{ •order: ±#0d; •z-index: auto'd| ±#;
+★items{ •order: ±#0d; •z-index: autoⒹ| ±#;
 *placement: •grid-area1~4: area| r-start/c-start?/r-end?/c-end?;
   •g-row?column(span≠both): <*-star> / <*-end>;
-    •g-row?column-start?end: auto'd(=span 1)| ±#*(-1=lastLine)| ln(ø[])| span +#?ln(from opposite-line≠span to item-in?[ln])| areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
+    •g-row?column-start?end: autoⒹ(=span 1)| ±#*(-1=lastLine)| ln(ø[])| span +#?ln(from opposite-line≠span to item-in?[ln])| areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
 *alignment: •place-self: <a=j-self>| <a-self> <j-self>;
-  •j?a-self: auto'd| <j?a-i(grid)>; override{j?a-items}
+  •j?a-self: autoⒹ| <j?a-i(grid)>; override{j?a-items}
     ›auto: based on justify?align-items values.
   •margin: auto;→ place-self: center; override{j?a-self>j?a-i}
     ›m:0 auto:→ justify-s:center; ›m:auto 0:→ align-s:center;

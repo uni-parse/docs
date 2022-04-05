@@ -48,7 +48,15 @@ function sassTask() {
           .sync({ outputStyle: 'compressed' })
           .on('error', sass.logError)
       )
-      .pipe(postcss([cssnext(), cssnano()]))
+      .pipe(
+        postcss([
+          cssnext({
+            stage: 1,
+            minimumVendorImplementations: 1,
+          }),
+          cssnano(),
+        ])
+      )
       //.pipe(sourcemaps.write('../maps'))
       .pipe(dest('build'))
   );
@@ -58,8 +66,13 @@ exports.css = sassTask;
 function onlySassTask() {
   return src('src/sass/**/*.scss', { sourcemaps: false })
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(postcss([cssnext()]))
-    .pipe(dest('src/sass/_debug'));
+    .pipe(
+      postcss([
+        cssnext({ stage: 1, minimumVendorImplementations: 1 }),
+      ])
+    )
+    .pipe(rename('_debug.css'))
+    .pipe(dest('src/sass/'));
 }
 function sassWatchTask(cd) {
   onlySassTask();

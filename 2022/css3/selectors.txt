@@ -1,9 +1,8 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © ✓ ✖ Ø † ⁰ ₱
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ†₱…
 ★specificity'selector-weight: (specific# ,> generic#).
   •(#id, .class?:pseudoClass?[attr], tag?::pseudoElement).
     ›*?:where((#,#,#))=(0,0,0), :not((#,#,#))=(#,#,#).
     ›:is((#,#,#))=(0,0,1|0,1,0|0,0,1) = 1 heavy-specific-type.
-
 ★basic: ›(0,0,0): s1s2…{1specificSelector} s1,s2,…{group} *{all}
   ›combinators(0,0,0): sParent>sChild{direct child}
     sAncestor sDescendant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
@@ -12,7 +11,6 @@
   ›[attribute]{(0,1,0)}   [att=v]{}   [… i]{caseInsencitive lv4}
     [att*=Vpart]{…v…} [att~=spaceV]{… v …} [att|=hyphenV]{…-v-…}
     [att^=valPrefix]{v…} [att$=valSufix]{…v}  /*tilde~, caret^*/
-
 ★pseudoElement(0,0,1): part of el, basicSelector::onceInEnd.
   ::selection≠Ios15?{color;bg-color;text-shadow?decorationCSS2}
   :?::first-letter/*of line1 of #block-lvl-els*/{vertical-align;
@@ -21,14 +19,14 @@
     ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
   :?::first-line/*#block-lvl-els*/{
     <::first-letter>≠margin;padding;border;box-shadow;float}
-  ::placeholder{<::line1>-*;color:lightgray'd}/*input?textarea*/
-  :?::before?after{content; display:inline'd}   /*≠replacedEls*/
+  ::placeholder{<::line1>-*;color:lightgrayⒹ}/*input?textarea*/
+  :?::before?after{content; display:inlineⒹ}   /*≠replacedEls*/
     »content: none| normal|
     [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
       »counter(name,style?) counters(name,'nest separater',sty?)
        ›style: disq|circle|square|lower?upper-roman?alpha=latin |decimal?-leading-zero|lower-greek'αβγ|urdu'ar#-moz4|…
-    ›.paren/*=child1*/{ counter-reset: none'd|[name ±#0d?] …;
-      el{ counter-increment: none'd|[name ±#1d?] …}
+    ›.paren/*=child1*/{ counter-reset: noneⒹ|[name ±#0d?] …;
+      el{ counter-increment: noneⒹ|[name ±#1d?] …}
       el:nth-child(#){ counter-re?set≠S19:<reset>}}//reset=set+1
   ::marker≠S19{font;white-space;color;direction;content:;}
     ›applyTo: li| summary| el?::pseudoElement{display:list-item}
@@ -37,7 +35,6 @@
     ›style track.Vtt of vedio, bg apply individually to each cue
   ::part(n1 …){} <template><shadowEl part='n1 …'> //from outside
   ::slotted(*|1s≠combined){} <custom-el><el slot=> //from inside
-
 ★pseudoClass(0,1,0): elState. :lang(en){quotes; …??} <el lang=>
   :not(s1,s2,…){}//s≠:not()?pseudoElement, :not((#,#,#))=(#,#,#)
   :is?where(s1,s2,…)//s≠::pseudoElement, forgiving-selector≠S19
@@ -82,7 +79,7 @@
   :checked|+label{}/*=on:<i type=radio?checkox> <option>≠style*/
   :default|+label::after{content:' (default)'; …}  /*+disabled*/
     ›<option selected>       <input type=radio?checkbox checked>
-    ›first form <button type=sumbit'd> or <i type=image?submit>
+    ›first form <button type=sumbitⒹ> or <i type=image?submit>
   :indeterminate|+label{} <progress> <i type=radio≠S19?checkbox>
     var c=document.querySelectorAll('[type=checkbox]');
     for (var i=0; i<c.length; i++) {c[i].indeterminate=true}
