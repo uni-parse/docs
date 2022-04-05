@@ -1,0 +1,97 @@
+▶►▲★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+▶planning:
+  ►define all goals,
+    ▬set category
+    ▬set priority order
+    ▬remove unnecessary goals who can be done by web services.
+  ►convert every goals to tasks
+    ▬ask someone to do non web-related tasks
+    ▬use third-party services to manage payment, ads, assetsHost
+▶internet:
+  ►are cable connected directly just with isp's(internet server provider).
+    ▬each isp connected to modem's by Telephone-cable
+    ▬modem connect Telephone-cable with router
+    ▬router connect computers by Ethernet-cable or wifi-wireless
+  ►finding computer:
+    ▬each computer have unique ip(internet protocol) address ipv4:192.168.2.10 or ipv6
+    ▬dns(domine name server): map(ip:name) human readable
+  ►internet/intarnet/extarnet: piblic/private/partial-private
+    ▬intarnet access: small campany only
+    ▬extarnet access: suppliers, custommers, collaborators
+    ▬internet access: all the word
+▶url(Uniform Resource Locator): 
+  ►ex: http://www.example.com:80/pathTo/myfile.html?key1=value2&key2=value2#spotOfPage
+  ►syntax: scheme://domainName:port/pathToFile?parametors#anchor
+    ▬scheme: protocol-type(transfer-method) who request Resource
+      http(s)| ftp| mailto| tel| file| data| irc| …
+    ▬authority: //<domainName|IPaddress>:port
+      •port: gate to access resources, http→:80'd, https→:443'd
+      •domainName: ….lable2.label1.TLD
+        »TLD(topLvl): can contain letters or special cherectar
+          ›genericTLD as .com?org?net can regest any server
+          ›.gov?edu require web-server particular policies.
+          ›localTLD as .us?fr can require server to provide resources whith country language.
+        »labels(components): can contain a→Z 0→9 -(≠ 1st|last)
+          ›SLD(2ndLvl): 1st lebel in right of .TLD
+          ›subDomains: 2nd+ lebel in right of .1stLebel.TLD
+        »dns(domainName System): databases servers in worldwide 
+          ›rent domain name from who.is
+          ›dns request: typing url in Search Engine will:
+            _send request to local cached dns ip address
+            _if ≠cached: ask dns-server→ip then send request.
+    ▬pathToFile: /path = /path/index = /path/index.html
+    ▬parametors: ?key1:value1&k2:v2&… customize request
+    ▬anchor: #fragment remmember page spot, ≠sended→server
+  ►absolute/relative: 
+    ▬absoluteuse: can be:
+      •full: scheme://domainName:port/path?parametors#anchor
+      •use same [scheme] who request the document:
+        //domainName:port/pathToFile?parametors#anchor
+      •use same [scheme://domainName:port] of document:
+        /pathToFile?parametors#anchor
+      •fix mobile issue: stop TelephoneToUrl(){any10Digit→url}
+        <meta name=formate-detaction content=telephone-no>
+    ▬relative:
+      •current-directory: become→ absoluteURL/relativeURL
+        ›same-lvl: file → absoluteURL/file
+        ›lower-lvl: path/file → absoluteURL/path/file
+        ›higher-lvl: ../../file → absoluteURL/../../file
+        ›differ-lvl: ../path/file → absoluteURL/../../path/file
+      •root-dir: /path/file → scheme://domainName:port/path/file
+      •current-document: #fragment → absoluteURL#fragment
+▶web:
+  ►webpage: document can be displayed in browser.
+    ▬html
+    ▬stylesheet
+    ▬scripts
+    ▬assets: media: img video audio font track
+  ►website: collection of linked webpages and its assets
+  ►search engine: service(website) help find other webpages
+    ▬as: google duckduckgo bing yahoo
+    ▬accessed by browsers or webpages
+  ►web server: computer host website(shared same domain name)
+    ▬host: prefer to use third-party dedicated web-server
+      •can have same ip address
+      •online 24h
+    ▬user request http(hyperText transter protocol) to server
+    ▬server respons to all http request, at least error404 back.
+▶img: pixabay.com under CC0 license(use,edit,publish,commerce)
+▶publishingl filezella
+▶hosting:
+  ►dedicated services: youtube|dailymotion|vimeo
+  ►domain and host: ionos.com gandi.net
+▶local host testing:
+  ►pyphon: $ cd index/path && python -m http.server 8000'd
+  ►
+    ▬
+▶
+  ►
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
+▶
