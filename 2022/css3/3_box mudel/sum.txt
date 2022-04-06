@@ -8,14 +8,14 @@
  *limit box dimensions: (override w|h)
   •max-width?height: none(∞)d| length| %| min?max?fit-content;
   •min-width?height: autoⒹ| length0d| %| min?max?fit-content;
-    ›auto: min-w77noS, min-h73noS|F, min-b?i-size0%(length0d)
+    ›auto: min-w≠S19, min-h≠S19F4, min-b?i-size0%(length0d)
  *support(fit-content): •width -moz|webkit- +5% (max-w partial)
   •min?max-|block?inline-size: -moz- +4%
   •max-w?h|h|max?min-block-size: noFirefox -4%
 ★box spaces: •padding|margin: all|v h|t h b|t r b l;
- *padding-<side>: length0d|%; between content-box & border
+ *padding-<side>: length0d|%→parent; content-box⇆border
   •unapply to tr|thead|tbody|tfoot|col|colgroup
- *margin-<s>: ±length0d|±%|auto; between current&neighbor-border
+ *margin-<s>: ±length0d|±%→parent|auto; current⇆neighbor-border
   •unapply to el{display: inline-|table|-*(*≠caption)}.
   •behavior: ›neighbor block-els v-margin collapse to biggest, negative margins overlap neighbors into it.
 ★box layout: *direction: ltrⒹ|rtl;

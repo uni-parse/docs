@@ -82,11 +82,13 @@
   ►domain and host: ionos.com gandi.net
 ▶local host testing:
   ►pyphon: $ cd index/path && python -m http.server 8000'd
-  ►
-    ▬
-▶
-  ►
-▶
+▶history:
+  ►1990 timBL(Tim Berners-Lee) create http|html browser=WorldWideWeb
+  ►1994 timBL create w3c(WorldWideWebConsortium) to lead all web standards(html→WHATWG,ECMA→js,KHONOS→3dGraphics:webGL,…)
+▶http(hyperText transfer protocol): have syntax ≠human-readable
+▶html
+▶css
+▶javascript
 ▶
 ▶
 ▶

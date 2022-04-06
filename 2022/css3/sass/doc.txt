@@ -27,7 +27,7 @@ scss= superset of css, sass= indent syntax style sheet.
  *≠literal value: $v|func()|(n?operator)|&|!important
  *literals(static expressions):
   •number: ±#|±#unit(%=unit)|±#complexUnit
-    ›±#.f=<number> ±#=<integer>(≠±#.0)
+    ›±#.f=<number> ±#(≠±#.0)=<integer>
     »precision: ›math.funcs() use full number
       ›css generated math.round(number*1e10)*1e-10
       ›some operators(!= == <=>) use math.ceil(n*1e11)*1e-11
