@@ -1,1 +1,1 @@
-div{border:2px solid red}div,div img{display:inline-block}div img{margin-left:3em;margin-right:3em;max-width:10em}
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}div{block-size:30em;border:2px solid red;inline-size:30em}div,div img{display:inline-block}div img{aspect-ratio:16/9;border:1px solid #ff0;max-inline-size:50%;-o-object-fit:scale-down;object-fit:scale-down;-o-object-position:50%;object-position:50%}
