@@ -36,7 +36,7 @@
       »flages:
         ›-r,-R: remove directories and its content.
         ›-d,--dir: remove directories just if it is empty !!!
-    •mkdir(make directory): creat empty directories just if it not existed
+    •mkdir(make directory): create empty directories just if it not existed
       »syntext: mkdir flags… newDirNames…
       »flags:
         ›-p,--parents: non-prompt-errors if [nowDirNames] same as some [existingDirNames].

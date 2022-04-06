@@ -54,8 +54,8 @@
     ›ease-in-out: as ease, but unChanged(linear) at middle.
     ›ease-in: slow at start. ›ease-out:slow at end.
     »cubic-bezier(x2,y2,x3,y3): custom curve, x€[0,1], y€R.
-      ›Point2(x2,y2) creat touching-line with Point1(0,0),
-      ›Point3(x3,y3) creat touching-line with Point4(1,1).
+      ›Point2(x2,y2) create touching-line with Point1(0,0),
+      ›Point3(x3,y3) create touching-line with Point4(1,1).
       ›if y<0, transtions reversed untel point4(1,1).
     »steps(#[, start?end'd|jump-start?end?both?none]?):
       ›#: steps(duration/#) devide duration to fractions.

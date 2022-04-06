@@ -1,0 +1,59 @@
+
+★syntax: anchor-link
+  <a href=url target=external_window>
+    <block-el>|short meaningful lable(if not html:resuorce type)
+  </a>
+
+★attributes:
+*href=url: (HyperText_REFerence = Uniform_Resource_Locator)
+  •url: scheme://domainName:port/path/file#fragment
+    ›scheme(skimi): http(s)| ftp| mailto| tel| file| data| irc.
+     identify wich protocol-type(transfer-method) used.
+    »domainName: subDomains.TLD, ease name, converted by DNS-service(domain name system), to complicated ip4|ip6, to locate both host-computer-ip & our-computer-ip.
+      ›TLD(top lvl domain): _ccTLD(country code): dz|(ios-3166).
+        _gTLD(generic):com| org| net| info| edu| gov| mil;
+      ›subDomains: low lvl eight to left sequenced domans
+        _ex: en:4LD m:3LD example:SLD|2LD in (en.m.example.com)
+        _can be hostname(computer-network ip(internet protocol)) 
+          .ex: www(world wide web'd #optional)|localhost
+    »port'o: http→:80'd, https→:443'd
+  •absolute-url: (scheme required)
+    »in_browser: scheme = http(s):, ex:↓ href=http(s)://github.com/phantombill/website.github.io/index.html#skills
+    »to_external_programe: scheme = mailto:|tel:
+      ›ex: href=mailto:name@address.dns |href=tel:+213696501956
+      ›Note1: use @media-query to target just smartphones
+      ›Note2: disable smartphones function(){10-numbers→link} by <meta name="formate-detaction" content="telephone-no">
+  •relative-url:
+    »current-directory:
+      ›same-level: href=fileName.html
+      ›lower-level: href=path/fileName.html
+      ›higher-level: href=../../…/fileName.html
+      ›different-level: href=../…/path/fileName.html
+    »root-directory: recommended for javascript.
+      ›href=/path/fileName.html
+    »current-document:
+      1›identify-fragment: <el id=destination></el>
+      2›linking-fragment: <a href=#destination></a>
+        ›top-fragment: <a href=#></a>
+
+*target=_self'd|_blank|<reused-name>|_top|_parent:
+  •_blank: open new tab|window
+  •<reused-name>: open_new_window or update_same_window|iframe
+    ›ex1: <a href=url1 target=a></a>      <!--open new window-->
+          <a href=url2 target=a></a>   <!--update same window-->
+    ›ex2: <iframe src=url1 name=b></iframw>        <!--iframe-->
+          <a href=url2 target=b></a>   <!--update same iframe-->
+        
+*other attributes:
+  •title='display onHover'
+  •download|download=<fileRename>: turn ancher→download link
+  •rel=alternate|author|bookmark|external|help|license|next|nofollow|noreferrer|prev|search|tag
+    ›https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
+  •hreflang=lang_code(en|ar|ch|…): (useless)
+  •type=mimeType: (useless)
+    ›ex: text/html image/svg+xml audio/mp3 video/webm
+  •ping=tracking_url: (???)
+  •referrerpolicy=no-referrer |no-referrer-when-downgrade |origin |origin-when-cross-origin |same-origin|unsafe-url |strict-origin-when-cross-origin (???)
+
+
+

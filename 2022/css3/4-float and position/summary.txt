@@ -33,7 +33,7 @@
   ›auto: last el in source have z-index > previos els.
   •relative: preserve original occupied space in normal-flow.
     ›offset rel to original-box(top-left corner).
-  •absolute: applay to margin-box, remove originalSpace of nFlow
+  •absolute: apply to margin-box, remove originalSpace of nFlow
     ›inline-els→ behave as block-lvl-box(new container).
     »offset rel to closest ancestor{p:relative|absolute|fixed}
       ›else it rel to html(initial containing-block)

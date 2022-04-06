@@ -12,13 +12,13 @@ $ git config --global user.email "abanibilal4@gmail.com" && git config --global 
 // explain workflow...................................
 
 
-// creat working directory "my-project/"
+// create working directory "my-project/"
 $ mkdir my-project && cd my-project
 
-// creat hidden repository ".git/", that commit to master branch by default
+// create hidden repository ".git/", that commit to master branch by default
 $ git init
 
-// update(add|remove|edit) "$ touch → creat fole|files"
+// update(add|remove|edit) "$ touch → create fole|files"
 $ touch index.html style.css script.js
 
 //check available files to staging (staging: green; none: red)
@@ -46,7 +46,7 @@ $ git commit -m "message descripts changes happend to last version"
 
 
 
-// creat new-branch from the current branch(in this case master)
+// create new-branch from the current branch(in this case master)
 $ git branch navStyle
 
 // switch the working directorh frome master→navStyle branch

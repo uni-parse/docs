@@ -1,0 +1,333 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★basics:
+  ▶strategy: ►goals: ▬↓size:✓format,optimize ▬↓http:sprits
+      ▬↓bandwidth & quality:srcset='',sizes=''
+    ►if simple illustration use css: -size, rwd, quality
+      ▬1_<style>: -http/uncached ▬2_external.css: cached/+http
+      ▬links: css-tricks.com/the-shapes-of-css
+        codepen.io/collection/yeDQoX
+    ►else if complex illustration use svg: -size, rwd, quality
+      ▬styled & dynamic: •<object>: cached/+http,≠external.css
+        •inline<svg> organize label optimize:-http/≠cached
+      ▬else optimize: •<svg>:-http/uncached •<img>:cached/+http
+    ►else if must be responsive:
+      ▬few images: choice best format, export multi-sizes by PHs
+      ▬too much imgs: build automatic app on server run on fly
+        to export multi-sizes optimize: •glide.thephpleague.com
+        •cloudfour.com/thinks/image-resizing-services/
+    ►else jest optimize: manually or by server-app.
+  ▶formats: raster=bit-mapped(jpg|png|gif|webp) vector(svg)
+      terminal: $ file img.formatSuffix
+    ►jpeg.org: (Joint Photographics Expert Group)
+      ▬properly for blended color transitions
+      ▬Truecolor based 24bit=rgb*8bit, lossy on each compression
+      ▬progressive #passes low→original=load100% UX↑perfermence
+        •by defualt load linear from top to bottom
+    ►png: (Portable Network Graphics)
+      ▬features: •Lossless compression
+        •transparency: alpha=Multiple-level, binary=on|off
+        •Interluce(progressive) display in multiple passes sizs↑
+        •+Embed text: like copyright meta-information
+        •+Embed ICC: save colorProfileInfo system who create it
+        •+Gamma correction channel: adjust brightnessLvl
+      ▬based on: (8|24|48-bit rgb-colors) & (16-bit grayscale)
+        •png-8: properly for huge flat color areas as icon|logo
+          ›transparency: binary(on|off) or variable(multi-levels)
+          ›indexed numbers on each pixel of pallete,
+            refer→ 2^(1~8)=2~256color positioned in c-table?map
+          »palletes methods: ›Custom ›System
+            ›Exact: if original colors ≤ 2^8=256.
+              Optimized Octree (Paint Shop Pro Photo only)
+            ›Adaptive: to most used colors.
+              Optimized Median Cut (Paint Shop Pro Photo only)
+            ›Perceptual'phs: Adabtive to human eye sansitivity
+            ›Selective'phs: Perceptual to areas of broad color
+            ›useless: Web Adaptive, Restrictive, or Web216
+        •png-24(Truecolor): properly for multiLvl transparency.
+          ›alpha transparecy channel can have 2^8bit=256lvl.
+        •apng: (94%G) animated image better than gif
+          ›support 24bit(Truecolor) & alpha channel transparency
+    ►gif: (Graphic Interchange format) (useless)
+      ▬properly for large flat areas & binary transparency
+      ▬lossless comprition ▬indexed based on 8bit like png8
+      ▬interlacing like jpeg progressive ▬animated frames
+    ►webp: (web picture) (91% + 3.4% g)
+      ▬can be lossy|lossless comprition, & 40-70% small ↓size.
+      ▬alpha transparency channel like png-24's
+      ▬animation like git & apng.
+      ▬can store meta & color profile ICC like png's
+      ▬link: developers.google.com/speed/webp
+  ▶sources: create img, use existed img, hire designer
+    ►create one: ▬drawn logo by illustrator
+      ▬capture by camera & edit it by photoshop
+      ▬scan by print & blure dot-pattern & resize to small
+    ►use existed one: all images copyRighted
+      ▬creativecommons.org: free usage|reproducing but shared
+        •unsplash.com: all rights free high resolution & filter
+        •commons.wikimedia.org: all rights free high resolution
+        •flickr.com/creativecommons: some free some non-comarce
+      ▬royall-free: buy license 1once→ ∞duration use|reproduce globaly in milti-projects 10$↑istockphoto 50$↑gettyimages
+      ▬rights-managed: buy license at period in single-project with particular usage in one location: gettyimages.com
+    ►buy css: animations buttons gradients-templates…
+      ▬clipart.com: membership fee, high quality
+      ▬1clipart.com: icons|applications free|low-price
+      ▬thenounproject.com: one color icons free|fee/y
+      ▬iconfinder.com: full colored styles free|fee/m
+  ▶resolution: img-r≠important/#px is, print-r=dpi'dotsPerInch
+    ►some high-density screens as retina can display 4px↑ in 1px
+      ▬issues: css-img display narrow on retina, large on normal
+    ►reference-pixel #x(x=scale): 1cssPX=#screenPX
+      ▬screenPX: apple=#point,google=#DP?DIP'deviceIndependentPx
+      ▬ex: .cssimg{width:10px;height:10px} /*96ppi 1x*/
+        •iphone4 326ppi 2x: 20pxScreen, 20PT, 20DP
+        •tablet 130ppi 0.5x: 50pxScreen, 5PT. 5DP
+    ►to avoid blur: set:svg 1x, or at least:raster x1,raster x2
+      ▬<img src=img@1.webp srcset='i@.5.webp .5x, i@2.webp 2x'>
+        //img@1:10x10px i@.5:5x5px i@2:20x20px
+  ▶favicon: <link rel=icon type=image/x-icon href=/favicon.ico>
+    ►convert: png?text?emoji→ico: favicon.io/
+    ►collection: <link rel=apple-touch-icon sizes=180x180 href=f.png>
+      <link rel=icon type=image/png sizes=32x32 href=f32.png>
+      <link rel=icon type=image/png sizes=16x16 href=f16.png>…
+      <link rel=manifest href=/site.webmanifest>
+★production: (photoshop|gimp)
+  ▶export differ formats: (export/save-for-web ctrl+shift+alt+s)
+    ▬transparency: 
+      •png24: save Truecolor-data in 4 channels r, g, b, a
+      •png8✗: save 256color-data in 1 channel rgba(,,, 0~1)
+      •gif|png8: save 256color-data in 1 channel rgba(,,, 0|1)
+        ›issue: on multiLvl generate halo(edgeColor→#fff?#000) not suited to bg-color.
+        ›fix: set matte→none, dither→100%, dither-method→pattern
+    ►jpeg: softEdges|blendColors
+      ▬quality:0~100% lossy ▬progrissive:↓size ▬blur:0~2 ↓size
+      ▬metadata(copyright, source, comment) ▬embed color profile
+    ►png:hardEdge|flateColor •quality:lossless •interlaced:↑size
+        •metadata(copyright,source,comment) •embed color profile
+        •matte(req transparency=Ø, dither=Ø): none(transparent), Eyedropper, Foreground, background, custom color.
+      ▬png24: transparency=variable 256lvl, better opti-method
+      ▬png8: •colorTable:2~256
+        •transparency=variable✗|binary'd|Ø→matte ›dither:0~100%
+          ›ditherMethod(anti-aliasing:smooth edges/bg contrast by matte): none, diffusion(0~100%), pattern, noise.  
+    ►gif(hardEdge|flateColor animation): useless
+      •quality:lossless •colorTable:2~256 •interlaced:↑size
+      •transparency=binary: ›dither:0~100% ›ditherMethod:asPNG8
+      •metadata(copyright,source,comment)
+    ►webp: lossy|lossless better than jpg|png
+  ▶responsive: <meta name=viewport content='width=device-width'>
+    ►high Density: same-size/different-resulotion
+       <img alt='img@.5:50px,img:100px,img@2:200px'
+        srcset='img@.5.webp .5x, img@2.webp 2x' src=img@1.webp>
+      ▬syntax: srcset='img #x,…'//return 1st img@#x≥resolution
+      ▬work at @1x≠2x scale: mathMistakesØ pcPerfermence↑ stable
+      ▬export-as: ctrl+shift+alt+w, click +button, select #x's
+      ▬avoid upscale blur @1x:
+        1•create new layer with target @1x width & height
+        2•add original img ≥ @3x|@2x [file→place linked]
+          ›issue: in Phs-2018 place-linked jpeg file ignored
+          ›fix: convert jpeg to psd before place-linked.
+        3•delete the empty layer & work with the place-linked
+      ▬automatic:•paidServer:cloudinary.com akamai.com kraken.io
+        •free web-app: https://docs.google.com/spreadsheets/u/0/d/1e4qdGEoq7tqDCnY7iSSnl3OFoWkzhRfVAly-73A3uCc/htmlview
+    ►responsive-layout (different-sizes): <img src=fb
+        alt='small420↓,medium421~600,large601~1000,huge1001↑'
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='small 420w,medium 600w,large 800w,huge 1200w'>
+      ▬syntax:    load 1st img have size≥slot of 1st meted query
+        sizes='(query1) slot1,…,sF'//return 1st meted query slot
+        srcset='img1 size1,…'    //return 1st img have size≥slot
+      ▬resizing(manual by photoshop):
+        •percentage:.01~100~↑%, scale by original aspectRatio
+          ›else set width & height manually.
+        •resizing-quality: nearest neighbor, bilinear, bicubic'd, bicubic smooth, bicubic sharper.
+      ▬generate multi-imgs: responsivebreakpoints.com
+        •upload original-img, set target: ›max?min-width
+          ›size steps (20kb'recomended|40kb|80kb|…) ›more!!.
+        •download & copy html markup to document, & done!!!.
+      ▬chrome testing: •more-tools/Developer-tools/ ctrl+shift+i
+        •Toggle device toolbar ctrl+shift+m
+          ›toggle [show device pixel ratio](else: DPR=2x'd).
+        •Network: record-downloads ctrl+r
+        •reload-button/Empty-Cache and Hard Reload
+    ►art-direction (crope/aspectRatio/format-support):
+      <picture>
+       <source type=image/avif media=(orientation:portrite)
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='pr-s.avif 420w,pr-m 600w,pr-l 800w,pr-h 1200w'>
+       <source type=image/webp media=(orientation:portrite)
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='pr-s.webp 420w,pr-m 600w,pr-l 800w,pr-h 1200w'>
+       <img src=landscape-fallback.webp alt=''
+        sizes='(max-w:600px) 100vw, (max-w:1000px) 80vw, 1200px'
+        srcset='ls-s.webp 420w,ls-m 600w,ls-l 800w,ls-h 1200w'>
+       </picture>
+     ▬media='query1, query2, …?'
+      •query:type|and? features| not?only type'R [and features]?
+       ›type: all'd| screen?print| speech≠supportedYet.
+       »features: feature [and feature]…?.
+         ›feature=(name [: value]?): (aspect-ratio: w/h'ex16/9) (max?min-|w?h: length) (orientation:portrite?landscape)
+         (max?min-|resolution≠S19: #x?dppx=96#dpi≈37.8#dpcm)
+         (display-mode:browser?fullscreen?standalone?minimal-ui)
+         (grid: 0=bitmap?1=grid) (color|:#8d(8bit=256)'0noColor)
+         (any-|pointer'both|: none?coarse'touch?fine'noTouch)
+         (any-|hover|: none?hover'noTouch)
+      •operators: ›,(=or): at least one query return true.
+        ›and: all individual-features & type must return true.
+        ›not: negation #sum of next type&features before ,(=or).
+        ›only: unapply style-block if old-browser≠support @media
+     ▬artice: www.smashingmagazine.com/2016/09/automating-art-direction-with-the-responsive-image-breakpoints-generator/
+     ▬generate multi-imgs: responsivebreakpoints.com
+        •upload original-img, set target: ›max?min-width
+          ›size steps (20kb'recomended|40kb|…) ›max-imgs:40↓ 
+          ›support retina screens 2x
+          »art-direction: ›select css width size by vw unit.
+            ›device:mobile|tablet|small-laptop|desktop.
+            ›aspect-ratio:w/h crope important content by analys methods as face?edges-detection visual-uniqueness.
+        •download & copy html markup to document, & done!!!.
+  ▶optimization:
+    ►general strategies: •opt from original-img(high resolution)
+      •crope unnecessary margins •reuse cached imgs if possible
+      •use ✓programs: as photoshop|sketch|paintshop-pro.
+      •use opt server-apps: gulp-imagemin, gulp-webp
+      •online services: imagecompression.com tinypng.com
+        pnggauntlet.com jpegmini.com
+    ►jpeg: •reduce quality: 50~70% generally, 30~40% depending.
+      •blur|smooth unnecessary content expect important content.
+        ›and blur all content by .2
+      •avoid hard-edges(high contrast details), work with   soft-edges(gradient contrast, less details)
+        ›compression hard-edge = 4 × soft-edges file-size !!!
+        ›use png-8 on hard-edges(or webp)
+    ►png24(useless,use png-8|webp): •avoid photographs/use-jpeg
+      •convert to png8(with variable transparency): tinypng.com
+    ►png8|gif: •choice flat-colors imgs (better than dithering).
+      •dithering:disableØ~30% (for blend-colors only)
+        (binary-gradient between two colors, create third new color to table-colors)
+      •table-colors: start 5bit/32color, & increase as necessary
+        ›image→mode→index-color
+★svg:
+  ▶introduction:
+    ►xml(eXtensible Markup Language): meta-language
+      •mother of: xhtml→html→html5 svg MathML RSS
+      ▬syntax(#must be): •lowerCase tag|att •proper nest
+        •quote att ≠extraWhiteSpaceIn ≠short(att✗→att='att'✓)
+        •numeric unicode refer to most special characters
+        •contain scripts in CDATA section
+        •enclose els:<empty att='quote'/> <empty att=addSpace />
+    ►svg: ▬els: text clipPath mask •raster:linearGradient filter
+        •drawing: circle rect ellipse path line polyline polygon
+        •organization: g(groupeShapes) use|symbol(reuseDrawings)
+      ▬demo: <?xml version='1.0' encoding='utf-8'?>     <!--1-->
+        <svg version='1.1'                              <!--2-->
+         xmlns:xlink='http://www.w3.org/1999/xlink'
+         width='150' height='200' viewbox='0 0 150 200'>
+        <defs> <radialGradient id='fill_effect'>        <!--3-->
+          <stop offset='0' stop-color='#fff'/>
+          <stop offset='1' stop-color='orange'/>
+        </radialGradient></defs>
+        <g id='icon-drawn'>                             <!--4-->
+          <rect x='25' y='25' width='100' height='100' 
+           fill='lightGreen' stroke='green' stroke-width='2'/>
+          <circle cx='75' cy='75' r='40' fill='url(effect)'/>
+          <path fill='none' stroke='#000' stroke-width='2'
+           d='M 13 100 L 60 50 L 90 90 L 140 30'/>          </g>
+        <text x='25' y='150' fill='#000' font-family='Rosemary' 
+         font-zize='16'>xml &amp; svg</text>              </svg>
+      ▬descrition: (svg use px in measurement)
+        •1: declare external≠inline file, start at line1/letter1
+        •2: <svg> is root-el as <html>:
+          »inline ≠require att version|xmlns|xmlns:xlink=''
+            ›multi xml-langs required att xmlns:xlink=''
+          ›external.svg require att xmlns=''
+        •3: <defs> define els|effects reused by <use>|url(#id)
+        •4: attributes: ›d:path-direction:(M:moveTo L:lineTo)
+          ›x,y|cx,cy'circle?ellipse-center:el→viewboxCoordinates
+          ›r:circleRadius ›stroke:border ›fill:backGround
+  ▶featurs:
+    ►add svg to document:
+      ▬<img>|.css{bg-image:url?image-set()}:
+        cached, fastLoad / ≠external.js?css?rasterImg(security)
+      ▬<iframe|object>: cached, dynamic / ≠style.css, slowLoad
+      ▬inline <svg>: full-DOM-access, ultraFastLoad / uncached
+      ▬svgLoader: load external.svg as inline <svg> without http
+        <head> <script src=svg-loader.min.js async></script>
+        <body> <svg data-src=img.svg></svg>
+    ►styling: overriding inline>embedded>external>svg-attributes
+      •inline:<el style=> •embeded:<head|svg|defs> <style>
+      •external:<svg|iframe|object> <style> @import 'style.css';
+    ►scripting: overriding inline>body>head
+      •inline: <svg><script> <![XDATA[ /*scrits*/ ]]>
+    ►animations: can apply→ <img>|.css{bg-image}
+      •@keyframes|transition:apply→css-properties ≠svg-attribute
+      •js libraries: snapsvg.io svgjs.com velocityjs.org
+        ›path-rendering: github.com/ConnorAtherton/walkway
+          lazylinepainter.info maxwellito.github.io/vivus
+    •Data Visualization: ›github.com/d3/d3/wiki/Gallery
+      ›observablehq.com/@d3/bar-chart-transitions
+    ►accessibility: •<svg|g|anyContainer><title>
+      •<anyEL role=presentation|none|img… ><desc>
+  ▶raster embed: <image xlink:href=url x= y= width= height= />
+    •inline-only ≠external.svg(security-reasons)
+    ►cliping|masking: display clip of img
+      ▬clip: <svg width=600 height=400 viewbox='0 0 600 400'>
+        <defs> <clipPath id=star-shape>
+          <polygon points='390,12 440,154 590,157 470,250 513,
+           393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:none /> </clipPath> </defs>
+        <image xlink:href=img.webp width=600 height=400
+         style=clip-path:url(#star-shape) />       </svg>
+      ▬mask: display clip of img by opacity based on lightness of solid-color|gradient|image, darker-color→+invisibility
+       <defs> <linearGradient id=alpha_effect>
+          <stop offset=0 stop-color=#fff />
+          <stop offset=100% stop-color=#000 /> </linearGradient>
+        <mask id=mask_effect x=0 y=0 width=400 height=381>
+          <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:url(#alpha_effect) />  </mask>      </defs>
+       <image xlink:href=img.webp width=600 height=400
+        style=mask:url(#mask_effect) />
+    ►filter: <svg width=600 height=600 viewbox='0 0 600 600'>
+     <defs> <filter id=blur>
+        <feGaussianBlur in=SourceGraphic stdDeviation=4 />
+       </filter> <filter id=shadow>
+        <feGaussianBlur in=SourceAlpha stdDeviation=8 result=blur />
+        <feOffset in=blur dx=9 dy=7 result=offsetBlur />
+        <feMerge> <feMergeNode in=offsetBlur />
+          <feMergeNode in=SourceGraphic /> </feMerge> </filter>
+      </defs>
+      <ellipse cx=150 cy=500 rx=150 ry=100 style=fill:red />
+      <ellipse cx=450 cy=500 rx=150 ry=100
+       style=fill:red;filter:url(#blur) />
+      <polygon points='390,12 440,154 590,157 470,250 513,393 390,307 266,393 310,248 189,157 340,154 390,12' style=fill:red;filter:url(#shadow) />               </svg>
+     ▬attributes: ›rx|ry:ellipse-vertical?horizontal-radius
+      ›stdDeviatBlur:blur-radius-amount ›dx|dy:offset-distance
+  ▶reuse/recycle:
+    <svg> <symbol id=x viewBox='0 0 150 200'> … </symbol>
+      <use xlink:href=#x> </svg>
+    <svg style=width:60vw;height:80vw> <use xlink:href=#x></svg>
+    •<symbol> store els|effects as <defs>, scalable by viewBox=
+    •<use> call <g>|<defs>|<symbol> content.
+  ▶responsive:
+    ►view-control: ▬viewport: as window display slice|full svg
+        •Established by width|height=100%D in <svg|img|iframe>
+      ▬viewBox='minX minY width height': as telescope(pan&zoom)
+        •default→'0 0 viewport-width viewport-height'
+        •panning←↑↓→(move view): minX minY
+        •zooming: ›out-: width > viewport-w, height > viewport-h
+          ›in+: width < viewport-w, height < viewport-h
+        •apply to svg|symbol|pattern|marker|view
+    ►preserveAspectRatio='<align> slice?meet'
+      •indicate how to fit el if viewBox(w:h) have different aspectRatio than viewport(w:h)
+      •default→='xMidYMid meet', preserveAR+alignCenter+contain
+      ▬meet=contain, slice=cover
+      ▬<align>: align coordinates of viewBox & viewport
+        ›none: stretch→viewport, ≠preserveAR, ignore meet?slice
+        ›xMinYMin: viewBox(minX|Y=0):viewport(x|y=0%):   0%   0%
+        ›xMinYMid: minX=0:x=0, minY=height/2:y=vpH/2 :   0%  50%
+        ›xMinYMax: minX=0:x=0, minY=h:y=vpH          :   0% 100%
+        ›xMidYMin: minX=w/2:x=w/2, minY=0:y=0        :  50%   0%
+        ›xMidYMid: minX=w/2:x=w/2, minY=h/2:y=vpH/2  :  50%  50%
+        ›xMidYMax: minX=w/2:x=w/2, minY=h:y=vpH      :  50% 100%
+        ›xMaxYMin: minX=w:x=w, minY=0:y=0            : 100%   0%
+        ›xMaxYMid: minX=w:x=w, minY=h/2:y=vpH/2      : 100%  50%
+        ›xMaxYMax: minX=w:x=w, minY=h:y=vpH          : 100% 100%
+    ►issues: ▬viewBox without viewport(w:h): IE→w=300px,h=150px 
+        •fix: set width=100% height=auto
+      ▬adabtive icon: lose details if scaled-down
+        •fix: ›create sprite.svg have multiVersions
+          @media (max-width:big→Small){svg els{/*change*/}}

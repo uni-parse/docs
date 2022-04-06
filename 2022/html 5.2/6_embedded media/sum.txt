@@ -1,0 +1,165 @@
+
+★defualt object|iframe dimensions: width=300 height=150
+  •issue: aspectRatio unpreserved, style=width:auto;
+  •video: defualt w|h are original dimensions.
+
+★javascript API: HTMLMediaElement
+
+★iframe(inline frame): embed another source through window (page|video|audio|image|svg|canvas|map|ads)
+  •<iframe name=targetName src=url allowfullscreen(issue)  srcdoc='inline html|xml ex: <a>override src=</a>' title=alt
+    referrerpolicy=no-referrer|no-referrer-when-downgrade|origin|origin-when-cross-origin|same-origin|strict-origin|strict-origin-when-cross-origin'd|unsafe-url
+   sendbox|sendbox='allow-'downloads≠S19|same-origin|scripts|popups|popups-to-escape-sandbox|presentation|pointer-lock|forms|'-top-navigation'|by-user-activation
+    allow(experimental)=fullscreen|geolocation|camera 'none'; microphone 'none'|layout-animations 'none'; unoptimized-images 'none'; oversized-images 'none'; sync-script 'none'; sync-xhr 'none'; unsized-media 'none';>
+    <a>fallback</a> </iframe>
+  •security issues: sendbox≠'allow-script allow-same-origin'
+  •Configure http:CSP directives:
+    <meta http-equiv=Content-Security-Policy
+      content="default-src 'self'; img-src https://*; child-src 'none';X-Frame-Options: DENY">
+  •seo: embed it by javascript after all page loaded.
+  •youtube: share/embed copy and paste
+    src=www.youtube.com/embed/ id(v=id) ?autoplay=1|0 &mute=1|0
+  •map: menu/shareOrEmbedMap/embedAmap
+    src=https://maps.google.com/maps?q= location(ex: blida) &t=&z=9&ie=UTF8&iwloc=&output=embed
+
+★object useless: (att usemap=#value, <map name=value> image)
+ •<object type=image/svg+xml data=url typemustmatch name= form=>
+    <image src=fallback alt=>
+   </object>
+ •<object type=video/mp4 data=url typemustmatch name= form=>
+    <param name=autostart value=false|true>
+    <param name=controller value=false|true>
+   </object> 
+ •<embed src= type=>: for plug-ins (useless remplaced by object)
+
+
+★video & audeo:
+ •<video src=url controls autoplay|poster=img_url muted loop
+    preload=auto|none|metadata playsinline(nonMobileFullscreen)
+    crossorigin=anonymous|use-credentials>
+     <track↑seo defualt src=url.vtt?srt label=UI_selection-name
+      kind=metadata(js)|captions|descriptions|chapters|subtitles
+      srclang="en|fr|ar|cn, required kind=subtitles">…
+     <a href=download.mp4>alternative</a></video>
+  •<video preload= controls autoplay muted loop poster= crossorigin=>
+     <source type=video/webm src=url.webm>
+     <source type=video/mp4 src=url.mp4>
+     <track>'s…
+     <a href=download.mp4>alternative-download</a>
+    </video>
+  •Encoding tools: handbrake.fr|firefogg.org|ffmpeg.org|freemake.com(video→audio)
+  •styling(track text):
+    ›video::cue{/*not supported yet*/} 
+    ›video::-webkit-media-text-track-display { overflow: visible !important; box-sizing:border-box; background: hsla(90,100%,50%,.5); padding:8px; border-radius:16px;}
+
+ •<audio src=url controls loop autoplay preload= crossorigin=>
+     <track>…<a href=download.mp3>alternative</a></audio>
+  •<audio controls loop autoplay preload= crossorigin=>
+     <source type=audio/ogg src=url.ogg>
+     <source type=audio/mp3 src=url.mp3>
+     <source type=audio/webm src=url.webm>
+     <source type=audio/wav src=url.wav> <!--not optimized-->
+     <track>…<a href=download.mp3>alternative</a></audio>
+  •Encoding tools: online-audio-converter.com|media.io|www.mediahuman.com/audio-converter/|sbooth.org/Max/(mac)|www.audacityteam.org(multitrack)
+
+
+★canvas: area to create bitmapped animated atractive graphics by javascript (cant scalable as svg).
+  <canvas widtg="" height="">
+    fallback if js not enabled or not supported
+  </canvas>
+  <script>
+    var c=document.querySelectorAll('canvas');
+    stroke(); strokeStyle; strokeRect(x1, y1, x2, y2);
+    beginPath(); closePath(); lineWidth;
+    fill(); fillStyle; fillText(your_text, x1, y1);
+    font;
+    rotate(); scale();
+    arc(x, y, arc_radius, angle_radians_beg, angle_radians_end);
+  <script≥
+
+
+★style: {aspect-ratio: auto'd| <ratio: #.f|#/#>;}
+    
+
+
+
+
+
+★image: <img src=images/image.webp alt='' width='' height=''>
+  •src(source)=url, absolute-url|relative-url(local)
+  •alt(alternative)=description, required(↑accessibility)
+  •loading=eager|lazy
+  •referrerpolicy
+  •sizes
+  •srcset
+ *css'd: {display:inline-block; vertical-align:baseline}
+
+★svg (scalable vectore graphic):
+ *embedded by: <img src=fallback.webp srcset=img.svg alt="">
+  •pros: cached, fast-loading, nested in <a>
+  •cons: +http-request, non-dynamic, non-external.css
+ *embedded by: <iframe src=img.svg sendbox><img src=fb></iframe>
+  <object type=image/svg+xml data=img.svg><img src=fb></object>
+  •pros: cached, dynamic, have-fallback
+  •cons: +http-request, non-external.css, slow-load, fallback-auto-download-issue [fix: <div aria-label=alt role=img style=bg-image:url(img.webp);width:200px;height:150px;></div>]
+ *inline: <svg>…</svg> → more-info → /graphics/2_svg/
+  •pros: -http-request, full-DOM-access(styling|scripting), ultra-fast-loading •cons: uncached, file-size.
+ *background-style: {background-image:url?image-set(img.svg)}
+ *fallback: by object|picture (unnecessary)
+  •ex: <picture> <source type=image/svg+xml srcset=img.svg>
+    <img srcset=img.webp alt=''> <!--fallback--> </picture>
+
+★<map name=mapName> <!--att coordinates x|y|r=#(without px)-->
+   <area alt= shape=defualt|rect(angle)|circle|poly(gon)
+     coords=x1,y1,x2,y2(rect)|x,y,r(circle)|x1,y1,…xn,yn(poly)
+     href= target= download rel= ping= referrerpolicy=> …
+ </map> <img usemap=#mapName src= alt=>
+
+★responsive image:
+ *demo: <picture>                            <!--img required-->
+  <source type='' media='screan and (orientation:landscape) and (min-width:1280px)'
+    srcset="ls.svg, ls.webp, ls@2.webp 2x, ls_large 1376w"
+    sizes="(min-width:1280px) 50vw,(min-width:1376px) 30vw">
+  <source type='' media='screan and (orientation:portrait) and (max-width:915px)'
+    srcset="pr.svg, pr.webp, pr@2.webp 2x, pr_large 515w"
+    sizes="(max-width:915px) 45vw, (max-width:480px) 98vw">
+  <img src=fallback.png alt='' srcset='' sizes=''> </picture>
+ *formats|resolution: → /graphics/0_basics/
+ *meta element: <meta name=viewport content='width=device-width,initial-scale=1'>
+ *srcset|sizes attributes:
+  •w-descriptor: viewport-size(width) based, responsive-layout
+    ›markup: sizes="(media-feature) length, …"
+    ›ex: <img src=fallback.webp alt='' srcset="url480.webp 480w,
+      url672.webp 672w, url720.webp 720w, url1280.webp 1280w"
+   sizes="(max-width:515px) 100vw,(max-width:915px) 70vw, 20px">
+  •x-descriptor: pixel-ratio(scale) based, for dence-screens
+    ›ex: <img src=img.webp alt='' srcset="img.webp@.5 .5x, img@2.webp 2x, …">
+
+ *media attribute: art-direction based, like css @media-query
+  •ex:<picture><source media='screan and (orientation:portrait)'
+    srcset=portrait.webp> <img src=fallback.webp alt=></picture>
+ *type attribute: format-type based (unnecessary, webp 95%gs)
+  •ex: <picture> <source type=image/svg+xml srcset=img.svg>
+    <source type=image/webp srcset=img.webp>
+    <img src=fallback.png alt=> </picture>
+
+★suppprt: caniuse.com
+  •<source>|media=''|type='': 51%gs
+  •<picture>|srcset=''|sizes='': 96%gs
+★polyfill: (support old browsers)
+  •link: scottjehl.github.io/picturefill/
+  •usage: <head><script src=path/picturefill.js></script></head>
+
+
+
+
+
+
+
+
+
+    
+    
+    
+
+ 
+    

@@ -4,7 +4,7 @@
   •accept-charset=utf-8|ISO-8859-1|ISO-8859-8|ASCII|…
     ›recommended: utf-8
     ›if omitted inherite <meta charset=''>
-  •autocomplete=on'd|off: applay to input|select|textarea
+  •autocomplete=on'd|off: apply to input|select|textarea
   •rel=value(see img)
     ›https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/rel
   •action=appURL.php|.jsp: application_url(server|local_offline)
