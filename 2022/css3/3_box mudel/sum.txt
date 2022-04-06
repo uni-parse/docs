@@ -127,6 +127,7 @@
     •object-fit: fillⒹ|none≠resize|cover|contain|scale-down
     •object-position:(%:align % original-img-w?h with % css-w?h)
      tb'x㊿| lr?center?±L%'y㊿ <tb?centerⒹ?±L%>?| lr ±L% tb ±L%;
+  ▬issueFix: .grid.flex .replaced{width:100%;height:100%}
 ★display: none| list-item| inline-|block?flex?grid?table|
  t-cell?row?column?caption(?)| t-header?row?footer?column-group flow-root| contents;
   •none: remove el & its descendants from layout,(col, colgroup behave as display:contents;).
