@@ -93,10 +93,17 @@
  ▶text-shadow: noneⒹ| ±xOffset→ ±yOffset↓ blur_radius color,…
   •ex: p{text-shadow:-.2em 2em 15px, -.3em .3em 20px #000;}
   •Note: performance↓, readability↓, omitting_color→inherit
- ▶list-style: none|<type> <image> <position>     (unordered)
+ ▶list-style: none|<type> <img> <position>     (unordered)
   •ls-type: el_li{display:list-item} → li
     ›ul,li,el_li: disq circle square
     ›ol,li,el_li: decimal|-leading-zero, lower|upper-roman, lower|upper-alpha|latin, lower-greek(αβγ), urdu(ar#-moz3%),…
   •ls-position: outsideⒹ|inside|hanging(unsupported)
-  •ls-image: noneⒹ| url()| gradiant's(linear|radial|repeating-)
+  •ls-image: noneⒹ|<img>
+  ▬<ol start=# reversed><li value=#>
  ▶quotes(blockqoute,q): none|auto≠S19|'★' '♪'|'«' '»' '‹' '›';
+
+★UA default: p{margin-block:1em}
+  ul,ol{margin-block:1em; padding-left:2.5em}
+  dl{margin-block:1em; dd{margin-left:2.5em}}
+
+
