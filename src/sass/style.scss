@@ -104,4 +104,11 @@ div {
     border: 1px solid yellow;
   }
 }
+section{
+  p:nth-child(1){font: 1em serif}
+  p:nth-child(2){font: 1em Georgia}
+  p:nth-child(3){font: 1em Arial}
+  p:nth-child(4){font: 1em sans-serif}
+  p:nth-child(5){font: 1em cursive}
+}
 //@debug nest('.grid,.flex','.replaced');

@@ -1,12 +1,11 @@
-… ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★font↓: sys|style weight stretch variant size/line-height family
   ›size|family required by order, values #before size can be unordered & omitted(→initial), including line-height.
   ›variant: must be just css2.1 value (normal|small-caps)
   ›global_values & stretch-percentages are invalid.
   •system-operation keywords(no-ex): (encapsulated list-values)
     menu| icon| caption| small-caption| message-box| status-bar.
-
-*@font-face {font-family: 'Define|reName';          /*required*/
+ ▶@font-face {font-family: 'Define|reName';        /*required*/
   src:  local(Rosemary),…,       /*avoid unnecessary downloads*/
     url(f.svg=S19) format('svg'),url(f.woff?2) format('woff?2'),
     url(f.ttf?otf) format('truetype?opentype');
@@ -18,59 +17,45 @@
     ›fallback: swap≈3s, else use fallback(untill reload).
     ›optional: block≈100ms, else use fallback(even if reloaded).
   } selector{font-family: 'Defined Name',…, generic_fallback}
-
-*font-family: •generic_families: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(for headers), system-ui(defualt).
-  •non-generic-families: Capitalized & 'multi word' between quotations & generic_fallback separated by commas(,).
-
-*font-size: font-families have different initial sizes ≠ 16px !!
+ ▶f-family: <≠generic>,…,<safeFonts>,<generic-fallback>
+  •generic: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(headers), system-ui(defualt).
+  •≠generic: Capitalized|'Multiword Between Quotes'
+  •safeFonts(https://www.cssfontstack.com/):
+      Verdana,sans-serif 'Courier New',monospace Georgia,serif
+ ▶f-size: font-families have different initial sizes ≠ 16px !!
   •keywirds: ›relative to inherited Val: smaller.85 larger1.2
     ›absolute to initial value 16px(not html rem): xx-small.5625 x-small.625 small.8125 medium'd1 large1.125 x-large1.5 xx-large2 xxx-large3-78≠Safari?opera.
   •rem rel→html:root{font-size:16px}
   •em?% rel→parent: h1=2em h2=150% h3=120% h4=1em h5=85% h6=65%.
   •accessibility↑: p{f-s:clamp(1rem, 1.25vw, 1.25rem)} h1{f-s:clamp(2rem, 5vw, 5rem)};
-*font-variant: normal|none|<ligatures1~3> <caps> <numeric1~3>
+ ▶f-variant: normal|none|<ligatures1~3> <caps> <numeric1~3>
   •font-variant-ligatures(connecting): normal| none| common-ligatures(=normal,fi/fl/th)| no-common-ligatures(=none)|…
   •font-variant-caps: normal| titling-caps(?)| unicase(A→A-h≈x) small-caps(a→A-height>≈x-height)| all-small-caps(a+A→//)| petite-caps(a→A-h=x-h)| all-petite-caps(a+A→//)
   •font-variant-numeric: normal| lining-nums≠ oldstyle-nums(0o)| diagonal-fractions(E=MC2)≠ stacked-fractions(co2)| ordinal(1st)| proportional-nums(shrink≠ tabular-nums(stretch| slashed-zero(ø)
-
-*font-weight: •relative: lighter|bolder ±100|200
+ ▶f-weight: •relative: lighter|bolder ±100|200
   •absolute:noneⒹ|100-200|300|400normal|500|600|700bold|800-900
-*font-style: normal italic oblique(like italic #useless)
-*font-stretch(no-ex): %| ultra-condensed.5 extra-condensed.625 condensed.75 semi-condensed.875 normal1 semi-expanded1.125 expanded1.25 extra-expanded1.5 ultra-expanded2
-
-
-★direction: ltrⒹ|rtl (change layout direction)
-★writing-mode: horizontal-tbⒹ(lines↓)| vertical-lr| vertical-rl
+ ▶f-style: normal italic oblique(like italic #useless)
+ ▶f-stretch(no-ex): %| ultra-condensed.5 extra-condensed.625 
+  condensed.75 semi-condensed.875 normal1 semi-expanded1.125 
+  expanded1.25 extra-expanded1.5 ultra-expanded2
+★layut:
+ ▶direction: ltrⒹ|rtl (change layout direction)
+ ▶writing-mode: horizontal-tbⒹ(lines↓)| vertical-lr| vertical-rl
   •text-orientation(vertical only): mixedⒹ| upright(separately)
-★text-transform: noneⒹ| Capitalize| UPERCASE| lowercase.
-★text-decoration: noneⒹ|<line1~3> <style> <color> <thickness>
-  •td-line: none| underline| overline| line-through| 1~3keywords
-  •td-style: solid| double| dotted| dashed| wavy
-  •td-color: currentcolorⒹ|name|rgba()|hsla()|#hex|transparent
-  •td-thickness: autoⒹ|length|from-font(fFamily recommendation)
-★text-shadow: noneⒹ| ±xOffset→ ±yOffset↓ blur_radius color, …
-  •ex: p{text-shadow:-.2em 2em 15px, -.3em .3em 20px #000;}
-  •Note: performance↓, hard readability, omitting_color→inherit  
-★list-style: none|<type> <image> <position>     (unordered)
-  •ls-type: el_li{display:list-item} → li
-    ›ul,li,el_li: disq circle square
-    ›ol,li,el_li: decimal|-leading-zero, lower|upper-roman, lower|upper-alpha|latin, lower-greek(αβγ), urdu(ar#-moz3%), …
-  •ls-position: outsideⒹ|inside|hanging(unsupported)
-  •ls-image: noneⒹ| url()| gradiant's(linear|radial|repeating-)
-★quotations: blockqoute,q{
-   quotes: none|auto(74%noSafari)|'★' '♪'|'«' '»' '‹' '›'}
-★line-height↓: normalⒹ|#(em↓)|length-em(px↓)|%(px↓)
-★text-indent: ±em(px↓)|±%↓, applied to first-#text-line of block-els, negative value required ≤ padding-left, else hidden
-★letter-spacing|word-spacing: normalⒹ|length(px↓)
-★text-align↓: startⒹ|end|left|right|center|justify|match-parent
+ ▶text-indent: ±em(px↓)|±%↓, apply→ 1st #text-line of blockEls, 
+   negative value required ≤ padding-left, else hidden
+ ▶line-height↓: normalⒹ|#(em↓)|length-em(px↓)|%(px↓)
+ ▶letter?word-spacing: normalⒹ|length(px↓)
+ ▶text-align↓: startⒹ|end|left|right|center|justify|match-parent
   ›apply to block-containers.
   ›match-parent77noS: as inherit, but start?end→(left?right)↓ depending on parent direction:;|<bdo dir=>.
   •text-align-last: startⒹ|end|left|right|center|justify;
     ›required text-align:justify (78-noSafari).
-*inline el: •replaced(display:i-block): have t&b edge as img
+ ►inline el: •replaced(display:i-block): have t&b edge as img
   •non-replaced(display:inline) as i em: have 5 imagine lines:
     baseline in font-box in logical-box(top&bottom-line)
-*vertical-align≠↓(apply to inline-els|td?th): ±length|±%line-h| baselineⒹ| middle| sub|super| text-|top?bottom;
+ ▶vertical-align≠↓(apply→ inlineEls|td?th): ±length|±%line-h| 
+  baselineⒹ| middle| sub|super| text-|top?bottom;
   •explain: align el →with→ parent(non-replaced-inline|tr)
     ›baselineⒹ: align all baselines & bottom-edges.
     ›length|%: el baseline?b-edge→ parent baseline ± length|%.
@@ -78,19 +63,18 @@
     ›top|bottom: align all logical-t?b-lines.
     ›text-top?bottom: el logical-t?b-line→ parent font-t?b-line.
     ›sub?super: el baseline?b-edge→ parent baseline ± x-heoght.
-★white-space: normal nowrap  pre  pre-line pre-wrap break-spaces
-multiS+tab&#9; clps   clps    ps   collapse preserve     ps
-fit box-width  wrap  nowrap nowrap   wrap     wrap      wrap
-src-lineBreak  clps   clps    ps      ps       ps        ps
-lastLineEnd S remove remove   ps    remove    hang      wrap
-linEnd otherS  hang   hang  nowrap   hang     hang      wrap
-  •other space separators: not Spaces (U+0020), tabs (U+0009).
-  •hang(can overflow)→affect intrinsic sizing of box-measurement
-★tab-size: #(8Ⓓ)|length -moz-3.6%
-★hyphens: none| manualⒹ(add &shy; in html)| auto(user-agent)
-  •not work if <wbr> in word, (77%-ms-moz-webkit-97%)
-★word-break↓: normal|break-all|keep-all|break-word(canHyphen øs)
-★overflow: x=y| x y(79noSafari), apply to block|flex|grid els.
+ ▶white-space: normal nowrap  pre pre-line pre-wrap break-spaces
+  multiS+tab&#9; clps  clps    ✓  collapse     ✓        ✓
+  fit box-width  wrap  ≠wrap ≠wrap  wrap      wrap      wrap
+  src-lineBreak  clps  clps    ✓     ✓         ✓        ✓
+  lastLineEnd S   ✖     ✖     ✓     ✖       hang      wrap
+  linEnd otherS  hang  hang  ≠wrap  hang      hang      wrap
+   •other space separators: not Spaces (U+0020), tabs (U+0009).
+   •hang(can overflow)→affect intrinsic sizing of boxMeasurement
+ ▶tab-size: #Ⓓ8|length
+ ▶hyphens: none|manualⒹ(&shy;)|auto'UA; ≠work if <wbr> in word
+ ▶word-break↓: normal|break?keep-all|break-word(canHyphen øs)
+ ▶overflow: x=y| x y(79noSafari), apply to block|flex|grid els.
   •overflow-x|y: visibleⒹ|hidden|clip(73noS|O)|scroll|auto;
     ›clip: as padding-box hidden, but disable js:el.offsetLeft
   •overflow-wrap↓: normalⒹ|anywhere(as url)|break-word
@@ -98,12 +82,21 @@ linEnd otherS  hang   hang  nowrap   hang     hang      wrap
     ›break-word: as anywhere, but dont considered when calculating min-content intrinsic sizes.
   •text-overflow: clipⒹ| ellipsis(…);
     ›required(overflow:hidden), optional(white-space:nowrap)
+★decorations:
 
-
-
-
-
-
-
-
-
+ ▶text-transform: noneⒹ| Capitalize| UPERCASE| lowercase.
+ ▶text-decoration: noneⒹ|<line1~3> <style> <color> <thickness>
+  •td-line: none| underline| overline| line-through| 1~3keywords
+  •td-style: solid| double| dotted| dashed| wavy
+  •td-color: currentcolorⒹ|name|rgba()|hsla()|#hex|transparent
+  •td-thickness: autoⒹ|length|from-font(fFamily recommendation)
+ ▶text-shadow: noneⒹ| ±xOffset→ ±yOffset↓ blur_radius color,…
+  •ex: p{text-shadow:-.2em 2em 15px, -.3em .3em 20px #000;}
+  •Note: performance↓, readability↓, omitting_color→inherit
+ ▶list-style: none|<type> <image> <position>     (unordered)
+  •ls-type: el_li{display:list-item} → li
+    ›ul,li,el_li: disq circle square
+    ›ol,li,el_li: decimal|-leading-zero, lower|upper-roman, lower|upper-alpha|latin, lower-greek(αβγ), urdu(ar#-moz3%),…
+  •ls-position: outsideⒹ|inside|hanging(unsupported)
+  •ls-image: noneⒹ| url()| gradiant's(linear|radial|repeating-)
+ ▶quotes(blockqoute,q): none|auto≠S19|'★' '♪'|'«' '»' '‹' '›';
