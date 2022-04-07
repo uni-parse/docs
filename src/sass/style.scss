@@ -14,7 +14,6 @@ html {
   box-sizing: inherit;
 }
 
-
 //body {
 //  background-clip: text;
 //  //background-image:image-set('images/gaara.webp' 2x);
@@ -104,11 +103,28 @@ div {
     border: 1px solid yellow;
   }
 }
-section{
-  p:nth-child(1){font: 1em serif}
-  p:nth-child(2){font: 1em Georgia}
-  p:nth-child(3){font: 1em Arial}
-  p:nth-child(4){font: 1em sans-serif}
-  p:nth-child(5){font: 1em cursive}
+@font-face {
+  font-family: 'rosemaryregular';
+  src: url('rosemary-webfont.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+section {
+  cursor: url('delete.svg'), help;
+  p:nth-child(1) {
+    font: 1em rosemaryregular;
+  }
+  p:nth-child(2) {
+    font: 1em Georgia;
+  }
+  p:nth-child(3) {
+    font: 1em Arial;
+  }
+  p:nth-child(4) {
+    font: 1em sans-serif;
+  }
+  p:nth-child(5) {
+    font: 1em cursive;
+  }
 }
 //@debug nest('.grid,.flex','.replaced');

@@ -101,7 +101,15 @@
   •ls-image: noneⒹ|<img>
   ▬<ol start=# reversed><li value=#>
  ▶quotes(blockqoute,q): none|auto≠S19|'★' '♪'|'«' '»' '‹' '›';
-
+ ▶cursor: none|default|autoⒹ|
+  •img: url(32x32.png?svg1.1?cur) x=#? y?,url(fb)…,…,<fallback>?
+  •links&status: context-menu|help?|pointer|progress|wait
+  •selection: cell+|crosshair|text|vertical-text
+  •drag&drop: alies|copy|move|no-drop|not-allowed|grab|grabbing
+  •zooming: zoom-in+?out-  •resize&scroll: all-scroll|
+    col?row?n?e?s?w?ne?nw?se?sw?ew?ns?nesw?nwse-resize
+  ▬pointer-events: none|autoⒹ(a,img)|inherit;
+    onlysvg: visiblePainted?Fill?Stroke|visible|painted|fill| stroke|all
 ★UA default: p{margin-block:1em}
   ul,ol{margin-block:1em; padding-left:2.5em}
   dl{margin-block:1em; dd{margin-left:2.5em}}
