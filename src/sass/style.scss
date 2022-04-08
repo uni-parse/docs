@@ -1,5 +1,5 @@
 @use 'sass:selector' as *;
-
+@import url('https://fonts.googleapis.com/css2?family=Texturina&display=swap');
 //@use 'base/base';
 //@use 'utilities';
 //@use 'components';
@@ -112,10 +112,10 @@ div {
 section {
   cursor: url('delete.svg'), help;
   p:nth-child(1) {
-    font: 1em rosemaryregular;
+    font: 1em 'rosemaryregular';
   }
   p:nth-child(2) {
-    font: 1em Georgia;
+    font: 900 2em 'Texturina', serif;
   }
   p:nth-child(3) {
     font: 1em Arial;

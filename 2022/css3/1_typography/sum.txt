@@ -16,7 +16,12 @@
     ›block: hide #0000 5s, swap. ›swap: fallback until loaded.
     ›fallback: swap≈3s, else use fallback(untill reload).
     ›optional: block≈100ms, else use fallback(even if reloaded).
-  } selector{font-family: 'Defined Name',…, generic_fallback}
+  } .usage{font-family: 'Defined Name',…, generic_fallback}
+  •free: fontsquirrel?dafont?everythingfonts.com
+  •paid: fonts|myfonts|linotype|monotype|exljbris.com
+  •service: fonts.adobe|typography.com/webfonts|fonts.google.com
+  •generate-key|opt: fontsquirrel.com/tools/webfont-generator
+  •variable font:
  ▶f-family: <≠generic>,…,<safeFonts>,<generic-fallback>
   •generic: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(headers), system-ui(defualt).
   •≠generic: Capitalized|'Multiword Between Quotes'
@@ -113,5 +118,4 @@
 ★UA default: p{margin-block:1em}
   ul,ol{margin-block:1em; padding-left:2.5em}
   dl{margin-block:1em; dd{margin-left:2.5em}}
-
-
+★debuging: mozilla/font-tool
