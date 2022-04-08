@@ -1,57 +1,61 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+★layout:
+ ▶flex: (rel to writing-mode|direction) ⇆mainAxis ✖crossAxis
+  ►.container{ •display: inline-|flex;        
+   ▬f-flow:<fd>? <fw>?;
+    •f-direction⇆|wrap✖s?e: rowⒹ?column|nowrapⒹ?wrap |-reverse;
+   ▬place-content: both|<ac✖> <jc⇆>;/*align item-box→container*/
+    •justify-content⇆: flex-|startⒹ?end≠S19s3| left?right≠s3| center| space-between?around(gap=2edge)?evenly;
+      ›align items rel→container, overridedBy{margin<flex}.
+    •align-content✖(*f-wrap≠unwrap): stretchⒹ| flex-|s?e≠S19s3| center| space-between?around?evenly;
+      ›align all track-lines→container.
+   ▬align-items✖: stretchⒹ|baseline|center| flex?self-|s?e≠S19s3
+    ›align all items→itsLines, self-s?e basedOn .item{direction}
+  ►.item{ •order: ±#0d;
+   ▬align-self✖:autoⒹ|stretch|baseline|center| f?self-|s?e≠S19s3
+    ›align individual item→itsLine, override{align-items}
+   ▬margin-s:auto'fillGap; ⇆m-s>jc, ✖m-s>a-self>a-items
+   ▬flex: initialⒹ01A| auto11A| none00A| g s b(g10|11b|gs0|g1b);
+     ›min-w?h > basis > shtink > w?h, max-* > basis > grow > w?h
+    •f-grow: #.0d;              override{margin>justify-content}
+      ›fill before=after main-size(basis>w?h) gap.
+    •f-shrink: #1d; if space unfit wrap line→multiShortLines
+    •f-basis: autoⒹ→{w?h,main-size}| length| %(main-axis);
+      ›if main-size>L% return auto, &if main-size>w?h content overlap its box (fix: overflow|-wrap| word-break)
+ ▶grid:
+  ♥.container{ •display: inline-|grid;
+   ►grid: <gt>| auto-flow dense? <track-size>…/<gt-columns>| <gt-rows>/auto-flow dense? <track-size>…;
+    ▬g-template: noneⒹ| <gt-rows>/<gt-columns>|
+      [ln? 'area1 …' <track-size>? ln?]…/<track-list≠repeat>;
+      ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\♪]?…;
+        if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
+     •gt-rows?columns: noneⒹ| <track-list>| <auto-track-list>;
+      »track-list: [ln? <track-size?repeat>]… ln?
+       ›track-size: <b>| fit-content(L%)| minmax(<b≠fr>, <b>)
+        _breadth: L%|auto|fr|min?max-content
+        _auto: minmax(min-content,max-content)
+         auto=min?max-content inside minmax()
+        _fit-content(X): min(max-content, max(min-content, X))
+       ›track-repeat: repeat(#, <track-list≠repeat>)
+      »auto-t-list: [ln? <fixed-size?repeat>]… ln? <auto-repeat>
+       ›fixed-size: L%| minmax(L%,<b>|<b≠fr>,L%)
+       ›fixed-r: repeat(#,[ln? <fixed-size>]… ln?);
+       ›auto-r: repeat(auto-fill?fit,[ln? <fixed-size>]… ln?)
+     •gt-areas:
+    ▬g-auto-flow: rowⒹ?column dense?(unorder holes-fill);
+    ▬g-auto-rows?columns: <track-size(autoⒹ)>…;
+   ►place-content:
+    ▬justify?align-content
+   ►g-|gap
+   ►place-items:
+    ▬j?a-items
+  ♥.item{           •order: ±#0d;          •z-index: autoⒹ|±#;
+   ▬g-area1~4:
+   ▬g-row?column
+    •g-r?c-start?end:
+   ▬j?a-self:
+   ▬margin
 
-★★controll space+layout outside-items-content:
-★container{ •display: inline-|flex; •f-flow: <fDir>? <fWrap>?;
-  •f-direction(as writing-mode|direction): rowⒹ?column|-reverse
-  •f-wrap: nowrapⒹ|wrap|-reverse; (rel to cross-start?end)
-*alignment: •place-content: <align=justify-content>|<a-c> <j-c>;
- •justify-content(main-axis): flex-|startⒹ?end88≠s&O| center| left?right90≠samsung2.8| space-between?around(gap=2edge)?evenly;
-   ›target items rel to container, overrided by{margin<flex}.
- •align-content(cross-axis): stretchⒹ| <j-c≠l?r>(s?e69≠S&s&O);
-   ›target all track-lines→container, req f-wrap≠unwrap;
- •align-items(cross-axis): stretchⒹ|flex?self-|start?end70≠S&s| center| baseline; ›target all items rel to its lines.
-   ›f-|start?end based on direction of container, self-* on item
-★items{ •order: ±#0d; (by default ordered as in source).
- •align-self(cross-axis): autoⒹ| <align-items>;
-   ›target individual item rel to its line, override align-items
- •margin-<side>(both-axis): auto(fill available space);
-   ›overriding: justify-content < margin-<side>(main-axis).
-      align-items < align-self < margin-<side>(cross-axis).
-★★controll space+size inside-items-content: ★items{
-*flex: initial(0 1 auto)d| auto| none| g s b(g10|11b|gs0|g1b);
-  ›auto(1 1 auto): flexable, none(0 0 auto): unflexable.
-  ›overriding: w?h < f-shrink < f-basis < min-w?h.
-                 w?h < f-grow < f-basis < max-w?h.
-  •f-grow: #0.0d; override{margin>justify-content}
-    ›fill available space to before=after main-size(w?h<f-basis)
-  •f-shrink: #1d; if space unfit, wrap line to multi short lines
-  •f-basis: autoⒹ| length| %(main-axis);
-    ›auto→w?h, if w?h:autoⒹ, f-basis: item-content-main-size
-    »if length|% < item-content-main-size, f-basis: auto;
-      ›if w|h < item-content-main-axis, content overlap its box (fix: overflow|-wrap| word-break).
-
-★★★container{ *display: inline-|grid;
-*grid: <g-template>| auto-flow dense? <track-size>…/<gt-columns>
-                   | <gt-rows>/auto-flow dense? <track-size>…;
-  •g-auto-flow: rowⒹ?column dense?(unorder holes-fill);
-    •g-auto-rows?columns: <track-size(autoⒹ)>…;
-•g-template: noneⒹ| <gt-rows>/<gt-columns>|
-   [ln? <string> <track-size>? ln?]… / <track-list≠repeat>;
-  ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\escapedChara]?…;
-    _if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
-  •g-template-rows?columns: noneⒹ| <track-list>| <auto-t-list>;
-    »track-list: [ln? <track-size?repeat>]… ln?;
-      ›track-size: <breadth>| fit-content(length?%)|
-                   minmax(<breadth≠fr>, <breadth>);
-        _breadth: length?%| min?max-content| auto| fr'action;
-        _auto: minmax(min-content, max-content);
-          .inside minmax(): auto=min?max-content;
-        _fit-content(X): min(max-content, max(min-content, X));
-      ›track-repeat: repeat(#, <track-list≠repeat>);
-    »auto-t-list: [ln? <fixed-size?repeat>]… ln? <auto-repeat>;
-      ›fixed-size: length?%| minmax(length?%, <breadth>)
-                           | minmax(<breadth≠fr>, length?%);
-      ›fixed-repeat: repeat(#,[ln? <fixed-size>]… ln?);
-      ›auto-repeat:repeat(auto-fill?fit,[ln? <fixed-size>]… ln?)
   •g-template-areas: noneⒹ| <string1> <s2> …; ›ex: gta: 'a a b'
     ›string: represent row cells= character+|.(empty);   'a a .'
     ›every #rectangle area generates 4 line-names (reverse too!) 
@@ -60,13 +64,16 @@
   •justify?align-content: <j(+stretch)?a-content(full support)>;
     ›target column?row-track's→container.
     ›issue(overflow): gaps added to space-between?around?evenly
-•g-|gap'a: r=c|r c; •g-|row?column-gap: normal(1em)d| +length?%;
-•place-items: <align=justify-items>| <a-i> <j-i>;
+ •g-|gap'a: r=c|r c; •g-|row?column-gap: normal(1em)d| +length?%;
+ •place-items: <align=justify-items>| <a-i> <j-i>;
   •j?a-items: normalⒹ| <a-i(full-support)>| left?right(≠a-i);
     ›target all items-boxes→areas.
     ›normal=stretch'unreplaced-els, n=start'block?replaced-els.
+
+
 ★items{ •order: ±#0d; •z-index: autoⒹ| ±#;
-*placement: •grid-area1~4: area| r-start/c-start?/r-end?/c-end?;
+*placement:
+  •grid-area1~4: area| r-start/c-start?/r-end?/c-end?;
   •g-row?column(span≠both): <*-star> / <*-end>;
     •g-row?column-start?end: autoⒹ(=span 1)| ±#*(-1=lastLine)| ln(ø[])| span +#?ln(from opposite-line≠span to item-in?[ln])| areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
 *alignment: •place-self: <a=j-self>| <a-self> <j-self>;
@@ -79,6 +86,55 @@
 
 ★★★block-lvl & absolute-position els: •place-self?items:;
 
+
+
+
+
+
+
+
+
+★float(on below): noneⒹ| left| right; •shape-margin: length| %;
+  •shape-outside: noneⒹ| <img>| <shape-box>| <basic-shape>;
+    ›shape-box: content?padding?border?margin-box; (in→b-radius)
+    »basic-shape(animated): circle(cr at p)| ellipse(hr vr at p) polygon(<fill-rule>, x1 y1,…)| inset(<offset> round <b-radius>);
+      ›fill-rule: nonzeroⒹ| evenodd(unfill inside);
+      ›offset(rectangle): all|h v|t h b|t r b l; (±length|±%).
+      ›cr|hr?vr: length| %50d| closest?farthest-side;
+      ›position(center→top-left): x?y| x y| hs offset vs offset;
+     x?y:length|%|<side>|centerⒹ; hs?vs:<side>; offset:length|%
+  •shape-image-threshold(animated): 0d~1; required by <gradient>
+  •#blockBelowNeighbor(unWrap){clear: noneⒹ| left| right| both}
+  •issue: if all-els=f, height→0, f-els overlap container-box.
+    ›fix: #container::after{content:'';display:block;clear:both}
+    ›fix2: #container-box{ display:flow-root}, inclode all f-els
+ *behaviors(normal flow): •block-lvl els: inline-size=w=100%, and generated below etch others in new lines.
+  •inline els generated next to etch others, parallel to (dir=|direction:), wrap to new lines TtB to fill block-container.
+  •float entire el-box(+margin) relative to parent-#content-box.
+  •width are #requred by unReplaced-i & block-lvl els.
+  •margin of wraped|unWraped neighbors, collapse→0.
+  •turn display: inline|-block|table-*;→ display: block;
+    display: inline-flex?grid?table;→ display: flex|grid|table;
+  •block-lvl f-els mack below neighbors b-lvl-#content-box wrap.
+  •sameSide subsequenced floats render inline to opposite f-side
+    ›if container width can't fit, unorder-positioned topest & closest to f-side, (nested floats cause #position issues).
+★clip-path: url()| <shape-box +view-box>| <basic-shape +path()>;
+  •apply to svg, just url(), <basic-shape> apply to html.
+★position(zi++): staticⒹ| relative| absolute| fixed| sticky;
+ *<side>(offset): autoⒹ| ±length| ±%; (define #both Hs=w, Vs=h)
+ *z-index(apply to p-els): autoⒹ| ±#; (high z-i overlap lower)
+  ›auto: last el in source have z-index > previos els.
+  •relative: preserve original occupied space in normal-flow.
+    ›offset rel to original-box(top-left corner).
+  •absolute: apply to margin-box, remove originalSpace of nFlow
+    ›inline-els→ behave as block-lvl-box(new container).
+    »offset rel to closest ancestor{p:relative|absolute|fixed}
+      ›else it rel to html(initial containing-block)
+        _issue: buttom(offset) rel to viewport(scrollable).
+  •fixed: as absolute, but rel to viewport, or closest ancestor{transform;perspective;filter}
+    ›add space at bottom of document to avoid hidden content.
+  •sticky: stay in its nFlow, until its origin hidin by #scroll.
+    ›offset rel to closest block-ancestor{overflow≠none|clip},in table module rel to th|thead, v-scroll required top?bottom|both.
 
 
 
