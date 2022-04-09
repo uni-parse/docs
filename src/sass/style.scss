@@ -89,42 +89,53 @@ div {
   }
 }*/
 
-div {
-  display: inline-block;
-  border: solid 2px red;
-  inline-size: 30em;
-  block-size: 30em;
-  img {
-    display: inline-block;
-    max-inline-size: 50%;
-    aspect-ratio: 16/9; //original:1/1
-    object-fit: scale-down;
-    object-position: 50%;
-    border: 1px solid yellow;
-  }
-}
-@font-face {
-  font-family: 'rosemaryregular';
-  src: url('rosemary-webfont.woff2') format('woff2');
-  font-weight: normal;
-  font-style: normal;
-}
-section {
-  cursor: url('delete.svg'), help;
-  p:nth-child(1) {
-    font: 1em 'rosemaryregular';
-  }
-  p:nth-child(2) {
-    font: 900 2em 'Texturina', serif;
-  }
-  p:nth-child(3) {
-    font: 1em Arial;
-  }
-  p:nth-child(4) {
-    font: 1em sans-serif;
-  }
-  p:nth-child(5) {
-    font: 1em cursive;
-  }
-}
+// div {
+//   display: inline-block;
+//   border: solid 2px red;
+//   inline-size: 30em;
+//   block-size: 30em;
+//   img {
+//     display: inline-block;
+//     max-inline-size: 50%;
+//     aspect-ratio: 16/9; //original:1/1
+//     object-fit: scale-down;
+//     object-position: 50%;
+//     border: 1px solid yellow;
+//   }
+// }
+// @font-face {
+//   font-family: 'rosemaryregular';
+//   src: url('rosemary-webfont.woff2') format('woff2');
+//   font-weight: normal;
+//   font-style: normal;
+// }
+// section {
+//   cursor: url('delete.svg'), help;
+//   p:nth-child(1) {
+//     font: 1em 'rosemaryregular';
+//   }
+//   p:nth-child(2) {
+//     font: 900 2em 'Texturina', serif;
+//   }
+//   p:nth-child(3) {
+//     font: 1em Arial;
+//   }
+//   p:nth-child(4) {
+//     font: 1em sans-serif;
+//   }
+//   p:nth-child(5) {
+//     font: 1em cursive;
+//   }
+// }
 //@debug nest('.grid,.flex','.replaced');
+
+
+
+
+div{min-height:100vh;
+  display:grid; border: 1px cyan solid;
+  grid: auto-flow 30vh 30vh/ 40vw 40vw;
+  place-content: space-between end;
+  img{width:80%;height:80%;object-fit: scale-down;border: 1px red solid;}
+  p{border: 1px magenta solid; place-self: stretch ;}
+}

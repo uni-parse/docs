@@ -75,6 +75,8 @@
    •https://www.virtuosoft.eu/tools/css-gradient-generator/
       https://learnui.design/tools/gradient-generator.html
       https://angrytools.com/gradient/
+  ▶position: t?b'x㊿| l?r?center?±L%'y㊿ <t?b?centerⒹ?±L%>?|
+  l?r ±L% t?b ±L%;
 ★box areas: visibleBox(content + padding + border) ≠+ margins
 ★box measurenent: *≠apply→ unreplaced-i-els &:
   •width's(no tr|thead|tbody|tfoote) •height's(no: col|colgroup)
@@ -102,11 +104,11 @@
     •text-align: startⒹ?end| left?r?center?justify|match-parent
     •float?clear: inline-s?e=F4| noneⒹ?left?right|both→clear
     ▬inset(as top|r|b|l): <all|b i|bs i be|bs ie be is>
-      {inline?block: <both|s e> {start?end: autoⒹ?length?%}}
+      {inline?block: <both|s e> {start?end: autoⒹ?L%}}
     ▬max?min-|inline?block-size: <max?min-|w?h>
-    ▬padding?margin:{i?b:<both|s e> {s?e: length?%|auto→margin}}
-    ▬border: {s?e'i-s?e'b-radius: <both|h v:length?%1~2>}
-      {i?b: <both:s?w?c1~3> {style?width?color:<both|s e>}
+    ▬padding?margin:{i?b:<both|s e> {s?e: L%|auto→margin}}
+    ▬border: {s?e'i-s?e'b-radius: <both|h v:L%1~2>}
+      { i?b: <both:s?w?c1~3> {style?width?color:<both|s e>}
         {s?e: <s?w?c1~3> {style?width?color: <s|w|c>}} }
  *block-lvl els: •normal-flow perdencular †o writing-mode.
   •inline-size: 100%; margin-t?b: initial; (start&end with <br>)
@@ -153,7 +155,7 @@
     ›b-<side>-style: noneⒹ| hidden| solid| double| dotted| dashed| groove'normal| ridge'clicked| inset| outset;
  *b-collapse(table): collapseⒹ|separate;
  *b-spacing↓(table): h=v'length| h v;
- *b-radius: <cR>(circle)| <hR>/<vR>(ellipse); length0d|%
+ *b-radius: <cR>(circle)| <hR>/<vR>(ellipse); L%0d
   (unapply inner table when {b-collapse: collapseⒹ})
   •cR|hR|vR: all|tl=br tr=bl|tl tr=bl br|tl tr br bl;
   •b-<corner>-radius: r| hr vr; (#one or #two values)
@@ -185,12 +187,11 @@
   •subSequenced box-shadow's overrided by the previos ones.
 ★bg: color img position/size repeat attachment <origin clip>,…?;
  *bg-color: <color>; *bg-image: noneⒹ| <image>;
- *bg-position: xⒹ?y=side(omitted=50%)| x y| h offset v offset;
-  •x?y: ±length0d| ±%| <side>| centerⒹ;   •h?v: <side>; 
-  •offset: ±length| ±%;(omitted h?v→0 {bg-p: hs OF vs|hs vs OF})
-  •#%: mean align #% of bg-origin box-w|h, with #% of img-w|h
-  •applyTo(top left|0 0) of image, relative to bg-origin box.
-  •bg-position-x?y:center|<side>|±L%;
+ *bg-position: tb㊿x| lr?center?±L%㊿y <tb?centerⒹ?±L%>?|
+  lr ±L%?→0 tb ±L%?→0;
+  •bg-position-x?y: ±L%|center|<side>;
+  ›%: align % original-img-w?h with % bg-origin box.
+  ›apply→ img(top left|0 0) rel→ bg-origin box.
  *bg-size: cover?contain| w(h=auto)| w h;
   •width|height: autoⒹ|length|%(r to bg-origin)
     ›auto: preserving image-origin aspect-ratio.

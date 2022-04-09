@@ -1,5 +1,53 @@
 ★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★layout:
+ ▶normal flow:
+  •block-lvl els: inline-size=w=100%, generated below etch others in new lines.
+  •inline els: generated next to etch others, parallel to (dir=|direction:), wrap to new lines TtB to fill block-container.
+ ▶block:
+ ▶float(on below): noneⒹ| left| right; •shape-margin: L%;
+  •shape-outside: noneⒹ| <img>| <shape-box>| <basic-shape>;
+    ›shape-box: content?padding?border?margin-box; (in→b-radius)
+    »basic-shape(anim✓): circle(cr at p)| ellipse(hr vr at p)|
+       polygon(nonzeroⒹ?evenodd(unfill inside), x1 y1,…)| 
+       inset(<offset> round <b-radius>);
+      ›offset(rectangle): all|h v|t h b|t r b l; (±L%).
+      ›cr|hr?vr: L%㊿| closest?farthest-side;
+      ›b-radius'L%0d: <cR>(circle)| <hR>/<vR>(ellipse);
+        cR|hR|vR: all|tl=br tr=bl|tl tr=bl br|tl tr br bl;
+      ›position(center→top-left): x?y| x y| l?R L% t?b L%;
+       x?y: L%|<side>|centerⒹ;
+  •shape-image-threshold(animated): 0d~1; required by <gradient>
+  •#blockBelowNeighbor(unWrap){clear: noneⒹ| left| right| both}
+  ▬issue: if all-els=f, height→0, f-els overlap container-box.
+    ›fix: #container::after{content:'';display:block;clear:both}
+    ›fix2: #container-box{ display:flow-root}, inclode all f-els
+  ▬behaviors:
+   ›float entire el-box(+margin) rel→ parent-#content-box
+   ›width are #requred by ≠replaced-i & block-lvl els.
+   ›margin of wraped|unWraped neighbors, collapse→0.
+   ›turn display: inline|-block|table-*;→ display: block;
+     display: inline-flex?grid?table;→ display: flex|grid|table;
+   ›block-lvl f-els make below neighbors b-lvl-#content-box wrap
+   ›sameSide subsequence floats render inline to opposite f-side
+    if container width unfit, unorder-positioned topest & closest to f-side, (nested floats cause #position issues).
+ ▶position:(zi++): staticⒹ| relative| absolute| fixed| sticky;
+    •relative: preserve original occupied space in normal-flow.
+      ›offset rel to original-box(top-left corner).
+    •absolute: apply→marginBox, removed from normalFlow.
+      ›inline-els→ behave as block-lvl-box(new container).
+      ›offset rel→.closest-ancestor{p:relative?absolute?fixed}
+        else rel→html, issue buttom rel→viewport(scrollable).
+    •fixed: as absolute, but rel›viewport, or .closest-ancestor{transform;perspective;filter}
+      ›add space at bottom of document to avoid hidden content.
+    •sticky: stay in nFlow, until its origin hidin by #scroll
+      ›offset rel→.closest-Block-ancestor{overflow≠none|clip}
+       in table-module rel→th|thead, v-scroll required t?b|both
+  ▬<side>(offset): autoⒹ| ±length| ±%; (define #both Hs=w, Vs=h)
+  ▬z-index(apply→p-els): autoⒹ| ±#; (high overlap lower)
+    ›auto: last el in source have z-index > previos els.
+ ▶multicol:
+
+
  ▶flex: (rel to writing-mode|direction) ⇆mainAxis ✖crossAxis
   ►.container{ •display: inline-|flex;        
    ▬f-flow:<fd>? <fw>?;
@@ -26,7 +74,7 @@
   ♥.container{ •display: inline-|grid;
    ►grid: <gt>| auto-flow dense? <track-size>…/<gt-columns>| <gt-rows>/auto-flow dense? <track-size>…;
     ▬g-template: noneⒹ| <gt-rows>/<gt-columns>|
-      [ln? 'area1 …' <track-size>? ln?]…/<track-list≠repeat>;
+      [ln? <string> <track-size>? ln?]…/<track-list≠repeat>;
       ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\♪]?…;
         if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
      •gt-rows?columns: noneⒹ| <track-list>| <auto-track-list>;
@@ -41,100 +89,34 @@
        ›fixed-size: L%| minmax(L%,<b>|<b≠fr>,L%)
        ›fixed-r: repeat(#,[ln? <fixed-size>]… ln?);
        ›auto-r: repeat(auto-fill?fit,[ln? <fixed-size>]… ln?)
-     •gt-areas:
+     •gt-areas: noneⒹ| <string1> <s2> …;      ›ex: gta: 'a a b'
+      ›string: represent row cells= character+|.(empty); 'a a .'
+      ›every #rectangle area generates 4line-names, reverseToo!!
+       _top?left-line=[areaName-start], b?r-line=[areaName-end]
     ▬g-auto-flow: rowⒹ?column dense?(unorder holes-fill);
     ▬g-auto-rows?columns: <track-size(autoⒹ)>…;
-   ►place-content:
-    ▬justify?align-content
-   ►g-|gap
-   ►place-items:
-    ▬j?a-items
-  ♥.item{           •order: ±#0d;          •z-index: autoⒹ|±#;
-   ▬g-area1~4:
-   ▬g-row?column
-    •g-r?c-start?end:
-   ▬j?a-self:
-   ▬margin
-
-  •g-template-areas: noneⒹ| <string1> <s2> …; ›ex: gta: 'a a b'
-    ›string: represent row cells= character+|.(empty);   'a a .'
-    ›every #rectangle area generates 4 line-names (reverse too!) 
-      _top?left-line=[areaName-start], b?r-line=[areaName-end]
-*alignment: •place-content:<align=justify-content>| <a-c> <j-c>;
-  •justify?align-content: <j(+stretch)?a-content(full support)>;
-    ›target column?row-track's→container.
+   ►g-|gap: both|r c;        •g-|row?column-gap: normalⒹ1em|+L%;
+   ►place-content: both|<ac> <jc>;/*align all tracks→container*/
+    ▬j?a-content: stretchⒹ|s?e|l?r≠a-c|center|space-b?a?e;
     ›issue(overflow): gaps added to space-between?around?evenly
- •g-|gap'a: r=c|r c; •g-|row?column-gap: normal(1em)d| +length?%;
- •place-items: <align=justify-items>| <a-i> <j-i>;
-  •j?a-items: normalⒹ| <a-i(full-support)>| left?right(≠a-i);
-    ›target all items-boxes→areas.
-    ›normal=stretch'unreplaced-els, n=start'block?replaced-els.
-
-
-★items{ •order: ±#0d; •z-index: autoⒹ| ±#;
-*placement:
-  •grid-area1~4: area| r-start/c-start?/r-end?/c-end?;
-  •g-row?column(span≠both): <*-star> / <*-end>;
-    •g-row?column-start?end: autoⒹ(=span 1)| ±#*(-1=lastLine)| ln(ø[])| span +#?ln(from opposite-line≠span to item-in?[ln])| areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
-*alignment: •place-self: <a=j-self>| <a-self> <j-self>;
-  •j?a-self: autoⒹ| <j?a-i(grid)>; override{j?a-items}
-    ›auto: based on justify?align-items values.
-  •margin: auto;→ place-self: center; override{j?a-self>j?a-i}
+   ►place-items: both|<ai> <ji>; /*align all items-boxes→areas*/
+    ▬j?a-i: normalⒹ|stretch|baseline|center|l?r≠ai| self-|s?e;
+     ›normal: stretch'≠replaced-els, start'block?replaced-els.
+  ♥.item{           •order: ±#0d;          •z-index: autoⒹ|±#;
+   ►placement:
+    ▬g-area1~4: area| r-start/c-start?/r-end?/c-end?;
+    ▬g-row?column(span≠both): <*-star> / <*-end>;
+     •g-r?c-start?end: autoⒹ| ±#| ln| span +#?ln| areaName;
+      ›autoⒹ(span 1)| ±#*(-1=lastLine)| ln(ø[])|
+       span +#?ln(from opposite-line≠span to item-in?[ln])|
+       areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
+   ▬place-self: both|<as> <js>;            /*override{p-items}*/
+    •j?a-s: autoⒹ→*-i|stretch|baseline|center|l?r≠ai| self-|s?e;
+   ▬margin: auto;→ place-self: center;  /*override{p-self>p-i}*/
     ›m:0 auto:→ justify-s:center; ›m:auto 0:→ align-s:center;
     ›m-top:auto:→ align-s:end; ›m-bottom:auto:→ align-s:start;
     ›m-left:auto;→ justify-s:right; ›m-right:auto;→ j-s:left;
 
+
 ★★★block-lvl & absolute-position els: •place-self?items:;
-
-
-
-
-
-
-
-
-
-★float(on below): noneⒹ| left| right; •shape-margin: length| %;
-  •shape-outside: noneⒹ| <img>| <shape-box>| <basic-shape>;
-    ›shape-box: content?padding?border?margin-box; (in→b-radius)
-    »basic-shape(animated): circle(cr at p)| ellipse(hr vr at p) polygon(<fill-rule>, x1 y1,…)| inset(<offset> round <b-radius>);
-      ›fill-rule: nonzeroⒹ| evenodd(unfill inside);
-      ›offset(rectangle): all|h v|t h b|t r b l; (±length|±%).
-      ›cr|hr?vr: length| %50d| closest?farthest-side;
-      ›position(center→top-left): x?y| x y| hs offset vs offset;
-     x?y:length|%|<side>|centerⒹ; hs?vs:<side>; offset:length|%
-  •shape-image-threshold(animated): 0d~1; required by <gradient>
-  •#blockBelowNeighbor(unWrap){clear: noneⒹ| left| right| both}
-  •issue: if all-els=f, height→0, f-els overlap container-box.
-    ›fix: #container::after{content:'';display:block;clear:both}
-    ›fix2: #container-box{ display:flow-root}, inclode all f-els
- *behaviors(normal flow): •block-lvl els: inline-size=w=100%, and generated below etch others in new lines.
-  •inline els generated next to etch others, parallel to (dir=|direction:), wrap to new lines TtB to fill block-container.
-  •float entire el-box(+margin) relative to parent-#content-box.
-  •width are #requred by unReplaced-i & block-lvl els.
-  •margin of wraped|unWraped neighbors, collapse→0.
-  •turn display: inline|-block|table-*;→ display: block;
-    display: inline-flex?grid?table;→ display: flex|grid|table;
-  •block-lvl f-els mack below neighbors b-lvl-#content-box wrap.
-  •sameSide subsequenced floats render inline to opposite f-side
-    ›if container width can't fit, unorder-positioned topest & closest to f-side, (nested floats cause #position issues).
-★clip-path: url()| <shape-box +view-box>| <basic-shape +path()>;
-  •apply to svg, just url(), <basic-shape> apply to html.
-★position(zi++): staticⒹ| relative| absolute| fixed| sticky;
- *<side>(offset): autoⒹ| ±length| ±%; (define #both Hs=w, Vs=h)
- *z-index(apply to p-els): autoⒹ| ±#; (high z-i overlap lower)
-  ›auto: last el in source have z-index > previos els.
-  •relative: preserve original occupied space in normal-flow.
-    ›offset rel to original-box(top-left corner).
-  •absolute: apply to margin-box, remove originalSpace of nFlow
-    ›inline-els→ behave as block-lvl-box(new container).
-    »offset rel to closest ancestor{p:relative|absolute|fixed}
-      ›else it rel to html(initial containing-block)
-        _issue: buttom(offset) rel to viewport(scrollable).
-  •fixed: as absolute, but rel to viewport, or closest ancestor{transform;perspective;filter}
-    ›add space at bottom of document to avoid hidden content.
-  •sticky: stay in its nFlow, until its origin hidin by #scroll.
-    ›offset rel to closest block-ancestor{overflow≠none|clip},in table module rel to th|thead, v-scroll required top?bottom|both.
-
-
 
