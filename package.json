@@ -1,31 +1,32 @@
 {
-  "name": "app",
+  "name": "docs",
   "version": "1.0.0",
+  "description": "<h1>TheUniParse knowledge</h1>\r     <dl>\r       <dt>Hi ^_~ I'am UniParse</dt>\r         <dd>and am sharing my summaries of html, css(+scss), javascript and graphics</dd>\r         <dd>currently I am updating my docs from &#32;<a href=https://developer.mozilla.org/en-US/docs/Learn/Front-end_web_developer>MDN</a>, and learn new techs as &#32;<a href=https://sass-lang.com/documentation>SCSS</a></dd>\r       <dt>history 2021~2022</dt>\r         <dd>from &#32;<time>2021/02</time>&#32; to &#32;<time>2021/06</time>&#32; I complete &#32;<a href=https://getmimo.com>MIMO</a> &#32;mobile-app certificate</dd>\r         <dd>from &#32;<time>2021/06</time>&#32; to &#32;<time>2021/07</time>&#32; I complete first &#32;<a href=\"https://www.freecodecamp.org/certification/phantombill/responsive-web-design\">freecodecamp</a> &#32;certificate</dd>\r         <dd>from &#32;<time>2021/07</time>&#32; to &#32;<time>2021/11</time>&#32; I complete an old &#32;<a href=\"https://www.amazon.com/Learning-Web-Design-Beginners-JavaScript-dp-1491960205/dp/1491960205/ref=dp_ob_title_bk\">book2018</a>, 810page\r           <ul><li>title: A BEGINNER'S GUIDE TO HTML, CSS, JAVASCRIPT, AND WEB GRAPHICS 5<sup>th</sup> &#32;Edition</li>\r           <li>author: &#32;<a href=https://twitter.com/jenville>Jennifer</a>&#32; Niederst Robbins</li></ul></dd>\r     </dl>",
   "main": "gulpfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/phantombill/app.git"
+    "url": "git+https://github.com/TheUniParse/docs.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/phantombill/app/issues"
+    "url": "https://github.com/TheUniParse/docs/issues"
   },
-  "homepage": "https://github.com/phantombill/app#readme",
-  "description": "",
+  "homepage": "https://github.com/TheUniParse/docs#readme",
   "devDependencies": {
-    "autoprefixer": "^10.4.2",
-    "browser-sync": "^2.27.7",
+    "autoprefixer": "^10.4.4",
+    "browser-sync": "^2.27.9",
     "chokidar": "^3.5.3",
-    "cssnano": "^5.1.1",
+    "cssnano": "^5.1.7",
     "debug": "^4.3.1",
     "del": "^6.0.0",
     "gulp": "^4.0.2",
     "gulp-concat": "^2.6.1",
+    "gulp-git": "^2.10.1",
     "gulp-htmlmin": "^5.0.1",
     "gulp-imagemin": "^7.1.0",
     "gulp-inject": "^5.0.5",
@@ -41,8 +42,8 @@
     "postcss": "^8.4.12",
     "postcss-cli": "^9.1.0",
     "postcss-preset-env": "^7.4.3",
-    "sass": "^1.49.11",
-    "sass-embedded": "^1.49.9",
+    "sass": "^1.50.0",
+    "sass-embedded": "^1.50.0",
     "source-map-resolve": "^0.6.0",
     "uuid": "^8.3.2"
   },

@@ -78,7 +78,7 @@ function sassWatchTask(cd) {
   onlySassTask();
   watch('src/sass/**/*.scss', onlySassTask);
   cd();
-  console.log("hi😎phantombill😄 I'am: watching sass");
+  console.log("hi😎UniParse😄 I'am: watching sass");
 }
 exports.sass = sassWatchTask;
 
@@ -202,7 +202,7 @@ exports.sprite = spriteTask;
 const del = require('del');
 function deleteTask(cd) {
   cd();
-  console.log("hi😎phantombill😄 I'am: cleaning");
+  console.log("hi😎UniParse😄 I'am: cleaning");
   return del.sync([
     'build/**/*',
     '!build/index.html',
@@ -220,7 +220,7 @@ function serverTask(cd) {
     notify: false,
   });
   cd();
-  console.log("hi😎phantombill😄 I'am: connecting");
+  console.log("hi😎UniParse😄 I'am: connecting");
 }
 function reloadTask(cb) {
   browserSync.reload();
@@ -236,7 +236,7 @@ function watchTask(cd) {
   watch('src/images/**/*', series(webpTask, reloadTask));
   //watch('build/**/*', gitTask);
   cd();
-  console.log("hi😎phantombill😄 I'am: watching");
+  console.log("hi😎UniParse😄 I'am: watching");
 }
 exports.w = watchTask;
 
