@@ -540,7 +540,7 @@ scss= superset of css, sass= indent syntax style sheet.
 ★rwd and breackpoints:
   ▶name bp: $breackpoints:('medium':(min-width:800px), 'large':(min-width:1000px), 'huge':(min-width:1200px));
     ►fexable: $breackpoints:('media':'(min-width:800px)',…);
-  ▶mediaQuery manager: @mixin respond-to($breakpoint) {
+  ▶mediaQuery manager: @mixin mq($breakpoint) {
     $raw-query: map.get($breakpoints, $breakpoint);
     @if $raw-query {
       $query: if(meta.type-of($raw-query) == string,
@@ -548,8 +548,8 @@ scss= superset of css, sass= indent syntax style sheet.
       @media #{$query} {@content}
     }@else{@error '#{$breakpoint} not key of $breakpoints map'}}
   ▶usage: in general .s{@media q{…}}//@media q{.s{…}}
-    .s{@include respond-to(huge){…}}//@media (min-width){.s{…}}
+    .s{@include mq(huge){…}}//@media (min-width){.s{…}}
   ▶
-  ▶
+  ▶ 
   ▶
 ★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
