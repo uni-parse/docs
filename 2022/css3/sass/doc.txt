@@ -1,6 +1,6 @@
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 scss= superset of css, sass= indent syntax style sheet.
-★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDoc
+★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDocs
 ★sass stylesheet stracture:
   •statement0= selector{statement1;statement2}
   •statement= style-rule, property-declaration
@@ -552,4 +552,4 @@ scss= superset of css, sass= indent syntax style sheet.
   ▶
   ▶ 
   ▶
-★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱… 
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…

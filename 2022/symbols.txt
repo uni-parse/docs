@@ -18,6 +18,7 @@ slash division /
 slashBare back-slash \
 bar |
 single and duble pair quotes "" ''
+pair backticks ``
 right & left an'gled bracket <>
 exclamention !
 hash #
