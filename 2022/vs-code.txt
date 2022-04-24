@@ -2,10 +2,10 @@
 ★comments: ctrl /
 ★locate errors: F8
 ★open terminal: ctrl `
-★open settings ctrl ,
-★toggle action pnale:crtl B
-★formate:shift alt F
-★un?fold:•current:ctrl shift ][ •all:ctrl K + ctrl J?0~5
+★open settings: ctrl ,
+★toggle action pnale: crtl B
+★formate: shift alt F
+★un?fold: •current:ctrl shift ][  •all:ctrl K + ctrl J?0~5
 ★selecting: •box:shift ←↑↓→|middle_mouse •sameStr:ctrl shift L
   ►cursors: •vertical:ctrl alt ↑↓ •anywhere:alt click
 ★js: object.<complite>:ctrl space

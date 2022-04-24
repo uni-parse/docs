@@ -1,1 +1,1 @@
-@import"https://fonts.googleapis.com/css2?family=Texturina&display=swap";html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}div{border:1px solid aqua;display:grid;grid:auto-flow 30vh 30vh/40vw 40vw;min-height:100vh;place-content:space-between end}div img{border:1px solid red;height:80%;-o-object-fit:scale-down;object-fit:scale-down;width:80%}div p{border:1px solid #f0f;place-self:stretch}
+html{box-sizing:border-box}*,:after,:before{box-sizing:inherit}img{filter:invert(.9)}

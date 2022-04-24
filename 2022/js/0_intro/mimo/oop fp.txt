@@ -1,0 +1,28 @@
+var car = {
+ mileage: 5000,
+ drive: function(miles) {
+  car.mileage += miles;
+ }
+};
+
+car.drive(100);
+
+console.log(car.mileage)
+
+
+
+
+
+
+function getMileage(mileage, miles) {
+ return mileage + miles;
+}
+
+var mileage = 5000;
+var miles = 100;
+
+var newMileage = getMileage(mileage, miles);
+
+console.log(newMileage);
+
+

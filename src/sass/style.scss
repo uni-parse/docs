@@ -1,5 +1,5 @@
 @use 'sass:selector' as *;
-@import url('https://fonts.googleapis.com/css2?family=Texturina&display=swap');
+//@import url('https://fonts.googleapis.com/css2?family=Texturina&display=swap');
 //@use 'base/base';
 //@use 'utilities';
 //@use 'components';
@@ -133,10 +133,13 @@ div {
 
 
 
-div{min-height:100vh;
-  display:grid; border: 1px cyan solid;
-  grid: auto-flow 30vh 30vh/ 40vw 40vw;
-  place-content: space-between end;
-  img{width:80%;height:80%;object-fit: scale-down;border: 1px red solid;}
-  p{border: 1px magenta solid; place-self: stretch ;}
-}
+// div{min-height:100vh;
+//   display:grid; border: 1px cyan solid;
+//   grid: auto-flow 30vh 30vh/ 40vw 40vw;
+//   place-content: space-between end;
+//   img{width:80%;height:80%;object-fit: scale-down;border: 1px red solid;}
+//   p{border: 1px magenta solid; place-self: stretch ;}
+// }
+
+
+img{filter: invert(.9);}

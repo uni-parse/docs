@@ -1,0 +1,30 @@
+var c = true;
+var v = "* ";
+while (c === true) {
+ console.log(v);
+ v += "* ";
+ c = false;
+}
+console.log("-----frome 0 to 3-------");
+var counter = 0;
+while (counter < 4) {
+ console.log(counter);
+ counter++;
+}
+console.log("-----frome 1 to 4-------");
+var counter = 0;
+while (counter < 4) {
+ counter++;
+ console.log(counter);
+}
+
+console.log("-----frome 0 to 4-------");
+for (var i = 0; i < 4; i++) {
+ console.log("idex " + i);
+}
+console.log("-----frome 10 to 5-------");
+for (var i = 10; i >= 5; i--) {
+ console.log("number: #" + i + ".");
+}
+//i are index counter, i>=5 are condition 
+//while & for are loop statement's, but FOR better

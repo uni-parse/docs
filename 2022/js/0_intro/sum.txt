@@ -1,0 +1,324 @@
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★concepts: its riginal name was live-script ≠java.
+  *place into document: in <head> or just before </body>.
+    •embedded: <script>…</script> 
+    •external: <secript src=path/file.js>/*Ø*/</script>
+★variables:
+  *syntax:
+    let vName; //declaration
+    let vName = value; //declaration & initialization
+    vName = newValue; //update|initialize
+  *let keyword: declare one or more variables separated by ,.
+    •ex: let var1=val1, var2=val2, var3=val3, …;
+  *scope:
+    •outside function: available to all scripts & all functions
+      let global=value; // preceded by let
+    •inside function: 
+      »locally scoped: available just for its parent function
+        ›var local=value; // preceded by let
+      »globally scoped: available to all scripts & others functions, just after #CALL the function, else{undefined}
+        ›global=value; // ommited the let
+        ›Worning: unexpected errors can happend
+          function a(v){
+            g = v + v; // globally scoped
+            let l = v + v + v; //locally scoped
+            alert('function code block run !!');
+            return l;
+          }
+          let g = 10; // g=10
+          let G = a(20); 
+          // a(20) run all the code block, before stop & returned variable l,so g = 20 + 20 = 40
+          alert(g); // Alerts 40.
+        ›solution: 
+          _avoid globally scoped variables Inside functions, 
+          _or use IIFE'Immediately Invoked Functional Expression' (…()); to isolation the function and its code bloke, but it will run immediately & can'not recalled
+            (function(){//not sure if global|local scope}());
+  *name:
+    •case-sensitive
+    •do not contain special character (*-+=&$#@!.,><;:'"\|/?…)
+      _do not contain space character(insted use camle-case)
+    •star with letter|underscape (not number)
+  *equal = operator: assine value
+  *semiColon ; symbol: end command
+  *value:
+    »data types: 
+      •undefined, if declared var without initial value.
+      •null: Define this variable, but give it no inherent value
+      •number: can calculated by +plus -minus *multiply /divide operators.
+      •string: 
+        ›enclosed by single|double quotes, 
+        ›concat'enation '+' operator combine two-strings|string+number to one string.
+        ›escape: \\, \', \", \n(new line), \t(tab), \r(carriage return), \f(form feed), \b(word boundary)
+      •booleans: true = !false | false = !true ==0==null==""==undifined
+    »array:
+      •are members of ordered data values
+      •indexed frome 0, separated by commas, surrounded by square brakets[]
+      •can use|call|refer just indexed value
+        let arr = [5, 'five', '5'];
+        let five = arr[1]; // five = 'five';
+      •we can calculate number of values by .length:
+        let arr = [v1, v2, …, v?];
+        let members = arr.length; //if v? → 500'th, members=501
+    »function():
+      •Worning: when declare & assign function to variable, it will automaticly run(without calling it)
+      •if the function contain 'return keyword':
+        ›it will run until return stop it
+        ›then as addition, it will represented by rhe returned value.
+      •if the function do not contain 'return keyword':
+        ›it will run all the code block
+        ›then as addition, it will represented by the value: undefined.
+★operators: 
+  *comparison operators: 'putted in statment like if(){}'
+    •equality: (5 == '5') is true
+    •inequality: (5 != '4') is true
+    •identically: (5 === '5') is false, data type number≠string
+    •nonidentical: (5 !== '5') is true
+    •greater than: (5 > 4) is true, (5 > 5) is false
+    •greater than or equal: (5 >= 4) | (5 >= 5) is true
+    •less than: (5 < 6) is true
+    •less than or equal: (5 <= 6) | (5 <= 5) is true
+  *mathematical operators: only numeric data values|variables
+    •add: let a=b+3
+    •addition: let a+=b; a=a+b;
+    •increment: let a++; a=a+1;
+    •subtract: let a=b-3;
+    •subtraction: let a-=b; a=a-b;
+    •decrement: let a--; a=a-1;
+    •multiply: let a=b*3;
+    •multiplication: let a*=b; a=a*b;
+    •divide: let a=b/3
+    •division:let a/=b; a=a/b;
+★if statement condition:
+  *structure: 
+    if(the first condition met){
+      //then execute this block
+    }else if(the second condition met {
+      //then execute this block
+    }else if(the third condition met){
+      // then execute this block
+    }else if(…){
+      //…
+    }else{
+      //if no condition met, then run|execute this last block
+    }
+  *condition: (compatios operator): (==,!=,===,!==,>,>=,<,<=)
+  *block: commands or console logs or …
+★loop:
+  *for:
+    •structure:
+      for(declare & initialize variable; condition; operator){
+        //do this
+      }
+      ›ex:
+        for(let i=0; i < array.length; i++){
+          //run this …array[i]…
+        }
+    •nested functions: 
+      by defualt functions iside 'for loop' treats variables globaly, not temporary in each step of loop, the solotion is:
+      (function(i) {
+        return function() { 
+          //can use temporary: i
+        };
+      })(i);
+    •benefits: 
+      ›we can applay styles to list of elements.
+      ›add|remove|change attributes to each element from long list(like inputes).
+      ›creat arrays to build folters of search element & …
+  *while: //we have also while(){} loop, but this book do not discussed it.
+★function:
+  *types:
+    •native functions: (predefined)
+      »dyalog box:
+        ›alter('message'); //answer: ok
+        ›confirm('question?'); //answer: ok|cancel
+        ›prompt(); //answer: input, ok
+      »return value:
+        ›Date(); //not date(), return date, time, day, gmt
+        ›parseInt('123'); // convert numbers from string('123') → number(123) data type.
+        ›setTimeout(fName, 5000); // run function by delay(ms), without including parentheses & arguments, i dont know why !!!
+        ›…
+    •custome function syntax: 
+      function fName(placeholder_arguments){
+        //code block
+        return value;
+        //ignored code block because return called.
+      }
+      fName(input_arguments); //call the function'
+  *function keyeord: declare new function
+    •declaration a function, do not call it !!
+    •to run it, we need to Call it !!
+  *scope:
+    •globally scoped: 
+      function(){};
+    •temporary scoped: 
+      (function(){})();
+  *name: as variable rules
+  *argumets: 
+    •placeholder variables lives just in the current function,
+    •can be ommited, just one value(data|array), several values(data) separated by commas.
+  *code block: can contain variables, loops, another functions,?
+  *return keyword:
+    •tell the function: stop executing code block now, so any code came after return keyword will be ignored.
+    •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
+    •if we did not add return keyword, the function will return 'undefined' value by default.
+★add behavior to document:
+  *syntax:
+    •as html attribute:(avoid it)
+      <el onevent='listener()'>…</el>
+    •as method attached to element:(avoid it)
+      object.onevent = listener;
+    •as listener:
+      object.addEventListener('event', listener, true|false, option)
+  *object: (eventTarget)
+    •we can access elements throught DOM object: document
+      ›and browser window through the object: window
+    •we can target specific elements inside the root html by: 5 queries:
+      »document.getElementById('id');// one element
+      »document.getElementsByTagName('h2');// 1|collection
+      »document.getElementsByClassName('box red');//1|collection
+      »document.querySelector('ul#nav li.fb');// 1|collection
+      »document.querySelectorAll('s1, …', …);//collection
+    •Note: we can'not access collection of elements at ones, insted we can access it by index:
+      let selector = document.querySelector('ul#nav li.fb');
+      let selectors = document.querySelectorAll('img', 'svg');
+      selector.addEventListener('event', eventHandler);
+      function loop(array){
+        for(let i=0; i<array.length; i++){
+          array[i].addEventListener('event', eventHandler);
+        }
+      }
+      loop(selectors); //loop(classes); loop(tags);
+  *on|event:
+    •window events:
+      »general: 
+        ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+        ›just|DOMContentLoaded, devicemotion, deviceorientation
+      »desktop:
+        ›on|mousemove, mouseovee, mouseout
+      »mobile://
+    •document events:
+      »general:
+        ›on|click, dblclick, scroll, input, change, visibilitychange, copy, cut, paste, selectstart, selectionchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+      »desktop:
+        ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed), 
+        ›just|DOMContentLoaded, readystatechange, 
+      »mobile:
+        ›on|touchend, touchcancel, touchmove, touchstart, 
+  *listener(eventHandler):
+    •call one function: 
+      functionName
+    •call multi functions: 
+      ()=>{func1(arguments); func2(); …}
+    •run anonymous function: 
+      function(){//…}
+     ›temporary scope:
+       (function(){//…})()
+  *listener true|false: run|stop the function|s
+  *listener options: {opt1,opt1, …}
+    •once: true|false // if true, then it will run the eventHandler, then call: object.removeEventListener()
+    •capture: true|false // ??
+    •passive: true|false // ??
+★DOM: (document pbject module)
+  *introduction:
+    •DOM is programing language translate html|xml|…? to map can be accessed by java-script|ruby|c++|…?.
+    •in our html, DOM give us map as tree of "node's", wich node can be 'element, attribute, text'
+  *accessing DOM elements nodes:
+    •demo:
+      let nodeList = document
+        .method('el-selector')
+        .property;
+    •accessing methods: (return array|colloction|nodeList of elements, except Id method)
+      »demo:
+        let nav = document.getElementById('navigation');
+        let links = nav.getElementByTagName('a')
+          .getElementByClassName('main');
+        let sameLinks = document
+          .querySelectorAll('#navigation a.main');
+        let jQueryLinks = $('#navigation a.main');
+      »ready: 
+        document.title
+        document.body
+      »useless:
+        .getElement ById('idName') // return just 1 element
+        .getElement s ByClassName('c1 c2 …')//els share same c's
+        .getElement s ByTagName('tag')
+        .querySelector('selector')
+      »usefull:
+        .querySelectorAll('s1, …', …)
+    •manipulate methods:
+      »demo:
+        document
+          .getElementById("main") 
+          .appendChild(
+            document.createElement("p") 
+            .appendChild(
+              documentCreateTextNode("Hey, I'm walking here!")
+            )
+          );
+      »methods:
+      .createElement('tag') //saved in memory until we add it
+      .createTextNode('text') //saved in memory until we add it
+      .appendChild(node) 
+        ›move node to parent, as last-child, 
+        ›we can'not move node to two parents in document, 
+        ›if we append the child from first parent to second parent, then the node will be omitted from previos apended position.
+        ›ex:
+         div[0].appendChild(createdEl).appendChild(createdTxt);
+         div[1].appendChild(createdEl).appendChild(createdTxt);
+         // now nods moved from div[0] to div[1]
+      .insertBefore(newNode, previosChild)
+        ›as previos move node to parent, before existing child.
+        ›ex:
+         div[0].insertBefore(newH2, div_p[3]).appendChild(text);
+      .insertAfter(newNode, previosNode)
+      .before(node1, node2, …) // p.before(h1, hr)
+      .after(node1, …) // h1.after(hr, p)
+      node.cloneNode(true|false) 
+        ›copy node|(+its attr, text)
+        ›sync issue with .before|.after|.insertBefore|.insertAfter|.replaceChild
+        ›ex:
+         newEl.appendChild(subNode)
+         let copy = newEl.cloneNode(true);
+         // now copy have both newEl & its deep|sub tree nodes.
+      .replaceChild(newNode, oreviosNode)
+        ›ex:
+          div[0].replaceChild(newText, paragraph[0]);
+      .removeChild(node)
+        ›ex:
+          div[0].removeChild(paragraph[1]);
+    •properties:
+      .innerHTML // = 'html markup'
+        ›ex:
+         div[0].innerHTML = '<p id=intro>Hi &amp; Welcome!</p>';
+      .innerText // = 'html output'
+        ›ex:
+          paragraph[0].innerText = 'Hi & Welcome!';
+      .style.<cssProperty> 
+        // hyphen-property(in css) → camelCaseProperty(in js)
+        ›ex:
+          let bgColor = document.body
+            .style.backgroundColor;// save reference
+          bgColor = 'hsla(90,100%,50%,.34)';// update
+  *accessing & manipulating DOM attriputes nodes:
+    •demo:
+      let el = document.querySelectorAll('cssSelector', …);
+      let attr = el[index].accessingMethod();// save
+      el.manipulateMethod();// update
+    •accessing method:
+      .getAttribute('attr')
+    •manipulate methods:
+      .setAttribute('attr', 'value')
+      .
+      .
+
+▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★concepts:
+★variables: store reusabe data.
+  ►dec&init: const?let name=value,…?;
+    ▬declaring: const?let name1,…?; ▬initializing: name=update;
+  ►
+★
+★
+★
+★
