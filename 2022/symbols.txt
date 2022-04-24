@@ -9,8 +9,8 @@ tilde(telda) ~
 multiply star aste'risk *
 carat(as carrot in spelling) ^
 equal =
-euler e
-pi π
+euler e 2.71…
+pi π 3.14…
 ampersand &
 dollar $
 euro €

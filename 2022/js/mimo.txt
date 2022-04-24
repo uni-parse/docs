@@ -1,0 +1,545 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★array
+  var friends = ["hammid"];
+  console.log("freind of 2014: " + friends);
+  //[elements separated by ,commas] inside array bracket
+  friends.push("wassim", "mechid", "hamza");
+  console.log("f.o 2015: " + friends);
+  //we can add elements at end of array by .push() 
+  var removed = friends.pop();
+  console.log("f.o 2017: " + friends);
+  console.log(removed + " goes to new hous");
+  console.log("best f.o 2017: " + friends[2]);
+  //we can remove last element by .pop()
+  //every element can be accessed by its index, and the first gave index=0
+  for (var i = 0; i < friends.length; i++) {
+   console.log(friends[i] + " still my friend.");
+  }
+  //we can use the condition i<arrayname.lengtg to run the code block on all elements by putting arrayname[i] in code block
+★function
+  var answer = "turtle";
+  
+  function isEquality() {
+   var correctAnswer = "rabbit";
+   var equality = answer === correctAnswer;
+   console.log("is " + answer + " winns: " +
+    equality);
+  }
+  isEquality()
+  var answer = "rabbit";
+  isEquality()
+  //we can belong relatev code's to function for reuse
+  function displayWinner(winner1, money1, winner2,
+   money2) {
+   console.log("  the #1 winner: " + winner1 +
+    " get " +
+    money1 + "$");
+   console.log("& the #2 winner: " + winner2 +
+    " get " + money2 + "$");
+  }
+  displayWinner("hopeless", 800, "phantom", 500)
+  //to avoiding creating a lot of functions, we can use the (parameters) pe'raa'meterz, that can store variablds separated by comma's, to custom it easly.
+  function getConverse(km) {
+   return km + "km = " + km * 1000 + "m";
+  }
+  var result = getConverse(3);
+  console.log(result);
+  result = getConverse(9);
+  console.log(result);
+  //we can store a return value from function by RETURN to the code that calls its name by icluding return inside of it and set him with value from it, else if we forgotten to includ him, the called code will store value : UNDEFINED.
+  
+  /* for easy understanding functions, its names most have verb+noon like : 
+  when we it have consol.log() we use DISPLAY then noon.
+  when it display boolean value we use IS then noon.
+  when it return value to called code we use GET then noon.*/
+  
+  /*functions have input and output, we need to type the right type value of input(parameterd).
+  and that depanding of what type the output will display or return to us.
+  and it not necessery to equlity type between input & output values.*/
+  function getChange(array) {
+   var price = 0;
+   if (array[0] === "vip") {
+    for (var i = 2; i < array.length; i++) {
+     price += array[i]
+    }
+    return array[1] - price * 0.8;
+   } else {
+    for (var i = 1; i < array.length; i++) {
+     price += array[i]
+    }
+   }
+   return array[0] - price;
+   console.log("thanks for purchase");
+  }
+  var customer = [700, 17, 38, 3, 222]
+  console.log("customer change: " + getChange(
+   customer) + "$");
+  var vipCustomer = ["vip", 1000, 30, 50, 15, 28, 3,
+   444
+  ]
+  console.log("vip customer change: " + getChange(
+   vipCustomer) + "$ 20% Off!!!");
+  //we can use arrays insted of several parameters.
+  /*"thanks for purchase" didn't(did not) displayed,
+  because 'return' skip the function codes below it.*/
+  function repeat(start, end, message) {
+   for (var i = start; i <= end; i++) {
+    console.log("you get: " + i + message);
+   }
+  }
+  console.log(repeat(2000, 2004, "xp"));
+  //we can control how much loops times our function have by parameters
+★if else
+  var s = 500;
+  var l = 1;
+
+
+  s = 766;
+
+  if (s >= 700 & s < 900) {
+   l = 2;
+   console.log(l);
+  } else if (s >= 900) {
+   l = 3
+   console.log(l);
+  }
+★loop
+  var c = true;
+  var v = "* ";
+  while (c === true) {
+   console.log(v);
+   v += "* ";
+   c = false;
+  }
+  console.log("-----frome 0 to 3-------");
+  var counter = 0;
+  while (counter < 4) {
+   console.log(counter);
+   counter++;
+  }
+  console.log("-----frome 1 to 4-------");
+  var counter = 0;
+  while (counter < 4) {
+   counter++;
+   console.log(counter);
+  }
+  
+  console.log("-----frome 0 to 4-------");
+  for (var i = 0; i < 4; i++) {
+   console.log("idex " + i);
+  }
+  console.log("-----frome 10 to 5-------");
+  for (var i = 10; i >= 5; i--) {
+   console.log("number: #" + i + ".");
+  }
+  //i are index counter, i>=5 are condition 
+  //while & for are loop statement's, but FOR better
+★object
+  var item = {
+   wood: 33,
+   steel: 11,
+   gold: 4 //items.wood + items.steel error
+  }
+  
+  var status = {
+   user: ["Hopeless", "Phantom"],
+   level: 1,
+   score: 500,
+   items: item,
+   price: function() {
+    return this.items.wood * 5 + this
+     .items.steel * 20 + this.items.gold * 100;
+   },
+   display: function() {
+    return console.log(this);
+   },
+   vip: false
+  }
+  console.log(status);
+  console.log("");
+  console.log("user: " + status.user);
+  console.log(status.items);
+  console.log("" + status.items);
+  console.log("");
+  console.log("items price: " + status.price() +
+   "$.");
+  console.log("");
+  
+  /*we can store several related variables of any type (strings, numbers, booleans, arrays and another objects) to Object.
+  it have objectName, and properties separated by comma's nested doubel {curly braces}.*/
+  //outside we can access property by add 'objectName.propertyName'.
+  /*we can store related functions too, we call it methods.
+  to call methods we need to type object name, then .period the method name then (parantheses).
+  */
+  /*just inside motheds we can access propertys or another methods by 'THIS+.period'befor them's names.
+  THIS is refer to object not propertys or methods.*/
+  
+  
+  
+  
+  
+  //gropping propertys and methods in one ibject descript to encaps'ulation.
+  //oop is object oriented programing style,its easy to trake updated variables,betore then FP functionality programming style that need RETURN every time.
+  var pistol = {
+   hands: 1,
+   weight: "light",
+   singleshot: function(shots) {
+    for (var i = 0; i < shots; i++) {
+     console.log("pew   ");
+    }
+   }
+  }
+  var desertEagle = Object.create(pistol);
+  console.log(desertEagle);
+  console.log(desertEagle.hands);
+  console.log(desertEagle.weight);
+  desertEagle.singleshot(2);
+  desertEagle.size = "big";
+  desertEagle.doubleshot = function(shots) {
+   for (var i = 0; i < shots; i++) {
+    console.log("pePew   ");
+   }
+  };
+  console.log(desertEagle);
+  desertEagle.doubleshot(2);
+  
+  /*the inherited objects from others template objects not own or store the inherited properties & methods , but it can just access them.*/
+  /* to creat in'he'rI'ted objects from others templates we use 'Object.creat(templateObjectName)'
+  and to store properties & methods we do like above*/
+★obj class test
+  class Superclass {
+   constructor(a, b, c) {
+    this.aa = a;
+    this.bb = b;
+    this.cc = c;
+   }
+   lowlevel1(n) {
+    console.log(n + this.aa);
+   }
+  
+   lowlevel2(n) {
+    console.log(n + this.bb);
+   }
+   lowlevel3(n) {
+    console.log(n + this.cc);
+   }
+   core(n) {
+    console.log("a:" +
+     this.aa + " b:" + this.bb + " c:" + this
+     .cc);
+    this.lowlevel1(n);
+    this.lowlevel2(n);
+    this.lowlevel3(n);
+   }
+  }
+  Superclass.cc = "update";
+  class Subclass extends Superclass {
+   constructor(A, B, C, D) {
+    super(A, B, C);
+    this.dd = D;
+   }
+   lowlevel4(n) {
+    console.log(n + this.dd);
+   }
+   core(n) {
+    console.log("a:" +
+     this.aa + " b:" + this.bb + " c:" + this
+     .cc + " d:" + this.dd);
+    this.lowlevel1(n);
+    this.lowlevel2(n);
+    this.lowlevel3(n);
+    this.lowlevel4(n);
+   }
+  };
+  var instance = new Subclass(1, 2, 3, 4);
+  console.log(Superclass);
+  console.log(Subclass);
+  console.log(instance);
+  instance.core(100)
+  var instance1 = Object.create(instance);
+  instance1.ee = "fixed";
+  instance1.lowlevel5 = function(n) {
+   console.log(n + this.ee);
+  }
+  instance1.core = function(n) {
+   console.log("a:" +
+    this.aa + " b:" + this.bb + " c:" + this
+    .cc + " d:" + this.dd + " e:" + this.ee);
+   this.lowlevel1(n);
+   this.lowlevel2(n);
+   this.lowlevel3(n);
+   this.lowlevel4(n);
+   this.lowlevel5(n);
+  }
+  console.log(instance1);
+  instance1.core(100);
+★class
+  class Items {
+   constructor(w, s, g) {
+    this.wood = w;
+    this.steel = s;
+    this.gold = g;
+   }
+  }
+  var day1 = new Items(33, 10, 4);
+  console.log(day1);
+  var day2 = new Items(47, 3, 5);
+  console.log(day2);
+  console.log("");
+  /*class is template, boosting creating new objects that have same propertys with defferant values,
+  we set values as parameters of constructor method*/
+  class ItemsPrice {
+   constructor(w, s, g) {
+    this.wood = w;
+    this.steel = s;
+    this.gold = g;
+   }
+   isVipPrice(vip) {
+    if (vip === true) {
+     return console.log("price: " + (this.wood * 5 +
+      this.steel * 20 +
+      this.gold * 100) * 0.8 + "$. with 20% OFF");
+    }
+    return console.log("price: " + (this.wood * 5 +
+     this.steel * 20 +
+     this.gold * 100) + "$.");
+   }
+  }
+  var day3 = new ItemsPrice(33, 10, 4);
+  console.log(day3);
+  day3.isVipPrice(true);
+  var day4 = new ItemsPrice(47, 3, 5);
+  console.log(day4);
+  day4.isVipPrice()
+  console.log("");
+  //to make our class template intractive, we can add methodes too.
+  class Phone {
+   constructor(made, model) {
+    this.made = made;
+    this.model = model;
+   }
+   call(person) {
+    console.log("calling " + person + " ... by " +
+     this.made + " model: " + this.model);
+   }
+  };
+  class Nokia extends Phone {};
+  var Nokia1 = new Nokia("nokia", 0.1);
+  Nokia1.call("wassim");
+  var Nokia2 = new Nokia("nokia", 0.2);
+  Nokia2.call("mechid");
+  class Samsung extends Phone {
+   videocall(person) {
+    console.log("video calling " + person +
+     " ... by " + this.made + " model: " + this
+     .model);
+   }
+  }
+  console.log("");
+  var S4 = new Samsung("samsung", "s4");
+  S4.call("wassim");
+  S4.videocall("wassim");
+  var S8 = new Samsung("samsung", "s8");
+  S8.call("mechid");
+  S8.videocall("mechid");
+  console.log("");
+  /*subclass's can inherted all its superclass properties & methods,by 'extends' statement.*/
+  class Human {
+   constructor(weapon) {
+    this.weapon = weapon;
+    this.health = 100;
+   }
+   attack() {
+    console.log("Swing " + this.weapon);
+   }
+   damage(shots) {
+    console.log(shots * 10 + "dmg");
+   }
+  }
+
+  class Wizard extends Human {
+   attack() {
+    super.attack();
+    console.log("Zimzalabim!");
+   }
+   damage(shots) {
+    super.damage(shots);
+    console.log("+" + shots * 2 + "Magic.dmg");
+   }
+  }
+
+  var wizard = new Wizard("staff");
+  wizard.attack();
+  wizard.damage(10);
+  console.log("");
+  /*im subclass we can push another elements inside the extanded method by adding 'super.methodname' as element in subclass same methodname to superclass*/
+  class Video {
+   constructor(length) {
+    this.length = length;
+   }
+  }
+
+  class Loop extends Video {
+   constructor(length, start, end) {
+    super(length);
+    this.start = start;
+    this.end = end;
+   }
+  }
+
+  var loop = new Loop(10.5, 3.2, 7.4);
+  console.log(loop);
+  /*subclass can add properties to the inherted ones, by adding new properties after adding 'super(inherted parameters)' 
+  and adding new parameters to the inherted ones*/
+
+
+  /*core methodes reduce errors that came from recoding all low level methods */
+★oop fp
+  var car = {
+   mileage: 5000,
+   drive: function(miles) {
+    car.mileage += miles;
+   }
+  };
+  
+  car.drive(100);
+  
+  console.log(car.mileage)
+  
+
+
+
+  function getMileage(mileage, miles) {
+   return mileage + miles;
+  }
+  
+  var mileage = 5000;
+  var miles = 100;
+  
+  var newMileage = getMileage(mileage, miles);
+  
+  console.log(newMileage);
+★query
+    var el = document.querySelector(
+   "tagName.class1.class2#id1#id2");
+    //select specific element.
+  el.attribute = "attributeValue";
+  el.href = "https://link.com";
+    //update specific attribute from specific element.
+  el.style.propertyNameCamelCase = "propertyValue";
+  el.style.backgroundColor = "lightGray";
+    //update specific property from specific element.
+  
+  var store = el.getAttribute("attributeName");
+  var elStyle = el.getAttribute("style");
+  console.log(elStyle);
+    //store specific attribute VALUE in variable.
+  el.setAttribute("attributeName", "value");
+  el.setAttribute("placeholder", "user name");
+    //update specific attribute.
+  
+  var tagCollection = document.getElementsByTagName(
+   "tagName");
+  var tagCNomber = tagCollection.length;
+  tagCollection[0].innerHTML = "update";
+    //store collection of same tag type.
+    //store number of tagCollection's elements.
+    //update specific element VALUE frome tagCollection by its index.
+  var classCollaction = document
+   .getElementsByClassName("class1 class2...");
+  var classCNumber = classCollaction.length;
+  classCollaction[3].innerHTML = "update";
+    //store collection of elements share same class's.
+    //store number of class collection's elements.
+    //update specific element VALUE frome classCollection by its index.
+  var all = document.querySelectorAll(
+    "tag.class's#id's,another"
+    var all = document.querySelectorAll(p.class1
+     .class2, .class3, button)
+    var allNumber = all.length; all[5] = "update"
+    //store all elements of arraySelector's at ones
+    //store number of all elements
+    //update element by index
+  
+    el.classList.add("class3", "class4"); el.classList
+    .remove("class1", "class2"); el.classList.toggle(
+     "class5", "class6");
+    /*classList allow us to setAttribute("just classes") without override the previos classes.
+    by adding or removing or toggle classes.*/
+★event
+  <!doctype html>
+  <html>
+  <head>
+   <title></title>
+   <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+  <button id="d">click</button>
+  <p id="d"></p>
+  <button id="e">doubleClick</button>
+  <p id="e"></p>
+  <textarea rows="4" cols="20">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla </textarea><br>
+  <textarea id="bio" rows="3" cols="15" placeholder="bio"></textarea>
+  <p class="log1"></p>
+  <input placeholder="user name">
+  <p class="log2"></p>
+  <input id="range" type="range">
+  <p class="log3"></p>
+   <script src="script.js"></script>
+  </body>
+  </html>
+  
+  
+  
+  
+  function eventHandler() {
+   var pd = document.querySelector("p#d");
+   pd.innerText = "hhh";
+  }
+  var bd = document.querySelector("button#d");
+  bd.onclick = eventHandler;
+  //insted of outdated attribute event we use property event fallowed by event handler without ().
+  function changeColor() {
+   var pe = document.querySelector("p#e");
+   be.classList.toggle("yellow");
+  }
+  var be = document.querySelector("button#e");
+  be.ondblclick = changeColor;
+  //change on double click
+  function scroll() {
+   ta1.classList.add("yellow");
+  }
+  var ta1 = document.querySelector("textarea");
+  ta1.onscroll = scroll;
+  //change on scrolling down
+  function log() {
+   var log1 = document.querySelector(".log1");
+   log1.innerText = "log: " + ta2.value;
+  }
+  var ta2 = document.querySelector("#bio");
+  ta2.onchange = log;
+  //change after complet all inputing.
+  function count1() {
+   var log2 = document.querySelector(".log2");
+   log2.innerHTML = input1.value.length +
+    " character";
+  }
+  var input1 = document.querySelector("input");
+  input1.oninput = count1;
+  
+  function count2() {
+   var log3 = document.querySelector(".log3");
+   log3.innerHTML = input2.value + "%";
+  }
+  var input2 = document.querySelector("#range");
+  input2.oninput = count2;
+  //change while inputing.
+  
+  
+  .yellow{
+  padding: 5px 10px 5px 10px;
+  background-color: yellow;
+  }
+  body {
+   text-align: center;
+  }

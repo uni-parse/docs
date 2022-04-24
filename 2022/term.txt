@@ -1,4 +1,5 @@
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+  consant ≠variable
   fundamentals: core-bascs
   parse=processing
   optional≠mandatory

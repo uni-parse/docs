@@ -3,6 +3,33 @@
   *place into document: in <head> or just before </body>.
     •embedded: <script>…</script> 
     •external: <secript src=path/file.js>/*Ø*/</script>
+★value:
+  »data types:
+    •undefined, if declared var without initial value.
+    •null: Define this variable, but give it no inherent value
+    •number: can calculated by +plus -minus *multiply /divide operators.
+    •string: 
+      ›enclosed by single|double quotes, 
+      ›concat'enation '+' operator combine two-strings|string+number to one string.
+      ›escape: \\, \', \", \n(new line), \t(tab), \r(carriage return), \f(form feed), \b(word boundary)
+    •booleans: true = !false | false = !true ==0==null==""==undifined
+  »array:
+    •are members of ordered data values
+    •indexed frome 0, separated by commas, surrounded by square brakets[]
+    •can use|call|refer just indexed value
+      let arr = [5, 'five', '5'];
+      let five = arr[1]; // five = 'five';
+    •we can calculate number of values by .length:
+      let arr = [v1, v2, …, v?];
+      let members = arr.length; //if v? → 500'th, members=501
+  »function():
+    •Worning: when declare & assign function to variable, it will automaticly run(without calling it)
+    •if the function contain 'return keyword':
+      ›it will run until return stop it
+      ›then as addition, it will represented by rhe returned value.
+    •if the function do not contain 'return keyword':
+      ›it will run all the code block
+      ›then as addition, it will represented by the value: undefined.
 ★variables:
   *syntax:
     let vName; //declaration
@@ -40,34 +67,7 @@
     •star with letter|underscape (not number)
   *equal = operator: assine value
   *semiColon ; symbol: end command
-  *value:
-    »data types: 
-      •undefined, if declared var without initial value.
-      •null: Define this variable, but give it no inherent value
-      •number: can calculated by +plus -minus *multiply /divide operators.
-      •string: 
-        ›enclosed by single|double quotes, 
-        ›concat'enation '+' operator combine two-strings|string+number to one string.
-        ›escape: \\, \', \", \n(new line), \t(tab), \r(carriage return), \f(form feed), \b(word boundary)
-      •booleans: true = !false | false = !true ==0==null==""==undifined
-    »array:
-      •are members of ordered data values
-      •indexed frome 0, separated by commas, surrounded by square brakets[]
-      •can use|call|refer just indexed value
-        let arr = [5, 'five', '5'];
-        let five = arr[1]; // five = 'five';
-      •we can calculate number of values by .length:
-        let arr = [v1, v2, …, v?];
-        let members = arr.length; //if v? → 500'th, members=501
-    »function():
-      •Worning: when declare & assign function to variable, it will automaticly run(without calling it)
-      •if the function contain 'return keyword':
-        ›it will run until return stop it
-        ›then as addition, it will represented by rhe returned value.
-      •if the function do not contain 'return keyword':
-        ›it will run all the code block
-        ›then as addition, it will represented by the value: undefined.
-★operators: 
+★operators:
   *comparison operators: 'putted in statment like if(){}'
     •equality: (5 == '5') is true
     •inequality: (5 != '4') is true
@@ -314,11 +314,26 @@
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
 ★concepts:
+
+
+★values:
+  ►literal:
+    ▬undefned
+    ▬null
+    ▬boolean: true?false
+    ▬number
+      •integer: without fraction even ±#.0
+      •decimal(float): ±#.f
+    ▬string: `…`|'…'|"…"
+    ▬array: [Ø|value,…?]
+    ▬object: {Ø|property:value,method:function(){},…?}
+  ►≠literal: varName|func()|(n?operator)
 ★variables: store reusabe data.
   ►dec&init: const?let name=value,…?;
     ▬declaring: const?let name1,…?; ▬initializing: name=update;
-  ►
-★
+    •let declare updatable var, const declare ≠updatable var.
+    •const array=[…],object={…}; //content … can be updated !!.
+  ►name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
 ★
 ★
 ★
