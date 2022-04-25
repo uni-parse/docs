@@ -363,6 +363,8 @@
       str.slice(start=0,end=str.length)//strⒹ,'str[s]…str[e-1]'
       str.toLowerCase?toUpperCase()//string
       str.replace?replaceAll(subStr,newSubStr)//string
+      str.split(separator,limit?)//[array]
+        'a/b/c'.split('/',2) //['a','b']
     ▬array:
       arr[i][i] //item nth i+1 of nested arr nth i+1
       arr.indexOf(item)//+#,-1
@@ -371,9 +373,23 @@
       […,last].pop()//last, remove last item.
       [first,…].shift()//first, remove first item.
       arr.splice(start=0,count)//[]Ⓓ,[arr[s],…],remove [arr[s]…]
-
-★statements
-  ►typeof <expression> //number|string|object
+      arr.map(fN) //({ newArr:[], m:function(){
+          for (const i of arr){this.newArr.push(fN(i))}
+          return this.newArr} }).m()
+        function x2(i){return i*2}; [1,3,5].map(x2) //[2,6,10]
+      arr.filter(fN'condition)//[matchedItems…]
+        //({ newArr:[], m:function(){
+          for (const i of arr){if(fN(i)){this.newArr.push(i)}}
+          return this.newArr} }).m()
+        [0,'1',2,'3'].filter(i=>typeof(i)=='number') //[0,2]
+        ['ccc','a','bb'].filter(i=>i.length>=2) //['ccc','bb']
+      arr.toString() //'arr[0],…,arr[arr.length-1]'
+      arr.join(separator=',') //'arr[0],…,arr[arr.length-1]'
+★statements:
+  ►??
+    ▬typeof <expression> //number|string|object
+  ►flow control:
+    ▬for (const item of arr){console.log(item)}
 ★variables: store reusabel data.
   ►dec&init: const?let name=value,…?;
     ▬declaring: const?let name1,…?; ▬initializing: name=update;
