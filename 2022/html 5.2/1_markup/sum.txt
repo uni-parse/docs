@@ -33,7 +33,7 @@
   •type=module(ES6)| text/javascript| application/json| …
   •nomodule: execute fallback.js #only if #Unsupported ES2015
   •async|defer(require src=): download script in parallel to page parsing, executed #Before(async)|After(defer) parsing end
-    ›without async|defer: download & executed script immediately & blocking parsing(تحليل) until done.
+    ›without async|defer: download & executed script immediately & blocking parsing until done.
   •crossorigin= anonymous| use-credentials
   •referrerpolicy(80noIos)= unsafe-url no-referrer no-referrer-when-downgrade origin origin-when-cross-origin same-origin strict-origin strict-origin-when-cross-origin
   •integrity=filehash(https://www.srihash.org/), block if source manipulated by attackers, required crossorigin=anonymous

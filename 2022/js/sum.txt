@@ -1,4 +1,4 @@
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★concepts: its riginal name was live-script ≠java.
   *place into document: in <head> or just before </body>.
     •embedded: <script>…</script> 
@@ -8,11 +8,11 @@
     •undefined, if declared var without initial value.
     •null: Define this variable, but give it no inherent value
     •number: can calculated by +plus -minus *multiply /divide operators.
-    •string: 
+    •string:
       ›enclosed by single|double quotes, 
       ›concat'enation '+' operator combine two-strings|string+number to one string.
       ›escape: \\, \', \", \n(new line), \t(tab), \r(carriage return), \f(form feed), \b(word boundary)
-    •booleans: true = !false | false = !true ==0==null==""==undifined
+    •booleans: true=!false| false=!true ==0==null==""==undifined
   »array:
     •are members of ordered data values
     •indexed frome 0, separated by commas, surrounded by square brakets[]
@@ -312,23 +312,55 @@
       .
 
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
-★concepts:
-
-
-★values:
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱
+★consepts: its riginal name was live-script ≠java.
+  ►place into document: in <head> or just before </body>.
+    •embedded: <script>…</script>
+    •external: <secript src=path/file.js>/*Ø*/</script>
+  ►loading: <script> pause HTML-parse until (fetch & execute).
+   <s defer*src> parallel(fetch,parse), execute after parse-End
+   <s async*src> parallel(fetch,parse), pauseParse until execute
+★data types:
+  ►global:
+    alert()
+    
   ►literal:
-    ▬undefned
-    ▬null
-    ▬boolean: true?false
-    ▬number
-      •integer: without fraction even ±#.0
-      •decimal(float): ±#.f
-    ▬string: `…`|'…'|"…"
+    ▬undefnedⒹ if var declared without initialized.
+    ▬null: Define this var, but give it no inherent value
+    ▬boolean: true=!false| false=!true ==0==null==""==undifined
+    ▬number: •integer: ±#≠.0 •decimal'float: ±#.f •double
+    ▬string: •sequence of characters quoted by `|'|"
+      •+|+=operator concat str+str|str+number //string.
+      •backTick template: `str${<expression>str}`
+      •\escape just before: \\ \' \" \n?u{a}=newLine \t?u{9}=tab \r?u{d}=carriageReturn \f?u{c}=formFeed \b?u{8}=backSpace \v?u{b}=lineTabulation
+        ›\uHHHH \u{H~HHHHHH} \xHH
     ▬array: [Ø|value,…?]
     ▬object: {Ø|property:value,method:function(){},…?}
   ►≠literal: varName|func()|(n?operator)
-★variables: store reusabe data.
+★operators: order: *%/,+-,<=>,== !=
+  ►numeric:+add -subtract *multiplay /divid %reminder **exponent
+    •increment++ decrement-- by 1.
+    •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
+  ►comparison'bool:===identical'val&type ==equality !== != <=>'#
+  ►string: +|+=concatecation str+str?n//string
+★buld-in properties and methods: (everything are object)
+  ▬object:
+    obj.property //value of property
+    obj.method() //call function() of method
+  ►literal
+    ▬number:
+      n.toFixed(+#) // round n.10^#
+      n.toString() //'n'
+    ▬string:
+      str[i]//character nth i
+      str.length//#
+      Number≠number('#')//#
+    ▬array:
+      arr[i] //item nth i
+      arr[i][i] //item nth i of nested arr nth i
+★statements
+  ►typeof <expression> //number|string|object
+★variables: store reusabel data.
   ►dec&init: const?let name=value,…?;
     ▬declaring: const?let name1,…?; ▬initializing: name=update;
     •let declare updatable var, const declare ≠updatable var.

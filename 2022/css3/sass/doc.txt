@@ -1,4 +1,4 @@
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 scss= superset of css, sass= indent syntax style sheet.
 ★comments: /*!preserve /*Øif-compressed //ØleftLine ///ØsassDocs
 ★sass stylesheet stracture:
@@ -70,17 +70,17 @@ scss= superset of css, sass= indent syntax style sheet.
     ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global}
  *operators: ›order: unary(not ± /),*%/,+-,<=>,== !=,and,or.
   •() used to separate operators|lists|unquoted-str
-  •equality operators: == !=
+  •equality: == !=
    ›numbers can be unitless or compatible, -1in==-96px=T 2==2=T
    ›strings can un?quoted by '?", hi=='hi'|"hi"=T
    ›colors (red|green|blue|alpha), #80808033==rgb(gray,.2)=T
    ›lists (els|order|separator|bracketed), (e1,e2)==[e3 e2 e1]=F
    ›maps (keys|values), (k1:v1,k2:v2)==(k1:v1,k2:v2)=T
-   ›boolean?null (must eqaul to themselves), null==false=F
+   ›boolean?null (must equal to themselves), null==false=F
    ›function (name|reference)
     meta.get-function(a,null,m1)==meta.get-function(b,null,m1)=F
     meta.get-function(a,null,m1)==meta.get-function(a,null,m2)=F
-  •numeric operators: <exp> +|-|*|% <exp>
+  •numeric: <exp> +|-|*|% <exp>
    ›numbers can be both unitless or compatible(return1stUnit)
    »%reminder=devidend/divisor-quotient (r+kn)%n=r //k€Z
     ›k%1=0 #.f%1=f -#.f%1=1-f ±#%0=NaN (±#unit%0=NaNunit)
@@ -100,16 +100,16 @@ scss= superset of css, sass= indent syntax style sheet.
     ›n/n = <exp> of other operator(≠/division)
     ›ex: @function d($a){@return $a/2};
       $v:16/2;@debug (4/2*4)/(2) $v/d(4) (8/2) d(8);//4 4 4 4|6W
-  •relational operators(numbers): < > <= >=
+  •relational(numbers): < > <= >=
    ›numbers can be both unitless or compatible
    ›if just one number unitless, he will be united as the other.
    ›<expression> <|<=|>|>= <expression>, 1<2=T 3q<1mm=T 1<=2q=T
     @debug 100px > 10s;//Error: Incompatible units px and s.
-  •boolean operators: and or not
+  •boolean: and or not
    ›not <expression>//oppsite-boolean notT=F notF=T
    ›<expression> and <expression>//T&T=T T&F|F&F=F
    ›<expression> or <expression>//TorT|TorF=T ForF=F
-  •string concatenate <exp> +|-|/ <exp>
+  •string concatenate: <exp> +|-|/ <exp>
     ›Rose+' Mary'='Rose Mary' ›sans - serif=sans-serif//hyphen
     ›unary: - moz=-moz, / 15px=/15px
 ★style rules: as css selector{declarations=property:value;} +:
@@ -552,4 +552,4 @@ scss= superset of css, sass= indent syntax style sheet.
   ▶
   ▶ 
   ▶
-★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©†₱…
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
