@@ -312,7 +312,7 @@
       .
 
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱
+▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★consepts: its riginal name was live-script ≠java.
   ►place into document: in <head> or just before </body>.
     •embedded: <script>…</script>
@@ -321,9 +321,6 @@
    <s defer*src> parallel(fetch,parse), execute after parse-End
    <s async*src> parallel(fetch,parse), pauseParse until execute
 ★data types:
-  ►global:
-    alert()
-    
   ►literal:
     ▬undefnedⒹ if var declared without initialized.
     ▬null: Define this var, but give it no inherent value
@@ -331,7 +328,7 @@
     ▬number: •integer: ±#≠.0 •decimal'float: ±#.f •double
     ▬string: •sequence of characters quoted by `|'|"
       •+|+=operator concat str+str|str+number //string.
-      •backTick template: `str${<expression>str}`
+      •backTick template: `str${<expression>str}` preserve WS
       •\escape just before: \\ \' \" \n?u{a}=newLine \t?u{9}=tab \r?u{d}=carriageReturn \f?u{c}=formFeed \b?u{8}=backSpace \v?u{b}=lineTabulation
         ›\uHHHH \u{H~HHHHHH} \xHH
     ▬array: [Ø|value,…?]
@@ -347,23 +344,34 @@
   ▬object:
     obj.property //value of property
     obj.method() //call function() of method
+  ►native functions: window.func()
+    ▬dialog box(show message): •prompt(req)//[input],(ok)submit
+      •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
+    ▬return val: •Date()//date time day GMT
+      •setTimeout(funcName, #'ms) //delay calling funcName()
   ►literal
     ▬number:
       n.toFixed(+#) // round n.10^#
-      n.toString() //'n'
+      (#).toString() //'#'
     ▬string:
       str[i]//character nth i+1
       str.length//#
-      Number('#')//#
+      Number(Ø?''|'#'|'≠#')//0|#|NaN
+      parseInt('#'|Ø?''?'≠#')//#|NaN
       str.includes?startsWith?endsWith(subStr)//boolean
       str.indexOf(subStr, from=0)//#,-1
-      str.slice(start=0,end=-1)//'subStr'
+      str.slice(start=0,end=str.length)//strⒹ,'str[s]…str[e-1]'
       str.toLowerCase?toUpperCase()//string
       str.replace?replaceAll(subStr,newSubStr)//string
-
     ▬array:
-      arr[i] //item nth i+1
       arr[i][i] //item nth i+1 of nested arr nth i+1
+      arr.indexOf(item)//+#,-1
+      arr.push(i,…?)//#(arr.length + [i,…?].length), add→end.
+      arr.unshift(i,…?)//#(new.length), add→start.
+      […,last].pop()//last, remove last item.
+      [first,…].shift()//first, remove first item.
+      arr.splice(start=0,count)//[]Ⓓ,[arr[s],…],remove [arr[s]…]
+
 ★statements
   ►typeof <expression> //number|string|object
 ★variables: store reusabel data.
@@ -372,6 +380,5 @@
     •let declare updatable var, const declare ≠updatable var.
     •const array=[…],object={…}; //content … can be updated !!.
   ►name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
-★
 ★
 ★
