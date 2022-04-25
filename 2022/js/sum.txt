@@ -352,12 +352,18 @@
       n.toFixed(+#) // round n.10^#
       n.toString() //'n'
     ▬string:
-      str[i]//character nth i
+      str[i]//character nth i+1
       str.length//#
-      Number≠number('#')//#
+      Number('#')//#
+      str.includes?startsWith?endsWith(subStr)//boolean
+      str.indexOf(subStr, from=0)//#,-1
+      str.slice(start=0,end=-1)//'subStr'
+      str.toLowerCase?toUpperCase()//string
+      str.replace?replaceAll(subStr,newSubStr)//string
+
     ▬array:
-      arr[i] //item nth i
-      arr[i][i] //item nth i of nested arr nth i
+      arr[i] //item nth i+1
+      arr[i][i] //item nth i+1 of nested arr nth i+1
 ★statements
   ►typeof <expression> //number|string|object
 ★variables: store reusabel data.
