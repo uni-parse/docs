@@ -60,9 +60,7 @@ function sassTask() {
       //.pipe(sourcemaps.write('../maps'))
       .pipe(dest('build'))
   );
-}
-exports.css = sassTask;
-// only sass Watch tasks
+}// only sass Watch tasks
 function onlySassTask() {
   return src('src/sass/**/*.scss', { sourcemaps: false })
     .pipe(sass.sync().on('error', sass.logError))
@@ -73,13 +71,13 @@ function onlySassTask() {
     )
     .pipe(rename('_debug.css'))
     .pipe(dest('src/sass/'));
-}
-function sassWatchTask(cd) {
+} function sassWatchTask(cd) {
   onlySassTask();
   watch('src/sass/**/*.scss', onlySassTask);
   cd();
-  console.log("hi😎UniParse😄 I'am: watching sass");
+  console.log("Hi😎UniParse😄 I'm: watching sass");
 }
+exports.css = sassTask;
 exports.sass = sassWatchTask;
 
 // javascript task
@@ -87,7 +85,7 @@ const terser = require('gulp-terser');
 const concat = require('gulp-concat');
 function jsTask() {
   return (
-    src('src/js/**/*.js', { sourcemaps: false })
+    src(['src/js/**/*.js', '!src/js/**/_debug.js'], { sourcemaps: false })
       .pipe(concat('script.js'))
       .pipe(
         terser({
@@ -140,8 +138,57 @@ function jsTask() {
       //.pipe(rename('script.js'))
       .pipe(dest('build'))
   );
+}//only js watch task
+function onlyJsTask() {
+  return (
+    src(['src/js/**/*.js', '!src/js/**/_debug.js'], { sourcemaps: false })
+      .pipe(concat('_debug.js'))
+      .pipe(
+        terser({
+          parse: {
+            bare_returns: false,
+            html5_comments: true,
+            shebang: true, // support #!command as the first line
+            spidermonkey: false,
+          },
+          compress: {
+            defaults: false, // affect MOST options initial values
+            arrows: false, // m(){return x} → m:()=>x
+            arguments: false,
+            booleans: false, // !!a ? b : c → a ? b : c
+            booleans_as_integers: false, // true|false → 1|0, ===|!== → ==|!=
+            collapse_vars: false,
+            comparisons: false, // !(a <= b) → a > b
+            computed_props: true, //{["computed"]: 1}→{computed: 1}
+            conditionals: true, // if|else
+            dead_code: true,
+            directives: true,
+            drop_console: true,
+            drop_debugger: true,
+            ecma: 5, // 5|2015 'es5→ES6+'
+            // …
+          },
+          ecma: 5, // specify one of: 5, 2015, 2016, etc.
+          enclose: false, // or specify true, or "args:values"
+          keep_classnames: false,
+          keep_fnames: false,
+          ie8: false,
+          module: false,
+          nameCache: null, // or specify a name cache object
+          safari10: false,
+          toplevel: false,
+        })
+      )
+      .pipe(dest('src/js'))
+  );
+} function jsWatchTask(cd) {
+  onlyJsTask();
+  watch(['src/js/**/*.js', '!src/js/**/_debug.js'], onlyJsTask);
+  cd();
+  console.log("Hi😎UniParse😄 I'm: watching js");
 }
-exports.js = jsTask;
+exports.js = jsWatchTask;
+exports.Js = jsTask;
 
 // images tasks
 const imagemin = require('gulp-imagemin');
@@ -177,16 +224,12 @@ function imgTask() {
       )
     )
     .pipe(dest('build/images/'));
-}
-exports.img = imgTask;
-function webpTask() {
+} function webpTask() {
   return src('src/images/**/*')
     .pipe(webp())
     .pipe(imagemin({ verbose: true }))
     .pipe(dest('build/images/'));
-}
-exports.webp = webpTask;
-function spriteTask() {
+} function spriteTask() {
   return src('src/images/*')
     .pipe(
       spritesmith({
@@ -196,13 +239,15 @@ function spriteTask() {
     )
     .pipe(dest('build/images/'));
 }
+exports.img = imgTask;
+exports.webp = webpTask;
 exports.sprite = spriteTask;
 
 // deleting temp files
 const del = require('del');
 function deleteTask(cd) {
   cd();
-  console.log("hi😎UniParse😄 I'am: cleaning");
+  console.log("Hi😎UniParse😄 I'm: cleaning");
   return del.sync([
     'build/**/*',
     '!build/index.html',
@@ -220,7 +265,7 @@ function serverTask(cd) {
     notify: false,
   });
   cd();
-  console.log("hi😎UniParse😄 I'am: connecting");
+  console.log("Hi😎UniParse😄 I'm: connecting");
 }
 function reloadTask(cb) {
   browserSync.reload();
@@ -230,13 +275,12 @@ exports.sync = serverTask;
 
 // watch task
 function watchTask(cd) {
-  watch('src/sass/**/*.scss', series(sassTask, reloadTask));
-  watch('src/js/**/*.js', series(jsTask, reloadTask));
   watch('src/**/*.html', series(htmlTask, reloadTask));
+  watch('src/sass/**/*.scss', series(sassTask, reloadTask));
+  watch(['src/js/**/*.js', '!src/js/**/_debug.js'], series(jsTask, reloadTask));
   watch('src/images/**/*', series(webpTask, reloadTask));
-  //watch('build/**/*', gitTask);
   cd();
-  console.log("hi😎UniParse😄 I'am: watching");
+  console.log("Hi😎UniParse😄 I'm: watching");
 }
 exports.w = watchTask;
 
