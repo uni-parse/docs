@@ -162,7 +162,7 @@
   ►literal:
     ▬undefnedⒹ if var declared without initialized.
     ▬null: Define this var, but give it no inherent value
-    ▬boolean: true=!false| false=!true ==0==null==""==undifined
+    ▬boolean: true !false anyVal|false !true NaN''null0undifined
     ▬number: •integer: ±#≠.0 •decimal'float: ±#.f •double
     ▬string: •sequence of characters quoted by `|'|"
       •+|+=operator concat str+str|str+number //string.
@@ -182,6 +182,9 @@
     •increment++ decrement-- by 1.
     •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
   ►comparison'bool:===identical'val&type ==equality !== != <=>'#
+  ►logical:
+    ▬!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
+    ▬exp&&exp//TandT=true,false ▬exp||exp//ForF=false,true
   ►string: +|+=concatecation str+str?n//string
 ★buld-in properties and methods: (everything are object)
   ▬object:
@@ -244,42 +247,35 @@
           //issue: unexpected errors, fix: avoid this method.
       •IIFE: Immediately Invoked Functional Expression
         (function(){local=v}()) //func isolation, local scope
-  ►function name(placeholder_arguments)
-    { /*code block*/; return expression; /*ignored*/ }
-    fName(input_arguments); //call the function
-  
-    *scope:
-      •globally scoped: 
-        function(){};
-      •temporary scoped: 
-        (function(){})();
-    *argumets:
-      •placeholder variables lives just in the current function,
-      •can be omitted, just one value(data|array), several values(data) separated by commas.
-    *code block: can contain variables, loops, another functions,?
-    *return keyword:
-      •tell the function: stop executing code block now, so any code came after return keyword will be ignored.
+  ►function name(arguments)
+      { /*code block*/; return expression; /*ignored*/ }
+      fName(input-args); //call the function
+    ▬scope: •global: function(){};
+      •temporary: (function(){})();
+    ▬argumets: optional if arg=initialized, can be comma list
+    ▬block: can contain variables, loops, functions, ?
+    ▬return keyword:
+      •stop executing, & ignored below code.
       •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
-      •if we did not add return keyword, the function will return 'undefined' value by default.
+      •if 'return' omitted, return undefined
   ►flow control:
     ▬if(condition1 met){ //execute block1
         }else if(condition2 met) { //execute block2
         }…else{ //execute last-block}
       •condition: boolean|operator == != === !== <=>|method|func
-    ▬for(dec&init,condition,operator){…}
-      for (const i=0; i<arr.length; i++){//…arr[i]…}
-      for (const i of arr){console.log(i)}
-    •nested functions: 
-      by defualt functions iside 'for loop' treats variables globaly, not temporary in each step of loop, the solotion is:
-      (function(i) {
-        return function() { 
-          //can use temporary: i
-        };
-      })(i);
-    •benefits: 
-      ›we can applay styles to list of elements.
-      ›add|remove|change attributes to each element from long list(like inputes).
-      ›creat arrays to build folters of search element & …
+        true !false anyVal|false !true NaN''null0undifined
+      •block can contain 'return', nest other if statement.
+    ▬switch
+    ▬for:
+      for(dec&init,condition,operator){…}
+        for (const i=0; i<arr.length; i++){//…arr[i]…}
+      for(declare arg of arr){…}
+        for (const i of arr){console.log(i)}
+      •scope issue: nested funcs treats vars globally, fix:
+        (function(i){return function(){/*temporary vars*/} })(i)
+      •benefits: ›we can apply styles to list of elements.
+        ›add|remove|change attributes to each element from long list(like inputes).
+        ›creat arrays to build filters of search element & …
     ▬while(){}
 ★
 ★
