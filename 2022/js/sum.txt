@@ -265,7 +265,11 @@
       •condition: boolean|operator == != === !== <=>|method|func
         true !false anyVal|false !true NaN''null0undifined
       •block can contain 'return', nest other if statement.
-    ▬switch
+    ▬switch(exp){
+      case choice1: /*code1*/ break;
+      case choice2: /*code2*/ break;…
+      default: //code
+    }
       •
       •
       •
