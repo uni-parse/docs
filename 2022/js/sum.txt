@@ -266,6 +266,9 @@
         true !false anyVal|false !true NaN''null0undifined
       •block can contain 'return', nest other if statement.
     ▬switch
+      •
+      •
+      •
     ▬for:
       for(dec&init,condition,operator){…}
         for (const i=0; i<arr.length; i++){//…arr[i]…}
