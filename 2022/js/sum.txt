@@ -1,166 +1,4 @@
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-★concepts: its riginal name was live-script ≠java.
-  *place into document: in <head> or just before </body>.
-    •embedded: <script>…</script> 
-    •external: <secript src=path/file.js>/*Ø*/</script>
-★value:
-  »data types:
-    •undefined, if declared var without initial value.
-    •null: Define this variable, but give it no inherent value
-    •number: can calculated by +plus -minus *multiply /divide operators.
-    •string:
-      ›enclosed by single|double quotes, 
-      ›concat'enation '+' operator combine two-strings|string+number to one string.
-      ›escape: \\, \', \", \n(new line), \t(tab), \r(carriage return), \f(form feed), \b(word boundary)
-    •booleans: true=!false| false=!true ==0==null==""==undifined
-  »array:
-    •are members of ordered data values
-    •indexed frome 0, separated by commas, surrounded by square brakets[]
-    •can use|call|refer just indexed value
-      let arr = [5, 'five', '5'];
-      let five = arr[1]; // five = 'five';
-    •we can calculate number of values by .length:
-      let arr = [v1, v2, …, v?];
-      let members = arr.length; //if v? → 500'th, members=501
-  »function():
-    •Worning: when declare & assign function to variable, it will automaticly run(without calling it)
-    •if the function contain 'return keyword':
-      ›it will run until return stop it
-      ›then as addition, it will represented by rhe returned value.
-    •if the function do not contain 'return keyword':
-      ›it will run all the code block
-      ›then as addition, it will represented by the value: undefined.
-★variables:
-  *syntax:
-    let vName; //declaration
-    let vName = value; //declaration & initialization
-    vName = newValue; //update|initialize
-  *let keyword: declare one or more variables separated by ,.
-    •ex: let var1=val1, var2=val2, var3=val3, …;
-  *scope:
-    •outside function: available to all scripts & all functions
-      let global=value; // preceded by let
-    •inside function: 
-      »locally scoped: available just for its parent function
-        ›var local=value; // preceded by let
-      »globally scoped: available to all scripts & others functions, just after #CALL the function, else{undefined}
-        ›global=value; // ommited the let
-        ›Worning: unexpected errors can happend
-          function a(v){
-            g = v + v; // globally scoped
-            let l = v + v + v; //locally scoped
-            alert('function code block run !!');
-            return l;
-          }
-          let g = 10; // g=10
-          let G = a(20); 
-          // a(20) run all the code block, before stop & returned variable l,so g = 20 + 20 = 40
-          alert(g); // Alerts 40.
-        ›solution: 
-          _avoid globally scoped variables Inside functions, 
-          _or use IIFE'Immediately Invoked Functional Expression' (…()); to isolation the function and its code bloke, but it will run immediately & can'not recalled
-            (function(){//not sure if global|local scope}());
-  *name:
-    •case-sensitive
-    •do not contain special character (*-+=&$#@!.,><;:'"\|/?…)
-      _do not contain space character(insted use camle-case)
-    •star with letter|underscape (not number)
-  *equal = operator: assine value
-  *semiColon ; symbol: end command
-★operators:
-  *comparison operators: 'putted in statment like if(){}'
-    •equality: (5 == '5') is true
-    •inequality: (5 != '4') is true
-    •identically: (5 === '5') is false, data type number≠string
-    •nonidentical: (5 !== '5') is true
-    •greater than: (5 > 4) is true, (5 > 5) is false
-    •greater than or equal: (5 >= 4) | (5 >= 5) is true
-    •less than: (5 < 6) is true
-    •less than or equal: (5 <= 6) | (5 <= 5) is true
-  *mathematical operators: only numeric data values|variables
-    •add: let a=b+3
-    •addition: let a+=b; a=a+b;
-    •increment: let a++; a=a+1;
-    •subtract: let a=b-3;
-    •subtraction: let a-=b; a=a-b;
-    •decrement: let a--; a=a-1;
-    •multiply: let a=b*3;
-    •multiplication: let a*=b; a=a*b;
-    •divide: let a=b/3
-    •division:let a/=b; a=a/b;
-★if statement condition:
-  *structure: 
-    if(the first condition met){
-      //then execute this block
-    }else if(the second condition met {
-      //then execute this block
-    }else if(the third condition met){
-      // then execute this block
-    }else if(…){
-      //…
-    }else{
-      //if no condition met, then run|execute this last block
-    }
-  *condition: (compatios operator): (==,!=,===,!==,>,>=,<,<=)
-  *block: commands or console logs or …
-★loop:
-  *for:
-    •structure:
-      for(declare & initialize variable; condition; operator){
-        //do this
-      }
-      ›ex:
-        for(let i=0; i < array.length; i++){
-          //run this …array[i]…
-        }
-    •nested functions: 
-      by defualt functions iside 'for loop' treats variables globaly, not temporary in each step of loop, the solotion is:
-      (function(i) {
-        return function() { 
-          //can use temporary: i
-        };
-      })(i);
-    •benefits: 
-      ›we can applay styles to list of elements.
-      ›add|remove|change attributes to each element from long list(like inputes).
-      ›creat arrays to build folters of search element & …
-  *while: //we have also while(){} loop, but this book do not discussed it.
-★function:
-  *types:
-    •native functions: (predefined)
-      »dyalog box:
-        ›alter('message'); //answer: ok
-        ›confirm('question?'); //answer: ok|cancel
-        ›prompt(); //answer: input, ok
-      »return value:
-        ›Date(); //not date(), return date, time, day, gmt
-        ›parseInt('123'); // convert numbers from string('123') → number(123) data type.
-        ›setTimeout(fName, 5000); // run function by delay(ms), without including parentheses & arguments, i dont know why !!!
-        ›…
-    •custome function syntax: 
-      function fName(placeholder_arguments){
-        //code block
-        return value;
-        //ignored code block because return called.
-      }
-      fName(input_arguments); //call the function'
-  *function keyeord: declare new function
-    •declaration a function, do not call it !!
-    •to run it, we need to Call it !!
-  *scope:
-    •globally scoped: 
-      function(){};
-    •temporary scoped: 
-      (function(){})();
-  *name: as variable rules
-  *argumets: 
-    •placeholder variables lives just in the current function,
-    •can be ommited, just one value(data|array), several values(data) separated by commas.
-  *code block: can contain variables, loops, another functions,?
-  *return keyword:
-    •tell the function: stop executing code block now, so any code came after return keyword will be ignored.
-    •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
-    •if we did not add return keyword, the function will return 'undefined' value by default.
 ★add behavior to document:
   *syntax:
     •as html attribute:(avoid it)
@@ -331,9 +169,14 @@
       •backTick template: `str${<expression>str}` preserve WS
       •\escape just before: \\ \' \" \n?u{a}=newLine \t?u{9}=tab \r?u{d}=carriageReturn \f?u{c}=formFeed \b?u{8}=backSpace \v?u{b}=lineTabulation
         ›\uHHHH \u{H~HHHHHH} \xHH
-    ▬array: [Ø|value,…?]
+    ▬array: [Ø|item,…?]
+      •items are members of ordered data(even[]&{}) comma separated surrounded by brackets[], indexed from 0
+      •accessed only by index arr[#].
     ▬object: {Ø|property:value,method:function(){},…?}
   ►≠literal: varName|func()|(n?operator)
+    ▬func(): •Worning: if assigned→var, start runing immediately
+      •if contain return: run until return, store returned data.
+      •if return omitted: run all the block, store undefined.
 ★operators: order: *%/,+-,<=>,== !=
   ►numeric:+add -subtract *multiplay /divid %reminder **exponent
     •increment++ decrement-- by 1.
@@ -388,13 +231,56 @@
 ★statements:
   ►??
     ▬typeof <expression> //number|string|object
+  ►variable: store reusabel data.
+    ▬dec&init: const?let name=value,…?;
+     •declaring: const?let name1,…?; ▬initializing: name=update;
+       ›let declare updatable var, const declare ≠updatable var.
+       ›const array=[…],object={…}; //content … can be updated!.
+    ▬name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
+    ▬scope: •topLvl: const?let golbal=v; //available everywhere
+      •in function:
+        ›const?let local=v; //accessed only in this func.
+        ›global=v; //call it will declare global var, undifined
+          //issue: unexpected errors, fix: avoid this method.
+      •IIFE: Immediately Invoked Functional Expression
+        (function(){local=v}()) //func isolation, local scope
+  ►function name(placeholder_arguments)
+    { /*code block*/; return expression; /*ignored*/ }
+    fName(input_arguments); //call the function
+  
+    *scope:
+      •globally scoped: 
+        function(){};
+      •temporary scoped: 
+        (function(){})();
+    *argumets:
+      •placeholder variables lives just in the current function,
+      •can be omitted, just one value(data|array), several values(data) separated by commas.
+    *code block: can contain variables, loops, another functions,?
+    *return keyword:
+      •tell the function: stop executing code block now, so any code came after return keyword will be ignored.
+      •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
+      •if we did not add return keyword, the function will return 'undefined' value by default.
   ►flow control:
-    ▬for (const item of arr){console.log(item)}
-★variables: store reusabel data.
-  ►dec&init: const?let name=value,…?;
-    ▬declaring: const?let name1,…?; ▬initializing: name=update;
-    •let declare updatable var, const declare ≠updatable var.
-    •const array=[…],object={…}; //content … can be updated !!.
-  ►name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
+    ▬if(condition1 met){ //execute block1
+        }else if(condition2 met) { //execute block2
+        }…else{ //execute last-block}
+      •condition: boolean|operator == != === !== <=>|method|func
+    ▬for(dec&init,condition,operator){…}
+      for (const i=0; i<arr.length; i++){//…arr[i]…}
+      for (const i of arr){console.log(i)}
+    •nested functions: 
+      by defualt functions iside 'for loop' treats variables globaly, not temporary in each step of loop, the solotion is:
+      (function(i) {
+        return function() { 
+          //can use temporary: i
+        };
+      })(i);
+    •benefits: 
+      ›we can applay styles to list of elements.
+      ›add|remove|change attributes to each element from long list(like inputes).
+      ›creat arrays to build folters of search element & …
+    ▬while(){}
+★
 ★
 ★
