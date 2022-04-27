@@ -1,13 +1,7 @@
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-★add behavior to document:
-  *syntax:
-    •as html attribute:(avoid it)
-      <el onevent='listener()'>…</el>
-    •as method attached to element:(avoid it)
-      object.onevent = listener;
-    •as listener:
-      object.addEventListener('event', listener, true|false, option)
-  *object: (eventTarget)
+  
+    ▬target: document'DOM or subNode| window'browser
+      
     •we can access elements throught DOM object: document
       ›and browser window through the object: window
     •we can target specific elements inside the root html by: 5 queries:
@@ -56,10 +50,7 @@
     •once: true|false // if true, then it will run the eventHandler, then call: object.removeEventListener()
     •capture: true|false // ??
     •passive: true|false // ??
-★DOM: (document pbject module)
-  *introduction:
-    •DOM is programing language translate html|xml|…? to map can be accessed by java-script|ruby|c++|…?.
-    •in our html, DOM give us map as tree of "node's", wich node can be 'element, attribute, text'
+★DOM: (document object module)
   *accessing DOM elements nodes:
     •demo:
       let nodeList = document
@@ -186,10 +177,32 @@
     ▬!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
     ▬exp&&exp//TandT=true,false ▬exp||exp//ForF=false,true
   ►string: +|+=concatecation str+str?n//string
+  ►ternary: (condition) ? /*if true run this*/ : /*else this*/;
+★DOM: Api translate html?xml → nodesTree accessed by js?ruby?c#…
+  •nodes in html: el, att, text
+  ►access node:
+    ▬methodes: document.method()
+      getElementById('id')//return 1el
+
+    ▬
+    ▬
+  ►access&manipulate att node:
+    ▬
+    ▬
+    ▬
+  ►
+  ►
 ★buld-in properties and methods: (everything are object)
   ▬object:
     obj.property //value of property
     obj.method() //call function() of method
+  ►event listener: <el onevent=l()> ✖| obj.onevent=l ✖| 
+    obj.addEventListener('event',l,boolean?option) ✓
+    ▬
+    ▬
+    ▬
+    ▬
+
   ►native functions: window.func()
     ▬dialog box(show message): •prompt(req)//[input],(ok)submit
       •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
@@ -258,6 +271,7 @@
       •stop executing, & ignored below code.
       •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
       •if 'return' omitted, return undefined
+  ►
   ►flow control:
     ▬if(condition1 met){ //execute block1
         }else if(condition2 met) { //execute block2
@@ -265,12 +279,9 @@
       •condition: boolean|operator == != === !== <=>|method|func
         true !false anyVal|false !true NaN''null0undifined
       •block can contain 'return', nest other if statement.
-    ▬switch(<choice>'exp) { case <choice1>: /*code1*/; break;
-                            case <choice2>: /*code2*/; break; …
-                            default: //code }
-      •
-      •
-      •
+    ▬switch(<choice>'exp) { case <choice1>: /*code1*/; break
+                            case <choice2>: /*code2*/; break …
+                            default?: //code }
     ▬for:
       for(dec&init,condition,operator){…}
         for (const i=0; i<arr.length; i++){//…arr[i]…}
@@ -281,7 +292,7 @@
       •benefits: ›we can apply styles to list of elements.
         ›add|remove|change attributes to each element from long list(like inputes).
         ›creat arrays to build filters of search element & …
-    ▬while(){}
+    ▬while(condition){/*loop this block*/}
 ★
 ★
 ★
