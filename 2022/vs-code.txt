@@ -1,18 +1,30 @@
 ▶►◄▲▼★♥▬•»›⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-★comments: ctrl /
-★locate errors: F8
-★open terminal: ctrl `
-★open settings: ctrl ,
-★toggle action pnale: crtl B
-★formate: shift alt F
-★un?fold: •current:ctrl shift ][  •all:ctrl K + ctrl J?0~5
-★selecting: •box:shift ←↑↓→|middle_mouse •sameStr:ctrl shift L
-  ►cursors: •vertical:ctrl alt ↑↓ •anywhere:alt click
-★js: object.<complite>:ctrl space
-  ►rename function_name|variable in all project files: F2
-★line: •move→:alt ↑↓ •copy→:shift alt ↑↓ •delete:ctrl shift K
+ctrl ,                   :settings
+ctrl `                   :toggle terminal
+crtl B                   :toggle side bare
+ctrl /                   :toggle comment
 
+ctrl shift? P            :open file|run command?
+ctrl tab shift?          :navigate to other opened tabs
+ctrl \                   :split Editor to Right
+ctrl w                   :close tab
 
+ctrl shift? f|h          :global? find|replace-input
+  Enter | ctrl alt Enter :replace 1|all
 
+home?end | page-up?dpwn  :navigate to line|page start?end
+back|delete              :remove left|right character
+cr sh ][|cr K + cr J?0~5 :un?fold current | all
 
+ctrl D ? 2click| cr sh L :select word|all same words
+shift ←↑↓→| middle_mouse :select sequenced|slice of code
+ctrl alt ↑↓ | alt click  :add cursors ↑↓|anywhere
+
+alt ↑↓|sh alt ↑↓|cr sh K :move|copy|remove line(s) ↑↓
+
+F8                       :locate errors
+shift alt F              :formate
+
+ctrl space               :object.<autoComplite>
+F2                       :rename all project funcName?variables
 
