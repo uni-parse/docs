@@ -3,16 +3,18 @@ ctrl ,                   :settings
 ctrl `                   :toggle terminal
 crtl B                   :toggle side bare
 ctrl /                   :toggle comment
+ctrl k + z               :toggle focus mode
 
 ctrl shift? P            :open file|run command?
 ctrl tab shift?          :navigate to other opened tabs
+ctrl alt ←→              :move tab to other group ↑↓
 ctrl \                   :split Editor to Right
 ctrl w                   :close tab
 
 ctrl shift? f|h          :global? find|replace-input
   Enter | ctrl alt Enter :replace 1|all
 
-home?end | page-up?dpwn  :navigate to line|page start?end
+ctrl ←→| home?end| page↑↓:navigate words|line|page → start?end
 back|delete              :remove left|right character
 cr sh ][|cr K + cr J?0~5 :un?fold current | all
 
