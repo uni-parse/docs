@@ -6,12 +6,15 @@ ctrl /                   :toggle comment
 ctrl k + z               :toggle focus mode
 
 ctrl shift? P            :open file|run command?
+
+ctrl ↑↓                  :scroll ↑↓
 ctrl tab shift?          :navigate to other opened tabs
 ctrl alt ←→              :move tab to other group ↑↓
 ctrl \                   :split Editor to Right
 ctrl w                   :close tab
 
 ctrl shift? f|h          :global? find|replace-input
+  alt W| alt C| alt R    :match world|case|regular expression
   Enter | ctrl alt Enter :replace 1|all
 
 ctrl ←→| home?end| page↑↓:navigate words|line|page → start?end

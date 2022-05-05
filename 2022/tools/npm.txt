@@ -1,0 +1,41 @@
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+ctrl back?delete       delete word
+
+npm init -y
+npm i npm@latest -g
+npm help    help-search
+npm -v
+npm docs pkg // open pkg docs on browser
+★scope: @pkgScope/pkgName
+★version #major.#minor.#patch new→ #+1.0.0|#.#+1.0|#.#.#+1
+  major: big changes, not backwards-compatible, may breakOldCode
+  minor: +api features, backwards-compatible, won't breakOldCode
+  patch: small bug fixes, won't breakOldCode
+
+npm v pkg versions //view array of all versions
+npm list //tree of pkg@v.v.v and its dependencies@v.v.v
+npm outdate // packages-versions-table: current wanted latest
+npm up [pkg …]? --save //"^#.#.#"→ ^#.u.u, "~#.#.#"→ ~#.#.u
+npm r --no-save? pkg … //remove packages from project
+
+npm i pkg? //i all packages.json, under package-loke.json
+  npm i pkg@latest // ^latest.latest.latest
+  npm i pkg@#|#.x // ^#.latest.latest
+  npm i pkg@#.#.#?^#.#.# // ^#.#.#
+  npm i pkg@#.#|#.#.x|~#.#.# // a-like #.#|#.#.x|~#.#.#
+
+npm i --save-prod? pkg … //locally "dependencies"
+npm i -D pkg … //locally "devDepandencies"
+npm i -g pkg-cli … //accessed globally by all projects
+
+
+npm audit fix? --package-lock-only --force
+
+
+npm set-script scriptName "command -?--flag …"
+  //"scripts":{"scriptName1":"command -?--flag …", …}
+npm run scriptName
+
+
+npm access adduser bin bugs cache ci completion config dedupe deprecat diff dist-tag doctor edit exec expline find-dupes fund hook install-ci-test install-test link logout ls org owner pack ping pkg prefix profile prune publish rebuild repo restart root search shrinkwrap star stars start stop team test token unpulish unstar whoami version
+npx

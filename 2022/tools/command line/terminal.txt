@@ -42,7 +42,7 @@
         ›-p,--parents: non-prompt-errors if [nowDirNames] same as some [existingDirNames].
         
   *usefull commands:
-    •clear, exit, whoami,su…
+    •clear|cls, exit, whoami,su…
     
     
     
