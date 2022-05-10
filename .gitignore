@@ -1,8 +1,0 @@
-node_modules
-old/
-build/
-package-lock.json
-package.json
-gulpfile.js
-README.md
-.gitignore

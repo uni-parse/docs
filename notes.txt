@@ -1,1 +1,12 @@
 <style ...>
+
+
+text-overflow
+replaces|non-replaced, inlines elements
+
+build introduction-app of my life
+  no pictures of my face
+  2000 best things happends
+  my childhood
+  current status
+  my thought
