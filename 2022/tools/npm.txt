@@ -39,3 +39,38 @@ npm run scriptName
 
 npm access adduser bin bugs cache ci completion config dedupe deprecat diff dist-tag doctor edit exec expline find-dupes fund hook install-ci-test install-test link logout ls org owner pack ping pkg prefix profile prune publish rebuild repo restart root search shrinkwrap star stars start stop team test token unpulish unstar whoami version
 npx
+
+
+..........pnpm..........
+Program Nasional Pemberdayaan Masyarakat
+
+pnpm add pkg    //dependencies
+pnpm add -D pkg //devDependencies
+pnpm add -O pkg //optionalDependencies
+pnpm add -g pkg
+pnpm add pkg@next
+pnpm add pkg@#.#.#
+pnpm i //install all dependencies
+pnpm up -l? //update all package.json dependencies| latest
+pnpm up pkg@#
+pnpm up '@babel/*' //U all dependencies under the @babel scope
+pnpm un|rm pkg
+
+pnpm list //tree of pkg@v.v.v and its dependencies@v.v.v
+pnpm outdate
+
+pnpm script --flag //run script
+pnpm t// run test
+
+pnpm init
+pnpm create 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 
+pnpm 

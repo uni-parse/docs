@@ -1,7 +1,6 @@
-
-
+▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★command line (terminal):
-  *syntext: 
+  *syntext:
    prompt{path $|# 'command flags… arguments…' && 'another line-command'… <Enter>}
      »ex: prompt{~ # ep -w magiskroot.net <Enter>}
     •prompt: input|output field.
@@ -10,7 +9,6 @@
     •flag: addition information, offten abbreviated by first letter prefixed by one dash, and can be fullName prefixed by double dash.
       »ex: {-f, --force} both do same function.
     •argument:
-    
   *navigation:
     •pwd(print working directory): show full path from /(root)
     •ls(list): list (files & directories) in current working directory.
@@ -21,7 +19,6 @@
       »home: cd ~ |cd 'space character'|cd|cd $home
       »back: cd .. |cd ../../../…
       »current directory: $ cd .
-      
   *editing:
     •mv(move)|cp(copt): move|copy sources(directories|files) to another directory
       »syntext: mv|cp flags… sources… Directory
@@ -40,14 +37,5 @@
       »syntext: mkdir flags… newDirNames…
       »flags:
         ›-p,--parents: non-prompt-errors if [nowDirNames] same as some [existingDirNames].
-        
   *usefull commands:
     •clear|cls, exit, whoami,su…
-    
-    
-    
-   
-   
-   
-   
-   
