@@ -1,145 +1,3 @@
-▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-  
-    ▬target: document'DOM or subNode| window'browser
-      
-    •we can access elements throught DOM object: document
-      ›and browser window through the object: window
-    •we can target specific elements inside the root html by: 5 queries:
-      »document.getElementById('id');// one element
-      »document.getElementsByTagName('h2');// 1|collection
-      »document.getElementsByClassName('box red');//1|collection
-      »document.querySelector('ul#nav li.fb');// 1|collection
-      »document.querySelectorAll('s1, …', …);//collection
-    •Note: we can'not access collection of elements at ones, insted we can access it by index:
-      let selector = document.querySelector('ul#nav li.fb');
-      let selectors = document.querySelectorAll('img', 'svg');
-      selector.addEventListener('event', eventHandler);
-      function loop(array){
-        for(let i=0; i<array.length; i++){
-          array[i].addEventListener('event', eventHandler);
-        }
-      }
-      loop(selectors); //loop(classes); loop(tags);
-  *on|event:
-    •window events:
-      »general: 
-        ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
-        ›just|DOMContentLoaded, devicemotion, deviceorientation
-      »desktop:
-        ›on|mousemove, mouseovee, mouseout
-      »mobile://
-    •document events:
-      »general:
-        ›on|click, dblclick, scroll, input, change, visibilitychange, copy, cut, paste, selectstart, selectionchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
-      »desktop:
-        ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed), 
-        ›just|DOMContentLoaded, readystatechange, 
-      »mobile:
-        ›on|touchend, touchcancel, touchmove, touchstart, 
-  *listener(eventHandler):
-    •call one function: 
-      functionName
-    •call multi functions: 
-      ()=>{func1(arguments); func2(); …}
-    •run anonymous function: 
-      function(){//…}
-     ›temporary scope:
-       (function(){//…})()
-  *listener true|false: run|stop the function|s
-  *listener options: {opt1,opt1, …}
-    •once: true|false // if true, then it will run the eventHandler, then call: object.removeEventListener()
-    •capture: true|false // ??
-    •passive: true|false // ??
-★DOM: (document object module)
-  *accessing DOM elements nodes:
-    •demo:
-      let nodeList = document
-        .method('el-selector')
-        .property;
-    •accessing methods: (return array|colloction|nodeList of elements, except Id method)
-      »demo:
-        let nav = document.getElementById('navigation');
-        let links = nav.getElementByTagName('a')
-          .getElementByClassName('main');
-        let sameLinks = document
-          .querySelectorAll('#navigation a.main');
-        let jQueryLinks = $('#navigation a.main');
-      »ready: 
-        document.title
-        document.body
-      »useless:
-        .getElement ById('idName') // return just 1 element
-        .getElement s ByClassName('c1 c2 …')//els share same c's
-        .getElement s ByTagName('tag')
-        .querySelector('selector')
-      »usefull:
-        .querySelectorAll('s1, …', …)
-    •manipulate methods:
-      »demo:
-        document
-          .getElementById("main") 
-          .appendChild(
-            document.createElement("p") 
-            .appendChild(
-              documentCreateTextNode("Hey, I'm walking here!")
-            )
-          );
-      »methods:
-      .createElement('tag') //saved in memory until we add it
-      .createTextNode('text') //saved in memory until we add it
-      .appendChild(node) 
-        ›move node to parent, as last-child, 
-        ›we can'not move node to two parents in document, 
-        ›if we append the child from first parent to second parent, then the node will be omitted from previos apended position.
-        ›ex:
-         div[0].appendChild(createdEl).appendChild(createdTxt);
-         div[1].appendChild(createdEl).appendChild(createdTxt);
-         // now nods moved from div[0] to div[1]
-      .insertBefore(newNode, previosChild)
-        ›as previos move node to parent, before existing child.
-        ›ex:
-         div[0].insertBefore(newH2, div_p[3]).appendChild(text);
-      .insertAfter(newNode, previosNode)
-      .before(node1, node2, …) // p.before(h1, hr)
-      .after(node1, …) // h1.after(hr, p)
-      node.cloneNode(true|false) 
-        ›copy node|(+its attr, text)
-        ›sync issue with .before|.after|.insertBefore|.insertAfter|.replaceChild
-        ›ex:
-         newEl.appendChild(subNode)
-         let copy = newEl.cloneNode(true);
-         // now copy have both newEl & its deep|sub tree nodes.
-      .replaceChild(newNode, oreviosNode)
-        ›ex:
-          div[0].replaceChild(newText, paragraph[0]);
-      .removeChild(node)
-        ›ex:
-          div[0].removeChild(paragraph[1]);
-    •properties:
-      .innerHTML // = 'html markup'
-        ›ex:
-         div[0].innerHTML = '<p id=intro>Hi &amp; Welcome!</p>';
-      .innerText // = 'html output'
-        ›ex:
-          paragraph[0].innerText = 'Hi & Welcome!';
-      .style.<cssProperty> 
-        // hyphen-property(in css) → camelCaseProperty(in js)
-        ›ex:
-          let bgColor = document.body
-            .style.backgroundColor;// save reference
-          bgColor = 'hsla(90,100%,50%,.34)';// update
-  *accessing & manipulating DOM attriputes nodes:
-    •demo:
-      let el = document.querySelectorAll('cssSelector', …);
-      let attr = el[index].accessingMethod();// save
-      el.manipulateMethod();// update
-    •accessing method:
-      .getAttribute('attr')
-    •manipulate methods:
-      .setAttribute('attr', 'value')
-      .
-      .
-
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★consepts: its riginal name was live-script ≠java.
@@ -168,41 +26,63 @@
     ▬func(): •Worning: if assigned→var, start runing immediately
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
-★operators: order: ?:,*%/,+-,<=>,== !=
-  ►numeric:+add -subtract *multiplay /divid %reminder **exponent
-    •increment++ decrement-- by 1.
-    •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
-  ►comparison'bool:===identical'val&type ==equality !== != <=>'#
-  ►logical:
-    ▬!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
-    ▬exp&&exp//TandT=true,false ▬exp||exp//ForF=false,true
-  ►string: +|+=concatecation str+str?n//string
-  ►ternary: (condition) ? /*if true run this*/ : /*else this*/;
-★DOM: Api translate html?xml → nodesTree accessed by js?ruby?c#…
-  •nodes in html: el, att, text
-  ►access node:
-    ▬methodes: document.method()
-      getElementById('id')//return 1el
-
-    ▬
-    ▬
-  ►access&manipulate att node:
-    ▬
-    ▬
-    ▬
-  ►
-  ►
 ★buld-in properties and methods: (everything are object)
   ▬object:
-    obj.property //value of property
-    obj.method() //call function() of method
-  ►event listener: <el onevent=l()> ✖| obj.onevent=l ✖| 
-    obj.addEventListener('event',l,boolean?option) ✓
-    ▬
-    ▬
-    ▬
-    ▬
-
+    obj.property //return value of property
+    obj.method() //call function() who stored in method
+  ►DOM:Api translate html?xml→ nodesTree accessed by js?ruby?c#…
+    •node in html: el, att, text
+    •document: object represent all html nodes.
+      document.getElementById('id').appendChild(
+        document.createElement('p').appendChild(
+          document.createTextNode('Hi')));
+      //<el id=id> now contain <p>Hi</p> as last child
+   ▬properties
+    title //<title>
+    body //<body>
+    innerHTML //markup
+    innerText //output text
+    style.<cssProperty> //css:hyphen-property → js:camelCase
+   ▬methods
+    •access: singleElement|collection[index]
+      $() //in-jQuery === document.querySelectorAll()
+      querySelectorAll('s1, …', …)
+      querySelector('selector')
+      getElementById('id') //return 1el
+      getElementsByClassName('c1 c2 …') //els share same classes
+      getElementsByTagName('tag') //return all <tag> els
+    •manipulate
+      createElement('tag') //saved in memory until we add it
+      createTextNode('text') //saved in memory until we add it
+      n.cloneNode(boolean)//return copy of node & its subTree?
+        //sync issue: .before?after?insertBefore?insertAfter?replaceChild()
+      appendChild(node) //#move node→ other parent as last-child
+      insertBefore(newNode, previosChild)//move node→as sibling
+      insertAfter(newNode, previosNode)//move node→as sibling
+      before(n1,…) //p.before(h1, hr)
+      after(n1,…) //h1.after(hr, p)
+      replaceChild(newNode, previosNode)
+        //div[0].replaceChild(newText, paragraph[0]);
+      removeChild(node) //div[0].removeChild(paragraph[1]);
+    •att: getAttribute('att') setAttribute('att', 'value')
+  ►event listener: n.addEventListener('event',l,boolean?option)✓
+    |<el onevent=l()> ✖| node.onevent=l ✖|
+    ▬on|event:
+     •window: »desktop: on|mousemove, mouseovee, mouseout
+      »general:DOMContentLoaded, devicemotion, deviceorientation
+        ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+     •document: »m: on|touchend,touchcancel,touchmove,touchstart
+      »general: on|click, dblclick, scroll, input, change, visibilitychange, copy, cut, paste, selectstart, selectionchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+      »desktop: DOMContentLoaded, readystatechange
+        ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed)
+    ▬listener(eventHandler):funcName| function(){/*anonymous*/}|
+      ()=>{}| (function(){/*temporary scope*/})()
+    •boolean: run|stop listener
+    •options: {
+      once: boolean, //call .removeEventListener() after 1listen
+      capture: boolean, //??
+      passive: boolean, //??
+     }
   ►native functions: window.func()
     ▬dialog box(show message): •prompt(req)//[input],(ok)submit
       •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
@@ -247,6 +127,16 @@
 ★statements:
   ►??
     ▬typeof <expression> //number|string|object
+  ►operators: order: ! ±unary,*%/,+-,<=>,== !=,&&,||,?:
+    ▬numeric:+add -subtract *multi /divid %reminder **exponent
+      •increment++ decrement-- by 1.
+      •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
+    ▬comparison:===identical'val&type ==equality !== != <=>'#
+    ▬logical: !(not) &&(and) ||(or)
+      •!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
+      •exp&&exp//TandT=true,false •exp||exp//ForF=false,true
+    ▬string: +|+=concatecation str+str?n//string
+    ▬ternary: (condition) ? /*if true run this*/ : /*else this*/
   ►variable: store reusabel data.
     ▬dec&init: const?let name=value,…?;
      •declaring: const?let name1,…?; ▬initializing: name=update;
