@@ -63,14 +63,4 @@ pnpm script --flag //run script
 pnpm t// run test
 
 pnpm init
-pnpm create 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
-pnpm 
+pnpm create

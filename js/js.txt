@@ -168,7 +168,7 @@
     ▬func(): •Worning: if assigned→var, start runing immediately
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
-★operators: order: *%/,+-,<=>,== !=
+★operators: order: ?:,*%/,+-,<=>,== !=
   ►numeric:+add -subtract *multiplay /divid %reminder **exponent
     •increment++ decrement-- by 1.
     •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
