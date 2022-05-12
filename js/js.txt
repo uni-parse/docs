@@ -1,4 +1,3 @@
-▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★consepts: its riginal name was live-script ≠java.
   ►place into document: in <head> or just before </body>.
@@ -26,7 +25,7 @@
     ▬func(): •Worning: if assigned→var, start runing immediately
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
-★buld-in properties and methods: (everything are object)
+★buld-in functions| properties and methods:
   ▬object:
     obj.property //return value of property
     obj.method() //call function() who stored in method
@@ -88,48 +87,51 @@
       •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
     ▬return val: •Date()//date time day GMT
       •setTimeout(funcName, #'ms) //delay calling funcName()
-  ►literal
+  ►literal properties & methods:
     ▬number:
-      n.toFixed(+#) // round n.10^#
+      n.toFixed(+#) //round n.10^#
       (#).toString() //'#'
+      Math.floor(#.f) //#
+      Math.rendom() //0≤return<1
     ▬string:
       str[i]//character nth i+1
-      str.length//#
+      .length//#
       Number(Ø?''|'#'|'≠#')//0|#|NaN
       parseInt('#'|Ø?''?'≠#')//#|NaN
-      str.includes?startsWith?endsWith(subStr)//boolean
-      str.indexOf(subStr, from=0)//#,-1
-      str.slice(start=0,end=str.length)//strⒹ,'str[s]…str[e-1]'
-      str.toLowerCase?toUpperCase()//string
-      str.replace?replaceAll(subStr,newSubStr)//string
-      str.split(separator,limit?)//[array]
+      .includes?startsWith?endsWith(subStr)//boolean
+      .indexOf(subStr, from=0)//#,-1
+      .slice(start=0,end=str.length)//strⒹ,'str[s]…str[e-1]'
+      .toLowerCase?toUpperCase()//string
+      .replace?replaceAll(subStr,newSubStr)//string
+      .split(separator,limit?)//[array]
         'a/b/c'.split('/',2) //['a','b']
     ▬array:
       arr[i][i] //item nth i+1 of nested arr nth i+1
-      arr.indexOf(item)//+#,-1
-      arr.push(i,…?)//#(arr.length + [i,…?].length), add→end.
-      arr.unshift(i,…?)//#(new.length), add→start.
+      .indexOf(item)//+#,-1
+      .push(i,…?)//#(arr.length + [i,…?].length), add→end.
+      .unshift(i,…?)//#(new.length), add→start.
       […,last].pop()//last, remove last item.
       [first,…].shift()//first, remove first item.
-      arr.splice(start=0,count)//[]Ⓓ,[arr[s],…],remove [arr[s]…]
-      arr.map(fN) //({ newArr:[], m:function(){
+      .splice(start=0,count)//[]Ⓓ,[arr[s],…],remove [arr[s]…]
+      .map(fN) //({ newArr:[], m:function(){
           for (const i of arr){this.newArr.push(fN(i))}
           return this.newArr} }).m()
         function x2(i){return i*2}; [1,3,5].map(x2) //[2,6,10]
-      arr.filter(fN'condition)//[matchedItems…]
+      .map(i=>i*2)
+      .filter(fN'condition)//[matchedItems…]
         //({ newArr:[], m:function(){
           for (const i of arr){if(fN(i)){this.newArr.push(i)}}
           return this.newArr} }).m()
         [0,'1',2,'3'].filter(i=>typeof(i)=='number') //[0,2]
         ['ccc','a','bb'].filter(i=>i.length>=2) //['ccc','bb']
-      arr.toString() //'arr[0],…,arr[arr.length-1]'
-      arr.join(separator=',') //'arr[0],…,arr[arr.length-1]'
+      .toString() //'arr[0],…,arr[arr.length-1]'
+      .join(separator=',') //'arr[0],…,arr[arr.length-1]'
 ★statements:
-  ►??
-    ▬typeof <expression> //number|string|object
+  ►??: ▬typeof <expression> //number|string|object
   ►operators: order: ! ±unary,*%/,+-,<=>,== !=,&&,||,?:
     ▬numeric:+add -subtract *multi /divid %reminder **exponent
-      •increment++ decrement-- by 1.
+      •increment++ decrement-- by 1 without return sum
+        ++increment --decrement by 1 & return sum
       •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
     ▬comparison:===identical'val&type ==equality !== != <=>'#
     ▬logical: !(not) &&(and) ||(or)
@@ -150,13 +152,15 @@
           //issue: unexpected errors, fix: avoid this method.
       •IIFE: Immediately Invoked Functional Expression
         (function(){local=v}()) //func isolation, local scope
-  ►function name(arguments)
-      { /*code block*/; return expression; /*ignored*/ }
-      fName(input-args); //call the function
+  ►function:
+    ▬definition: function fName(args?){…;return exp;/*ignored*/}
+    ▬invoke=call=execute: fName(args?)//before||after definition
+    ▬anonymous:
+    ▬arrow:
     ▬scope: •global: function(){};
       •temporary: (function(){})();
-    ▬argumets: optional if arg=initialized, can be comma list
-    ▬block: can contain variables, loops, functions, ?
+    ▬argumets: optional? if arg=initialized, can be comma list
+    ▬block{}: can contain variables, loops, functions, ?
     ▬return keyword:
       •stop executing, & ignored below code.
       •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
@@ -172,17 +176,20 @@
     ▬switch(<choice>'exp) { case <choice1>: /*code1*/; break
                             case <choice2>: /*code2*/; break …
                             default?: //code }
-    ▬for:
-      for(dec&init,condition,operator){…}
-        for (const i=0; i<arr.length; i++){//…arr[i]…}
-      for(declare arg of arr){…}
-        for (const i of arr){console.log(i)}
+    ▬for (const i of arr) {console.log(i)}
+      for (let i=0; i<arr.length; i++) {console.log(arr[i])}
+      •break statement stops loop entirely.
+      •continue statement skips current instance of loop to next
       •scope issue: nested funcs treats vars globally, fix:
         (function(i){return function(){/*temporary vars*/} })(i)
       •benefits: ›we can apply styles to list of elements.
         ›add|remove|change attributes to each element from long list(like inputes).
         ›creat arrays to build filters of search element & …
-    ▬while(condition){/*loop this block*/}
+    ▬while(condition){}| do{}while(condition)
+      •break statement stops loop entirely.
+      •continue statement skips current instance of loop to next
 ★
 ★
+▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
+▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ★
