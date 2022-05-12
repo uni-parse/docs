@@ -41,6 +41,8 @@
     body //<body>
     innerHTML //markup
     innerText //output text
+    textContent
+    parentNode
     style.<cssProperty> //css:hyphen-property → js:camelCase
    ▬methods
     •access: singleElement|collection[index]
@@ -67,7 +69,7 @@
   ►event listener: n.addEventListener('event',l,boolean?option)✓
     |<el onevent=l()> ✖| node.onevent=l ✖|
     ▬on|event:
-     •window: »desktop: on|mousemove, mouseovee, mouseout
+     •window: »desktop: on|mousemove, mouseover, mouseout
       »general:DOMContentLoaded, devicemotion, deviceorientation
         ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
      •document: »m: on|touchend,touchcancel,touchmove,touchstart
@@ -76,6 +78,7 @@
         ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed)
     ▬listener(eventHandler):funcName| function(){/*anonymous*/}|
       ()=>{}| (function(){/*temporary scope*/})()
+      •automaticly pass event parameter to the func listener
     •boolean: run|stop listener
     •options: {
       once: boolean, //call .removeEventListener() after 1listen
@@ -116,8 +119,8 @@
       .map(fN) //({ newArr:[], m:function(){
           for (const i of arr){this.newArr.push(fN(i))}
           return this.newArr} }).m()
-        function x2(i){return i*2}; [1,3,5].map(x2) //[2,6,10]
-      .map(i=>i*2)
+        [1,3,5].map(i=>i*2) //[2,6,10]
+
       .filter(fN'condition)//[matchedItems…]
         //({ newArr:[], m:function(){
           for (const i of arr){if(fN(i)){this.newArr.push(i)}}
@@ -153,10 +156,14 @@
       •IIFE: Immediately Invoked Functional Expression
         (function(){local=v}()) //func isolation, local scope
   ►function:
-    ▬definition: function fName(args?){…;return exp;/*ignored*/}
-    ▬invoke=call=execute: fName(args?)//before||after definition
-    ▬anonymous:
-    ▬arrow:
+    ▬costum function:
+      •definition: function fName(args?){…;return …;/*ignored*/}
+      •invoke=call=execute: fName(a?)//before||after definition
+      •parentheses() Invoke it Immediately, even if we assign it to variable or as other function argument.
+    ▬anonymous=nameless: function(){} //usefull as parameter
+    ▬arrow: (arg1,…)=>{…;return? …}
+      •only 1 parameter: arg=>{…;return? …}
+      •only 1 invoked?returned line: (a1,…)=>…
     ▬scope: •global: function(){};
       •temporary: (function(){})();
     ▬argumets: optional? if arg=initialized, can be comma list
@@ -178,16 +185,16 @@
                             default?: //code }
     ▬for (const i of arr) {console.log(i)}
       for (let i=0; i<arr.length; i++) {console.log(arr[i])}
-      •break statement stops loop entirely.
-      •continue statement skips current instance of loop to next
+      •break keyword stops loop entirely.
+      •continue keyword skips current instance of loop to next
       •scope issue: nested funcs treats vars globally, fix:
         (function(i){return function(){/*temporary vars*/} })(i)
       •benefits: ›we can apply styles to list of elements.
         ›add|remove|change attributes to each element from long list(like inputes).
         ›creat arrays to build filters of search element & …
     ▬while(condition){}| do{}while(condition)
-      •break statement stops loop entirely.
-      •continue statement skips current instance of loop to next
+      •break keyword stops loop entirely.
+      •continue keyword skips current instance of loop to next
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
