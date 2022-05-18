@@ -90,6 +90,8 @@
       •bubbles up: check&run listeners from parent →…→ window
       ›if we add two addEventListener() one false & other true:
         phases: capturing → target → target again → bubling
+      ›to prevent capturing|bubbling, listener must be:   
+        e=>{e.stopPropagation();…}
     •options: {
       once: boolean, //call .removeEventListener() after 1listen
       capture: boolean, //??

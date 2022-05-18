@@ -95,6 +95,17 @@
 *reset (useless): •<i type=reset value=reset>
   •<button type=reset value=reset></button>
 
+★dialog:
+  <dialog> <!--open: useless attribute-->
+    <form method=dialog>
+    </form>
+  </dialog>
+  <script>
+    const dialog = document.querySelector('dialog')
+    document.addEventListener('DOMContentLoaded',()=>dialog.showModal())
+    dialog.addEventListener('close',e=>/*do something*/)
+  </script>
+
 ★accessibility: •<fieldset> <legend>group-description</legend>
                             <!--controls--> </fieldset>
 *labels: •<label>description <input> description</label>
