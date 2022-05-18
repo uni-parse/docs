@@ -26,7 +26,7 @@
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
 ★buld-in functions| properties and methods:
-  ▬object:
+  ▬object: window:{document:{html:{body:{…}}}}
     obj.property //return value of property
     obj.method() //call function() who stored in method
   ►DOM:Api translate html?xml→ nodesTree accessed by js?ruby?c#…
@@ -66,8 +66,9 @@
         //div[0].replaceChild(newText, paragraph[0]);
       removeChild(node) //div[0].removeChild(paragraph[1]);
     •att: getAttribute('att') setAttribute('att', 'value')
-  ►event listener: n.addEventListener('event',l,boolean?option)✓
-    |<el onevent=l()> ✖| node.onevent=l ✖|
+  ►events:
+    ▬mechanisms: obj.addEventListener('event',l,boolean?option)✓
+    |<el onevent=l()|/*code*/> ✖| n.onevent=l ✖
     ▬on|event:
      •window: »desktop: on|mousemove, mouseover, mouseout
       »general:DOMContentLoaded, devicemotion, deviceorientation
@@ -79,12 +80,31 @@
     ▬listener(eventHandler):funcName| function(){/*anonymous*/}|
       ()=>{}| (function(){/*temporary scope*/})()
       •automaticly pass event parameter to the func listener
-    •boolean: run|stop listener
+        funcName→funcName(e)
+      •target: current object who call listener.
+        el.addEventListener('click',e=>{e.target.…//el.…})
+    ▬boolean: falseⒹ//targer→bubbling, true//capturing→target
+     phases run by order: nested els have same 'event'
+      •capturing: check&run listeners from window →…→ parent
+      •target: check&run listener registed on e.target, thene if e.bubbles==trueⒹ: propagates evt to parent →…→ window
+      •bubbles up: check&run listeners from parent →…→ window
+      ›if we add two addEventListener() one false & other true:
+        phases: capturing → target → target again → bubling
     •options: {
       once: boolean, //call .removeEventListener() after 1listen
       capture: boolean, //??
       passive: boolean, //??
+      signal: controller.signal //can passed to many listeners
+        //on topLvl: const controller = new AbortController()
+        //remove any/all listeners: controller.abort()
      }
+    ▬multi listeners on one event:
+      obj.addEventListener('sameEvent',l1)
+      obj.addEventListener('sameEvent',l2)
+    ▬removeEventListener('event', funcName)//unlisten
+    ▬remove all: const controller = new AbortController();
+      obj.addEventListener('event',l,{signal:controller.signal})
+      controller.abort() //unlisten to any event share {signal}
   ►native functions: window.func()
     ▬dialog box(show message): •prompt(req)//[input],(ok)submit
       •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
@@ -130,7 +150,6 @@
       .toString() //'arr[0],…,arr[arr.length-1]'
       .join(separator=',') //'arr[0],…,arr[arr.length-1]'
 ★statements:
-  ►??: ▬typeof <expression> //number|string|object
   ►operators: order: ! ±unary,*%/,+-,<=>,== !=,&&,||,?:
     ▬numeric:+add -subtract *multi /divid %reminder **exponent
       •increment++ decrement-- by 1 without return sum
@@ -142,6 +161,7 @@
       •exp&&exp//TandT=true,false •exp||exp//ForF=false,true
     ▬string: +|+=concatecation str+str?n//string
     ▬ternary: (condition) ? /*if true run this*/ : /*else this*/
+    ▬typeof <expression> //number|string|object
   ►variable: store reusabel data.
     ▬dec&init: const?let name=value,…?;
      •declaring: const?let name1,…?; ▬initializing: name=update;
@@ -172,7 +192,6 @@
       •stop executing, & ignored below code.
       •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
       •if 'return' omitted, return undefined
-  ►
   ►flow control:
     ▬if(condition1 met){ //execute block1
         }else if(condition2 met) { //execute block2
