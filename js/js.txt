@@ -81,8 +81,6 @@
       ()=>{}| (function(){/*temporary scope*/})()
       •automaticly pass event parameter to the func listener
         funcName→funcName(e)
-      •target: current object who call listener.
-        el.addEventListener('click',e=>{e.target.…//el.…})
     ▬boolean: falseⒹ//targer→bubbling, true//capturing→target
      phases run by order: nested els have same 'event'
       •capturing: check&run listeners from window →…→ parent
@@ -92,6 +90,10 @@
         phases: capturing → target → target again → bubling
       ›to prevent capturing|bubbling, listener must be:   
         e=>{e.stopPropagation();…}
+      ›to target just all childrens of parent:
+        parent.addEventListener('event', e=>{e.target.…;…})
+      ›to target just parent:
+        p.addEventListener('event', e=>{e.currentTarget.…;…})
     •options: {
       once: boolean, //call .removeEventListener() after 1listen
       capture: boolean, //??
