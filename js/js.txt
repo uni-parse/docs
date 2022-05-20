@@ -26,9 +26,7 @@
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
 ★buld-in functions| properties and methods:
-  ▬object: window:{document:{html:{body:{…}}}}
-    obj.property //return value of property
-    obj.method() //call function() who stored in method
+  •everything object: window:{document:{html:{body:{…}}}}
   ►DOM:Api translate html?xml→ nodesTree accessed by js?ruby?c#…
     •node in html: el, att, text
     •document: object represent all html nodes.
@@ -218,6 +216,42 @@
     ▬while(condition){}| do{}while(condition)
       •break keyword stops loop entirely.
       •continue keyword skips current instance of loop to next
+  ►object:
+    ▬literal object: created manually
+      const leteralObjectName = {
+        propertyMemberName: data, …, //as variables
+        methodMemberName(){}, …, //as functions
+          methodMemberName: function(){}, … //old syntax
+      }
+    ▬access members: const obj = { pro:{pro1:data}, method(){} }
+      •by Dot.notation:  obj.pro.pro1 //return data.
+        obj.method() //invoke its {/*block*/}.
+      •by bracket-notation[dynamicVariable]:
+        obj['pro']['pro1'] //return data.
+        obj['method']() //invoke its {/*block*/}.
+      •this keyword: refers to current object.
+    ▬updating existing members:
+      obj.pro.pro1|obj['pro']['pro1'] = update
+      obj.method|obj.['method'] = ()=>{/*update*/}
+    ▬setting new members:
+      obj.pro.newPro|obj['pro']['newPro'] = data;
+      obj.newMethod|obj['newMethod'] = ()=>{}
+    ▬construction:
+      •consept: everything are inctance of build-in object
+        ex: any 'string' we create automaticly are instance of build-in string object, and share all its properties and methods.
+      •old trick:
+        function createNewObj(args){
+          return {property: data, method(){}} }
+        const instance = createNewObj(args);
+      •new keyword:
+        function refersToNewObj(args){
+          this.property = data; this.method = ()=>{} }
+        const instance = new refersToNewObj(args)
+          ›create a new object.
+          ›match 'this keyword' to the new object.
+          ›run the code in the constructor.
+          ›return the new object.
+      •
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
