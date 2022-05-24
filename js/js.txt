@@ -251,7 +251,8 @@
           ›match 'this keyword' to the new object.
           ›run the code in the constructor.
           ›return the new object.
-      •
+    ▬prototype:
+
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
