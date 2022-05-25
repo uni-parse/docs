@@ -251,8 +251,37 @@
           ›match 'this keyword' to the new object.
           ›run the code in the constructor.
           ›return the new object.
-    ▬prototype:
-
+    ▬prototype chain:
+      •default & last chain: Object.prototype.__proto__//null
+        Object.protorype = {
+          constructor: ƒ Object(),
+          hasOwnProperty: ƒ hasOwnProperty(),
+          isPrototypeOf: ƒ isPrototypeOf(),
+          propertyIsEnumerable: ƒ propertyIsEnumerable(),
+          toLocaleString: ƒ toLocaleString(),
+          toString: ƒ toString(),
+          valueOf: ƒ valueOf(),
+          __defineGetter__: ƒ __defineGetter__(),
+          __defineSetter__: ƒ __defineSetter__(),
+          __lookupGetter__: ƒ __lookupGetter__(),
+          __lookupSetter__: ƒ __lookupSetter__(),
+          __proto__: null,
+          get __proto__: ƒ __proto__(),
+          set __proto__: ƒ __proto__()
+        }
+      •shadowing properties:
+        calling ourObj.member will check for member in ourObj
+          else in its ourObj.__proto__, 
+          else in ourObj.__proto__.__proto__, else ...,
+          else & lastly in Object.prototype
+        if find it call it & end prototype chain immediately
+        else return undefined.
+      •accessing obj prototype:
+        myObj.__proto__ ✗| Object.getPrototypeOf(myObj) ✓
+      •setting a prototype:
+        const ourProto= {…}
+        const instance = Object.create(ourProto)
+      •
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
