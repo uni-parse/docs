@@ -1,4 +1,5 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
+  •data-* custom attribute used by {content:attr(data-*)}
   •class, id, style 52~56%
   •dir=ltr|rtl|auto 52%
   •lang=en 53%

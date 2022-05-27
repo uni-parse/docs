@@ -279,8 +279,13 @@
       •accessing obj prototype:
         myObj.__proto__ ✗| Object.getPrototypeOf(myObj) ✓
       •setting a prototype:
-        const ourProto= {…}
-        const instance = Object.create(ourProto)
+        ›using Object.create():
+          const ourProto = {…}
+          const instance = Object.create(ourProto)
+          Object.getPrototypeOf(inctance) //ourProto
+          Object.getPrototypeOf(ourProto) //Object.prototype
+        ›using constructor:
+          
       •
 ★
 ★

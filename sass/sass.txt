@@ -459,12 +459,12 @@ scss= superset of css, sass= indent syntax style sheet.
       ›$red?green?blue:0~255 ›$hue:(-360~360 +360k)deg?//k€Z
       ›$saturation?lightness?whiteness?blackness:0~100% 
       ›$alpha:0~1
-    »adjust(<color.change-args>)
+    »adjust(<color,change-args>)
       ›error: don't Enter at once all args of rgb?hsl?hwb()
       ›$red?green?blue:-255~255 ›$hue:(-360~360 +360k)deg?//k€Z
       ›$saturation?lightness?whiteness?blackness:-100~100%
       ›$alpha:-1~1
-    »scale(<color.change-args≠$hue:-100~100%>)
+    »scale(<color,change-args≠$hue:-100~100%>)
       ›#% add percentage-amount of [currentVal,maximumVal]
       ›-#% subtract percentage-amount of [minimumVal,currentVal]
       ›scale(#300,$red:50%)//#900 +33%[51,255]=255-102=153d=99h
