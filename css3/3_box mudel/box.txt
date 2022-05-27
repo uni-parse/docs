@@ -1,4 +1,436 @@
-★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ†₱…
+★▶►▬•»›▲♥⚠️💡±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+★values:
+  ▶global:                 /*w3-css initial: *{display:inline}*/
+    body{font-size:13px}         /*UA-origin: p{display:block}*/
+    p:nth-child(1){font-size: inherit}                  /*13px*/
+    p:nth-child(2){font-size: initial}                  /*16px*/
+    p:nth-child(3){all: unset} /*font-size:13px;display:inline*/
+    p:nth-child(4){all: revert} /*font-size:13px;display:block*/
+   •initial: set default w3-css value(≠UA-origin).
+   •inherit: set closest ancestor #inheritable↓ value.
+   •revert: set inherit, else UA-origin value, else initial.
+   •unset: set inherit, else initial.
+  ▶angle: 360deg'rees = 1turn = 400grad'ians = 2πrad'ians.
+  ▶color: •currentcolorⒹ
+    •rgb?a(r,g,b,a?|r g b/a?), hsl?a(h,s,l,a?|h s l/a?)
+      ›r?g?b≤:100%?255?f, alpha≤:100%?1?f, hue:<angle>?≤360, saturate100Ⓓ?lightness50Ⓓ:≤100%
+    •#rgb|a = #rrggbb|aa (#hexaDecimal #101010 ≠ #111 = #111111)
+   ▬painting areas: (in body|html bg cover entir viewport)
+    •foreground↓:textNode+ border+ text-decoration,currentColorⒹ
+    •background≠↓:contentBox+padding+border ≠margin,transparentⒹ
+  ▶length measurement: ▬absolute: •screen: pixel:px=in/(ppi≈96).
+    •real: in?≈2.54cm, mm?=4q'quarter≠S19.
+    •print: point:pt=in/(dpi≈72), pica:pc=12pt≈in/6.
+   ▬relative: •rem=:root{font-size}, User can adjust it!!.
+    •em=el{font-size}, just in typography em=.parent{font-size}.
+      ›h1=2em h2=1.5em h3=1.2em h4=1em h5=.85em h6=.65em.
+    •ex=el{x-height}, ch=el{0-width}
+    •viewport: vw?vh?vmin?vmax.
+      <meta name=viewport content='w=device-w, initial-scale=1'>
+  ▶functions:
+    ›can contain: ±#| length| %| <time:s?ms>| <angle>| nested min?max?calc?clamp()
+    ›math operators:±v1 ± ±v2 ± ±v3…|±v*±#*±#…|±v/±#/±#…
+    •calc(<math-operators>)//return result.
+    •min?max(mo1, mo2, …)//smallest?largest unordered result
+    •clamp(mo1,mo2,mo3)//middle<relativeLength> sum
+      limited by min&max<absoluteLength> sum
+    •var(--cp, <fallback>,…): store reused author value
+      ›used only as property value
+      »scope: ›globally: :root{--cp:v} ›locally: el{--cp:v}
+      ›fallback list? returned if --custom-property invalid css.
+    •env(variable,<fallback>,…) use UA value
+      ›used as property|desciptor value, may used in selectors.
+      ›scope: only globally
+      »variables:
+        ›safe-area-inset-<side>:if display≠rectangle:<length> else:0,<meta name=viewport content='viewport-fit=cover'>
+        ›titlebar-area-x?y?width?height ≠F4S19s3: <l> if desktop install pwa(progressive web app) window-controls-overlay api, else 0.
+      ›fallback list? returned if variable unavailable.
+  ▶image: url()?image-set()?gradiant?cross-fade()?element()
+   •url(''): relative to @rule file-holder .html|.css, or /root
+    ›omitting quotes, required to \escape: whiteSpace () '"
+   •image-set(<img>|'url' type('image/webp|…') #<resolotion>,…)
+    ›-ms|moz|webkit-93%, 'url' fallback required.
+    ›all support image:url() & resulotion:#x, exclude type()≠S19
+   •cross-fade(url() #%,url() #%)≠F4//mix 2 imgs by opacity
+   •linear-gradient(<angle>|to <s|c>, <color> <stop1~2>,c2 s2,…)
+    ›side: top:0°|right:90°|bottomⒹ:±180°|left:-90°.
+    ›corner: top right:45°| b r:135°| b l:-135°| t l:-45°.
+    »stop: length|%(relative to imagined angle-directed #line)
+      ›by defualt: first-stop=0, last-stop=100%.
+      ›double-stop valid: x-gradient(<color1> s1 s2, c2 s1 s2,…)
+   •radial-gradient(<endShape>? <size> at <position>, c1 s1, …)
+    ›ending-shape'optional: circle|ellipseⒹ
+    »size: hr vr(ellipse-radius)| length(circle_radius)| keyword
+      ›horizontal|vertical-radius: length|%(r to bg-origin box)
+      ›keyword:       (circle-end=°, ellipse-end=0)
+        .closest-side: °meet closeBoxSide, 0meet close h+v sides
+        .farthest-side: °meet farBoxSide, 0meet far h+v sides
+        .closest-corner: °|0meet closest boxCorner to <position>
+        .farthest-cornerⒹ: °|0meet farthestCorner to <position>
+    »position: as bg-position, but applyTo center(not top left)
+   •conic-gradient(from <angle> at <position>, <color> <stop>,…)
+    ›stop: <angle>|%(relative to 360°)
+   •repeating-<linear|radial|conic>-gradient()
+    ›repeating entire color-stops list.
+   •https://www.virtuosoft.eu/tools/css-gradient-generator/
+      https://learnui.design/tools/gradient-generator.html
+      https://angrytools.com/gradient/
+  ▶position: t?b'x㊿| l?r?center?±L%'y㊿ <t?b?centerⒹ?±L%>?|
+  l?r ±L% t?b ±L%;
+★box areas: visibleBox(content + padding + border) ≠+ margins
+★box measurenent: *≠apply→ unreplaced-i-els &:
+  •width's(no tr|thead|tbody|tfoote) •height's(no: col|colgroup)
+ *box-sizing: content-boxⒹ| border-box;
+  html{bs: border-box} *,*::before,*::after{bs: inherit}
+ *define box dimensions: •width?height: autoⒹ| length| %→box-sizing| min?max?fit-content(big-word?line?between);
+ *limit box dimensions: (override w|h)
+  •max-width?height: none(∞)d| length| %| min?max?fit-content;
+  •min-width?height: autoⒹ| length0d| %| min?max?fit-content;
+    ›auto: min-w≠S19, min-h≠S19F4, min-b?i-size0%(length0d)
+ *support(fit-content): •width -moz|webkit- +5% (max-w partial)
+  •min?max-|block?inline-size: -moz- +4%
+  •max-w?h|h|max?min-block-size: noFirefox -4%
+★box spaces: •padding|margin: all|v h|t h b|t r b l;
+ *padding-<side>: length0d|%→parent; content-box⇆border
+  •unapply to tr|thead|tbody|tfoot|col|colgroup
+ *margin-<s>: ±length0d|±%→parent|auto; current⇆neighbor-border
+  •unapply to el{display: inline-|table|-*(*≠caption)}.
+  •behavior: ›neighbor block-els v-margin collapse to biggest, negative margins overlap neighbors into it.
+★box layout: *direction: ltrⒹ|rtl;
+ *writing-mode:horizontal-tbⒹ(lines↓)|↓vertical-lr|↓vertical-rl
+  ›unapply to tr|thead|tbody|tfoot|col|colgroup
+  •text-orientation(vertical only): mixedⒹ| upright(separately)
+  ►logical properties & values: rel → writing-mode, direction
+    •text-align: startⒹ?end| left?r?center?justify|match-parent
+    •float?clear: inline-s?e=F4| noneⒹ?left?right|both→clear
+    ▬inset(as top|r|b|l): <all|b i|bs i be|bs ie be is>
+      {inline?block: <both|s e> {start?end: autoⒹ?L%}}
+    ▬max?min-|inline?block-size: <max?min-|w?h>
+    ▬padding?margin:{i?b:<both|s e> {s?e: L%|auto→margin}}
+    ▬border: {s?e'i-s?e'b-radius: <both|h v:L%1~2>}
+      { i?b: <both:s?w?c1~3> {style?width?color:<both|s e>}
+        {s?e: <s?w?c1~3> {style?width?color: <s|w|c>}} }
+ *block-lvl els: •normal-flow perdencular †o writing-mode.
+  •inline-size: 100%; margin-t?b: initial; (start&end with <br>)
+  •can contain block&inline-lvl els.
+ *inline els: •normal-flow para//el to writing-mode.
+  •generates next to etch other without white-space.
+  •invalid to contain block-lvl els, even if {display:block}.
+  1•unReplaced-i els: ›have content in source-document(b i em…)
+    ›box_Spaces→horizontal(start&end no<br>),no box_Measurement 
+    ›have 5 lines: baseline in font-box in logical-box(t?b-line)
+  2•replaced-i: ›noContent in doc: img object iframe video audio
+    ›have {display: inline-block?table}: input meter progress textarea select svg br wbr
+ *aspect-ratio(≠inline?td?th): autoⒹ| <ratio: #.f|#/#>;
+★replaced-els: current css can't style its internal layout
+  •<img|video|iframe|embed> •special case: <input type=image> 
+    <audio|canvase|object|option> .anonymous-replaced{content:}
+  ▬issueFix: .replaced-overflow{max-inline-size:100%}
+    #{selector.nest('.grid,.flex','.replaced')}{w:100%;h:100%}
+  ▬aspect-ratio(≠inline?td?th): autoⒹ→replaced| <ratio:#/#|#.f>
+    •object-fit: fillⒹ|none≠resize|cover|contain|scale-down
+    •object-position:(%:align % original-img-w?h with % css-w?h)
+     tb'x㊿| lr?center?±L%'y㊿ <tb?centerⒹ?±L%>?| lr ±L% tb ±L%;
+★form:
+  ▬reset: textarea{overflow:auto} button,input,select,textarea{
+      font-family: inherit; font-size: 100%;
+      box-sizing: border-box; padding: 0; margin: 0;}
+★table{t-layout:fixed;w:100%;b-collapse:collapse;b:solid 3px}
+  th,td{padding:20px;text-align:center}
+★display: none| list-item| inline-|block?flex?grid?table|
+    t-cell?row?column?caption(?)|-header?row?footer?column-group
+    | flow-root| contents;
+  •none: remove el & its descendants from layout,(col, colgroup behave as display:contents;).
+  •contents: hide el-box & display its content,(replaced & form els→ none) ex: button fieldset legend details
+  •table,flex,grid,list-item: outside behave as display: block;
+  •flow-root: el become new block-formating-context (???)
+★visibility: visible| hidden| collapse;
+  •collopse: table-els,flex-items{display:none}, else{v:hidden}.
+
+
+★border|-<side>: <style> <width> <color>;
+  •b-<style|width|color>: all|v h|t h b|t r b l;
+    ›b-<side>-color: <color>;
+    ›b-<side>-width: length| thin| mediumⒹ| thick;
+    ›b-<side>-style: noneⒹ| hidden| solid| double| dotted| dashed| groove'normal| ridge'clicked| inset| outset;
+ *b-collapse(table): collapseⒹ|separate;
+ *b-spacing↓(table): h=v'length| h v;
+ *b-radius: <cR>(circle)| <hR>/<vR>(ellipse); L%0d
+  (unapply inner table when {b-collapse: collapseⒹ})
+  •cR|hR|vR: all|tl=br tr=bl|tl tr=bl br|tl tr br bl;
+  •b-<corner>-radius: r| hr vr; (#one or #two values)
+ *b-image: <source> <slice/width/outset> <repeat>;
+  (unapply inner table when {b-collapse: collapseⒹ})
+  •bi-source: noneⒹ| <image>;
+  •bi-slice: fill? [all|v h|t h b|t r b l]; #(no-px)|100%d
+   (clip part of image to be displayed in 9<side|corner|center>) 
+    ›if(value > image-w|h){value=100%}
+    ›if(img=bitmapped){%→img-w(h)|-h(v)}
+      else if(img=svg|gradient){%→box-sizing}
+    ›fill: optional, enable center-slice(padding-box).
+  •bi-width: all|v h|t h b|t r b l; auto|#1d(*border-w)|length|%
+    ›if(img=bitmapped){%→img-w(h)|-h(v)} else{%→border-w}
+    ›auto: match bi-slice, else match border-w.
+  •bi-outset: all|v h|t h b|t r b l; length|#0d(*border-w)
+    ›puch to margin-<side>, recommended to add some margin.
+  •bi-repeat(sides): stretchⒹ| repeat| round| space;
+    ›repeat: center origin (side parts ot image) & "can clip" 
+    ›round: scale width or height to fill
+    ›space: add evenly h&v-gaps & preserve aspect-ratio.
+ *outline: <styls> <width> <color>; (unaffect layout-size)
+  •o-style: [b-<side>-style]; (#one value)
+  •o-width: length| thin| mediumⒹ| thick;
+  •o-color: <color>| invertⒹ(generated by UA, invalid in css);
+  ••o-offset: ±length; puch to|#outside margin-box.
+★box-shadow: noneⒹ|inset? x y <blur-r> <±spread-r> <color>, …;
+  •spread: ±length; scale by ±amount on 4sides.
+  •subSequenced box-shadow's overrided by the previos ones.
+★bg: color img position/size repeat attachment <origin clip>,…?;
+ *bg-color: <color>; *bg-image: noneⒹ| <image>;
+ *bg-position: tb㊿x| lr?center?±L%㊿y <tb?centerⒹ?±L%>?|
+  lr ±L%?→0 tb ±L%?→0;
+  •bg-position-x?y: ±L%|center|<side>;
+  ›%: align % original-img-w?h with % bg-origin box.
+  ›apply→ img(top left|0 0) rel→ bg-origin box.
+ *bg-size: cover?contain| w(h=auto)| w h;
+  •width|height: autoⒹ|length|%(r to bg-origin)
+    ›auto: preserving image-origin aspect-ratio.
+  •cover: scale to big-dimension of painting-area(fixed:vmax)
+    ›display #only one|part of big-image (bg-repeat ignored)
+    ›cropped if aspect-ratios not matched.
+  •contain: scale to smallDimension of painting-area(fixed:vmin)
+    ›display full imgs, unMatched aspectRatios left gap toRepeat
+ *bg-repeat:repeat-x?y| [repeatⒹ| no-repeat| space| round]{1,2}
+  •repeat: fill & #crop & preserve-aspectRatio(also <space>)
+  •space: fill+unCrop & add evenly x|y Gaps(bg-position ignored)
+  •round: fill+unCrop & stretch|shrink x|y ≤50% of all imgs
+ *bg-attachment: scrollⒹ| fixed| local≠S19;
+  •fixed: painting-area = viewport (bg-origin ignored)
+  •local: painting-area = element ,overflow:scroll; bg-clip≠text
+ *bg-origin: border-box| padding-boxⒹ| content-box;
+  •painting-area Determines how the bg-position is calculated.
+ *bg-clip: border-boxⒹ| padding-box| content-box| text;
+  •text(3.5-webkit→98%): contrastRatio ≥4.5, ↓accessibility
+    ›if bg-image:url; color-fallback required
+    ›incompatible with bg-shorthand & bg-attachment:fixed;
+ *multi-backgrounds: #first override previos ones.
+  •individual: ›bg-color: <fallback>;
+    ›bg-image: url(url1)|<gradient1>, url(url2)|<gradient2>, …;
+    ›bg-position|origin|repeat|attachment|size|clip: vl1, vl2,…;
+  •shorthand: ›bg: vl1, vl2, …, vln color(only on last vl);
+★opacity: 0~1d; affect both foreground & background.
+★filter: blur0d(length) brightness|contrast|saturate(≤#1d|100%≤) grayscale0d|sepia0d|invert0d|opacity1d(≤#1|100%) hue-rotate(<angle>) drop-shadow(offsetX offsetY <blur> <color>)
+
+
+
+
+★font↓: sys|style weight stretch variant size/line-height family
+  ›size|family required by order, values #before size can be unordered & omitted(→initial), including line-height.
+  ›variant: must be just css2.1 value (normal|small-caps)
+  ›global_values & stretch-percentages are invalid.
+  •system-operation keywords(no-ex): (encapsulated list-values)
+    menu| icon| caption| small-caption| message-box| status-bar.
+ ▶@font-face {font-family: 'Define|reName';        /*required*/
+  src:  local(Rosemary),…,       /*avoid unnecessary downloads*/
+    url(f.svg=S19) format('svg'),url(f.woff?2) format('woff?2'),
+    url(f.ttf?otf) format('truetype?opentype');
+  font-variant?stretch?weight?style:/*optional*/;/*↓descriptor*/
+  size-adjust≠S19s1:%100d; line-gap-override≠S19: normal|%Ex125;
+  descent?ascent-override≠S19:normal|%E125;//baseline→bottom?top
+  font-display: autoⒹ-UA|block |swap |fallback |optional;
+    ›block: hide #0000 5s, swap. ›swap: fallback until loaded.
+    ›fallback: swap≈3s, else use fallback(untill reload).
+    ›optional: block≈100ms, else use fallback(even if reloaded).
+  } .usage{font-family: 'Defined Name',…, generic_fallback}
+  •free: fontsquirrel?dafont?everythingfonts.com
+  •paid: fonts|myfonts|linotype|monotype|exljbris.com
+  •service: fonts.adobe|typography.com/webfonts|fonts.google.com
+  •generate-key|opt: fontsquirrel.com/tools/webfont-generator
+  •variable font:
+ ▶f-family: <≠generic>,…,<safeFonts>,<generic-fallback>
+  •generic: none-serif(stright edges), serif(decorated edges), monospace(evenly characters width), cusive(hand writing), fantasy(headers), system-ui(defualt).
+  •≠generic: Capitalized|'Multiword Between Quotes'
+  •safeFonts(https://www.cssfontstack.com/):
+      Verdana,sans-serif 'Courier New',monospace Georgia,serif
+ ▶f-size: font-families have different initial sizes ≠ 16px !!
+  •keywirds: ›relative to inherited Val: smaller.85 larger1.2
+    ›absolute to initial value 16px(not html rem): xx-small.5625 x-small.625 small.8125 medium'd1 large1.125 x-large1.5 xx-large2 xxx-large3-78≠Safari?opera.
+  •rem rel→html:root{font-size:16px}
+  •em?% rel→parent: h1=2em h2=150% h3=120% h4=1em h5=85% h6=65%.
+  •accessibility↑: p{f-s:clamp(1rem, 1.25vw, 1.25rem)} h1{f-s:clamp(2rem, 5vw, 5rem)};
+ ▶f-variant: normal|none|<ligatures1~3> <caps> <numeric1~3>
+  •font-variant-ligatures(connecting): normal| none| common-ligatures(=normal,fi/fl/th)| no-common-ligatures(=none)|…
+  •font-variant-caps: normal| titling-caps(?)| unicase(A→A-h≈x) small-caps(a→A-height>≈x-height)| all-small-caps(a+A→//)| petite-caps(a→A-h=x-h)| all-petite-caps(a+A→//)
+  •font-variant-numeric: normal| lining-nums≠ oldstyle-nums(0o)| diagonal-fractions(E=MC2)≠ stacked-fractions(co2)| ordinal(1st)| proportional-nums(shrink≠ tabular-nums(stretch| slashed-zero(ø)
+ ▶f-weight: •relative: lighter|bolder ±100|200
+  •absolute:noneⒹ|100-200|300|400normal|500|600|700bold|800-900
+ ▶f-style: normal italic oblique(like italic #useless)
+ ▶f-stretch(no-ex): %| ultra-condensed.5 extra-condensed.625 
+  condensed.75 semi-condensed.875 normal1 semi-expanded1.125 
+  expanded1.25 extra-expanded1.5 ultra-expanded2
+★text-layut:
+ ▶direction: ltrⒹ|rtl (change layout direction)
+ ▶writing-mode: horizontal-tbⒹ(lines↓)| vertical-lr| vertical-rl
+  •text-orientation(vertical only): mixedⒹ| upright(separately)
+ ▶text-indent: ±em(px↓)|±%↓, apply→ 1st #text-line of blockEls, 
+   negative value required ≤ padding-left, else hidden
+ ▶line-height↓: normalⒹ|#(em↓)|length-em(px↓)|%(px↓)
+ ▶letter?word-spacing: normalⒹ|length(px↓)
+ ▶text-align↓: startⒹ|end|left|right|center|justify|match-parent
+  ›apply to block-containers.
+  ›match-parent77noS: as inherit, but start?end→(left?right)↓ depending on parent direction:;|<bdo dir=>.
+  •text-align-last: startⒹ|end|left|right|center|justify;
+    ›required text-align:justify (78-noSafari).
+ ►inline el: •replaced(display:i-block): have t&b edge as img
+  •non-replaced(display:inline) as i em: have 5 imagine lines:
+    baseline in font-box in logical-box(top&bottom-line)
+ ▶vertical-align≠↓(apply→ inlineEls|td?th): ±length|±%line-h| 
+  baselineⒹ| middle| sub|super| text-|top?bottom;
+  •explain: align el →with→ parent(non-replaced-inline|tr)
+    ›baselineⒹ: align all baselines & bottom-edges.
+    ›length|%: el baseline?b-edge→ parent baseline ± length|%.
+    ›middle: align all middle-lines(font?logical-box).
+    ›top|bottom: align all logical-t?b-lines.
+    ›text-top?bottom: el logical-t?b-line→ parent font-t?b-line.
+    ›sub?super: el baseline?b-edge→ parent baseline ± x-heoght.
+ ▶white-space: normal nowrap  pre pre-line pre-wrap break-spaces
+  multiS+tab&#9; clps  clps    ✓  collapse     ✓        ✓
+  fit box-width  wrap  ≠wrap ≠wrap  wrap      wrap      wrap
+  src-lineBreak  clps  clps    ✓     ✓         ✓        ✓
+  lastLineEnd S   ✖     ✖     ✓     ✖       hang      wrap
+  linEnd otherS  hang  hang  ≠wrap  hang      hang      wrap
+   •other space separators: not Spaces (U+0020), tabs (U+0009).
+   •hang(can overflow)→affect intrinsic sizing of boxMeasurement
+ ▶tab-size: #Ⓓ8|length
+ ▶hyphens: none|manualⒹ(&shy;)|auto'UA; ≠work if <wbr> in word
+ ▶word-break↓: normal|break?keep-all|break-word(canHyphen øs)
+ ▶overflow: x=y| x y(79noSafari), apply to block|flex|grid els.
+  •overflow-x|y: visibleⒹ|hidden|clip(73noS|O)|scroll|auto;
+    ›clip: as padding-box hidden, but disable js:el.offsetLeft
+  •overflow-wrap↓: normalⒹ|anywhere(as url)|break-word
+    ›apply only|just when word > flow(width|height) & unbreaked
+    ›break-word: as anywhere, but dont considered when calculating min-content intrinsic sizes.
+  •text-overflow: clipⒹ| ellipsis(…);
+    ›required(overflow:hidden), optional(white-space:nowrap)
+★text-decorations:
+ ▶text-transform: noneⒹ| Capitalize| UPERCASE| lowercase.
+ ▶text-decoration: noneⒹ|<line1~3> <style> <color> <thickness>
+  •td-line: none| underline| overline| line-through| 1~3keywords
+  •td-style: solid| double| dotted| dashed| wavy
+  •td-color: currentcolorⒹ|name|rgba()|hsla()|#hex|transparent
+  •td-thickness: autoⒹ|length|from-font(fFamily recommendation)
+ ▶text-shadow: noneⒹ| ±xOffset→ ±yOffset↓ blur_radius color,…
+  •ex: p{text-shadow:-.2em 2em 15px, -.3em .3em 20px #000;}
+  •Note: performance↓, readability↓, omitting_color→inherit
+ ▶list-style: none|<type> <img> <position>     (unordered)
+  •ls-type: el_li{display:list-item} → li
+    ›ul,li,el_li: disq circle square
+    ›ol,li,el_li: decimal|-leading-zero, lower|upper-roman, lower|upper-alpha|latin, lower-greek(αβγ), urdu(ar#-moz3%),…
+  •ls-position: outsideⒹ|inside|hanging(unsupported)
+  •ls-image: noneⒹ|<img>
+  ▬<ol start=# reversed><li value=#>
+ ▶quotes(blockqoute,q): none|auto≠S19|'★' '♪'|'«' '»' '‹' '›';
+ ▶cursor: none|default|autoⒹ|
+  •img: url(32x32.png?svg1.1?cur) x=#? y?,url(fb)…,…,<fallback>?
+  •links&status: context-menu|help?|pointer|progress|wait
+  •selection: cell+|crosshair|text|vertical-text
+  •drag&drop: alies|copy|move|no-drop|not-allowed|grab|grabbing
+  •zooming: zoom-in+?out-  •resize&scroll: all-scroll|
+    col?row?n?e?s?w?ne?nw?se?sw?ew?ns?nesw?nwse-resize
+  ▬pointer-events: none|autoⒹ(a,img)|inherit;
+    onlysvg: visiblePainted?Fill?Stroke|visible|painted|fill| stroke|all
+★text-UA default: p{margin-block:1em}
+  ul,ol{margin-block:1em; padding-left:2.5em}
+  dl{margin-block:1em; dd{margin-left:2.5em}}
+
+
+★transform: noneⒹ| rotate?translate?scale|X?Y?Z?3d() skew?X?Y() matrix?3d() perspective();
+  ›unapply to unReplaced-i & table-column|-group els.
+  ›functions executed by #order, subsequence functions apply to main-axis of #transformed-box(not origin-box).
+  ›el:statePseudoClass{#t:required reset all el{t:functions()}}
+ *2Dimensions: •rotate?Z(<angle>);
+    ›t-origin: <bg-position≠offset>(50% 50%Ⓓ→border-box);
+  •translate(x'y=0|x,y)|X(x)|Y(y); ›x?y: ±length0d|±%'border-box
+  •scale(x=y=±#1d|x,y)|X(x)|Y(y); ›#€-1~1: shrink, else grow.
+    ›-#→pointReflection,-x:e→9, -y:e→6, -x=-y:6→9'rotate(.5turn)
+  •skew(x'y=0|x,y)|X(x)|Y(y); ›x?y: <angle>.
+ *3Dimensions: •demo: #parent{
+     perspective: noneⒹ|length'z0→eye; /*create shared 3Dview*/
+     perspective-origin: <bg-position>;/*shared 3DviewPosition*/
+     t-style: flatⒹ| preserve-3d;         /*enable 3d nesting*/
+    .t-Child{ position: absolute;          /*enable 3d nesting*/
+      t: perspective(length'z0→eye) /*create individual 3Dview*/
+        rotate3d(x,y,z,<angle>) rotateX?Y?Z(<angle>)
+        translate|scale3d(x,y,z) transate|scaleX?Y?Z();
+      t-origin: x?y'omitted→50%|x y z(length0d)?;     /*rotate*/
+      backface-visibility: visibleⒹ|hidden;    /*rotate 3D≠2D*/
+  •perspective:; apply to t-childrens, ›length'r=200big~1000px.
+    »p-origin: 50% 50%Ⓓ; #only apply to perspective property.
+      ›%'border-box, 3values21-moz?webkit-95≠Opera1.4≠gulp.
+    »perspective(z-distance:z=0'2Dplane→user) apply→ current tEl
+      ›viewPosition uncontrollable, can mixed under p-property.
+  •t-origin(→rotate): x?y'omitted→50%| x y z(±length0d)?;
+    ›x?y: ±length| ±%'border-box| centerⒹ| <side>.
+    ›z-offset: +push|-pull #rotated z0'origin far|to?behind user
+  •t: »rotate3d(x,y,z,<angle>); x?y?z-coordinates: ±#'r=-1~1.
+      ›rotate clock-wise p→o-axis, Point(x,y,z) Origin(t-origin)
+      ›x=y=z=0 valid & #ignored. ›rotate?Z(a)→rotate3d(0,0,1,a)
+    ›translate3d(x,y,z); x?y:±length?±%, z:±length.
+    »scale3d(x,y,z); x?y?z: ±#1d, -#→pointReflection -z:e/3→3/e.
+      ›t: scaleZ(sz) translateZ(z);→ t: translateZ(calc(z*sz));
+  •3D axises: ox→+ rotateX(90°)'6→-, oy↓+ rotateY(90°)'6→|,
+    ›oz↑user+: rotate?Z(180°)'6→9 translateZ() scaleZ().
+★transition: property <duration delay?> timing-function,…?;
+  ›apply to all els, ::before?after77≠S, ≠state-pseudo-class.
+  ›required statePseudoClass:hover?focuse?active or js.on|event.
+  ›onEven: [delay 0→100%] then(onRemoveEvent) [delay 100→0%].
+  ›demo: el{color: red; transition: color 2s ease-out;}
+         el:hover{color: cyan;}/*transtion happend on un&hover*/
+  •t-property: none| allⒹ| <property-name>, …?;
+    ›target p: value(length|#|<color>);, shorthand=its-longhands
+  •t-duration: <+time=#s?ms>0d, …?;
+  •t-delay: <±time0d>, …?; -#s: start as resumed after played #s
+  •t-timing-function: easeⒹ|-in-out|-in|-out| cubic-bezier()| linear'unChanged| step-start?end| steps(), …?;
+    ›ease: slow at start&end, change slow→fast at middle.
+    ›ease-in-out: as ease, but unChanged(linear) at middle.
+    ›ease-in: slow at start. ›ease-out:slow at end.
+    »cubic-bezier(x2,y2,x3,y3): custom curve, x€[0,1], y€R.
+      ›Point2(x2,y2) create touching-line with Point1(0,0),
+      ›Point3(x3,y3) create touching-line with Point4(1,1).
+      ›if y<0, transtions reversed untel point4(1,1).
+    »steps(#[, start?endⒹ|jump-start?end?both?none]?):
+      ›#: steps(duration/#) devide duration to fractions.
+      ›jump-none(jump #-1): jump just between steps.
+      ›jump-both(#+1): jump between steps, transition-start&end.
+      ›jump-|start?end(#): between steps, transition-start?end.
+    ›step-start?end=steps(1, jump-|start?end).
+ *multi-t: transition: list1, list2, …; ›t-*: v1, v2, …;
+  »omitting value from shorthand→initial, but in longhands→ refill by order to #all previous list-value's.
+    ›ex: t-property: p1, p2, p3, p4, p5, p6, p7;
+         t-duration: d1, d2, d3;→ t-d: d1,d2,d3,d1,d2,d3,d1;
+★@keyframes <name>{%?from'0%?to'100%{declarations-block}…}
+ *animation: none?name <duration delay> timing-function iteration-count direction fill-mode play-state, …?;
+  •a-name: noneⒹ|name=[≠0~9][a~Z|0~9|-|_|\escapedCharacter],…?;
+  •a-duration?delay?timing-function: <transition-*>;
+  •a-iteration-count: #€+Z1d| infinite, …?; ›ex #=.5: [d 0→50%].
+  •a-direction: normalⒹ| reverse| alternate|-reverse, …?;
+    ›normal: allways [delay 0→100%] ›reverse: allways [d 100→0%]
+    ›alternate'transition: [delay 0→100%] then [delay 100→0%] ….
+    ›alternate-reverse: [delay 100→0%] then [delay 0→100%] ….
+  •a-fill-mode: noneⒹ| forwards| backwards| both, …?;
+    »forwards: sticke last keyframe if animation end.
+      ›100% if d:normal, d:alternate;ic:odd, d:a-reverse;ic:even
+      ›0% if d:reverse, d:alternate;ic:even, d:a-reverse;ic:odd.
+    »backwards: apply first keyframe if delayed(else→none).
+      ›0% if d:normal?alternate, 100% if d:reverse?a-reverse.
+  •a-play-state: runningⒹ| paused, …?;
+    ›onEven pause&resume current frame, without restart from 0%.
+ *multi-t: animation: list1, list2, …; ›a-*: v1, v2, …;
+  »omitting value from shorthand→initial, but in longhands→ refill by order to #all previous list-value's.
+    ›ex: a-name: n1, n2, n3, n4, n5, n6, n7;
+         t-duration: d1, d2, d3;→ t-d: d1,d2,d3,d1,d2,d3,d1;
+
+
 ★
   ▶block?inline-box:
     ►block: •start&end→newLine •apply:w?h •inline-size:100% 
@@ -17,155 +449,125 @@
         ›have 5 lines: baseline in font-box in logical-box(t?b-line)
       2•replaced-i: ›noContent in doc: img object iframe video audio
         ›have {display: inline-block?table}: input meter progress textarea select svg br wbr
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-★
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-★
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-★
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-★
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-★
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
-  ▶
-    ►
-    ►
-    ►
-    ►
+
+
+★layout:
+ ▶normal flow:
+  •block-lvl els: inline-size=w=100%, generated below etch others in new lines.
+  •inline els: generated next to etch others, parallel to (dir=|direction:), wrap to new lines TtB to fill block-container.
+ ▶block:
+ ▶float(on below): noneⒹ| left| right; •shape-margin: L%;
+  •shape-outside: noneⒹ| <img>| <shape-box>| <basic-shape>;
+    ›shape-box: content?padding?border?margin-box; (in→b-radius)
+    »basic-shape(anim✓): circle(cr at p)| ellipse(hr vr at p)|
+       polygon(nonzeroⒹ?evenodd(unfill inside), x1 y1,…)| 
+       inset(<offset> round <b-radius>);
+      ›offset(rectangle): all|h v|t h b|t r b l; (±L%).
+      ›cr|hr?vr: L%㊿| closest?farthest-side;
+      ›b-radius'L%0d: <cR>(circle)| <hR>/<vR>(ellipse);
+        cR|hR|vR: all|tl=br tr=bl|tl tr=bl br|tl tr br bl;
+      ›position(center→top-left): x?y| x y| l?R L% t?b L%;
+       x?y: L%|<side>|centerⒹ;
+  •shape-image-threshold(animated): 0d~1; required by <gradient>
+  •#blockBelowNeighbor(unWrap){clear: noneⒹ| left| right| both}
+  ▬issue: if all-els=f, height→0, f-els overlap container-box.
+    ›fix: #container::after{content:'';display:block;clear:both}
+    ›fix2: #container-box{ display:flow-root}, inclode all f-els
+  ▬behaviors:
+   ›float entire el-box(+margin) rel→ parent-#content-box
+   ›width are #requred by ≠replaced-i & block-lvl els.
+   ›margin of wraped|unWraped neighbors, collapse→0.
+   ›turn display: inline|-block|table-*;→ display: block;
+     display: inline-flex?grid?table;→ display: flex|grid|table;
+   ›block-lvl f-els make below neighbors b-lvl-#content-box wrap
+   ›sameSide subsequence floats render inline to opposite f-side
+    if container width unfit, unorder-positioned topest & closest to f-side, (nested floats cause #position issues).
+ ▶position:(zi++): staticⒹ| relative| absolute| fixed| sticky;
+    •relative: preserve original occupied space in normal-flow.
+      ›offset rel to original-box(top-left corner).
+    •absolute: apply→marginBox, removed from normalFlow.
+      ›inline-els→ behave as block-lvl-box(new container).
+      ›offset rel→.closest-ancestor{p:relative?absolute?fixed}
+        else rel→html, issue buttom rel→viewport(scrollable).
+    •fixed: as absolute, but rel›viewport, or .closest-ancestor{transform;perspective;filter}
+      ›add space at bottom of document to avoid hidden content.
+    •sticky: stay in nFlow, until its origin hidin by #scroll
+      ›offset rel→.closest-Block-ancestor{overflow≠none|clip}
+       in table-module rel→th|thead, v-scroll required t?b|both
+  ▬<side>(offset): autoⒹ| ±length| ±%; (define #both Hs=w, Vs=h)
+  ▬z-index(apply→p-els): autoⒹ| ±#; (high overlap lower)
+    ›auto: last el in source have z-index > previos els.
+ ▶multicol:
+
+
+ ▶flex: (rel to writing-mode|direction) ⇆mainAxis ✖crossAxis
+  ►.container{ •display: inline-|flex;        
+   ▬f-flow:<fd>? <fw>?;
+    •f-direction⇆|wrap✖s?e: rowⒹ?column|nowrapⒹ?wrap |-reverse;
+   ▬place-content: both|<ac✖> <jc⇆>;/*align item-box→container*/
+    •justify-content⇆: flex-|startⒹ?end≠S19s3| left?right≠s3| center| space-between?around(gap=2edge)?evenly;
+      ›align items rel→container, overridedBy{margin<flex}.
+    •align-content✖(*f-wrap≠unwrap): stretchⒹ| flex-|s?e≠S19s3| center| space-between?around?evenly;
+      ›align all track-lines→container.
+   ▬align-items✖: stretchⒹ|baseline|center| flex?self-|s?e≠S19s3
+    ›align all items→itsLines, self-s?e basedOn .item{direction}
+  ►.item{ •order: ±#0d;
+   ▬align-self✖:autoⒹ|stretch|baseline|center| f?self-|s?e≠S19s3
+    ›align individual item→itsLine, override{align-items}
+   ▬margin-s:auto'fillGap; ⇆m-s>jc, ✖m-s>a-self>a-items
+   ▬flex: initialⒹ01A| auto11A| none00A| g s b(g10|11b|gs0|g1b);
+     ›min-w?h > basis > shrink > w?h, max-* > basis > grow > w?h
+    •f-grow: #.0d;              override{margin>justify-content}
+      ›fill before=after main-size(basis>w?h) gap.
+    •f-shrink: #1d; if space unfit wrap line→multiShortLines
+    •f-basis: autoⒹ→{w?h,main-size}| length| %(main-axis);
+      ›if main-size>L% return auto, &if main-size>w?h content overlap its box (fix: overflow|-wrap| word-break)
+ ▶grid:
+  ♥.container{ •display: inline-|grid;
+   ►grid: <gt>| auto-flow dense? <track-size>…/<gt-columns>| <gt-rows>/auto-flow dense? <track-size>…;
+    ▬g-template: noneⒹ| <gt-rows>/<gt-columns>|
+      [ln? <string> <track-size>? ln?]…/<track-list≠repeat>;
+      ›lineNames: [ln1 ln2…]; ln=[≠0~9][a~Z|0~9|-|_|\♪]?…;
+        if(top&left-line→[a-start], b&r-line→[a-end]) {a=area}
+     •gt-rows?columns: noneⒹ| <track-list>| <auto-track-list>;
+      »track-list: [ln? <track-size?repeat>]… ln?
+       ›track-size: <b>| fit-content(L%)| minmax(<b≠fr>, <b>)
+        _breadth: L%|auto|fr|min?max-content
+        _auto: minmax(min-content,max-content)
+         auto=min?max-content inside minmax()
+        _fit-content(X): min(max-content, max(min-content, X))
+       ›track-repeat: repeat(#, <track-list≠repeat>)
+      »auto-t-list: [ln? <fixed-size?repeat>]… ln? <auto-repeat>
+       ›fixed-size: L%| minmax(L%,<b>|<b≠fr>,L%)
+       ›fixed-r: repeat(#,[ln? <fixed-size>]… ln?);
+       ›auto-r: repeat(auto-fill?fit,[ln? <fixed-size>]… ln?)
+     •gt-areas: noneⒹ| <string1> <s2> …;      ›ex: gta: 'a a b'
+      ›string: represent row cells= character+|.(empty); 'a a .'
+      ›every #rectangle area generates 4line-names, reverseToo!!
+       _top?left-line=[areaName-start], b?r-line=[areaName-end]
+    ▬g-auto-flow: rowⒹ?column dense?(unorder holes-fill);
+    ▬g-auto-rows?columns: <track-size(autoⒹ)>…;
+   ►g-|gap: both|r c;        •g-|row?column-gap: normalⒹ1em|+L%;
+   ►place-content: both|<ac> <jc>;/*align all tracks→container*/
+    ▬j?a-content: stretchⒹ|s?e|l?r≠a-c|center|space-b?a?e;
+    ›issue(overflow): gaps added to space-between?around?evenly
+   ►place-items: both|<ai> <ji>; /*align all items-boxes→areas*/
+    ▬j?a-i: normalⒹ|stretch|baseline|center|l?r≠ai| self-|s?e;
+     ›normal: stretch'≠replaced-els, start'block?replaced-els.
+  ♥.item{           •order: ±#0d;          •z-index: autoⒹ|±#;
+   ►placement:
+    ▬g-area1~4: area| r-start/c-start?/r-end?/c-end?;
+    ▬g-row?column(span≠both): <*-star> / <*-end>;
+     •g-r?c-start?end: autoⒹ| ±#| ln| span +#?ln| areaName;
+      ›autoⒹ(span 1)| ±#*(-1=lastLine)| ln(ø[])|
+       span +#?ln(from opposite-line≠span to item-in?[ln])|
+       areaName(ø'', *-start:a;→[a-start], *-end:a;→[a-end]);
+   ▬place-self: both|<as> <js>;            /*override{p-items}*/
+    •j?a-s: autoⒹ→*-i|stretch|baseline|center|l?r≠ai| self-|s?e;
+   ▬margin: auto;→ place-self: center;  /*override{p-self>p-i}*/
+    ›m:0 auto:→ justify-s:center; ›m:auto 0:→ align-s:center;
+    ›m-top:auto:→ align-s:end; ›m-bottom:auto:→ align-s:start;
+    ›m-left:auto;→ justify-s:right; ›m-right:auto;→ j-s:left;
+
+
+★★★block-lvl & absolute-position els: •place-self?items:;

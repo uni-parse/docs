@@ -303,7 +303,8 @@
     •<symbol> store els|effects as <defs>, scalable by viewBox=
     •<use> call <g>|<defs>|<symbol> content.
   ▶responsive:
-    ►view-control: ▬viewport: as window display slice|full svg
+    ►view-control: 
+      ▬viewport: as window display slice|full svg
         •Established by width|height=100%D in <svg|img|iframe>
       ▬viewBox='minX minY width height': as telescope(pan&zoom)
         •default→'0 0 viewport-width viewport-height'
