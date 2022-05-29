@@ -285,6 +285,8 @@
           Object.getPrototypeOf(inctance) //ourProto
           Object.getPrototypeOf(ourProto) //Object.prototype
         ›using constructor:
+          in js all funcs().prototype
+          
           
       •
 ★
