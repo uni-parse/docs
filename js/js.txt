@@ -298,8 +298,11 @@
         Object.hasOwn(ourObj,'property?method Name')//boolean
         if member defined in the instance as ins.member //true
         else if defined in constructor as this.member //true
+        else if defined in constructor without this. //false
         else if defined in prototype //false
-        ›
+    ▬
+    ▬
+    ▬
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
