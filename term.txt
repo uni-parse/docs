@@ -1,8 +1,9 @@
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+  polymorphism: overriding superClass method by subClass method.
   propagation تكاثر
   invoke=call|ececute
   defer=delay
-  consant ≠variable
+  constant ≠ variable
   fundamentals: core-bascs
   parse=processing
   optional≠mandatory

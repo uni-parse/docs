@@ -319,12 +319,40 @@
             instance2.pro1 //v3
             instance2.pro2 //v4
         »inheriance:
+          ›class superParent
+            properties
+              pro1
+            constructor
+              superParent(pro1)
+            methods
+              method1()
+              method2()
+          ›class subChild1 : extends superParent
+            properties
+              //pro1 inherited from superParent class
+              pro2
+            constructor
+              subChild1(pro1,pro2)
+            methods
+              //method1 inherited from superParent class
+              method2()//polymorphism:override the inherited one
+              method3()
+        »encapsulation: in js private member name star with _
+          ›class subClass : extends superClass
+            properties
+              private pro
+            methods
+              multi(multiplay){return this.pro * multiplay}
+          ›instance = new subClass
+            instance.pro //error: pro private of subClass
+        »oop & js:
           ›
-      •class: template allow us consructor derive instances.
+          ›
       •
       •
     ▬
     ▬
+  ►class: template allow us consructor derive instances.
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
