@@ -300,10 +300,9 @@
         else if defined in constructor as this.member //true
         else if defined in constructor without this. //false
         else if defined in prototype //false
-    ▬object oriented programming
-      •pseudo code:
-        »classes & instances:
-          ›class templateName
+  ►object oriented programming: pseudo code:
+    ▬classes & instances:
+          •class templateName
             properties
               pro1
               pro2
@@ -312,14 +311,14 @@
             methods
               method1()
               method2()
-          ›instance1 = new templateName(v1,v2)
+          •instance1 = new templateName(v1,v2)
             instance2 = new templateName(v3,v4)
             instance1.pro1 //v1
             instance1.pro2 //v2
             instance2.pro1 //v3
             instance2.pro2 //v4
-        »inheriance:
-          ›class superParent
+    ▬inheriance: (extends)
+          •class superParent
             properties
               pro1
             constructor
@@ -327,7 +326,7 @@
             methods
               method1()
               method2()
-          ›class subChild1 : extends superParent
+          •class subChild1 : extends superParent
             properties
               //pro1 inherited from superParent class
               pro2
@@ -337,22 +336,45 @@
               //method1 inherited from superParent class
               method2()//polymorphism:override the inherited one
               method3()
-        »encapsulation: in js private member name star with _
-          ›class subClass : extends superClass
+    ▬encapsulation: in js private member name star with _
+      •class subClass : extends superClass
             properties
               private pro
             methods
               multi(multiplay){return this.pro * multiplay}
-          ›instance = new subClass
+      •instance = new subClass
             instance.pro //error: pro private of subClass
-        »oop & js:
-          ›
-          ›
-      •
-      •
-    ▬
-    ▬
   ►class: template allow us consructor derive instances.
+    ▬classes & constructors:
+      class super{
+        pro; //optional, can be initialized pro=val.
+        constructor(arg){ this.pro = arg }//pro auto-declared
+        method(){ console.log(`hi I'm ${this.pro}`) }
+       }
+      •constructor will: can be omitted(default auto-generated)
+        create new object
+        match this keyword in the now object
+        run the code in the constructor
+        return the new object
+    ▬inheritance:
+      class sub extends super{
+        constructor(arg1,arg2){
+          super(arg1) //super.constructor(arg1){this.pro=arg1}
+          this.pro2 = arg2
+        }
+       }
+    ▬Encapsulation: prefix member by #name
+      class ex{
+        #privatPro //must be declared, not optional.
+        constructor(arg){ this.#privatPro = arg }
+        public(){ this.#private() }
+        #private(){ console.log('I\'m private') }
+      }
+      const ins = new ex()
+      ins.public() //I'm private
+      ins.#private() //syntax error
+      ins.#privatPro //syntax error
+  ►json(javaScript object notation):
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
