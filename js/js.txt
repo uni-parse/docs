@@ -178,7 +178,7 @@
       •IIFE: Immediately Invoked Functional Expression
         (function(){local=v}()) //func isolation, local scope
   ►function:
-    ▬costum function:
+    ▬custome function:
       •definition: function fName(args?){…;return …;/*ignored*/}
       •invoke=call=execute: fName(a?)//before||after definition
       •parentheses() Invoke it Immediately, even if we assign it to variable or as other function argument.
