@@ -375,6 +375,21 @@
       ins.#private() //syntax error
       ins.#privatPro //syntax error
   ►json(javaScript object notation):
+    ▬imported:
+      async fn(){
+        const request = new Request('url.json')
+        const response = await fetch(request)
+        const jsonObj = await response.json()
+        //const deSerialization = await Json.parse(response.text())
+        //const serialization = Json.stringify(deSerialization)
+      }
+    ▬
+    ▬
+    ▬
+    ▬
+    ▬
+    ▬
+    ▬
 ★
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
