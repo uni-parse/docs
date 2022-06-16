@@ -388,6 +388,10 @@
     ▬we required to double quote objects "properties": value 
     ▬there no methods in objects.
   ►synchronous≠arynchronous:
+    ▬
+    ▬
+    ▬
+    ▬
 ★
   ►
 ★
