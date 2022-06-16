@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>superHeros</title>
+  <style>
+    @font-face {
+  font-family: 'Henny Penny';
+  src: url('./assets/HennyPenny-Regular.ttf');
+}
+html {
+  font-family: helvetica, arial, sans-serif;
+}
+
+body {
+  width: 50rem;
+  margin: 0 auto;
+}
+
+h1, h2 {
+  font-family: 'Henny Penny', cursive;
+}
+
+/* header styles */
+
+h1 {
+  font-size: 4rem;
+  text-align: center;
+}
+
+header p {
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+/* section styles */
+
+section article {
+  width: 33%;
+  float: left;
+}
+
+section p {
+  margin: 5px 0;
+}
+
+section ul {
+  margin-top: 0;
+}
+
+h2 {
+  font-size: 2.5rem;
+  letter-spacing: -5px;
+  margin-bottom: 10px;
+}
+  </style>
+</head>
+<body>
+  <header></header>
+  <section></section>
+  <script>
+  async function populate() {
+
+    const requestURL = './firstTest.json';
+    const request = new Request(requestURL);
+
+    const response = await fetch(request);
+    const superHeroes = await response.json();
+
+    populateHeader(superHeroes);
+    populateHeroes(superHeroes);
+
+  }
+
+  function populateHeader(obj) {
+    const header = document.querySelector('header');
+    const myH1 = document.createElement('h1');
+    myH1.textContent = obj['squadName'];
+    header.appendChild(myH1);
+
+    const myPara = document.createElement('p');
+    myPara.textContent = `Hometown: ${obj['homeTown']} // Formed: ${obj['formed']}`;
+    header.appendChild(myPara);
+  }
+
+  function populateHeroes(obj) {
+    const section = document.querySelector('section');
+    const heroes = obj['members'];
+
+    for (const hero of heroes) {
+      const myArticle = document.createElement('article');
+      const myH2 = document.createElement('h2');
+      const myPara1 = document.createElement('p');
+      const myPara2 = document.createElement('p');
+      const myPara3 = document.createElement('p');
+      const myList = document.createElement('ul');
+
+      myH2.textContent = hero.name;
+      myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
+      myPara2.textContent = `Age: ${hero.age}`;
+      myPara3.textContent = 'Superpowers:';
+
+      const superPowers = hero.powers;
+      for (const power of superPowers) {
+        const listItem = document.createElement('li');
+        listItem.textContent = power;
+        myList.appendChild(listItem);
+      }
+
+      myArticle.appendChild(myH2);
+      myArticle.appendChild(myPara1);
+      myArticle.appendChild(myPara2);
+      myArticle.appendChild(myPara3);
+      myArticle.appendChild(myList);
+
+      section.appendChild(myArticle);
+    }
+  }
+
+
+
+  populate()
+
+
+  </script>
+</body>
+</html>

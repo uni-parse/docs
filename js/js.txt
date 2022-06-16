@@ -375,22 +375,21 @@
       ins.#private() //syntax error
       ins.#privatPro //syntax error
   ►json(javaScript object notation):
-    ▬imported:
+    ▬importing:
       async fn(){
         const request = new Request('url.json')
         const response = await fetch(request)
         const jsonObj = await response.json()
         //const deSerialization = await Json.parse(response.text())
         //const serialization = Json.stringify(deSerialization)
-      }
-    ▬
-    ▬
-    ▬
-    ▬
-    ▬
-    ▬
-    ▬
+      }; fn()
+    ▬json are string usefull to transmit data between server & client
+    ▬can contain single #number, [array], {object}, 'string'
+    ▬we required to double quote objects "properties": value 
+    ▬there no methods in objects.
+  ►synchronous≠arynchronous:
 ★
+  ►
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
