@@ -1,4 +1,7 @@
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+  pending ≠ settled(fulfilled ≠ rejected)
+  synonyms ===terms
+  synchronous(one by one) ≠ asynchronous(all at once)
   seria|lization(obj→"") ≠ de|seria|lization(""→obj)
   polymorphism: overriding superClass method by subClass method.
   propagation تكاثر

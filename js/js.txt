@@ -387,13 +387,33 @@
     ▬can contain single #number, [array], {object}, 'string'
     ▬we required to double quote objects "properties": value 
     ▬there no methods in objects.
-  ►synchronous≠arynchronous:
+  ►prolise: (synchronous ≠ arynchronous)
+    ▬demo:
+      const api = api(arg)
+      console.log(api) //Promise {<pending>}
+      api.then(resp => console.log('response: ' + resp.status))
+      console.log('I\'ll log before Promise "settled"')
+    ▬chaining promise:
+      api(arg)
+        .then(a => doSomthing(a)) //return promise
+        .then(a => doThis(a))
+    ▬catching errors:
+      api(arg)
+        .then() //invoked if promise fulfilled
+        .then() //invoked if promise fulfilled
+        .catch(err=>console.error(`error: ${err}`))
+          //invoked if promise rejected
+    ▬primary promise states:
+      •pending: the initial state, until settled.
+      •settled:
+        »fulfilled: return value(# || 'str' || {}).
+          ›invoke then()
+        »rejected: because of reason(prevent fulfillement).
+          ›invoke catch()
+    ▬promise resolving:
+      •
+      •
     ▬
-    ▬
-    ▬
-    ▬
-★
-  ►
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
