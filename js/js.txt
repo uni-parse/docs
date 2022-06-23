@@ -387,7 +387,7 @@
     ▬can contain single #number, [array], {object}, 'string'
     ▬we required to double quote objects "properties": value 
     ▬there no methods in objects.
-  ►prolise: (synchronous ≠ arynchronous)
+  ►promise: (synchronous ≠ arynchronous)
     ▬demo:
       const api = api(arg)
       console.log(api) //Promise {<pending>}
@@ -407,13 +407,38 @@
       •pending: the initial state, until settled.
       •settled:
         »fulfilled: return value(# || 'str' || {}).
-          ›invoke then()
+          ›invoke then()'s one by one
         »rejected: because of reason(prevent fulfillement).
           ›invoke catch()
-    ▬promise resolving:
-      •
-      •
-    ▬
+    ▬combining multiple promises:
+      •Promise.all([promise1, …])
+        .then() //invoked if all promises fulfilled
+        .then( responses => {
+          for (const response of responses) {
+            if (!response.ok) {
+              throw new Error(response.status)
+            }
+            console.log(`${response.url}: ${response.status}`)
+          }
+        })
+        .catch() // invoked if any promise rejected
+      •Promise.any([promise1, …])
+        .then() //invoked if any promise fulfilled
+        .catch() //invoked if all promises rejected
+    ▬new syntax: then → await
+      async function name() {
+        try{
+          const response = await fetch('url.json')
+          if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status}`)
+          }
+          const json = await responce.json()
+          return json
+        }
+        catch(err) { console.error(err) }
+      }
+      name() //don't wait, parse next line.
+  ►
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
