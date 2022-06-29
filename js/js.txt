@@ -438,7 +438,51 @@
         catch(err) { console.error(err) }
       }
       name() //don't wait, parse next line.
-  ►
+    ▬resolve:
+      •resolve():
+        const myPromise = new Promise((resolve,reject) => {
+          //doSomthing → fulfillement
+          if (fulfillement){
+            resolve('pass fulfillement value or promise')
+          } else { reject() }
+        })
+      •return promise():
+        function name() {
+          return func1().then(r => return func2(r))
+        }
+      •Promise.resolve(input)
+        .then(x => /*doSomthing*/)
+        //promise chain
+  ►workers:
+    ▬dedecated workers: used by single script instance.
+      •demo:
+        //main.js:
+        const worker = new Worker('path/worker.js')
+        document.querySelector('button').addEventListener('click', () => {
+          worker.postMessage({
+            command: 'doTask1',
+            otherJsonProperty: 'passValue'
+          })
+          worker.addEventListener('message', m => 
+            document.querySelector('output').textContent = m.data
+          , { once: true })
+        }, { once: true })
+        
+        //worker.js:
+        addEventListener('message', m => {
+          if (m.data.command === 'doTask1') {
+            task1(m.data.otherJsonProperty)
+          }
+        })
+        function task1(arg){
+          //doSomthing to arg → result
+          postMessage(result)
+        }
+      •seprate script run in its oun thread (each cpu(2~8) core can parse limeted number(1~4) of thread)
+    ▬shared workers: used by script's runing in differ windows
+    ▬server workers: like proxy server, cache resource for offline usage.
+  ►apis:
+    ▬
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
