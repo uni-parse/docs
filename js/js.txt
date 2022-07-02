@@ -481,8 +481,8 @@
       •seprate script run in its oun thread (each cpu(2~8) core can parse limeted number(1~4) of thread)
     ▬shared workers: used by script's runing in differ windows
     ▬server workers: like proxy server, cache resource for offline usage.
-  ►apis:
-    ▬
+  ►apis(application programming interface):
+    ▬co
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
