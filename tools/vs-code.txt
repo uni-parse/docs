@@ -8,6 +8,7 @@ ctrl k + z               :toggle focus mode
 ctrl shift? P            :open file|run command?
 
 ctrl ↑↓                  :scroll ↑↓
+ctrl home?end            :scroll to first?last character in page
 ctrl tab shift?          :navigate to other opened tabs
 ctrl alt ←→              :move tab to other group ↑↓
 ctrl \                   :split Editor to Right
@@ -21,9 +22,13 @@ ctrl ←→| home?end| page↑↓:navigate words|line|page → start?end
 back|delete              :remove left|right character
 cr sh ][|cr K + cr J?0~5 :un?fold current | all
 
+clicks= 2 3 4            :select word line all
+ctrl l                   :select entire line, and next line, ...
 ctrl D ? 2click| cr sh L :select word|all same words
 shift ←↑↓→| middle_mouse :select sequenced|slice of code
 ctrl alt ↑↓ | alt click  :add cursors ↑↓|anywhere
+
+shift? tab               :if block of text selected, add to all lines tab or shift them back by tab.
 
 alt ↑↓|sh alt ↑↓|cr sh K :move|copy|remove line(s) ↑↓
 

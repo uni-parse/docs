@@ -5,7 +5,7 @@
   seria|lization(obj→"") ≠ de|seria|lization(""→obj)
   polymorphism: overriding superClass method by subClass method.
   propagation تكاثر
-  invoke=call|ececute
+  invoke=call|execute
   defer=delay
   constant ≠ variable
   fundamentals: core-bascs

@@ -387,7 +387,7 @@
     ▬can contain single #number, [array], {object}, 'string'
     ▬we required to double quote objects "properties": value 
     ▬there no methods in objects.
-  ►promise: (synchronous ≠ arynchronous)
+  ►promise: (synchronous ≠ asynchronous)
     ▬demo:
       const api = api(arg)
       console.log(api) //Promise {<pending>}
@@ -482,7 +482,12 @@
     ▬shared workers: used by script's runing in differ windows
     ▬server workers: like proxy server, cache resource for offline usage.
   ►apis(application programming interface):
-    ▬co
+    ▬shared:
+      •all apis based on Objects store data in prop#erties and functionality on methods.
+      •all have one entry point object contain all properties && methods like document|audioContext
+      •almost all have events hanlers
+      •often have additional security mechanisms (same-origin policy| Notifications api| autoplay policy| ≠offline)
+    ▬
 ★
 ▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
