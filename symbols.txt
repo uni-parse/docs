@@ -2,7 +2,7 @@ comma ,
 colon :
 semiColon ;
 curly brace {}
-parentheses ()
+parenthesis ()
 hyphen manius dash -
 underLine underscore _
 tilde(telda) ~

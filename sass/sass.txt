@@ -325,7 +325,7 @@ scss= superset of css, sass= indent syntax style sheet.
     »inspect($value)//$value regardless if valid css or not
       $font: 1em,'R M'; :root{--cp:#{meta.inspect($font)}}
       @debug #{$font|meta.inspect($font)}//1em,R M|1em,'R M'
-  »@use 'sass:math'; 24+3u+6b+2d+3e+7t+3o
+  »@use 'sass:math'; 24=3u+6b+2d+3e+7t+3o
     »variables: ›math.$e//Euler#=2.718… ›math.$pi//π=3.14…
    •Units funcs: 3 ›is-unitless(±#|±#anyUnit)//boolean
     ›unit(±#|±#anyUnit)//''|'anyUnit'

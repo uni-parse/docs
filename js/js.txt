@@ -1,40 +1,52 @@
-▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-★consepts: its riginal name was live-script ≠java.
-  ►place into document: in <head> or just before </body>.
+▶▪◄▲▼⋆♥▸•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+⋆concepts: renamed from liveScript to javaScript
+  ▪place into document: in <head> or just before </body>.
     •embedded: <script>…</script>
     •external: <secript src=path/file.js>/*Ø*/</script>
-  ►loading: <script> pause HTML-parse until (fetch & execute).
+  ▪loading: <script> pause HTML-parse until (fetch & execute).
    <s defer*src> parallel(fetch,parse), execute after parse-End
    <s async*src> parallel(fetch,parse), pauseParse until execute
-★data types:
-  ►literal:
-    ▬undefnedⒹ if var declared without initialized.
-    ▬null: Define this var, but give it no inherent value
-    ▬boolean: true !false anyVal|false !true NaN''null0undifined
-    ▬number: •integer: ±#≠.0 •decimal'float: ±#.f •double
-    ▬string: •sequence of characters quoted by `|'|"
+⋆data types:
+  ▪literal:
+    ▸undefnedⒹ if var declared without initialized.
+    ▸null: Define this var, but give it no inherent value
+    ▸boolean: true !false anyVal|false !true NaN''null0undifined
+    ▸number: •integer: ±#≠.0 •decimal'float: ±#.f •double
+    ▸string: •sequence of characters quoted by `|'|"
       •+|+=operator concat str+str|str+number //string.
       •backTick template: `str${<expression>str}` preserve WS
       •\escape just before: \\ \' \" \n?u{a}=newLine \t?u{9}=tab \r?u{d}=carriageReturn \f?u{c}=formFeed \b?u{8}=backSpace \v?u{b}=lineTabulation
         ›\uHHHH \u{H~HHHHHH} \xHH
-    ▬array: [Ø|item,…?]
+    ▸array: [Ø|item,…?]
       •items are members of ordered data(even[]&{}) comma separated surrounded by brackets[], indexed from 0
       •accessed only by index arr[#].
-    ▬object: {Ø|property:value,method:function(){},…?}
-  ►≠literal: varName|func()|(n?operator)
-    ▬func(): •Worning: if assigned→var, start runing immediately
+    ▸object: {Ø|property:value,method:function(){},…?}
+  ▪≠literal: varName|func()|(n?operator)
+    ▸func(): •Worning: if assigned→var, start runing immediately
       •if contain return: run until return, store returned data.
       •if return omitted: run all the block, store undefined.
-★buld-in functions| properties and methods:
+⋆operators: order: ! ±unary,*%/,+-,<=>,== !=,&&,||,?:
+  ▪numeric:+add -subtract *multi /divid %reminder **exponent
+    •increment++ decrement-- by 1 without return sum
+      ++increment --decrement by 1 & return sum
+    •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
+  ▪comparison:===identical'val&type ==equality !== != <=>'#
+  ▪logical: !(not) &&(and) ||(or)
+    •!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
+    •exp&&exp//TandT=true,false •exp||exp//ForF=false,true
+  ▪string: +|+=concatecation str+str?n//string
+  ▪ternary: (condition) ? /*if true run this*/ : /*else this*/
+  ▪typeof <expression> //number|string|object
+⋆built-in objects:
   •everything object: window:{document:{html:{body:{…}}}}
-  ►DOM:Api translate html?xml→ nodesTree accessed by js?ruby?c#…
+  ▪DOM:Api translate html?xml→ nodesTree accessed by js?ruby?c#…
     •node in html: el, att, text
     •document: object represent all html nodes.
       document.getElementById('id').appendChild(
         document.createElement('p').appendChild(
           document.createTextNode('Hi')));
       //<el id=id> now contain <p>Hi</p> as last child
-   ▬properties
+   ▸properties
     title //<title>
     body //<body>
     innerHTML //markup
@@ -42,7 +54,7 @@
     textContent
     parentNode
     style.<cssProperty> //css:hyphen-property → js:camelCase
-   ▬methods
+   ▸methods
     •access: singleElement|collection[index]
       $() //in-jQuery === document.querySelectorAll()
       querySelectorAll('s1, …', …)
@@ -64,61 +76,18 @@
         //div[0].replaceChild(newText, paragraph[0]);
       removeChild(node) //div[0].removeChild(paragraph[1]);
     •att: getAttribute('att') setAttribute('att', 'value')
-  ►events:
-    ▬mechanisms: obj.addEventListener('event',l,boolean?option)✓
-    |<el onevent=l()|/*code*/> ✖| n.onevent=l ✖
-    ▬on|event:
-     •window: »desktop: on|mousemove, mouseover, mouseout
-      »general:DOMContentLoaded, devicemotion, deviceorientation
-        ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
-     •document: »m: on|touchend,touchcancel,touchmove,touchstart
-      »general: on|click, dblclick, scroll, input, change, visibilitychange, copy, cut, paste, selectstart, selectionchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
-      »desktop: DOMContentLoaded, readystatechange
-        ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed)
-    ▬listener(eventHandler):funcName| function(){/*anonymous*/}|
-      ()=>{}| (function(){/*temporary scope*/})()
-      •automaticly pass event parameter to the func listener
-        funcName→funcName(e)
-    ▬boolean: falseⒹ//targer→bubbling, true//capturing→target
-     phases run by order: nested els have same 'event'
-      •capturing: check&run listeners from window →…→ parent
-      •target: check&run listener registed on e.target, thene if e.bubbles==trueⒹ: propagates evt to parent →…→ window
-      •bubbles up: check&run listeners from parent →…→ window
-      ›if we add two addEventListener() one false & other true:
-        phases: capturing → target → target again → bubling
-      ›to prevent capturing|bubbling, listener must be:   
-        e=>{e.stopPropagation();…}
-      ›to target just all childrens of parent:
-        parent.addEventListener('event', e=>{e.target.…;…})
-      ›to target just parent:
-        p.addEventListener('event', e=>{e.currentTarget.…;…})
-    •options: {
-      once: boolean, //call .removeEventListener() after 1listen
-      capture: boolean, //??
-      passive: boolean, //??
-      signal: controller.signal //can passed to many listeners
-        //on topLvl: const controller = new AbortController()
-        //remove any/all listeners: controller.abort()
-     }
-    ▬multi listeners on one event:
-      obj.addEventListener('sameEvent',l1)
-      obj.addEventListener('sameEvent',l2)
-    ▬removeEventListener('event', funcName)//unlisten
-    ▬remove all: const controller = new AbortController();
-      obj.addEventListener('event',l,{signal:controller.signal})
-      controller.abort() //unlisten to any event share {signal}
-  ►native functions: window.func()
-    ▬dialog box(show message): •prompt(req)//[input],(ok)submit
+  ▪native functions: window.func()
+    ▸dialog box(show message): •prompt(req)//[input],(ok)submit
       •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
-    ▬return val: •Date()//date time day GMT
+    ▸return val: •Date()//date time day GMT
       •setTimeout(funcName, #'ms) //delay calling funcName()
-  ►literal properties & methods:
-    ▬number:
+  ▪literal properties & methods:
+    ▸number:
       n.toFixed(+#) //round n.10^#
       (#).toString() //'#'
       Math.floor(#.f) //#
       Math.rendom() //0≤return<1
-    ▬string:
+    ▸string:
       str[i]//character nth i+1
       .length//#
       Number(Ø?''|'#'|'≠#')//0|#|NaN
@@ -130,7 +99,7 @@
       .replace?replaceAll(subStr,newSubStr)//string
       .split(separator,limit?)//[array]
         'a/b/c'.split('/',2) //['a','b']
-    ▬array:
+    ▸array:
       arr[i][i] //item nth i+1 of nested arr nth i+1
       .indexOf(item)//+#,-1
       .push(i,…?)//#(arr.length + [i,…?].length), add→end.
@@ -151,60 +120,53 @@
         ['ccc','a','bb'].filter(i=>i.length>=2) //['ccc','bb']
       .toString() //'arr[0],…,arr[arr.length-1]'
       .join(separator=',') //'arr[0],…,arr[arr.length-1]'
-★statements:
-  ►operators: order: ! ±unary,*%/,+-,<=>,== !=,&&,||,?:
-    ▬numeric:+add -subtract *multi /divid %reminder **exponent
-      •increment++ decrement-- by 1 without return sum
-        ++increment --decrement by 1 & return sum
-      •assignment: varName =|+=|-=|*=|/=|%=|**=|… value
-    ▬comparison:===identical'val&type ==equality !== != <=>'#
-    ▬logical: !(not) &&(and) ||(or)
-      •!exp//oppsite-boolean notT=F notF=T !0=T !NaN=T !1=F …
-      •exp&&exp//TandT=true,false •exp||exp//ForF=false,true
-    ▬string: +|+=concatecation str+str?n//string
-    ▬ternary: (condition) ? /*if true run this*/ : /*else this*/
-    ▬typeof <expression> //number|string|object
-  ►variable: store reusabel data.
-    ▬dec&init: const?let name=value,…?;
-     •declaring: const?let name1,…?; ▬initializing: name=update;
+    
+    ▸arrays: 40 method
+      constructor: Array()
+      Array.isArray(arr)//boolean, alternative to typeof
+      Array.
+⋆statements:
+  ▪variable: store reusabel data.
+    ▸dec&init: const?let name=value,…?;
+     •declaring: const?let name1,…?; ▸initializing: name=update;
        ›let declare updatable var, const declare ≠updatable var.
        ›const array=[…],object={…}; //content … can be updated!.
-    ▬name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
-    ▬scope: •topLvl: const?let golbal=v; //available everywhere
+    ▸name: [≠0~9][a~Z 0~9 _]…?, case-sensitive, ≠js-statement.
+    ▸scope: •topLvl: const?let golbal=v; //available everywhere
       •in function:
         ›const?let local=v; //accessed only in this func.
         ›global=v; //call it will declare global var, undifined
           //issue: unexpected errors, fix: avoid this method.
       •IIFE: Immediately Invoked Functional Expression
         (function(){local=v}()) //func isolation, local scope
-  ►function:
-    ▬custome function:
+  ▪function:
+    ▸custome function:
       •definition: function fName(args?){…;return …;/*ignored*/}
       •invoke=call=execute: fName(a?)//before||after definition
-      •parentheses() Invoke it Immediately, even if we assign it to variable or as other function argument.
-    ▬anonymous=nameless: function(){} //usefull as parameter
-    ▬arrow: (arg1,…)=>{…;return? …}
+      •parenthesis() Invoke it Immediately, even if we assign it to variable or as other function argument.
+    ▸anonymous=nameless: function(){} //usefull as parameter
+    ▸arrow: (arg1,…)=>{…;return? …}
       •only 1 parameter: arg=>{…;return? …}
       •only 1 invoked?returned line: (a1,…)=>…
-    ▬scope: •global: function(){};
+    ▸scope: •global: function(){};
       •temporary: (function(){})();
-    ▬argumets: optional? if arg=initialized, can be comma list
-    ▬block{}: can contain variables, loops, functions, ?
-    ▬return keyword:
+    ▸argumets: optional? if arg=initialized, can be comma list
+    ▸block{}: can contain variables, loops, functions, ?
+    ▸return keyword:
       •stop executing, & ignored below code.
       •give the fonction ability to be a variable with dynamic value (can be customized by arguments).
       •if 'return' omitted, return undefined
-  ►flow control:
-    ▬if(condition1 met){ //execute block1
+  ▪flow control:
+    ▸if(condition1 met){ //execute block1
         }else if(condition2 met) { //execute block2
         }…else{ //execute last-block}
       •condition: boolean|operator == != === !== <=>|method|func
         true !false anyVal|false !true NaN''null0undifined
       •block can contain 'return', nest other if statement.
-    ▬switch(<choice>'exp) { case <choice1>: /*code1*/; break
+    ▸switch(<choice>'exp) { case <choice1>: /*code1*/; break
                             case <choice2>: /*code2*/; break …
                             default?: //code }
-    ▬for (const i of arr) {console.log(i)}
+    ▸for (const i of arr) {console.log(i)}
       for (let i=0; i<arr.length; i++) {console.log(arr[i])}
       •break keyword stops loop entirely.
       •continue keyword skips current instance of loop to next
@@ -213,30 +175,30 @@
       •benefits: ›we can apply styles to list of elements.
         ›add|remove|change attributes to each element from long list(like inputes).
         ›creat arrays to build filters of search element & …
-    ▬while(condition){}| do{}while(condition)
+    ▸while(condition){}| do{}while(condition)
       •break keyword stops loop entirely.
       •continue keyword skips current instance of loop to next
-  ►object:
-    ▬literal object: created manually
+  ▪object:
+    ▸literal object: created manually
       const leteralObjectName = {
         propertyMemberName: data, …, //as variables
         methodMemberName(){}, …, //as functions
           methodMemberName: function(){}, … //old syntax
       }
-    ▬access members: const obj = { pro:{pro1:data}, method(){} }
+    ▸access members: const obj = { pro:{pro1:data}, method(){} }
       •by Dot.notation:  obj.pro.pro1 //return data.
         obj.method() //invoke its {/*block*/}.
       •by bracket-notation[dynamicVariable]:
         obj['pro']['pro1'] //return data.
         obj['method']() //invoke its {/*block*/}.
       •this keyword: refers to current object.
-    ▬updating existing members:
+    ▸updating existing members:
       obj.pro.pro1|obj['pro']['pro1'] = update
       obj.method|obj.['method'] = ()=>{/*update*/}
-    ▬setting new members:
+    ▸setting new members:
       obj.pro.newPro|obj['pro']['newPro'] = data;
       obj.newMethod|obj['newMethod'] = ()=>{}
-    ▬construction:
+    ▸construction:
       •consept: everything are inctance of build-in object
         ex: any 'string' we create automaticly are instance of build-in string object, and share all its properties and methods.
       •old trick:
@@ -251,7 +213,7 @@
           ›match 'this keyword' to the new object.
           ›run the code in the constructor.
           ›return the new object.
-    ▬prototype chain:
+    ▸prototype chain:
       •default & last chain: Object.prototype.__proto__//null
         Object.protorype = {
           constructor: ƒ Object(),
@@ -282,7 +244,7 @@
         ›using Object.create():
           const ourProto = {…}
           const instance = Object.create(ourProto)
-          Object.getPrototypeOf(inctance) //ourProto
+          Object.getPrototypeOf(instance) //ourProto
           Object.getPrototypeOf(ourProto) //Object.prototype
         ›using constructor:
           const templateProto = {
@@ -300,8 +262,8 @@
         else if defined in constructor as this.member //true
         else if defined in constructor without this. //false
         else if defined in prototype //false
-  ►object oriented programming: pseudo code:
-    ▬classes & instances:
+  ▪object oriented programming: pseudo code:
+    ▸classes & instances:
           •class templateName
             properties
               pro1
@@ -317,7 +279,7 @@
             instance1.pro2 //v2
             instance2.pro1 //v3
             instance2.pro2 //v4
-    ▬inheriance: (extends)
+    ▸inheriance: (extends)
           •class superParent
             properties
               pro1
@@ -336,7 +298,7 @@
               //method1 inherited from superParent class
               method2()//polymorphism:override the inherited one
               method3()
-    ▬encapsulation: in js private member name star with _
+    ▸encapsulation: in js private member name star with _
       •class subClass : extends superClass
             properties
               private pro
@@ -344,8 +306,8 @@
               multi(multiplay){return this.pro * multiplay}
       •instance = new subClass
             instance.pro //error: pro private of subClass
-  ►class: template allow us consructor derive instances.
-    ▬classes & constructors:
+  ▪class: template allow us consructor derive instances.
+    ▸classes & constructors:
       class super{
         pro; //optional, can be initialized pro=val.
         constructor(arg){ this.pro = arg }//pro auto-declared
@@ -356,14 +318,14 @@
         match this keyword in the now object
         run the code in the constructor
         return the new object
-    ▬inheritance:
+    ▸inheritance:
       class sub extends super{
         constructor(arg1,arg2){
           super(arg1) //super.constructor(arg1){this.pro=arg1}
           this.pro2 = arg2
         }
        }
-    ▬Encapsulation: prefix member by #name
+    ▸Encapsulation: prefix member by #name
       class ex{
         #privatPro //must be declared, not optional.
         constructor(arg){ this.#privatPro = arg }
@@ -374,8 +336,8 @@
       ins.public() //I'm private
       ins.#private() //syntax error
       ins.#privatPro //syntax error
-  ►json(javaScript object notation):
-    ▬importing:
+  ▪json(javaScript object notation):
+    ▸importing:
       async fn(){
         const request = new Request('url.json')
         const response = await fetch(request)
@@ -383,34 +345,34 @@
         //const deSerialization = await Json.parse(response.text())
         //const serialization = Json.stringify(deSerialization)
       }; fn()
-    ▬json are string usefull to transmit data between server & client
-    ▬can contain single #number, [array], {object}, 'string'
-    ▬we required to double quote objects "properties": value 
-    ▬there no methods in objects.
-  ►promise: (synchronous ≠ asynchronous)
-    ▬demo:
+    ▸json are string usefull to transmit data between server & client
+    ▸can contain single #number, [array], {object}, 'string'
+    ▸we required to double quote objects "properties": value 
+    ▸there no methods in objects.
+  ▪promise: (synchronous ≠ asynchronous)
+    ▸demo:
       const api = api(arg)
       console.log(api) //Promise {<pending>}
       api.then(resp => console.log('response: ' + resp.status))
       console.log('I\'ll log before Promise "settled"')
-    ▬chaining promise:
+    ▸chaining promise:
       api(arg)
         .then(a => doSomthing(a)) //return promise
         .then(a => doThis(a))
-    ▬catching errors:
+    ▸catching errors:
       api(arg)
         .then() //invoked if promise fulfilled
         .then() //invoked if promise fulfilled
         .catch(err=>console.error(`error: ${err}`))
           //invoked if promise rejected
-    ▬primary promise states:
+    ▸primary promise states:
       •pending: the initial state, until settled.
       •settled:
         »fulfilled: return value(# || 'str' || {}).
           ›invoke then()'s one by one
         »rejected: because of reason(prevent fulfillement).
           ›invoke catch()
-    ▬combining multiple promises:
+    ▸combining multiple promises:
       •Promise.all([promise1, …])
         .then() //invoked if all promises fulfilled
         .then( responses => {
@@ -425,7 +387,7 @@
       •Promise.any([promise1, …])
         .then() //invoked if any promise fulfilled
         .catch() //invoked if all promises rejected
-    ▬new syntax: then → await
+    ▸new syntax: then → await
       async function name() {
         try{
           const response = await fetch('url.json')
@@ -438,7 +400,7 @@
         catch(err) { console.error(err) }
       }
       name() //don't wait, parse next line.
-    ▬resolve:
+    ▸resolve:
       •resolve():
         const myPromise = new Promise((resolve,reject) => {
           //doSomthing → fulfillement
@@ -453,8 +415,8 @@
       •Promise.resolve(input)
         .then(x => /*doSomthing*/)
         //promise chain
-  ►workers:
-    ▬dedecated workers: used by single script instance.
+  ▪workers:
+    ▸dedecated workers: used by single script instance.
       •demo:
         //main.js:
         const worker = new Worker('path/worker.js')
@@ -479,17 +441,168 @@
           postMessage(result)
         }
       •seprate script run in its oun thread (each cpu(2~8) core can parse limeted number(1~4) of thread)
-    ▬shared workers: used by script's runing in differ windows
-    ▬server workers: like proxy server, cache resource for offline usage.
-  ►apis(application programming interface):
-    ▬shared:
+    ▸shared workers: used by script's runing in differ windows
+    ▸server workers: like proxy server, cache resource for offline usage.
+  ▪apis(application programming interface):
+    ▸shared:
       •all apis based on Objects store data in prop#erties and functionality on methods.
       •all have one entry point object contain all properties && methods like document|audioContext
       •almost all have events hanlers
       •often have additional security mechanisms (same-origin policy| Notifications api| autoplay policy| ≠offline)
-    ▬
-★
-▬▬▬2022▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬▬
-▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-typescript
-★introduction
+    ▸
+⋆events:
+  ▪mechanisms: obj.addEventListener('event',l,boolean?option)✓
+  |<el onevent=l()|/*code*/> ✖| n.onevent=l ✖
+  ▪on|event:
+    ▸window: »desktop: on|mousemove, mouseover, mouseout
+    »general:DOMContentLoaded, devicemotion, deviceorientation
+      ›on| focus, blur, load, beforeunload, unload, error, pagehide, pageshow, resize, copy, cut, paste, offline, online, hashchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+    ▸document: »m: on|touchend,touchcancel,touchmove,touchstart
+    »general: on|click, dblclick, scroll, input, change, visibilitychange, copy, cut, paste, selectstart, selectionchange, transitionstart, transitionrun, transitionend, transitioncancel, animationstart, animationiteration, animationend, animationcancel, 
+    »desktop: DOMContentLoaded, readystatechange
+      ›on|wheel, drag, dragend, dragenter, dragleave, dragover, drop, fullscreenchange, fullscreenerror, keyup, keydown, keypress(removed)
+  ▪listener(eventHandler):funcName| function(){/*anonymous*/}|
+    ()=>{}| (function(){/*temporary scope*/})()
+    •automaticly pass event parameter to the func listener
+      funcName→funcName(e)
+  ▪boolean: falseⒹ//targer→bubbling, true//capturing→target
+    phases run by order: nested els have same 'event'
+    •capturing: check&run listeners from window →…→ parent
+    •target: check&run listener registed on e.target, thene if e.bubbles==trueⒹ: propagates evt to parent →…→ window
+    •bubbles up: check&run listeners from parent →…→ window
+    ›if we add two addEventListener() one false & other true:
+      phases: capturing → target → target again → bubling
+    ›to prevent capturing|bubbling, listener must be:   
+      e=>{e.stopPropagation();…}
+    ›to target just all childrens of parent:
+      parent.addEventListener('event', e=>{e.target.…;…})
+    ›to target just parent:
+      p.addEventListener('event', e=>{e.currentTarget.…;…})
+  •options: {
+    once: boolean, //call .removeEventListener() after 1listen
+    capture: boolean, //??
+    passive: boolean, //??
+    signal: controller.signal //can passed to many listeners
+      //on topLvl: const controller = new AbortController()
+      //remove any/all listeners: controller.abort()
+    }
+  ▪multi listeners on one event:
+    obj.addEventListener('sameEvent',l1)
+    obj.addEventListener('sameEvent',l2)
+  ▪removeEventListener('event', funcName)//unlisten
+  ▪remove all: const controller = new AbortController();
+    obj.addEventListener('event',l,{signal:controller.signal})
+    controller.abort() //unlisten to any event share {signal}
+
+▸2022▸
+▶▪◄▲▼⋆♥▸•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+⋆concepts
+  ▪specification
+    ECMA(European Computer Manufacturers Association)
+  ▪
+  ▪
+  ▪
+⋆data types 8
+  ▪boolean
+  ▪null
+  ▪undefined
+  ▪number
+  ▪bigint
+  ▪string
+  ▪symbol
+  ▪object
+⋆exprissions and operators
+  ▪primary expressions
+  ▪left-hand-side expressions
+  ▪increment & decrement
+  ▪unary operators
+  ▪arithmetic operators
+  ▪relational operators
+  ▪equality operators
+  ▪bitwise shift perators
+  ▪binary bitwise operators
+  ▪binary logical operators
+  ▪conditional operator (ternary)
+  ▪assignment operators
+    ▸destructuring assigment
+      •patterns
+        ⁃binding: start by let|const|var
+          //TypeError, double const
+          const arr = []; const [arr[0]] = [1]//const arr[0] = 1
+        ⁃assignment: pre declared variables | obj.pro | arr[i]
+          //TypeError, semecolon; and parenthesis() required
+          ›const p1;
+           {p1} = {p1:1} //parenthesis() missing
+          ›const p2      //semicolon; missing
+           ({p2} = {p2:2})
+      •defualt: any expression(or function) invoked if match no value | undefined, ≠null
+        ⁃can be destructuring object
+          const {a = 'defualt', b = {p:'defualt'}} = {a;'override',b:{p:'override'}}
+        ⁃in func we can set {} defualt to left-hand destructure
+          function f({ a = 'defualt' } = {})
+      •array only
+        ⁃ignore item|all from array-like ≠object by passing empty comma
+          const [a,,c] = ['a','ignored','c']
+          const [,,] = array-like()
+        ⁃rest: (just array)
+          ›must be the last one, prefix(...) & ≠postfix(,comma)
+            const [a, ...b] = ['a', 'b1', 'b2']
+          ›it even can be array[]
+            const [a, ...[b, c]] = ['a', 'b', 'c']
+          ›or even nested in another array rest 
+            const [a, ...[b,...[c]]] = ['a', 'b', 'c']
+      •object only: 
+        ⁃extract properties as same-name|renamed variables, with optional defualt value.
+          const {p,p:rename='defualt'} = {p:1}
+          console.log([p,rename])//[1,1]
+        ⁃comuped properties names
+          const propertyName= 'name'
+          const {[propertyName]:rename='defualt'} = {name:'n'}
+          rename//n
+        ⁃invalid property name identifier must be renamed
+          const {'invalid-identifier':rename} = {'invalid-identifier':1}
+          rename// 1
+          invalid-identifier//TypeError
+      •swap variable|.property|[item] without temp variables
+        ⁃let a=1,b=2,c=3; [a,b,c] = [b,c,a]
+         console.log([a,b,c]) //[2,3,1]
+        ⁃const arr=[1,2,3]; [arr[1],arr[2],arr[0]] = arr
+         console.log(arr)//[2,3,1]
+        ⁃const obj = {p1:1, p2:2, p3:3}
+         [p1,p2,p3] = [p2,p3,p1]
+         console.log(obj)//{p1:2, p2:3, p3:1}
+      •parse array-like returned from function
+        function arrayLike(){
+          return 'abc'
+        }
+        [a,b,c] = arrayLike()
+        console.log([a,b,c]) //['a','b','c']
+      •used inside for...in|of loops, function parameters, catch
+      •function parameper can be obj destructuring
+        function id({ id }) { return id }
+        id({ id:1, name: 'something' }) //1
+        ⁃or even nested obj
+          function firstName({ fullName: { firstName: fn = 'guest' } }) {
+            return fn
+          }
+          firstName({ fullName: { firstName: 'uni' } }) //uni
+      •nesting: we can nest obj|arr|both
+        const person = [{
+          family:{ brothers: ['jack', 'stive'] }
+        }]
+        [{family:{brothers:[bro1,bro2]}}] = person
+        bro1  //jack
+        bro2  //stive
+      •for loop:
+        const users = [{id:1,name:'a'}, {id:2,name:'b'}]
+        for (const {id, name} of users) {
+          //do something by id's and name's
+        }
+      •prototype chain accessed by destructuring
+        const planet = { 'salor-system': 'milky way'}
+        earth = Object.create(planet);
+        ({ 'salor-system': galaxy } = earth)
+        galaxy//milky way
+      •required RegExp.prototype.exec()
+      •required Sympbol.iterator
+  ▪comma operator
