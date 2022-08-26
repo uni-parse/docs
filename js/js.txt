@@ -504,6 +504,12 @@
   ▪
 ⋆data types 8
   ▪boolean
+    false if: ±0 null NaN undefined ''
+    true if: any !false, even 'false' {} []
+
+    ⚠️Equality parsing: arrayOrObject == false //true
+      arrayOrObject are truthy, but js parse it as arrayOrObject.toString(), witch return the falsy ''
+      except [1] == trus //true
   ▪null
   ▪undefined
   ▪number
@@ -514,17 +520,113 @@
 ⋆exprissions and operators
   ▪primary expressions
   ▪left-hand-side expressions
+  •chaining operators: a ⚙️ b ⚙️ c ⚙️ d 
+    ⁃parsed rl: a ⚙️(b ⚙️(c ⚙️ d))
+      **
+    ⁃parsed lr: ((a ⚙️ b) ⚙️ c) ⚙️ d
+      - /
+    ⁃parsed bio: ((a ⚙️ b) ⚙️ c) ⚙️ d || a ⚙️(b ⚙️(c ⚙️ d))
+      + * %
+    ⁃priority:
+
   ▪increment & decrement
   ▪unary operators
   ▪arithmetic operators
+    •boolean treated as 1|0, except concatenation +(strings)
+    ▸addition|concatenation a+b
+      addition: one + true //1+1
+      concatecation: false + 'less' //'falseless'
+    ▸subtraction a-b
+    ▸devision a/b
+      a/-0.0 //-Infinity
+    ▸remainder a%b // a - integer * b
+      -# % ±# //-#
+      # % ±# //+#
+      NaN % # //NaN
+      Infinity % # //NaN
+      Infinity % Infinity //NaN
+      ±# % Infinity //±#▸multiplication a*b
+      Infinity * 0 //NaN
+      Infinity * Infiniyt //Infinity
+    ▸exponentiation a**b //Math.pow(a,b)
+      NaN ** a // NaN
+      ⚠️limitation: base number cannot prefixed by unary operator [- + ~ ! delete void typeof]
+        <unary>2 ** -2   //TypeError
+        <unary>(2 ** -2) //valid js
+        ( <unary>2 ) ** -2 //valid js
   ▪relational operators
+    ▸less then operator a<b//bool
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
   ▪equality operators
   ▪bitwise shift perators
   ▪binary bitwise operators
   ▪binary logical operators
   ▪conditional operator (ternary)
   ▪assignment operators
-    ▸destructuring assigment
+    •chaining
+      let a=1, b=2, c=3, d=4
+      a += b *= c += d = 5
+      //parsed from right to left as:
+        d = 5
+        c += d //c = 3+5 = 8
+        b *= c //b = 2*8 = 16
+        a += b //a = 1+16 = 17
+      console.log(a += b *= c += d = 5) //console.log(a)
+    •NaN if string are in left or right
+      -=
+      /=
+      %=
+      *=
+      **=
+    •boolean treated as 1|0
+      += (treated as string if concated with string)
+      -=
+      /=
+      %=
+      *=
+      **=
+    ▸assignment =
+      let a = 1, b = 2, c = 3, d = 4
+      a = b                         //simble assignment
+      console.log(a)//2
+      a = b = c = d                 //chaining assignment
+      console.log(a, b, c, d);//4 4 4 4
+    ▸addition|concatenation assignment: a += b // a = a+b
+      •addition
+        one += true         //1+1 = 2
+        b_false += true     //0+1 = 1
+      •concatenation (if left|right hand are 'string')
+        one += 'rule'       //1rule
+        b_true += ' access' //'true access'
+    ▸subtraction assignment: a += b // a = a-b
+    ▸division assignment: a /= b // a = a/b
+      a /= 0 //±Infinity
+    ▸remainder assignment: a %= b // a = a % b
+      ten %= 3 //10%3 = 10-3*3 = 1
+      a %= true = 1 //0
+      a %= 0 //NaN
+    ▸multiplication assignment: a *= b //a = a*b
+    ▸exponentiation assignment: a **= b // a = a**b
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸destructuring assignment
       •patterns
         ⁃binding: start by let|const|var
           //TypeError, double const
