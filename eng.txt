@@ -1,0 +1,7 @@
+ponouncing rules
+  g: 
+    if followed by e i y, /J/
+      angel region gym
+    else /G/
+      angle google
+  ch: /tch/ /sh/ /k/

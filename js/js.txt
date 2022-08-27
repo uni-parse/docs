@@ -499,24 +499,53 @@
 ⋆concepts
   ▪specification
     ECMA(European Computer Manufacturers Association)
-  ▪
+  ▪all variables declared by var(not let|const) and functions declared on topLvl are members of global object, in the web is Window, on node is global, global object can be accessed by globalThis property, regardless of the envirment.
   ▪
   ▪
 ⋆data types 8
-  ▪boolean
-    false if: ±0 null NaN undefined ''
-    true if: any !false, even 'false' {} []
+  ▪object
 
-    ⚠️Equality parsing: arrayOrObject == false //true
-      arrayOrObject are truthy, but js parse it as arrayOrObject.toString(), witch return the falsy ''
-      except [1] == trus //true
+  ▪boolean
+    ›truthy|falsy
+      const falsy = Boolean(
+        false || !true || ±0 || '' || undefined || null || NaN || Boolean(/*empty*/)
+      )
+      const truthy = Boolean(
+        anyValueNotFalsy && true && !false && [] && {} && new Boolean(false) && 'false'
+      )
+      ⚠️Equality operator comparing just arr|obj.toString()
+        const falsy = Boolean(array == true || object == true)
+        const truthy_exceptions = Boolean(
+          [1] == true && new Boolean(true) == true
+        )
+    ›convert expression to boolean:
+      const bool = !!(expression),
+        bool2 = Boolean(expression),
+        bool3 = (new Boolean(expression)).valueOf()
+    ›constructor: Boolean()
+    ›instrnce methods:
+      Boolean.prototype.toString()//'true|false'
+      Boolean.prototype.valueOf()//true|false
   ▪null
+    const a = null //a have no value or type, a pints to no object
+    ⚠️bug: typeof null //object
   ▪undefined
+    globalThis.undefined //![Whritable,Enumerable,Configurable]
+    const a //a initialized with undefined
+    functino f(){/*dont return vaule*/} //f() returns undefined
+    •check if a are undefined:
+      typeof a              //undefined, even if undeclared
+      a === undefined       //ReferenceError if undeclaredr
+      a === void 0          //ReferenceError if undeclaredr
+      a in window|global    //ReferenceError if undeclaredr
   ▪number
+    •constructor: Number()
+    •convert expression to number: Number(expression)
+    •
   ▪bigint
   ▪string
   ▪symbol
-  ▪object
+    
 ⋆exprissions and operators
   ▪primary expressions
   ▪left-hand-side expressions
@@ -531,6 +560,12 @@
 
   ▪increment & decrement
   ▪unary operators
+    ▸in
+      a in context
+      global_web in window
+      global_node in global
+    ▸typeof
+      typeof undeclared_var //'undefined'
   ▪arithmetic operators
     •boolean treated as 1|0, except concatenation +(strings)
     ▸addition|concatenation a+b
@@ -708,3 +743,22 @@
       •required RegExp.prototype.exec()
       •required Sympbol.iterator
   ▪comma operator
+
+⋆built-in objects
+  ▪Object:
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+    ▸
+
+⋆Api

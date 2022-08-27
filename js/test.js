@@ -114,7 +114,52 @@
 (() => {
   const bool = new Boolean(false)
   const obj = { p: 1 }
-  if (obj) {
-    console.log([2] == true)
+
+  console.log([1, 2, 3] == true);
+  console.log([1, 2, 3].toString() == true);
+
+
+  console.log(Boolean([2].toString()))
+  console.log(Boolean([true] == true))
+  console.log(Boolean(Boolean()));
+  console.log(Boolean(new Boolean(false)));
+  console.log(Boolean(true && !false && [] && {} && new Boolean(false) && 'false' && new Boolean(false) == false && [1] == true));
+  console.log(Boolean(false || !true || '' || undefined || null || NaN || [] == true || {} == true));
+  console.log(Boolean(2), !!2, (new Boolean(2)).valueOf());
+
+})();
+
+const glob = undefined;
+(() => {
+  let num = 1
+  num = null
+  console.log(Number.isNaN(num))
+  console.log(typeof num);
+  console.log(globalThis.undefined);
+  console.log(num in global);
+
+  console.log(NaN == NaN);
+  console.log(typeof NaN);
+  console.log(typeof 2n)
+
+  function func() {
+    const v = 1
+    console.log(v in this);
+  }
+  func()
+  const o = {
+    p: 1
   }
 })();
+
+//number object
+(()=>{
+  console.log(Number('44'));
+})()
+
+
+
+
+
+
+
