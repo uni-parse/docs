@@ -77,8 +77,11 @@
       removeChild(node) //div[0].removeChild(paragraph[1]);
     •att: getAttribute('att') setAttribute('att', 'value')
   ▪native functions: window.func()
-    ▸dialog box(show message): •prompt(req)//[input],(ok)submit
-      •alert(m)//(ok) •confirm(question)//(ok)true|(cancle)false
+    ▸dialog box(show message):
+      •prompt(title,default?)
+        msg,[input],(ok)submit,(cancle)null
+      •alert(m)//(ok)
+      •confirm(question)//(ok)true|(cancle)false
     ▸return val: •Date()//date time day GMT
       •setTimeout(funcName, #'ms) //delay calling funcName()
   ▪literal properties & methods:
@@ -500,63 +503,178 @@
   ▪specification
     ECMA(European Computer Manufacturers Association)
   ▪all variables declared by var(not let|const) and functions declared on topLvl are members of global object, in the web is Window, on node is global, global object can be accessed by globalThis property, regardless of the envirment.
-  ▪
-  ▪
+  ▪limitation
+    to save users privecy
+    •same origin policy: js access same only domain && protocole tabs, else it need agreament from both domains to exchange data
+    •js can't access os functions
+    •js can't access memmory, cpu
+    •js can access camera and microphone only after user permission
+    •js can access user storage only by <input>
+  ▪engine
+    v8: used by bowsers chrome edge opera, run_time node deno
+    spiderMonkey: in firefox
+    chakra: in IE
+    “JavaScriptCore”, “Nitro” and “SquirrelFish”: for Safari
+    •how it work: parse scripts, compile to 01s, machine execute it.
+⋆markup
+  ▪<script src> /*ignore any code*/ <script>
+  ▪comments: toggle line|block:  ctrl /, ctrl shift /
+    ⚠️nested comments throw error: /* /* error */ */
+⋆console & debugging:
+  enabled by F12
+  show us errors on which files and line
+  we can execute code
+  multi lines by: Shift Enter
+⋆run time
+  node file.js
+  deno run file.ts
+⋆fundomintal
+  ▪'use strict';
+    string added globaly before any code (except comments)
+    or just before function (scope only its body)
+    or (function() {'use strict'; /*scoped modern syntax*/ })()
+    enable modern modification to old javaScript syntax
+    ⚠️can't be disabled once it enabled
+    💡enabled by default (can  be omitted) on classes & modules
+    •prevent auto declaration
+      undefined_var = val //error undefined_var are not declareds
+  ▪declarations let|const
+    let name //declare
+    name = value //assignment
+    let name = value //declaration & assignment
+    let name1 = value1 , n2 = v2, //multi dec & ass, same line
+      n3 = v3,                //new line style
+      n4 = v4
+      , n5 = v5;             //new line, comma first style
+      , n6 = v6
+  ▪constants unReAssignable variables
+    const CAPITAL = 'used before parsing'
+    const camelCase = `on engine parsing, time is ${Date()}`
+  ▪naming variables & function: [≠digit][letter digit $ _]...
+    ⚠️caseSinsitive, ≠statement_name(as: new let class ...)
+    💡naming must be meaningfull, and more specific even if longer (ex: the visitor name become: currentUserName)
 ⋆data types 8
-  ▪object
-
-  ▪boolean
-    ›truthy|falsy
-      const falsy = Boolean(
-        false || !true || ±0 || '' || undefined || null || NaN || Boolean(/*empty*/)
-      )
-      const truthy = Boolean(
-        anyValueNotFalsy && true && !false && [] && {} && new Boolean(false) && 'false'
-      )
-      ⚠️Equality operator comparing just arr|obj.toString()
-        const falsy = Boolean(array == true || object == true)
-        const truthy_exceptions = Boolean(
-          [1] == true && new Boolean(true) == true
+  ⚠️typeof
+    typeof null // 'object'
+      js language error, it must be 'null'
+    typeof alert // 'function'
+      incorrect behavior, it must be 'object'
+  ▪object can stor collection of values
+    ▸have members:
+      •propersy
+      •methodes
+  ▪primative can stor single value
+    ▸symbol create unique identifier to objects keys
+    ▸boolean
+      ›truthy|falsy
+        const falsy = Boolean(
+          false || !true || ±0 || '' || undefined || null || NaN || Boolean(/*empty*/)
         )
-    ›convert expression to boolean:
-      const bool = !!(expression),
-        bool2 = Boolean(expression),
-        bool3 = (new Boolean(expression)).valueOf()
-    ›constructor: Boolean()
-    ›instrnce methods:
-      Boolean.prototype.toString()//'true|false'
-      Boolean.prototype.valueOf()//true|false
-  ▪null
-    const a = null //a have no value or type, a pints to no object
-    ⚠️bug: typeof null //object
-  ▪undefined
-    globalThis.undefined //![Whritable,Enumerable,Configurable]
-    const a //a initialized with undefined
-    functino f(){/*dont return vaule*/} //f() returns undefined
-    •check if a are undefined:
-      typeof a              //undefined, even if undeclared
-      a === undefined       //ReferenceError if undeclaredr
-      a === void 0          //ReferenceError if undeclaredr
-      a in window|global    //ReferenceError if undeclaredr
-  ▪number
-    •constructor: Number()
-    •convert expression to number: Number(expression)
-    •
-  ▪bigint
-  ▪string
-  ▪symbol
-    
+        const truthy = Boolean(
+          anyValueNotFalsy && true && !false && [] && {} && new Boolean(false) && 'false'
+        )
+        ⚠️Equality operator comparing just arr|obj.toString()
+          const falsy = Boolean(array == true || object == true)
+          const truthy_exceptions = Boolean(
+            [1] == true && new Boolean(true) == true
+          )
+      ›convert expression to boolean:
+        const bool = !!(expression),
+          bool2 = Boolean(expression),
+          bool3 = (new Boolean(expression)).valueOf()
+      ›constructor: Boolean()
+      ›instrnce methods:
+        Boolean.prototype.toString()//'true|false'
+        Boolean.prototype.valueOf()//true|false
+    ▸null
+      const a = null //value unknown | nothing | empty
+      ⚠️is not reference to non-existing object | pointer null
+      ⚠️bug: typeof null //object
+    ▸undefined
+      globalThis.undefined //![Whritable,Enumerable,Configurable]
+      const a //a initialized with undefined
+      functino f(){/*dont return vaule*/} //f() returns undefined
+      •check if a are undefined:
+        typeof a              //undefined, even if undeclared
+        a === undefined       //ReferenceError if undeclaredr
+        a === void 0          //ReferenceError if undeclaredr
+        a in window|global    //ReferenceError if undeclaredr
+    ▸number
+      •float ±#.f | integer ±# (≠±#.0) | NaN (safe alternative to error) | ±Infinity
+      •constructor: Number()
+      •convert expression to number: Number(expression) | +exp
+        null//0
+        undefined//NaN
+        boolean//0|1
+        '      ##      '//number, except on concatenation +
+        ''//0
+        '  ≠#   '//NaN
+      •
+    ▸bigint (big integers)
+      •numbers finited on ±1.7976931348623157 * 10^308, crossing the limitation will be treats as ±Infinity
+      •numbers preserve save integer range of ±(2^53-1) = 9 007 199 254 740 991 nine quatrillions, crossing the limitation will incorrectly treats odds integers as next even integer
+        console.log(9007199254740991 + 1); // 9007199254740992
+        console.log(9007199254740991 + 2); // 9007199254740992
+      •bigint can preserve integers over ±(2^53-1), but must postfixed by n:
+        ±1234567890123456789012345678901234567891n
+    ▸string
+      •surrounded by 'pair single quotes', "pair double quotes", `pair backTicks let us embed ${expressions}`
+      •convert expression to string
 ⋆exprissions and operators
   ▪primary expressions
   ▪left-hand-side expressions
-  •chaining operators: a ⚙️ b ⚙️ c ⚙️ d 
-    ⁃parsed rl: a ⚙️(b ⚙️(c ⚙️ d))
-      **
-    ⁃parsed lr: ((a ⚙️ b) ⚙️ c) ⚙️ d
-      - /
-    ⁃parsed bio: ((a ⚙️ b) ⚙️ c) ⚙️ d || a ⚙️(b ⚙️(c ⚙️ d))
-      + * %
-    ⁃priority:
+  ▪operators concepts
+    •terms
+      operends: operator arguments
+      unary: single operend operator
+      binary: double operend operater
+    •precedence
+      18 groping                              (…)
+      17 member access →                      ….…
+        computed member access                …[…]
+        new,with argument list                new …(…)
+        function call                         …(…)
+        optional chaining →                   …?.…
+      16 new,without argument list            new …
+      15 postfix increment|decrement          …++ | …--
+      14 prefix increment|decrement           ++… | --… 
+        unary plus|negation                   +… | -…
+        logical|bitwise not                   !… | ~…
+                                              typeof …
+                                              void …
+                                              delete …
+                                              await …
+      13 exponentiation ⚠️←                   …**…
+      12 multiplication|division|reminer →    …*… | …/… | …%…
+      11 addition | subtraction →             … + … | … - …
+      10 bitwise left|(unsigned?)right shift → …<<…| …>>…| …>>>…
+      9  less|greater than or_Equal? →        …<…|…>…|…<=…|…>=…
+        in | instanceof →                     …in…|…instanceof…
+      8 (strict?) equality|inequality →    …==…|…!=…|…===…|…!==…
+      7 betwise and →                         …&…
+      6 betwise xor →                         …^…
+      5 betwise or →                          …|…
+      4 logical and →                         …&&…
+      3 logical or | nullish coalescing →     …||… | …??…
+      2 assignment ⚠️←                        …=…| …+=…| …-=…| …/=…| …%=…| …*=…| …**=…| …<<=…| …>>=…| …>>>=…| …^=…| …&=…| …|=…| …&&=…| …||=…| …??=…
+        ternary 'conditional' ⚠️←(nested 1st) …?…:…
+        arrow                                 …=>…
+                                              yield … | yeild* …
+        spread                                ...…
+      1 comma/sequence →                      …,…
+
+
+
+
+    •compatibility
+    •chaining operators: a ⚙️ b ⚙️ c ⚙️ d 
+      ⁃parsed rl: a ⚙️(b ⚙️(c ⚙️ d))
+        **
+      ⁃parsed lr: ((a ⚙️ b) ⚙️ c) ⚙️ d
+        - /
+      ⁃parsed bio: ((a ⚙️ b) ⚙️ c) ⚙️ d || a ⚙️(b ⚙️(c ⚙️ d))
+        + * %
+      ⁃priority:
 
   ▪increment & decrement
   ▪unary operators
@@ -565,6 +683,7 @@
       global_web in window
       global_node in global
     ▸typeof
+      typeof('paretheses are not func') //'string'
       typeof undeclared_var //'undefined'
   ▪arithmetic operators
     •boolean treated as 1|0, except concatenation +(strings)
@@ -760,5 +879,4 @@
     ▸
     ▸
     ▸
-
 ⋆Api

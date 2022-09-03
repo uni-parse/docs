@@ -2,7 +2,8 @@
 ctrl ,                   :settings
 ctrl `                   :toggle terminal
 crtl B                   :toggle side bare
-ctrl /                   :toggle comment
+ctrl /                   :toggle line comment
+ctrl shift /             :toggle block comment
 ctrl k + z               :toggle focus mode
 
 ctrl shift? P            :open file|run command?

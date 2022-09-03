@@ -1,3 +1,4 @@
+
 //destructuring opirator
 (() => {
   let [a, , b, c, d = 'defualt', ...rest] = ['a', 'ignored', 'b', undefined, undefined, 'rest1', 'rest2']
@@ -144,7 +145,7 @@ const glob = undefined;
 
   function func() {
     const v = 1
-    console.log(v in this);
+    // console.log(v in this);
   }
   func()
   const o = {
@@ -153,8 +154,32 @@ const glob = undefined;
 })();
 
 //number object
-(()=>{
-  console.log(Number('44'));
+(() => {
+  //"use strict";
+  console.log(Number('44'))
+  const null_obj = Object.create(null)
+  console.log(null_obj.__proto__);
+  const o = Object.create(Object);
+  console.log(o.__proto__.__proto__)
+  const obj = {}
+  console.log(obj.__proto__.__proto__)
+  const object = new Object()
+  console.log(object.__proto__.__proto__)
+  console.log(typeof (1 + ''));
+  console.log(9007199254740991)
+  console.log(-1.7 * 10 ** 308)
+  console.log(-1.8 * 10 ** 308)
+  console.log(-1234567890123456789012345678901234567891n);
+  console.log(1.7e308);
+  console.log(1.8e308);
+  console.log('   -9   ' + 5)
+  console.log(' -9 ' + 5)
+  console.log('   9   ' + 5)
+  console.log('     -9  ' - 5)
+  console.log('' * 1)
+  console.log(+undefined)
+  uniparse1 = 1
+  uniparse1
 })()
 
 

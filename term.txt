@@ -1,5 +1,8 @@
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
-  unary=1 tworary=2 trinary=3
+  ECMA european computer Manufacturers association
+  ide integrated development environment
+  unary, binary, ternary: single double thrible operends
+  oberend: operater argument
   pending ≠ settled(fulfilled ≠ rejected)
   synonyms ===terms
   synchronous(one by one) ≠ asynchronous(all at once)
