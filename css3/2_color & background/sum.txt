@@ -18,7 +18,7 @@
     ›side: top:0°|right:90°|bottomⒹ:±180°|left:-90°.
     ›corner: top right:45°| b r:135°| b l:-135°| t l:-45°.
     »stop: length|%(relative to imagined angle-directed #line)
-      ›by defualt: first-stop=0, last-stop=100%.
+      ›by default: first-stop=0, last-stop=100%.
       ›double-stop valid: x-gradient(<color1> s1 s2, c2 s1 s2,…)
   •radial-gradient(<endShape>? <size> at <position>, c1 s1, …)
     ›ending-shape'optional: circle|ellipseⒹ

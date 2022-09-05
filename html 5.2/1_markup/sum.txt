@@ -103,7 +103,7 @@
     <p><small>&copy; 2021 all rights reseved</small></p>
   •abbr: abbreviation, shortcut of long_word|multi-words, onhover display title
     <p>i wanna be <abbr style=font-variant:small-caps title=professional>pro</abbr> developer in <abbr title='Unite Kingdom' style=font-variant:small-caps>UK</abbr></p>
-  dfn: defining-term, by defualt have no style !!
+  dfn: defining-term, by default have no style !!
     <p><dfn>nodejs</dfn>, are javascript <b>framwork</b></p>
 
   •code: computer code,have f-f:monospace & different bg|color

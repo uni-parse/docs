@@ -152,7 +152,7 @@ scss= superset of css, sass= indent syntax style sheet.
   ›can contain other variables: $v1: $v2 * $v3;
   ›store one value type at a time.
   ›hyphen=underScore: $var-name=$var_name
-  ›!defualt flag used in new-$var|$var:null, else old value used
+  ›!default flag used in new-$var|$var:null, else old value used
   »scope: ›local: declared & accessed only in current block{}.
     ›global: declared in top#lvl stylesheet, accessed anywhere.
     ›<local>{$v:assign?update !global} affect global+local scopes

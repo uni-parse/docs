@@ -22,7 +22,7 @@
       ▬properly for blended color transitions
       ▬Truecolor based 24bit=rgb*8bit, lossy on each compression
       ▬progressive #passes low→original=load100% UX↑perfermence
-        •by defualt load linear from top to bottom
+        •by default load linear from top to bottom
     ►png: (Portable Network Graphics)
       ▬features: •Lossless compression
         •transparency: alpha=Multiple-level, binary=on|off

@@ -21,7 +21,7 @@
       ›sib|lings: same hierarchy level.
     »Descendants inherit some Ancestors properties font?color?… not border?background?…, & overrided by descendants styles.
       ›some relative measurement em?rem?% inherit as absolute px
-★defualt environment: various browsers = various UA-origins.
+★default environment: various browsers = various UA-origins.
   ›initial & fix most UA-origin styles: @import 'reset.css';
   ›override UA-origin by author-origin: @import 'normalize.css';
 ★@supports condition=[test [and?or test]…?| not test] {rules}

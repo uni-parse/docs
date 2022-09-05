@@ -548,8 +548,8 @@
       , n5 = v5;             //new line, comma first style
       , n6 = v6
   ▪constants unReAssignable variables
-    const CAPITAL = 'used before parsing'
-    const camelCase = `on engine parsing, time is ${Date()}`
+    const CapitalCase = 'used before parsing by devs'
+    const camelCase = `on parsing, ex time is ${Date()}`
   ▪naming variables & function: [≠digit][letter digit $ _]...
     ⚠️caseSinsitive, ≠statement_name(as: new let class ...)
     💡naming must be meaningfull, and more specific even if longer (ex: the visitor name become: currentUserName)
@@ -606,8 +606,9 @@
         null//0
         undefined//NaN
         boolean//0|1
-        '      ##      '//number, except on concatenation +
+        '  \n\t    ##      '//number, except on concatenation +
         ''//0
+        ' <ws?> '//0
         '  ≠#   '//NaN
       •
     ▸bigint (big integers)
@@ -624,10 +625,6 @@
   ▪primary expressions
   ▪left-hand-side expressions
   ▪operators concepts
-    •terms
-      operends: operator arguments
-      unary: single operend operator
-      binary: double operend operater
     •precedence
       18 groping                              (…)
       17 member access →                      ….…
@@ -639,7 +636,7 @@
       15 postfix increment|decrement          …++ | …--
       14 prefix increment|decrement           ++… | --… 
         unary plus|negation                   +… | -…
-        logical|bitwise not                   !… | ~…
+        logical not                           !…
                                               typeof …
                                               void …
                                               delete …
@@ -647,36 +644,28 @@
       13 exponentiation ⚠️←                   …**…
       12 multiplication|division|reminer →    …*… | …/… | …%…
       11 addition | subtraction →             … + … | … - …
-      10 bitwise left|(unsigned?)right shift → …<<…| …>>…| …>>>…
       9  less|greater than or_Equal? →        …<…|…>…|…<=…|…>=…
         in | instanceof →                     …in…|…instanceof…
       8 (strict?) equality|inequality →    …==…|…!=…|…===…|…!==…
-      7 betwise and →                         …&…
-      6 betwise xor →                         …^…
-      5 betwise or →                          …|…
       4 logical and →                         …&&…
       3 logical or | nullish coalescing →     …||… | …??…
-      2 assignment ⚠️←                        …=…| …+=…| …-=…| …/=…| …%=…| …*=…| …**=…| …<<=…| …>>=…| …>>>=…| …^=…| …&=…| …|=…| …&&=…| …||=…| …??=…
+      2 assignment ⚠️←                        …=…| …+=…| …-=…| …/=…| …%=…| …*=…| …**=…| …&&=…| …||=…| …??=…
         ternary 'conditional' ⚠️←(nested 1st) …?…:…
         arrow                                 …=>…
                                               yield … | yeild* …
         spread                                ...…
       1 comma/sequence →                      …,…
-
-
-
-
     •compatibility
-    •chaining operators: a ⚙️ b ⚙️ c ⚙️ d 
-      ⁃parsed rl: a ⚙️(b ⚙️(c ⚙️ d))
-        **
-      ⁃parsed lr: ((a ⚙️ b) ⚙️ c) ⚙️ d
-        - /
-      ⁃parsed bio: ((a ⚙️ b) ⚙️ c) ⚙️ d || a ⚙️(b ⚙️(c ⚙️ d))
-        + * %
-      ⁃priority:
-
-  ▪increment & decrement
+  ▪access member
+    💡white space allowed, [spases, tabs, new line's]
+    •dot notation:       obj <white space?> . <ws?> member
+      ⚠️#.member//typeError, . act as number_fraction_dot
+        fix: # .member | #..member | #.0.member | (#).member
+      ⚠️obj.#//typeError, fix: obj[#]
+    •bracket notation:   obj <ws?> [expression: 'memberName']
+  ▪increment & decrement (update var & return its old|new val)
+    •postfix: console.log(v±±)//return old v, before ±1
+    •prefix: console.log(±±v)//return new v, after ±1
   ▪unary operators
     ▸in
       a in context
@@ -706,8 +695,7 @@
       NaN ** a // NaN
       ⚠️limitation: base number cannot prefixed by unary operator [- + ~ ! delete void typeof]
         <unary>2 ** -2   //TypeError
-        <unary>(2 ** -2) //valid js
-        ( <unary>2 ) ** -2 //valid js
+        instead use: <unary>(2 ** -2),or ( <unary>2 ) ** -2
   ▪relational operators
     ▸less then operator a<b//bool
     ▸
@@ -716,33 +704,11 @@
     ▸
     ▸
   ▪equality operators
-  ▪bitwise shift perators
-  ▪binary bitwise operators
   ▪binary logical operators
   ▪conditional operator (ternary)
-  ▪assignment operators
-    •chaining
-      let a=1, b=2, c=3, d=4
-      a += b *= c += d = 5
-      //parsed from right to left as:
-        d = 5
-        c += d //c = 3+5 = 8
-        b *= c //b = 2*8 = 16
-        a += b //a = 1+16 = 17
-      console.log(a += b *= c += d = 5) //console.log(a)
-    •NaN if string are in left or right
-      -=
-      /=
-      %=
-      *=
-      **=
-    •boolean treated as 1|0
-      += (treated as string if concated with string)
-      -=
-      /=
-      %=
-      *=
-      **=
+  ▪assignment operators (copy value to variable & return it)
+    💡return NaN if one of operends are string (except on concatecation assignmeng +=)
+    💡boolean converted to 1|0 (except on concatecation assignment +=)
     ▸assignment =
       let a = 1, b = 2, c = 3, d = 4
       a = b                         //simble assignment
@@ -753,7 +719,7 @@
       •addition
         one += true         //1+1 = 2
         b_false += true     //0+1 = 1
-      •concatenation (if left|right hand are 'string')
+      •concatenation (if one|both operends are 'string')
         one += 'rule'       //1rule
         b_true += ' access' //'true access'
     ▸subtraction assignment: a += b // a = a-b
@@ -770,16 +736,6 @@
     ▸
     ▸
     ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
     ▸destructuring assignment
       •patterns
         ⁃binding: start by let|const|var
@@ -791,11 +747,11 @@
            {p1} = {p1:1} //parenthesis() missing
           ›const p2      //semicolon; missing
            ({p2} = {p2:2})
-      •defualt: any expression(or function) invoked if match no value | undefined, ≠null
+      •default: any expression(or function) invoked if match no value | undefined, ≠null
         ⁃can be destructuring object
-          const {a = 'defualt', b = {p:'defualt'}} = {a;'override',b:{p:'override'}}
-        ⁃in func we can set {} defualt to left-hand destructure
-          function f({ a = 'defualt' } = {})
+          const {a = 'default', b = {p:'default'}} = {a;'override',b:{p:'override'}}
+        ⁃in func we can set {} default to left-hand destructure
+          function f({ a = 'default' } = {})
       •array only
         ⁃ignore item|all from array-like ≠object by passing empty comma
           const [a,,c] = ['a','ignored','c']
@@ -808,12 +764,12 @@
           ›or even nested in another array rest 
             const [a, ...[b,...[c]]] = ['a', 'b', 'c']
       •object only: 
-        ⁃extract properties as same-name|renamed variables, with optional defualt value.
-          const {p,p:rename='defualt'} = {p:1}
+        ⁃extract properties as same-name|renamed variables, with optional default value.
+          const {p,p:rename='default'} = {p:1}
           console.log([p,rename])//[1,1]
         ⁃comuped properties names
           const propertyName= 'name'
-          const {[propertyName]:rename='defualt'} = {name:'n'}
+          const {[propertyName]:rename='default'} = {name:'n'}
           rename//n
         ⁃invalid property name identifier must be renamed
           const {'invalid-identifier':rename} = {'invalid-identifier':1}
@@ -861,7 +817,13 @@
         galaxy//milky way
       •required RegExp.prototype.exec()
       •required Sympbol.iterator
-  ▪comma operator
+  ▪comma operator (evaluate, than return last operend)
+    let x = 0
+    x = (x++, console.log(x), 0) //x=0, log:1
+    
+    for (let i = 0, j = 5; i <= 5; i++, j--) {
+      console.log(`i=${i}, j=${j}`);
+    }
 
 ⋆built-in objects
   ▪Object:

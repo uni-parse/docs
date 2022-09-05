@@ -14,7 +14,7 @@
     ›post: send several encrypted unlimited characters requests.
     ›dialog: if form inside <dialog> 73%gs-noSafaru|firefox
   •enctype='':
-    ›defualt: 'application/x-www-form-urlencoded'
+    ›default: 'application/x-www-form-urlencoded'
     ›if <input type=file>: 'multipart/form-data'
     ›html5 debugging: 'text/plain'
     »addition: if method=post, enctype is MIME_type (Multipurpose Internet Mail Extensions)

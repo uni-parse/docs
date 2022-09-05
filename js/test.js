@@ -1,24 +1,24 @@
 
 //destructuring opirator
 (() => {
-  let [a, , b, c, d = 'defualt', ...rest] = ['a', 'ignored', 'b', undefined, undefined, 'rest1', 'rest2']
+  let [a, , b, c, d = 'default', ...rest] = ['a', 'ignored', 'b', undefined, undefined, 'rest1', 'rest2']
   a //1
   b //b
   c //undefined
-  d //defualt
+  d //default
   rest //['rest1','rest2']
 
 
-  let { exist: renameExist = 'defualt', unexist1: renameUnexist1, unexist2: renameUnexist2 = 'defualt' } = { exist: 'override' }
+  let { exist: renameExist = 'default', unexist1: renameUnexist1, unexist2: renameUnexist2 = 'default' } = { exist: 'override' }
   renameExist //override
   renameUnexist1 //undefined
-  renameUnexist2 //defualt
+  renameUnexist2 //default
 
   let x, y, z, others;
-  [x, y, , z = 'defualt', ...others] = [1, 2, 'ignored', undefined, 'other1', 'other2']
+  [x, y, , z = 'default', ...others] = [1, 2, 'ignored', undefined, 'other1', 'other2']
   x //1
   y //2
-  z //defualt
+  z //default
   others //['other1','other2']
 
 
@@ -39,7 +39,7 @@
   o //{ p1: 3, p2: 1, p3: 2 }
 
   let { p } = { p: 7 };
-  ({ p, p: r = 'defualt' } = { p: 2 })
+  ({ p, p: r = 'default' } = { p: 2 })
   p
   r
 
@@ -178,6 +178,27 @@ const glob = undefined;
   console.log('     -9  ' - 5)
   console.log('' * 1)
   console.log(+undefined)
+  console
+
+
+    .
+
+    log(2.)
+  const one = { 1: 1 }
+  console.log(one[1])
+
+  let v = 1
+  console.log(v);
+  console.log(v++);
+  console.log(++v)
+
+  let x = 0
+  x = (x++, console.log(x), x) //1
+  x
+
+  for (let i = 0, j = 5; i <= 5; i++, j--) {
+    console.log(`i=${i}, j=${j}`);
+  }
   uniparse1 = 1
   uniparse1
 })()

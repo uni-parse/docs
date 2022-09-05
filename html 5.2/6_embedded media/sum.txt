@@ -1,7 +1,7 @@
 
-★defualt object|iframe dimensions: width=300 height=150
+★default object|iframe dimensions: width=300 height=150
   •issue: aspectRatio unpreserved, style=width:auto;
-  •video: defualt w|h are original dimensions.
+  •video: default w|h are original dimensions.
 ★javascript API: HTMLMediaElement
 ★iframe(inline frame): embed another source through window (page|video|audio|image|svg|canvas|map|ads)
   •<iframe name=targetName src=url allowfullscreen(issue)  srcdoc='inline html|xml ex: <a>override src=</a>' title=alt
@@ -31,7 +31,7 @@
  •<video src=url controls autoplay|poster=img_url muted loop
     preload=auto|none|metadata playsinline(nonMobileFullscreen)
     crossorigin=anonymous|use-credentials>
-     <track↑seo defualt src=url.vtt?srt label=UI_selection-name
+     <track↑seo default src=url.vtt?srt label=UI_selection-name
       kind=metadata(js)|captions|descriptions|chapters|subtitles
       srclang="en|fr|ar|cn, required kind=subtitles">…
      <a href=download.mp4>alternative</a></video>
@@ -93,7 +93,7 @@
   •ex: <picture> <source type=image/svg+xml srcset=img.svg>
     <img srcset=img.webp alt=''> <!--fallback--> </picture>
 ★<map name=mapName> <!--att coordinates x|y|r=#(without px)-->
-   <area alt= shape=defualt|rect(angle)|circle|poly(gon)
+   <area alt= shape=default|rect(angle)|circle|poly(gon)
      coords=x1,y1,x2,y2(rect)|x,y,r(circle)|x1,y1,…xn,yn(poly)
      href= target= download rel= ping= referrerpolicy=> …
  </map> <img usemap=#mapName src= alt=>
