@@ -155,7 +155,7 @@ const glob = undefined;
 
 //number object
 (() => {
-  //"use strict";
+  "use strict";
   console.log(Number('44'))
   const null_obj = Object.create(null)
   console.log(null_obj.__proto__);
@@ -199,8 +199,18 @@ const glob = undefined;
   for (let i = 0, j = 5; i <= 5; i++, j--) {
     console.log(`i=${i}, j=${j}`);
   }
-  uniparse1 = 1
-  uniparse1
+  console.log(' 3' > '1')
+
+
+  function a(){return `1`}
+  console.log(a() == 1)
+  console.log(a() === 1)
+
+  console.log(undefined == null)
+  //uniparse1 = 1
+  //uniparse1
+
+
 })()
 
 

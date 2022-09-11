@@ -621,6 +621,7 @@
     ▸string
       •surrounded by 'pair single quotes', "pair double quotes", `pair backTicks let us embed ${expressions}`
       •convert expression to string
+
 ⋆exprissions and operators
   ▪primary expressions
   ▪left-hand-side expressions
@@ -656,7 +657,8 @@
         spread                                ...…
       1 comma/sequence →                      …,…
     •compatibility
-  ▪access member
+    •
+  ▪access member operators
     💡white space allowed, [spases, tabs, new line's]
     •dot notation:       obj <white space?> . <ws?> member
       ⚠️#.member//typeError, . act as number_fraction_dot
@@ -696,15 +698,40 @@
       ⚠️limitation: base number cannot prefixed by unary operator [- + ~ ! delete void typeof]
         <unary>2 ** -2   //TypeError
         instead use: <unary>(2 ** -2),or ( <unary>2 ) ** -2
-  ▪relational operators
-    ▸less then operator a<b//bool
+  ▪comparison operators
+    ▸less|grater then orEqual?: a < | > |<= | >= b //bool
+    ▸in?equality a == | != b //bool
+      ⚠️null == undefined, but null|undefined != any other value
+        null|undefined do not converted to Number 0|NaN !!
+    ▸strict in?equality a === | !== b //bool
+      compare type, then compare value
+      💡function type determined by its returned value type
+    💡differ type automaticly converted to Number (not string)
+      undefined→NaN, null→0 (except on == operator)
+    💡strings of numbers automaticly converted to Numbers
+      surrounded white space ignored including \n \t
+    💡dictionary: strings compared by characters unicode 1by1
+      if same nth have same unicode than continue comparison untill find differ.
+      0~6: �☺☻♥♦♣♠
+      b~c: ♂♀
+      e~1a: ♫☼►◄↕‼¶§▬↨↑↓→
+      1c~1f: ∟↔▲▼
+      20: space
+      21~2f: !"#$%&'()*+,-./
+      30~39: 0123456789
+      3a~40: :;<=>?@
+      41~5a: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+      5b~60: [\]^_`
+      61~7a: abcdefghijklmnopqrstuvwxyz
+      7b~7f: {|}~⌂
+      a1~ac: ¡¢£¤¥¦§¨©ª«¬
+      ae~bf: ®¯°±²³´µ¶·¸¹º»¼½¾¿
+      c0~ff:ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ …
+  ▪logical operators
+    ▸or a || b || c
     ▸
     ▸
     ▸
-    ▸
-    ▸
-  ▪equality operators
-  ▪binary logical operators
   ▪conditional operator (ternary)
   ▪assignment operators (copy value to variable & return it)
     💡return NaN if one of operends are string (except on concatecation assignmeng +=)

@@ -40,12 +40,20 @@ scss= superset of css, sass= indent syntax style sheet.
   •string: sequence of characters 'quoted'|unquoted
     »escapes: not all characters can be represented literally
       ›by its \hex 8delete 9tab a=newLine 20space 22" 27' a9©
-        \0~6:�☺☻♥♦♣♠ \b~c:♂♀ \e~1a:♫☼►◄↕‼¶§▬↨↑↓→ \1c~1f:∟↔▲▼
-        \21~2f:!"#$%&'()*+,-./ \30~39:0123456789 \3a~40::;<=>?@
-        \41~5a:ABCDEFGHIJKLMNOPQRSTUVWXYZ \5b~60:[\]^_`
-        \61~7a:abcdefghijklmnopqrstuvwxyz \7b~7f:{|}~⌂
-        \a1~ac:¡¢£¤¥¦§¨©ª«¬ \ae~bf:®¯°±²³´µ¶·¸¹º»¼½¾¿
-        \c0~ff:ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ …
+        0~6: �☺☻♥♦♣♠
+        b~c: ♂♀
+        e~1a: ♫☼►◄↕‼¶§▬↨↑↓→
+        1c~1f: ∟↔▲▼
+        21~2f: !"#$%&'()*+,-./
+        30~39: 0123456789
+        3a~40: :;<=>?@
+        41~5a: ABCDEFGHIJKLMNOPQRSTUVWXYZ
+        5b~60: [\]^_`
+        61~7a: abcdefghijklmnopqrstuvwxyz
+        7b~7f: {|}~⌂
+        a1~ac: ¡¢£¤¥¦§¨©ª«¬
+        ae~bf: ®¯°±²³´µ¶·¸¹º»¼½¾¿
+        c0~ff:ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ …
       ›any character(≠hex:0~f) can be escaped \" \<newLine> \#{}
       ›space after \hex #ignored, '\3 ♥'=\3♥=♥♥, '\3  ♥'=♥ ♥
       »unquoted: (look at diagram: unquoted string.png)
