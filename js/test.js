@@ -202,7 +202,7 @@ const glob = undefined;
   console.log(' 3' > '1')
 
 
-  function a(){return `1`}
+  function a() { return `1` }
   console.log(a() == 1)
   console.log(a() === 1)
 
@@ -211,9 +211,12 @@ const glob = undefined;
   //uniparse1
 
 
+})();
+
+(() => {
+  let a = null, b, c = 3;
+  console.log(c ?? 'fallback');
 })()
-
-
 
 
 

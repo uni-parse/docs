@@ -656,8 +656,6 @@
                                               yield … | yeild* …
         spread                                ...…
       1 comma/sequence →                      …,…
-    •compatibility
-    •
   ▪access member operators
     💡white space allowed, [spases, tabs, new line's]
     •dot notation:       obj <white space?> . <ws?> member
@@ -728,10 +726,12 @@
       ae~bf: ®¯°±²³´µ¶·¸¹º»¼½¾¿
       c0~ff:ÀÁÂÃÄÅÆÇÈÉÊËÌÍÎÏÐÑÒÓÔÕÖ×ØÙÚÛÜÝÞßàáâãäåæçèéêëìíîïðñòóôõö÷øùúûüýþÿ …
   ▪logical operators
-    ▸or a || b || c
-    ▸
-    ▸
-    ▸
+    💡and & or operators convert each operand to boolean from left to right, but return original value.
+    ▸and a && b && c //return first_falsy-operand | last_operand
+    ▸or a || b || c //return first_truthy_operand | last_operend
+    ▸nullish coalescing a ?? b ?? c //return 1st_defined | last
+      return first defined operand who are not: null | undefined, else return last operand (fallback)
+      ⚠️typeError if combined with || or &&, (use parenthesis)
   ▪conditional operator (ternary)
   ▪assignment operators (copy value to variable & return it)
     💡return NaN if one of operends are string (except on concatecation assignmeng +=)
