@@ -216,9 +216,45 @@ const glob = undefined;
 (() => {
   let a = null, b, c = 3;
   console.log(c ?? 'fallback');
+  let i = 0
+  //while (++i < 5) alert(i);
+  //1 1
+  //2 2
+  //3 3
+  //4 4
+  //4 stop
+  //while (i++ < 5) alert(i);
+  //0 1
+  //1 2
+  //2 3
+  //3 4
+  //4 5
+  //5 stop
+  for (let i = 2; i < 10; i++) {
+    //if (i % 2 == 0) alert(i); //evens
+  }
+  i = 0
+  //while (i < 3) alert(i++)
+})();
+
+(() => {
+  function a(parameter = 'defualt value') {
+    return parameter
+  }
+  console.log(a(undefined))
+
+
+  function min(a, b) {
+    return a > b ? b : a
+  }
+  console.log(min(4, 9))
+
+
+  function pow(x, n) {
+    return x ** n
+  }
+  console.log(pow(3, 3))
+
+  let powRename = pow
+  console.log(powRename(3, 3))
 })()
-
-
-
-
-

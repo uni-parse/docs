@@ -1,0 +1,40 @@
+▪enable developer mode on window 10|11
+▪install debian|ubunto
+  ▸enter unix username & password
+▪check wsl version: wsl -l -v
+  ▸upgrade wsl1 to wsl2: wsl --set-version debian 2
+
+
+▪oh my zsh plugints, add plugin name separate by space in plugin of .zshrc
+	▸ zsh-autosuggestions
+	    git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
+	▸zsh-syntax-highlighting ⚠️must be last plugin, exsept zsh-history-substring-search
+		git clone https://github.com/zsh-users/zsh-syntax-highlighting.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting
+	▸history-substring-search ⚠️after zsh-syntax-highlighting
+		 git clone https://github.com/zsh-users/zsh-history-substring-search ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-history-substring-search
+	▸you-should-use
+		clone https://github.com/MichaelAquilina/zsh-you-should-use.git ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/you-should-use
+		
+
+▪node
+	install nvm from https://github.com/nvm-sh/nvm#about
+	(add export to .zshrc)
+	nvm install node #latest
+	nvm install --lts #stable
+
+▪vs-code
+	enable wsl extention
+	on zsh shell: code project_path
+	
+▪my current situation
+	brother wife come to our house, (I'm not comportable by been her around)
+	mather annoying me telling me change my pen, (but the available one not mine & unconfortable)
+	momen now setting beside me, (he wanna laptop)
+	▸now what can I do?
+		change pen to prevent mother from annoying me
+		still in this room to avoid madani wife
+		momen now are my big issue (need to make him away)
+			if he go to elsewere occupy the entire bed, so he no longer be able to set with me
+			now he just cheating throwgh fb with his friends
+			
+	
