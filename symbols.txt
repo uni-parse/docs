@@ -1,18 +1,24 @@
 comma ,
+period dot .
 colon :
 semiColon ;
-curly brace {}
-parenthesis ()
 hyphen manius dash -
 underLine underscore _
 tilde(telda) ~
-multiply star aste'risk *
-carat(as carrot in spelling) ^
 equal =
 euler e 2.71…
 pi π 3.14…
-ampersand &
+exclamention !
+at @
+hash #
 dollar $
+percentage %
+carat(as carrot in spelling) ^
+ampersand &
+multiply star aste'risk *
+parenthesis ()
+square bracket []
+curly brace {}
 euro €
 slash division /
 slashBare back-slash \
@@ -20,9 +26,6 @@ bar |
 single and duble pair quotes "" ''
 pair backticks ``
 right & left an'gled bracket <>
-exclamention !
-hash #
-period dot .
 equality ===
 inequality !==
 
