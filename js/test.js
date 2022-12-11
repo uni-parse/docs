@@ -132,7 +132,7 @@
 
 const glob = undefined;
 (() => {
-  let num = 1
+  let num = 18
   num = null
   console.log(Number.isNaN(num))
   console.log(typeof num);
@@ -257,4 +257,356 @@ const glob = undefined;
 
   let powRename = pow
   console.log(powRename(3, 3))
-})()
+})();
+
+(() => {
+  const arr1 = ['one', 'two'], arr2 = arr1;
+  arr1[0] = 1;
+  arr2; //[1,'two']
+
+
+  let user = {
+    name: "John",
+    go: function () {
+      console.log(this.name)
+      return this.name
+    }
+  };
+  console.log((user.go)())
+
+
+  function f() {
+    console.log(this)
+  }
+  f()
+
+
+
+
+
+  let calc = {
+    assign(o1, o2) {
+      this.operend1 = o1
+      this.operend2 = o2
+    },
+    read() { //required browser
+      this.operend1 = +prompt('operend1')
+      this.operend2 = +prompt('operend2')
+    },
+    sum() { return this.operend1 + this.operend2 },
+    mul() { return this.operend1 * this.operend2 }
+  }
+
+  calc.assign(2, 3)
+  console.log(calc.sum())
+  console.log(calc.mul())
+
+
+
+
+  let ladder = {
+    step: 0,
+    up() { this.step++; return this },
+    down() { this.step--; return this },
+    show() { console.log(this.step); return this }
+  };
+  //ladder.up()
+  // ladder.up()
+  // ladder.down()
+  // ladder.show()
+  ladder.up().up().down().show()
+
+
+  let a = (() => 5)();
+  console.log(typeof a, a)
+  console.log(+'a')
+
+})();
+
+
+(() => {
+  function UserConstructor(name, admin) {
+    this.name = name
+    this.admin = !!admin
+  }
+
+  const reader = new UserConstructor('uniparse', 1)
+  console.log(reader.name, '; admin: ' + reader.admin)
+
+
+})();
+
+//obj conversion
+(() => {
+  let user = {
+    name: "John",
+    money: 1000,
+
+    [Symbol.toPrimitive](hint) {
+      console.log(`hint: ${hint}`);
+      return hint == "string" ? this.name : this.money;
+    }
+  };
+
+
+  const anotherObj = {}
+  anotherObj.John = 'my name are Jhon'
+  // conversions demo:
+  console.log(anotherObj[user]); // hint: string -> 'my name are Jhon'
+  console.log(+user); // hint: number -> 1000
+  console.log(user + 500); // hint: default -> 1500
+})();
+
+(() => { //array
+  const arr = ['a', 2]
+  console.log(arr.push('three', 'four'), arr)
+  console.log(arr.pop(), arr)
+  console.log(arr.at(0))
+  console.log(arr.shift(), arr)
+  console.log(arr.unshift(0, 1), arr)
+
+  const styles = ['Jazz', 'Blues']
+  styles.push('Rock-n-Roll')
+  styles[Math.floor(styles.length / 2)] = 'Classics'
+  console.log(styles.shift())
+  styles.unshift('Rap', 'Reggae')
+
+
+
+  console.log(sumInput(1, 2))
+
+
+  function sumInput() {
+    const arr = []
+
+    while (true) {
+      let item = prompt("A number please?", 0)
+      if (item === "" || item === null || !isFinite(item)) break
+      arr.push(+item)
+    }
+
+    let sum = 0
+    arr.forEach(item => sum += item)
+
+    return sum
+  }
+
+  function prompt() {
+  }
+
+})();
+
+(() => { //array.methods tasks
+  //task1 transform property name from css to javascript
+  function camelize(str) {
+    const rawWords = str.split('-'),
+
+      capitalWords = rawWords.map((word, i) => !i ? word : word[0].toUpperCase() + word.slice(1)),
+
+      newStr = capitalWords.join('')
+    return newStr
+  }
+  console.log(camelize('-webkit-backgrund-clip'));
+
+  //task2 filter range
+  function filterRange(arr, min, max) {
+    return arr.filter(item => item <= max && item >= min)
+  }
+  console.log(filterRange([1, -3, 101, 99, 40], 0, 100))
+
+  //task2.5 filter range "in place" (without return)
+  function filterRangeInPlace(arr, min, max) {
+    arr.forEach((item, index) => {
+      if (item > max || item < min) arr.splice(index, 1)
+    })
+  }
+  const task2Arr = [1, 101, 99]
+  filterRangeInPlace(task2Arr, 0, 100)
+  console.log(task2Arr)
+
+
+  //task3 sort in decreasing order
+  const arr = [5, 2, 1, -10, 8]
+  arr.sort((a, b) => b - a)
+  console.log(arr)
+
+  //task4 copy and sort array
+  function copySorted(arr) {
+    return arr.slice().sort() //slice() return copy
+  }
+  const orgArr = ['HTML', 'JavaScript', 'CSS']
+  console.log(copySorted(orgArr));
+  console.log(orgArr)
+
+  //task5 create an extendable calculator
+  function Calculator1() {
+    this.calculate = str => {
+      const arr = str.split(' '),
+        num1 = +arr[0],
+        operator = arr[1],
+        num2 = +arr[2]
+      switch (operator) {
+        case '+': return num1 + num2; break
+        case '-': return num1 - num2; break
+        default: return `unrecognized operator (${operator})`
+      }
+    }
+  }
+
+  const calc1 = new Calculator1()
+  console.log(calc1.calculate('3 - 7'))
+  console.log(calc1.calculate('3 + 7'))
+  console.log(calc1.calculate('3 * 7'))
+
+
+  function Calculator2() {
+    this.methods = {
+      '+': (a, b) => a + b,
+      '-': (a, b) => a - b
+    }
+    this.addMethod = (name, func) => this.methods[name] = func
+    this.calculate = str => {
+      const arr = str.split(' '),
+        num1 = +arr[0],
+        operator = arr[1],
+        num2 = +arr[2]
+
+      if (operator in this.methods)
+        return this.methods[operator](num1, num2)
+      else return `unrecognized operator (${operator})`
+    }
+  }
+
+  const calc2 = new Calculator2()
+  calc2.addMethod('*', (a, b) => a * b)
+  console.log(calc2.calculate('3 + 7'))
+  console.log(calc2.calculate('3 - 7'))
+  console.log(calc2.calculate('3 * 7'))
+  console.log(calc2.calculate('3 / 7'))
+
+  //task6 map to names
+  const john = { name: "John", age: 25 },
+    pete = { name: "Pete", age: 30 },
+    mary = { name: "Mary", age: 28 },
+    users = [john, pete, mary],
+    names = users.map(user => user.name)
+  console.log(names);
+
+  //task7 map to objects
+  const john1 = { name: "John", surname: "Smith", id: 1 },
+    pete1 = { name: "Pete", surname: "Hunt", id: 2 },
+    mary1 = { name: "Mary", surname: "Key", id: 3 },
+    users1 = [john1, pete1, mary1],
+    usersMapped = users1.map(user => ({
+      fullName: `${user.name} ${user.surname}`,
+      id: user.id
+    }))
+  console.log(usersMapped[0].id)
+  console.log(usersMapped[0].fullName)
+
+  //task8 sort users by age
+  function sortByAge(users) {
+    users.sort((a, b) => a.age - b.age)
+  }
+  const john2 = { name: "John", age: 25 },
+    pete2 = { name: "Pete", age: 30 },
+    mary2 = { name: "Mary", age: 28 },
+    users2 = [john2, pete2, mary2]
+  sortByAge(users2)
+  console.log(users2.map(u => u.age))
+
+  //task9 shuffle an array (sort with evenly random order)
+  function shuffle_bad(arr) { //less critical & overheat cpu
+    arr.sort(() => Math.random() - .5)
+  }
+  const arr1 = [1, 2, 3]
+  shuffle_bad(arr1)
+  console.log(arr1)
+  shuffle_bad(arr1)
+  console.log(arr1)
+  shuffle_bad(arr1)
+  console.log(arr1)
+
+  //the func name: Fisher-Yates shuffle
+  function shuffle_good(arr) { //critical & no overheat cpu
+    for (let i = arr.length - 1; i > 0; i--) {
+      let j = Math.floor(Math.random() * (i + 1))
+      [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
+  }
+  const arr2 = [1, 2, 3]
+  shuffle_bad(arr2)
+  console.log(arr2)
+  shuffle_bad(arr2)
+  console.log(arr2)
+  shuffle_bad(arr2)
+  console.log(arr2)
+
+  //task10 get average age
+  function getAverageAge(users) {
+    return users.reduce((prevSum, user) => prevSum + user.age, 0) / users.length
+  }
+
+  const john3 = { name: "John", age: 25 },
+    pete3 = { name: "Pete", age: 30 },
+    mary3 = { name: "Mary", age: 29 },
+    users3 = [john3, pete3, mary3]
+  console.log(getAverageAge(users3))
+
+  //task11 filter unique array members
+  function unique(arr) {
+    return arr.filter((el, i) => arr.indexOf(el) === i)
+  }// compare first index arr.indexOf(el), with currend index
+
+  const arr11 = [1, 2, 2, 'a', 'b', 'b']
+  console.log(unique(arr11))
+
+  function oldUnique(arr) {
+    const uniqueArr = []
+    arr.forEach(item => {
+      if (!uniqueArr.includes(item)) uniqueArr.push(item)
+    })
+    return uniqueArr
+  }
+
+  //task12 create keyed object from array
+  function groupById(arr) {
+    return arr.reduce((sum, obj) => (sum[obj.id] = obj, sum), {})
+  }
+
+  const users12 = [
+    { id: 'john', name: "John Smith", age: 20 },
+    { id: 'ann', name: "Ann Smith", age: 24 },
+    { id: 'pete', name: "Pete Peterson", age: 31 },
+  ], usersById = groupById(users12)
+  console.log(usersById)
+
+  function oldGroupbyId(arr) {
+    const groupByIdObj = {}
+    arr.forEach(obj => groupByIdObj[obj.id] = obj)
+    return groupByIdObj
+  }
+
+  //task13
+
+
+})();
+(() => { //iteration
+
+})();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
