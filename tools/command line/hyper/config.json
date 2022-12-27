@@ -1,0 +1,14 @@
+{
+	"windowPosition": [
+		2,
+		0
+	],
+	"windowSize": [
+		1366,
+		738
+	],
+	"hyper": {
+		"plugins": "{\"plugins\":[\"hyper-tabs-enhanced\",\"hyper-font-ligatures\",\"hyper-active-tab\",\"hyperterm-cobalt2-theme\",\"verminal\"],\"localPlugins\":[]}",
+		"plugin-versions": "[[\"hyper-tabs-enhanced\",\"0.4.2\"],[\"hyper-font-ligatures\",\"0.0.8\"],[\"hyper-active-tab\",\"0.0.2\"],[\"hyperterm-cobalt2-theme\",\"2.0.1\"],[\"verminal\",\"1.5.1\"]]"
+	}
+}

@@ -591,13 +591,127 @@ const glob = undefined;
 
 
 })();
-(() => { //iteration
+(() => { //map & set
+  //task1 filter unique array members
+  function unique(arr) {
+    return Array.from(new Set(arr))
+  }
+  const doublications = [1, 1, 2, 2, 'a', 'a', 'b']
+  console.log(unique(doublications))
+
+  //task2 filter anagrams
+  function aclean(arr) {
+    const
+      entries = arr.map(word => [word.toLowerCase().split('').sort().join(''), word]),
+      map = new Map(entries)//keys are unique, override value
+    return Array.from(map.values())
+  }
+  const anagrams = ['pan', 'NAP', 'cheaters', 'teachers']
+  console.log(aclean(anagrams))
+
+  //task3 iterable keys
+  const map3 = new Map()
+  map3.set('name', 'John')
+  const keys3 = map3.keys(),
+    keysArr3 = Array.from(keys3)
+  keysArr3.push('more')
+  console.log(keysArr3)
+
+
+
 
 })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
+(() => { //weakmap & weakset tasks
+  const messages = [
+    { text: "Hello", from: "John" },
+    { text: "How goes?", from: "John" },
+    { text: "See you soon", from: "Alice" }
+  ]
+
+  //task1 store 'unread' flags
+  const hasBeenRead = new WeakSet()
+  hasBeenRead.add(messages[0])
+  hasBeenRead.add(messages[1])
+  hasBeenRead.add(messages[1])//readed one more time
+
+  //task2 store read dates
+  const lastReadingDate = new WeakMap()
+  lastReadingDate.set(messages[0], new Date(2022, 12, 8))
+  lastReadingDate.set(messages[1], new Date(2022, 12, 9))
+  lastReadingDate.set(messages[1], new Date(2022, 12, 12))
+})();
+(() => { //object tasks
+  //task1 sum the properties
+  function sumSalaries(salaries) {
+    return Object.values(salaries).reduce((sum, current) => sum += current || 0, 0)
+  }
+
+  const salaries = {
+    "John": 100,
+    "Pete": 300,
+    "Mary": 250
+  }
+  console.log(sumSalaries(salaries))
+
+  //task2 count properties
+  function count(obj) {
+    return Object.keys(obj).length
+  }
+  console.log(count(salaries));
+
+})();
+(() => { //destructuring assignment tasks
+  //task1 dustructuring assignment
+  const user = {
+    name: 'John',
+    years: 30
+  }
+  const { name, years: age, isAdmin = false } = user
+  console.log(name, age, isAdmin)
+
+  //task2 the maximal salary
+  function topSalary(salaries = {}) {
+    let [topName, topSalary] = [null, 0]
+    for (const [name, salary] of Object.entries(salaries)) {
+      if (topSalary < salary) [topName, topSalary] = [name, salary]
+    }
+    return topName
+
+    //or optimized & readable
+    return Array.from(Object.entries(salaries))
+      .reduce(([topName, topSalary], [name, salary]) =>
+        salary > topSalary ? [name, salary] : [topName, topSalary], [null, 0])[0]
+
+    //or best optimization
+    return Array.from(Object.entries(salaries))
+      .reduce((topEntry, CurrentEntry) =>
+        CurrentEntry[1] > topEntry[1] ? CurrentEntry : topEntry, [null, 0])[0]
+  }
+
+  const salaries = {
+    'John': 100,
+    'Pete': 300,
+    'Mary': 250
+  }
+  console.log(topSalary())
+  console.log(topSalary(salaries))
+})();
+(() => { // Date and time tasks
+  const now = new Date(),
+    nowTimeStamp = now.getTime(),
+    Jan01_1970 = new Date(0),
+    Jan31_1969 = new Date(-24 * 3600 * 1000)
+  console.log(now, nowTimeStamp, Jan01_1970, Jan31_1969)
+
+  console.log(nowTimeStamp == new Date(nowTimeStamp).getTime())
+  console.log(new Date(0).getTime())
+
+  console.log(now)
+  console.log(new Date(nowTimeStamp))
+
+  
+
+})();
 (() => { })();
 (() => { })();
 (() => { })();
