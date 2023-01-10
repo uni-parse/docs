@@ -1064,7 +1064,7 @@ const glob = undefined;
   //console.log(JSON.stringify(obj1))//error circular referance
   console.log(JSON.stringify(
     obj1,
-    ['p1', 'ref1', 'p2']//exlude ref2
+    ['p1', 'ref1', obj.p2]//exlude ref2
   ))
   console.log(JSON.stringify(
     obj1,
@@ -1318,7 +1318,132 @@ const glob = undefined;
 
 })();
 */
-(() => { //arrow functions
+/*
+(() => { //iterable
+  //summay:
+  //  iterators are objects that implement [Symbol.iterater]()
+  //  array-likes are objects that have indexes & .length
+  //  ex: (objects can be iterable or array-like or both)
+  //    iterable & array-like: 'strings'
+  //    only array-like:   { 0:'v1', 1:'v2', length:2 }
+  //    only iterable: range object bellow
+
+  const range = {
+    from: 10,
+    to: 15,
+    [Symbol.iterator]() {
+      return { //return iterator object have .next() method
+        current: this.from,
+        last: this.to,
+        next() { // called on each iterator of for..of loop
+          return this.current <= this.last
+            ? { done: false, value: this.current++ }
+            : { done: true }
+        }
+      }
+    }
+  }
+
+  let arr = []
+  for (let n of range) arr.push(n)
+  //for each iterator of loop:
+  //  if ( obj[Symbol.iterator]().next().done ) break
+  //  else n = range[Symbol.iterator]().next().value
+  console.log(arr)
+  console.log([...range])
+
+
+
+
+  //we can use same object as iterator
+  //limitation: we can't use it on multi async for..of loops
+  const simpleRange = {
+    from: 1,
+    to: 5,
+    [Symbol.iterator]() {
+      this.current = this.from
+      return this
+    },
+    next() {
+      return this.current <= this.to
+        ? { done: false, value: this.current++ }
+        : { done: true }
+    }
+  }
+  arr = []
+  for (let n of simpleRange) arr.push(n)
+  console.log(arr)
+  console.log([...simpleRange])
+
+
+
+  //strings are iterators!!
+  arr = []
+  for (let char of 'hello') arr.push(char)
+  console.log(arr)
+  console.log(Array.from('hello'))
+  //str {iterator} are the same as 'hello' string
+  const str = {
+    str: 'hello',
+    [Symbol.iterator]() {
+      return {
+        str: this.str,
+        index: 0,
+        next() {
+          return this.index < this.str.length
+            ? { done: false, value: this.str[this.index++] }
+            : { done: true }
+        }
+      }
+    }
+  }
+  arr = []
+  for (let char of str) arr.push(char)
+  console.log(arr)
+  console.log([...str])
+  //same as:
+  arr = []
+  const strIterator = 'hello'[Symbol.iterator]()
+  while (true) {
+    const result = strIterator.next()
+    if (result.done) break
+    else arr.push(result.value)
+  }
+  console.log(arr)
 
 })();
+*/
+(() => { //property flags & descriptors
+  const obj = { p: 'v' }
+  Object.defineProperty(obj, 'p', { writable: false })
+  //obj.p = 'upadte'//error: read only property
+  console.log(
+    Object.getOwnPropertyDescriptors(obj, 'p')
+  )
+
+  Object.defineProperty(obj, 'p2', {
+    value: 'v2',
+    configurable: true
+    //writable: false,     //by default false
+    //enumerable: false    //by default false
+  })
+  console.log(
+    Object.getOwnPropertyDescriptors(obj, 'p2')
+  )
+
+
+
+})();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
 (() => { })();
