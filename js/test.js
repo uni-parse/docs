@@ -1260,7 +1260,7 @@ const glob = undefined;
 
 */
 /*
-(() => { //function binding
+{ //function binding
   //task 1 bound function as a method
   function f1() { console.log(this) }
   const user1 = { f: f1.bind(null) }
@@ -1316,10 +1316,9 @@ const glob = undefined;
     user5.login.bind(user5, false)
   )
 
-})();
-*/
+}*/
 /*
-(() => { //iterable
+{ //iterable
   //summay:
   //  iterators are objects that implement [Symbol.iterater]()
   //  array-likes are objects that have indexes & .length
@@ -1411,16 +1410,19 @@ const glob = undefined;
   }
   console.log(arr)
 
-})();
-*/
-(() => { //property flags & descriptors
+}*/
+/*
+{ //property flags & descriptors
   const obj = { p: 'v' }
   Object.defineProperty(obj, 'p', { writable: false })
   //obj.p = 'upadte'//error: read only property
   console.log(
-    Object.getOwnPropertyDescriptors(obj, 'p')
+    Object.getOwnPropertyDescriptor(obj, 'p')
   )
+  delete obj.p //we still can delete read-Only properties
+  console.log(obj.p)
 
+  //declare from defineProperty() set all descriptors to false
   Object.defineProperty(obj, 'p2', {
     value: 'v2',
     configurable: true
@@ -1428,22 +1430,334 @@ const glob = undefined;
     //enumerable: false    //by default false
   })
   console.log(
-    Object.getOwnPropertyDescriptors(obj, 'p2')
+    Object.getOwnPropertyDescriptor(obj, 'p2')
+  )
+
+
+  let user = {
+    name: 'uniParse',
+    toString() { return this.name }
+  }
+  let arr = []
+  for (const k in user) arr.push(k)
+  console.log(arr)
+  console.log(Object.keys(user))
+
+  Object.defineProperty(user, 'toString', {
+    enumerable: false
+  })
+  arr = []
+  for (const k in user) arr.push(k)
+  console.log(arr)
+  console.log(Object.keys(user))
+
+
+  console.log(JSON.stringify(
+    Object.getOwnPropertyDescriptor(Math, 'PI'),
+    null, 2
+  ))
+  //error: cannot modify or delete unconfigurable property
+  //  Object.defineProperty(Math, 'PI', { writable: true })
+  //  Math.PI = 3
+  //  delete Math.PI
+
+  const uni = { name: 'uniparse' }
+  Object.defineProperty(uni, 'name', { configurable: false })
+  //we still can change .value & .writable:false
+  // while we can't delete or change .enumeruble .writable:true
+  uni.name = 'change1'
+  console.log(uni.name)
+  Object.defineProperty(uni, 'name', { writable: false })
+  //uni.name = 'change2' //error read only
+  //error non-configurable
+  //  Object.defineProperty(uni, 'name', { 
+  //    configurable: true,
+  //    enumerable: false,
+  //    writable: true  //con only change to false not to true
+  //  }
+
+
+
+
+  //Object.defineProperties(uni, { p1:{descriptors}, p2... })
+  Object.defineProperties(uni, {
+    label: {
+      value: 'Admin',
+      configurable: true,
+      enumerable: true,
+      writable: true
+    },
+    birthDate: {
+      value: '2000-01-15',
+      configurable: false,
+      enumerable: true,
+      writable: false
+    },
+    [Symbol('hidden')]: {
+      value: 'sym',
+      configurable: true,
+      enumerable: false,
+      writable: true
+    }
+  })
+  console.log(
+    Object.getOwnPropertyDescriptors(uni)
+  )
+
+
+  const hardClone = Object.defineProperties({},
+    Object.getOwnPropertyDescriptors(uni))
+  console.log(
+    Object.getOwnPropertyDescriptors(hardClone)
+  )
+
+  const softClone = { ...uni } //all flags=true, no symbols
+  console.log(
+    Object.getOwnPropertyDescriptors(softClone)
+  )
+
+
+}*/
+/*
+{ //propotype inheritance
+  //task 2 searching algorithm
+  const
+    head = { glasses: 1 },
+    table = { pen: 3, __proto__: head },
+    bed = { sheet: 1, pillow: 2, __proto__: table },
+    pockets = { money: 2000, __proto__: bed }
+  console.log(pockets.pen, bed.glasses)
+
+  //task 3 where does it write?
+  const
+    animal = { eat() { this.full = true } },
+    rabbit = { __proto__: animal }
+  rabbit.eat()
+  console.log(rabbit.hasOwnProperty('full'))//true
+
+  //task 5 why are both hamsters full
+  const
+    hamster = {
+      stomach: [],
+      eat(food) {//this.stomach.push(food)
+        if (this.hasOwnProperty('stomach'))
+          this.stomach.push(food)
+        else this.stomach = [food]
+      }
+    },
+    speedy = { __proto__: hamster },
+    lazy = { __proto__: hamster }
+  speedy.eat('apple')
+  speedy.eat('orange')
+  console.log(hamster.stomach)
+  console.log(speedy.stomach)
+  console.log(lazy.stomach)
+  console.log(
+    speedy.hasOwnProperty('stomach'),
+    lazy.hasOwnProperty('stomach')
+  )
+}*/
+/*
+{ //constructor prototype
+  const animal = { eat: true }
+  function Rabbit(name) { this.name = name }
+  Rabbit.prototype = animal
+  const rabbit = new Rabbit('white rabbit')
+  //rabbit.__proto__=animal
+  console.log(rabbit.eat)
+
+  //by defualt:
+  function F() { this.pro = 'v' }
+  //  F.prototype = { constractor: F }
+  const obj = new F()
+  //  obj.__proto__ = F.prototype = { constractor: F }
+  console.log( //true
+    F.prototype.constructor == F,
+    obj.__proto__ == F.prototype,
+    obj.constructor == F
+  )
+
+  const obj2 = new obj.constructor() //as new F()
+  console.log(//true
+    obj2.__proto__ == obj.__proto__,
+    obj2.constructor == obj.constructor,
+    obj2.constructor == F
+  )
+
+  //task 1 changing "prototype"
+  {//1
+    function Rabbit() { }
+    Rabbit.prototype = { eats: true }//old prototype
+    const rabbit = new Rabbit
+    console.log(rabbit.eats)
+
+    Rabbit.prototype = {} //overriding, affects just new objs
+    console.log(rabbit.eats) //old prototypes preserved: true
+  } {//2
+    function Rabbit() { }
+    Rabbit.prototype = { eats: true }
+    const rabbit = new Rabbit
+
+    Rabbit.prototype.eats = false //update by reference
+    console.log(rabbit.eats) //all objs effected: false
+  } {//3
+    function Rabbit() { }
+    Rabbit.prototype = { eats: true }
+    const rabbit = new Rabbit
+
+    console.log(//true true
+      delete rabbit.eats,//effects only this obj, not prototype
+      rabbit.eats //preserved from prototype
+    )
+  } {//4
+    function Rabbit() { }
+    Rabbit.prototype = { eats: true }
+    const rabbit = new Rabbit
+
+    console.log(
+      delete Rabbit.prototype.eats,
+      rabbit.eats //undefined in this obj & this.__proto__
+    )
+  }
+
+  //task 2 create obj with same constructor
+  function User(name) { this.name = name }
+  const newPrototype = { extra: 'val', extra2: 'val2' }
+
+  //User.prototype = newPrototype;   //override constructor
+  Object.assign(                     //preserve constructor
+    User.prototype, newPrototype)
+  const
+    user = new User('John'),
+    user2 = new user.constructor('Pete')
+  console.log(user2.name)
+
+}*/
+/*
+{ //native prototype
+  //primitives data-types don't have .__proto__ as objects
+  //  number, bigInt, boolean, string, symbol, undefined, null
+  //  but each time we access primitive.__proto__.member
+  //    1.we actualy creating new obj from Constructor(v)
+  //      const obj= new Number|BigInt|Boolean|String|Symbol(v)
+  //      except null & undefined who don't have obj wrapper
+  //    2.then accessing __proto__.member on that obj
+  //      obj.toString()
+  //    3.then deleting the temparory obj: delete obj
+
+  const n = 15 //we didn't call new Number(15)
+  //Number.prototype = {
+  //  constructor: Number,
+  //  toString: function,
+  //  ...
+  //  __proto__: Object.prototype
+  //}
+  //Objcet.prototype = {
+  //  constructor: Object,
+  //  toString: function,
+  //  ...
+  //  __proto__: null
+  //}
+  console.log(//f true... false
+    n.toString(16), // as new Number(n).toString(16)
+    n.__proto__ === Number.prototype,
+    n.__proto__.__proto__ === Object.prototype,
+    n.__proto__.__proto__.__proto__ === null,
+
+    //closest property in prototype chain used
+    n.toString === n.__proto__.toString, //Number.prototype
+    n.toString === n.__proto__.__proto__.toString //false
   )
 
 
 
-})();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
-(() => { })();
+  //task 1 add method "f.defer(ms)" to functions
+  Function.prototype.defer = function () {
+  setTimeout(this, ...arguments)
+}
+function sayHi(greeting) { console.log(greeting) }
+sayHi.defer(1000, 'hi')
+
+//task 2 add the decorating "defer()" to functions
+//task 2 add the decorating "defer()" to functions
+Function.prototype.defer = function (delay) {
+  return (...args) => setTimeout(this, delay, ...args)
+}
+function showSum(a, b) { console.log(a + b) }
+showSum.defer(1000)(1, 5) //after 1000ms show 6
+
+} */
+/*
+{ //class basic syntax
+  class Name {
+    constructor() {
+      //individually stored in this objects
+      //override any field membor
+      this.p = 'initial'
+      this.method = () => { }
+    }
+
+    //fields assignment, individually stored in this objects
+    fieldProperty = 'field'
+    fieldMethod = () => { } //fix "loosing this" without bind
+
+    //shared in Name.prototype
+    protoMethod() { }
+    get p() { return this._p }
+    set p(v) { return this._p = v }
+  }
+
+
+  const uni = new Name
+  uni.p
+
+  console.log(
+    uni.hasOwnProperty('fieldMethod'),    //true
+    Object.getPrototypeOf(uni)
+      .hasOwnProperty('protoMethod'), //true
+
+    uni.hasOwnProperty('_p'),       //true
+    Object.getPrototypeOf(uni)
+      .hasOwnProperty('p'),         //true
+  )
+
+
+  //task Rewrite the class
+  class Clock {
+    constructor({ template }) {
+      this.render = () => {
+        const date = new Date()
+        console.log(template
+          .replace('h', zeroLead(date.getHours()))
+          .replace('m', zeroLead(date.getMinutes()))
+          .replace('s', zeroLead(date.getSeconds()))
+        )
+        function zeroLead(t) { return t < 10 ? '0' + t : t }
+      }
+    }
+
+    start = () => {
+      this.render()
+      this.timerId = setInterval(this.render, 1000)
+    }
+    stop = () => clearInterval(this.timerId)//fix "loose this"
+  }
+  const clock = new Clock({ template: 'h:m:s' })
+  //clock.start()
+  setTimeout(clock.stop, 2023)
+}*/
+
+{ //
+
+}
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
+{ }
