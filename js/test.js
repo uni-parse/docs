@@ -1,4 +1,9 @@
 "use strict";
+import { config } from './script.js'
+(() => { //module introduction
+
+})();
+(() => { })();
 
 /*
 //destructuring opirator
@@ -1260,7 +1265,7 @@ const glob = undefined;
 
 */
 /*
-{ //function binding
+(() => {  //function binding
   //task 1 bound function as a method
   function f1() { console.log(this) }
   const user1 = { f: f1.bind(null) }
@@ -1316,9 +1321,9 @@ const glob = undefined;
     user5.login.bind(user5, false)
   )
 
-}*/
+})();*/
 /*
-{ //iterable
+(() => {  //iterable
   //summay:
   //  iterators are objects that implement [Symbol.iterater]()
   //  array-likes are objects that have indexes & .length
@@ -1410,9 +1415,9 @@ const glob = undefined;
   }
   console.log(arr)
 
-}*/
+})();*/
 /*
-{ //property flags & descriptors
+(() => {  //property flags & descriptors
   const obj = { p: 'v' }
   Object.defineProperty(obj, 'p', { writable: false })
   //obj.p = 'upadte'//error: read only property
@@ -1517,9 +1522,9 @@ const glob = undefined;
   )
 
 
-}*/
+})();*/
 /*
-{ //propotype inheritance
+(() => {  //propotype inheritance
   //task 2 searching algorithm
   const
     head = { glasses: 1 },
@@ -1556,9 +1561,9 @@ const glob = undefined;
     speedy.hasOwnProperty('stomach'),
     lazy.hasOwnProperty('stomach')
   )
-}*/
+})();*/
 /*
-{ //constructor prototype
+(() => {  //constructor prototype
   const animal = { eat: true }
   function Rabbit(name) { this.name = name }
   Rabbit.prototype = animal
@@ -1632,9 +1637,9 @@ const glob = undefined;
     user2 = new user.constructor('Pete')
   console.log(user2.name)
 
-}*/
+})();*/
 /*
-{ //native prototype
+(() => {  //native prototype
   //primitives data-types don't have .__proto__ as objects
   //  number, bigInt, boolean, string, symbol, undefined, null
   //  but each time we access primitive.__proto__.member
@@ -1688,7 +1693,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
 
 } */
 /*
-{ //class basic syntax
+(() => {  //class basic syntax
   class Name {
     constructor() {
       //individually stored in this objects
@@ -1745,19 +1750,1144 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   const clock = new Clock({ template: 'h:m:s' })
   //clock.start()
   setTimeout(clock.stop, 2023)
-}*/
+})();*/
+/*
+(() => {  //class inheritance
+ //task 1 error creating an instance
+ class Animal {
+   constructor(name) { this.name = name }
+ }
+ class Rabbit extends Animal {
+   constructor(name) {
+     //this.name = name
+     super(...arguments)
+     this.create = Date.now()
+   }
+ }
+ const rabbit = new Rabbit('white Rabbit')
+ //because Rabbit extends Animal: 
+ //  Rabbit.[[ConstructorKind]] = "derived"
+ //new Rabbit() will do special behaviour:
+ //  A▪ super() will de:
+ //    0▸ Rabbit.__proto__ = Animal //inherite static fields
+ //      ⚠exeption Animal.__proto__ != Object //built-in class
+ //    1▸ const newObj = 
+ //         Rabbit.__proto__.__proto__.constructor()
+ //       as newObj = Animal.__proto__.constructor()
+ //       as newObj = Object.prototype.constructor()
+ //       as newObj = Object()
+ //       as newObj = {}
+ //    2▸ Rabbit.prototype.__proto__.constructor.call( newObj )
+ //       as Animal.prototype.constructor.call( newObj )
+ //       as Animal.call( newObj )
+ //  B▪ Rabbit.prototype.constructor.call( newObj )
+ //       as Rabbit.call( newObj )
+ //  C▪ return newObj
 
-{ //
+ //so if we forget to call super() in Child class constructor
+ //  new Child(), throw error: A▪ steps skipped !!
+ console.log(rabbit.name)
 
-}
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
-{ }
+
+ //task 2 extended clock
+ class Clock {
+   constructor({ template }) { this.template = template }
+
+   render() {
+     const date = new Date()
+     console.log(this.template
+       .replace('h', zeroLead(date.getHours()))
+       .replace('m', zeroLead(date.getMinutes()))
+       .replace('s', zeroLead(date.getSeconds()))
+     )
+     function zeroLead(t) { return t < 10 ? '0' + t : t }
+   }
+
+   start() {
+     this.render()
+     this.timer = setInterval(() => this.render(), 1000)
+   }
+   stop() { clearInterval(this.timer) }
+ }
+
+ class ExtendedClock extends Clock {
+   constructor(options) {
+     super(options)
+     this.precision = options.precision ?? 1000
+   }
+   start() {
+     this.render()
+     this.timer = setInterval(
+       () => this.render(),
+       this.precision
+     )
+   }
+ }
+
+ console.log('start')
+ const extendedClock = new ExtendedClock({
+   template: 'h:m:s',
+   precision: 2000
+ })
+ extendedClock.start()
+ setTimeout(extendedClock.stop.bind(extendedClock), 4000)
+
+})();*/
+/*
+(() => {  //class static members & inderitance
+  //task 1 Class extends Object?
+  class Rabbit extends Object {
+    constructor(name) {
+      super()//calling super() before any this.*
+      this.name = name
+    }
+  }
+  const rabbit = new Rabbit('Rab')
+  console.log(rabbit.hasOwnProperty('name'))
+})();*/
+/*
+(() => {  //class private & protected members
+  //_protectedField by accessor properties get/set or methods
+  //still accessable externally, but should not be touched.
+  class Parent {
+    //fe can have public & protected identifier at same time
+    _a = 'inherided by Child'
+    get a() { return this._a }
+    set a(val) { this._a = val < 0 ? 0 : val }
+  }
+  class Child extends Parent {
+    _b = 'accessable'
+    getB() { return this._b }
+    setB(v1, v2) { this._a = (v1 + v2) >= 0 ? (v1 + v2) : 0 }
+  }
+  const instance = new Child
+  console.log(instance.a)
+  console.log(instance._a)
+  console.log(instance.hasOwnProperty('_a'))
+  console.log(instance.getB())
+  console.log(instance._b)
+  console.log(instance.hasOwnProperty('_b'))
+
+  //#privateField
+  class P {
+    //we can have public & private identifier at same time
+    #a = 'P'
+    get a() { return this.#a }
+    set a(v) { this.#a = v }
+  }
+  class C extends P {
+    constructor() {
+      super()
+      this.#b()
+    }
+    #b() {
+      try {
+        //this.#a//syntaxError: #a unaccessable outside class P
+      } catch (error) { console.log(error) }
+    }
+  }
+  const ins = new C
+  console.log(C.#a) //error don't inderited
+  console.log(ins.b?.()) //error
+
+  console.log(ins.a)
+  ins.a = 'update'
+  console.log(ins.a)
+})();*/
+/*
+(() => {  //extending built-in classes
+
+  //  class Child extends Parent, creates two __proto__
+  //  ▸ Child.__proto__ = Parent
+  //  ▸ Child.prototype.__proto__ = Parent.prototype
+
+  // add one more method to it (can do more)
+  class PowerArray extends Array {
+    isEmpty() { return this.length === 0 }
+  }
+
+  let arr = new PowerArray(1, 2, 5, 10, 50)
+  console.log(arr.isEmpty()); // false
+
+  let filteredArr = arr.filter(item => item >= 10);
+  console.log(filteredArr); // 10, 50
+  console.log(filteredArr.isEmpty()); // false
+
+
+
+  //built-in methods like this.map() don't return simple copy
+  //  they return new this.constructor[Symbol.species]()
+  class DefaultArray extends Array {
+    extended = true
+    //same if remove bellow line
+    static get [Symbol.species]() { return DefaultArray }
+  }
+  class SimpleArray extends Array {
+    extended = true
+    static get [Symbol.species]() { return Array }
+  }
+
+  const defaultArr = new DefaultArray,
+    defualtCopy = defaultArr.map(el => el)
+  //as copy = new defualtArr.constructor[Symbol.species]()
+  //as copy = new DefualtArray
+
+  const simpleArray = new SimpleArray,
+    simpleCopy = simpleArray.map(el => el)
+  //as copy = new defualtArr.constructor[Symbol.species]()
+  //as copy = new DefualtArray
+
+  console.log(defualtCopy.extended) //true
+  console.log(simpleCopy.extended) //undefined
+})();*/
+/*
+(() => {  //class chacking "instanceof"
+  class Animal {
+    canEat = 'yes'
+    //customize instanceof operator bedaviour
+    static [Symbol.hasInstance](obj) {
+      return !!(obj.canEat ?? false)
+    }
+  }
+  class Rabbit extends Animal { }
+  const rabbit = new Rabbit
+  console.log(Rabbit[Symbol.hasInstance](rabbit))
+  console.log(rabbit instanceof Rabbit)
+  console.log(rabbit instanceof Animal)
+  console.log(rabbit instanceof Object)
+  console.log({ canEat: 'yes' } instanceof Animal)
+  console.log({ canEat: 'yes' } instanceof Rabbit)
+
+  //if Symbol.hasInstance not supported, it will:
+  console.log(checkProtoChain(rabbit, Rabbit))
+  console.log(checkProtoChain(rabbit, Animal))
+  console.log(checkProtoChain(rabbit, Object))
+  console.log(checkProtoChain({ canEat: 'yes' }, Animal))
+  console.log(checkProtoChain({ canEat: 'yes' }, Rabbit))
+  function checkProtoChain(obj, Class) {
+    if (Object.prototype.isPrototypeOf)
+      return Class.prototype.isPrototypeOf(obj)
+    //else if .isPrototypeOf() not supported
+    let _obj = obj
+    while (_obj.__proto__ !== null) {
+      if (_obj.__proto__ === Class.prototype) return true
+      else _obj = _obj.__proto__
+    }
+    return false
+  }
+
+  //if Class.prototype changed all his instances lost!!
+  function A() { }
+  const a = new A
+  console.log(a instanceof A)//true
+  A.prototype = {}
+  console.log(a instanceof A)//false
+  //but in "use strict" mode Class.prototype are readOnly
+  //  Rabbit.prototype = {} //Error, readOnly
+
+
+  //super typeof
+  function type_of(obj) { //[object Type]
+    return Object.prototype.toString.call(obj)
+      .replace('[object ', '')
+      .replace(']', '')
+  }
+  console.log(type_of(null))
+  console.log(type_of(undefined))
+  console.log(type_of(1))
+  console.log(type_of(NaN))
+  console.log(type_of(2n))
+  console.log(type_of(true))
+  console.log(type_of(false))
+  console.log(type_of(''))
+  console.log(type_of(Symbol()))
+  console.log(type_of([]))
+  console.log(type_of({}))
+  console.log(type_of(new Date()))
+  console.log(type_of(setTimeout))
+  console.log(type_of(Rabbit))
+  console.log(type_of(new Map()))
+  console.log(type_of(new Set()))
+  console.log(type_of(new WeakMap()))
+  console.log(type_of(new WeakSet()))
+  console.log(type_of(JSON))
+  console.log(type_of(globalThis))
+  console.log(type_of(function* () { }))
+  console.log(type_of((function* () { })()))
+  console.log(
+    type_of({ [Symbol.toStringTag]: 'custom' })
+  )
+})();*/
+/*
+(() => {  //mixins
+  const say_mixin = {
+    say(phrass) {
+      //[[HomeObject]] = say_mixin
+      return phrass
+    }
+  }
+  const sayHi_mixin = {
+    __proto__: say_mixin,
+    sayHi() {
+      //[[HomeObject]] = sayHi_mixin
+      return super.say(`Hello ${this.name}`)
+    },
+    sayBye() {
+      //[[HomeObject]] = sayHi_mixin
+      return super.say(`Bye ${this.name}`)
+    }
+  }
+
+  class Animal { canEat = 'yes' }
+  class Rabbit extends Animal {
+    constructor(name) {
+      super()
+      this.name = name
+    }
+    canHide = 'yes'
+  }
+
+  //copy mixin methods
+  Object.assign(Rabbit.prototype, sayHi_mixin)
+
+  console.log( //Hello uniRabbit
+    new Rabbit('uniRabbit').sayHi()
+  )
+
+  //event mixin
+  const event_mixin = {
+    addEventListener(e, handler) {
+      if (!this._eventHandlers) this._eventHandlers = new Map()
+      if (!this._eventHandlers.has(e))
+        this._eventHandlers.set(e, new Set())
+      this._eventHandlers.get(e).add(handler)
+    },
+    removeEventListener(e, handler) {
+      this._eventHandlers?.get(e)?.delete(handler)
+    },
+    trigger(e, ...args) { //call handlers of event
+      this._eventHandlers?.get(e) //handlers Set
+        ?.forEach(handler => handler.apply(this, args))
+    }
+  }
+  const event_mixin1 = {
+    //subscribe to event, usage:
+    //  menu.on('select', function(item) {...})
+    addEventListener(e, handler) {
+      if (!this._eventHandlers) this._eventHandlers = {}
+      if (!this._eventHandlers[e]) this._eventHandlers[e] = []
+      this._eventHandlers[e].push(handler)
+    },
+    removeEventListener(e, handler) {
+      const handlers = this._eventHandlers?.[e]
+      if (handlers?.includes(handler))
+        handlers.splice(handlers.indexOf(handler), 1)
+    },
+    //generate an event with the given eventName & ...data
+    //  this.trigger('select', data1, data2)
+    trigger(e, ...args) {
+      if (this._eventHandlers?.[e])
+        this._eventHandlers[e] //call this handlers
+          .forEach(handler => handler.apply(this, args))
+    }
+  }
+
+  //usage
+  class Menu {
+    select(v) { this.trigger('select', v) }
+  }
+
+  //add the miixn with event-related methods
+  Object.assign(Menu.prototype, event_mixin)
+
+  const menu = new Menu(),
+    logSelected = v => console.log(`Value Selected: ${v}`)
+
+  //add a handler, to be called on selection
+  menu.addEventListener('select', logSelected)
+
+  //triggers the event => the handler above runs
+  menu.select('123') //log: Value Selected: 123
+
+  menu.removeEventListener('select', logSelected)
+  menu.select('555') //no handler will be trigged
+
+})();*/
+/*
+(() => {  //error handling try..catch
+  const json = '{ "age": 30 }'
+  try {
+    const user = JSON.parse(json)
+    if (!user.name)
+      throw new SyntaxError('Incompateble data, no name')
+    console.log(user.name)
+  } catch (err) {
+    console.log(`JSON Error: ${err.message}`)
+  }
+
+
+  function fib(n) {
+    if (n < 0 || n != Math.trunc(n)) //invalid: -n | ±n.#
+      throw new Error('must be positive integer number')
+    return n <= 1 ? n : fib(n - 1) + fib(n - 2)
+  }
+  function cachedFib(n) {
+    if (n < 0 || n != Math.trunc(n)) //invalid: -n | ±n.#
+      throw new Error('must be positive integer number')
+    if (!cachedFib.hasOwnProperty('_cache')) //first call
+      Object.defineProperty(cachedFib, '_cache', {
+        value: new Map().set(0, 0).set(1, 1)
+      }) //readOnly, unconfigurable, non-enumerable
+    return cachedFib._cache.get(n) ?? cachedFib._cache.set(
+      n, cachedFib(n - 2) + cachedFib(n - 1)
+    ).get(n)
+  }
+
+  function a() {
+    const start = Date.now()
+    try {       
+      return (                     
+        //lalala //ReferenceError: lalala not defined
+        //fib(-1.1) //Error: must be positive integer number
+        fib(30)//832040            took ~300ms
+        //cachedFib(30)//832040    took ~1ms
+      )
+    } catch (e) {
+      if (e.name != 'Error') throw e //rethrow unexpected errors
+      console.log(e.message)     
+    } finally {
+      console.log(`finally{} execute no matter what!!
+  & execute before try{ return ... }
+  execution took ${Date.now() - start}ms`)//0|~1|~300 ms
+    }
+  }
+  console.log(`fib(30) == ${a()}`)
+})();*/
+/*
+(() => {  //custom errors, extending error
+  class BaseError extends Error {
+    constructor(message) {
+      super(message)
+      this.name = this.constructor.name
+    }
+  }
+  class ValidationError extends BaseError { }
+  class PropertyRequiredError extends ValidationError {
+    constructor(property) {
+      super(`no property: ${property}`)
+      this.property = property
+    }
+  }
+  class ReadError extends BaseError {
+    constructor(message, cause) {
+      super(message)
+      this.cause = cause
+    }
+  }
+
+  function readUser(json) {//wrapping exceptions
+    //function handles low-lvl errs & generate high-lvl err
+    let user
+
+    try {//validate syntax
+      user = JSON.parse(json)
+    } catch (e) {
+      if (e instanceof SyntaxError)
+        throw new ReadError('Syntax Error', e)
+      else throw e
+    }
+
+    try {//validate formate
+      if (!user.age) throw new PropertyRequiredError('age')
+      if (!user.name) throw new PropertyRequiredError('name')
+    } catch (e) {
+      if (e instanceof ValidationError)
+        throw new ReadError('Validation Error', e)
+      else throw e
+    }
+
+    return user
+  }
+
+  let user
+  try {
+    user = readUser('{"age": 23}') //no .name
+  } catch (e) {
+    if (e instanceof ReadError)
+      console.log(
+        'indalid data: ' + e.cause.message,
+        '\nError name: ' + e.cause.name,
+        '\nmissing property: ' + e.cause.property
+      )
+    else throw e
+  }
+
+  //task inherit from SyntaxError
+  class FormatError extends SyntaxError {
+    constructor(message) {
+      super(message)
+      this.name = this.constructor.name
+    }
+  }
+})();*/
+/*
+(() => { //callback hell
+  function loadScript(src, callback) {
+    const script = document.createElement('script')
+    script.src = src
+    script.addEventListener('error', () =>
+      callback(new Error('field to load script: ' + src)))
+    script.addEventListener('load', () =>
+      callback(null, script))
+    document.head.appendChild(script)
+  }
+  loadScript('./script.js', (err, script) => {
+    if (err) console.log(err.message) //or: throw err
+    else console.log(`${externalFunc()} from ${script.src}`)
+  })
+})();*/
+/*
+(() => { //promises
+  //consipts: we have code-producer & code-consumers
+  //  code-producer: executer function called immediately
+  //  code-consumers: .then() .catch() .finally()
+  //promise object: { state: 'panding', result: undefined }
+  //  resolve(value): { state: 'fulfilled', result: value }
+  //  reject(new Error(m)): { state: 'rejected', result: err }
+  const promise = new Promise((resolve, reject) => {//executor
+    setTimeout(() => {
+      resolve('done')//only first resolve|reject called
+      reject(new Error('something wrong'))//others ignored
+    }, 500)
+  })
+
+  //callBack handlers
+  function fulfilled(result) {
+    console.log('after 500ms fulfilled: ' + result)
+  }
+  function rejected(err) {
+    console.log('after 500ms rejected: ' + err)
+  }
+
+  //code-consumers: handle both fulfilled & rejected
+  promise.then(fulfilled, rejected)
+  //as  .then(
+  //      result => fulfilled(result), 
+  //      error => rejected(error)
+  //    )
+
+  //we can call single callback, if we know result for sure.
+  promise.then(fulfilled)     //only fulfilled callback
+  promise.then(null, rejected)//only rejected callback
+  promise.catch(rejected)     //only rejected callback
+
+
+  //.finally runs after state: settled (fulfilled or rejected)
+  //  guaranteed execution before or after .then() .catch()
+  promise
+    .finally(() => console.log('now promise are ready:settled'))
+    .then(fulfilled, rejected)//handling promiss
+    //.catch(rejected)
+    .finally(() => console.log('finishing the work, cleaning'))
+
+
+
+
+  //test in the browser only
+  function loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = src
+
+      script.addEventListener('load', () =>
+        resolve(script), { once: true })
+      script.addEventListener('error', () =>
+        reject(new Error('failed loading script from: ' + src))
+        , { once: true })
+
+      document.head.appendChild(script)
+    })
+  }
+
+  loadScript('./script.js').then(
+    script => console.log(externalFunc() + ' from ' + script.src), //logged only on browser
+    error => console.log('ops ' + error)
+  )
+
+
+  //task 2 delay with a promise
+  const delay = ms => new Promise(r => setTimeout(r, ms))
+  delay(3000).then(() => console.log('runs after 3s'))
+
+  //task 3 animated circle with promise
+  const btn = document.querySelector('button#showCircle')
+  btn.addEventListener('click', () => {
+    showCircle(150, 150, 100).then(div => {
+      div.classList.add('message-ball');
+      div.append("Hello, world!");
+    })
+  }, { once: true })
+
+
+  function showCircle(cx, cy, radius) {
+    const div = document.createElement('div')
+    div.style.width = 0
+    div.style.height = 0
+    div.style.left = cx + 'px'
+    div.style.top = cy + 'px'
+    div.className = 'circle'
+    document.body.appendChild(div)
+    return new Promise(resolve => {
+      setTimeout(() => {
+        div.style.width = radius * 2 + 'px'
+        div.style.height = radius * 2 + 'px'
+        div.addEventListener('transitionend', () => resolve(div)
+          , { once: true })
+      }, 0);
+    })
+  }
+})();*/
+/*
+(() => { //promise chaining
+  //.then() return thenable obj not the promise obj itself !!
+  class Thenable {
+    constructor(result) { this.r = result }
+    then(resolve, reject) {
+      if (this.r instanceof Promise
+        || typeof this.r.then == 'Function')
+        return this.r.then(resolve, reject)
+
+      try {
+        const err = this.r instanceof Error
+        if (resolve && !err) this.r = resolve(this.r)
+        else if (reject && err) this.r = reject(this.r)
+      } catch (err) { this.r = err }
+      return this
+    }
+  }
+
+  const promise = new Promise(resolve => resolve(5))
+  promise  //preserved, callback return same result
+    .then(r => r)//nothing changed
+    .then(r => new Thenable(r))//nothing changed as above
+    .then(r => console.log(r))//5, preserved!!
+
+  promise  //callBack return different result
+    .then(r => ++r)//return 6, different than 5!!
+    .then(r => console.log(r))//6 not 5, returned above!!
+    .then(r => console.log(r))//undefined returned abode!!
+
+  promise  //callBack return new Promise()
+    .then(() => new Promise(resolve => resolve(10)))
+    .then(r => console.log(r))//10 not 5, from above Promise
+  //becuase .then() called on the above Promise!! as below:
+  promise.then(() => new Promise(resolve => resolve(10))
+    .then(r => console.log(r))//10, same as above
+  )
+
+  promise //error handling
+    .then(r => new Thenable(r))//as .then(r => r)
+    .then(r => lalala)  //throw err1
+    .then()//err1 passed to the next .then()|.catche()
+    .then(
+      r => (console.log(r), 1),
+      err => (console.log(err), 2)  //catch err1, return 2
+    )
+    .then(r => console.log(r))//2
+    .then(() => lalala) //throw err2
+    .catch(err => console.log(err))  //catch err2
+
+  window.addEventListener('unhandledrejection', e => 
+    console.log('page die because' + e.reason))
+
+
+
+
+  //browser only, user: { "name": "UniParse", "age": 23 }
+  //  const request = fetch('./test.json')
+  //  request
+  //    .then(response => response.json())//parse json string
+  //    .then(user => console.log(user.name))//"UniParse"
+
+})();*/
+/*
+(() => { //promise API
+  if (!Promise.allSettled) { //polyfill
+    Promise.allSettled = promises => Promise.all(
+      [].map.call(promises, p => Promise.resolve(p).then(
+        value => ({ status: 'fulfilled', value }),
+        reason => ({ status: 'rejected', reason })
+      ))
+    )
+  }
+
+
+  Promise.allSettled(new Set()
+    .add(new Promise.reject(new Error('Ops')) //err
+    .add(new Promise(rslv => setTimeout(rslv, 500, 1)))
+    .add(new Promise(rslv => setTimeout(rslv, 2000, 2)))
+    .add(3)
+    .add(new Promise(rslv => setTimeout(rslv, 1000, 4)))
+  ).then(results => {
+    results.forEach(result => {
+      if (result.status == 'fulfilled')
+        console.log('ok: ' + result.value)
+      else if (result.status == 'rejected')
+        console.log('err: ' + result.reason)
+    })
+    return results
+  })
+})();*/
+/*
+(() => { //promisify
+  function loadScript(src, callback) {
+    let script = document.createElement('script')
+    script.src = src
+
+    script.onload = () => callback(null, script)
+    script.onerror = () => callback(new Error(`Script load error for ${src}`))
+
+    document.head.append(script)
+  }
+
+  const loadScriptPromise = src => new Promise((rs, rj) =>
+    loadScript(src, (err, script) => err ? rj(err) : rs(script))
+  )
+
+  const promisify = f => function wrapper(...args) { // (*) 
+    return new Promise((rs, rj) =>
+      f.call(this, ...args, // (**) append our callback to args
+        (err, result) => err ? rj(err) : rs(result) //callback
+      ))
+  }
+
+  // usage:
+  //const loadScriptPromise2 = promisify(loadScript);
+  //loadScriptPromise2(src).then(...);
+
+ 
+})();*/
+/*
+(() => { //microTasks (PromiseJobs queue)
+  //order of js engine execution: 
+  //  script code
+  //  microTasks: .then() .catch() .finally()
+  //  window.onunhandledrejection & setTimeouts
+  setTimeout(console.log, 2, 'setTimeout 2ms')
+  setTimeout(console.log, 0, 'setTimeout 0ms')
+
+  const promise = Promise.resolve()
+  promise
+    .then(() => console.log('then1'))
+    .then(() => console.log('then2'))
+    .then(() => Promise.reject(new Error('Ops')))//err
+  //.catch(err => console.log('catch: ' + err.stack))
+
+  window.onunhandledrejection = e => console.log(e.reason)
+
+  //process.on("unhandledRejection", console.log)
+  console.log('code end')
+
+  //order of logs:
+  //  code end
+  //  then1
+  //  then2
+  //  setTimeout 0ms
+  //  unhandledRejection: Error: Ops
+  //  setTimeout 2ms
+})();*/
+/*
+(() => { //Async/await
+  async function newResolve(a) { return a }
+  newResolve('new resolve')
+    .then(console.log)
+  //same as:
+  function manualResolve(a) { return Promise.resolve(a) }
+  manualResolve('manual resolve')
+    .then(console.log)
+
+
+  function wait1(ms) {
+    new Promise(rs => setTimeout(rs, ms, ms))
+      .then(ms => console.log(`wait1 for ${ms}ms`))
+      .then(() => Promise.reject(new Error('Ops1')))
+      .catch(console.log)
+  }
+  async function wait2(ms) {
+    await new Promise(rs => setTimeout(rs, ms))
+    console.log(`wait2 for ${ms}ms`)//no need for .then()!!
+    throw new Error('Ops2')//no need for individual .catch()!!
+  }
+
+  wait1(3000)
+  wait2(3000).catch(console.log)//only one .catch()
+
+
+  //manual: need browser
+  function showUserName(url) {
+    fetch(url)
+      .then(response => response.json())
+      .then(user => console.log('manual name: ' + user.name))
+      .catch(console.log)
+  }
+  showUserName('./test.json')
+
+  //async/await style:
+  async function showUserName2(url) {
+    const response = await fetch(url)
+    const user = await response.json()
+    console.log(`async/await name: ${user.name}`)
+  }
+  showUserName2('./test.json')
+    .catch(console.log)
+  console.log('code end')
+})();*/
+/*
+(() => { //Async/await tasks
+  //task 1 rewrite "rethrow" with async/await
+  class HttpError extends Error {
+    constructor(response) {
+      super(`${response.status} for ${response.url}`);
+      this.name = this.constructor.name;
+      this.response = response;
+    }
+  }
+
+  function loadJson(url) {
+    return fetch(url)
+      .then(response => {
+        if (response.status == 200) return response.json()
+        else throw new HttpError(response)
+      });
+  }
+
+  // Ask for a user name until github returns a valid user
+  function demoGithubUser() {
+    const name = prompt("Enter a name?", "iliakan")
+
+    return loadJson(`https://api.github.com/users/${name}`)
+      .then(user => {
+        alert(`Full name: ${user.name}.`)
+        return user
+      })
+      .catch(err => {
+        if (err instanceof HttpError && err.response.status == 404) {
+          alert("No such user, please reenter.")
+          return demoGithubUser()
+        } else throw err
+      })
+  }
+  async function loadJson2(url) {
+    const response = await fetch(url)
+    if (response.status == 200) return response.json()
+    else throw new HttpError(response)
+  }
+
+  async function demoGithubUser2() {
+    let user
+    while (true) {
+      const name = prompt("Enter a name?", "iliakan")
+      try {
+        user = await loadJson2(`https://api.github.com/users/${name}`)
+        break
+      } catch (err) {
+        if (
+          err instanceof HttpError
+          && [403, 404].includes(err.response.status)
+        ) alert("No such user, please reEnter.")
+        else throw err
+      }
+    }
+    alert(`Full name: ${user.name}.`)
+    return user
+  }
+  //demoGithubUser2()
+
+  //task 2 call async from non-async
+  async function wait(ms = 1000) {
+    await new Promise(rs => setTimeout(rs, ms))
+    return 10
+  }
+  function f() { wait(1000).then(console.log) }
+  f()
+})();*/
+/*
+(() => { //generaters
+  function* generator(n = 1) {
+    yield n++  //1
+    yield n++  //2
+    yield n++  //3
+    return n++ //4 done, for..of & ...spread ignore this value
+    yield n++  //ignored
+  }
+  const iterable = generator(1)
+
+  console.log([
+    iterable.next(),//{value:1, done:false}
+    iterable.next(),//{value:2, done:false}
+    iterable.next(),//{value:3, done:false}
+    iterable.next(),//{value:4, done:done}
+    iterable.next(), //{value: undefined, done:true}
+    iterable.next() //{value: undefined, done:true}
+  ])
+
+  //the returned value by "return" statement ignored below !!
+  for (const value of generator(10)) console.log(value)
+  console.log([...generator(10)])
+
+
+  const manualRange = {
+    from: 1,
+    to: 5,
+    [Symbol.iterator]() {
+      let current = this.from
+      return { // iterator object: { next(){} }
+        next: () => current > this.to ? { done: true }
+          : { value: current++, done: false }
+      }
+    }
+  }
+  const newRange = {
+    from: 1,
+    to: 5,
+    *[Symbol.iterator]() {
+      for (let v = this.from; v <= this.to; v++) yield v
+    }
+  }
+  console.log(...manualRange)
+  console.log(...newRange)
+
+  const arr1 = [], arr2 = []
+  for (const v of manualRange) arr1.push(v)
+  for (const v of newRange) arr2.push(v)
+  console.log(arr1)
+  console.log(arr2)
+
+  const iterator1 = manualRange[Symbol.iterator]()
+  console.log([
+    iterator1.next(),//{ value:1, done:false }
+    iterator1.next(),//{ value:2, done:false }
+    iterator1.next(),//{ value:3, done:false }
+    iterator1.next(),//{ value:4, done:false }
+    iterator1.next(),//{ value:5, done:false }
+    iterator1.next(),//{ done:true }
+    iterator1.next() //{ done:true }
+  ])
+  const iterator2 = newRange[Symbol.iterator]()
+  console.log([
+    iterator2.next(),//{ value:1, done:false }
+    iterator2.next(),//{ value:2, done:false }
+    iterator2.next(),//{ value:3, done:false }
+    iterator2.next(),//{ value:4, done:false }
+    iterator2.next(),//{ value:5, done:false }
+    iterator2.next(),//{ value:undefined, done:true }
+    iterator2.next() //{ value:undefined, done:true }
+  ])
+
+
+  function* generateSequence(start, end) {
+    for (let i = start; i <= end; i++) yield i
+  }
+  console.log(...generateSequence(100, 110))
+
+
+  function* generateHexSequence(start, end) {
+    for (let i = start; i <= end; i++) yield i.toString(16)
+  }
+  console.log(...generateHexSequence(250, 256))
+
+
+  //generator composition: forwarding inner generators yields
+  function* generatePasswordCodes() {
+    yield* generateSequence(48, 57)//0~9
+    yield* generateSequence(65, 90)//A~Z
+    yield* generateSequence(97, 122)//a~z
+  }
+  const Pw = [...generatePasswordCodes()]
+    .reduce((str, code) => str + String.fromCharCode(code), '')
+  console.log(Pw)
+
+  //yield are bio operator: get|set between in_gen & out_gen
+  //.next(val).value: prev_yield = val, return current_yield
+  function* gen(m) {
+    let result = 0            //yield: prev current done
+    result = yield result * m // (*)     ≠     0    false
+    result = yield result * m // (**)    1     10   false
+    result = yield result * m // (***)   2     20   false
+    return result * m         // (****)  3     30   true
+  }
+  const ten = gen(10)
+  console.log(
+    ten.next('ignored: ≠prev yield').value,// (*)    0
+    ten.next(1).value,                     // (**)   10
+    ten.next(2).value,                     // (***)  20
+    ten.next(3).value,                     // (****) 30 done
+  )
+
+  //error handling
+  function* generator1() {//in_handling
+    let result = 'initial'
+    try {
+      result = yield result      // (*)
+      return result              // (**)
+    } catch (err) { return 'in catch: ' + err.message }
+  }
+  function* generator2() {//out_handling
+    let result = 'initial'
+    result = yield result
+    return result
+  }
+
+  const
+    err = new Error('Ops'),
+    gen1 = generator1(),
+    gen2 = generator2()
+  gen1.next() //first call
+  gen2.next() //first call
+
+  console.log(gen1.throw(err).value) // in catch: Ops
+
+  try {
+    console.log(gen2.throw(err).value)
+  } catch (err) { // out catch: Ops
+    console.log('out catch: ' + err.message)
+  }
+
+
+  //gen.return(val):  { value:val, done:true }
+  function* gen5() {
+    yield 1
+    yield 2
+    yield 3
+    yield 4
+    yield 5
+  }
+  const g1 = gen5()
+  console.log(
+    [...g1],          // {1 2 3 4 5}  done
+    [...g1].length    // 0
+  )
+
+  const g2 = gen5()
+  console.log(
+    g2.next().value, // 1
+    g2.next().value, // 2
+    [...g2],         // [3 4 5]  done
+    [...g2].length   // 0
+  )
+
+  const g3 = gen5()
+  console.log(
+    g3.next().value,   // 1
+    g3.next().value,   // 2
+    g3.return('val'),  // { value; 'val', done: true }
+    [...g3].length     // 0
+  )
+
+  //task pseudo-random generator
+  function* pseudoRandomGen(seed, max = 50) {
+    let result = seed
+    for (let i = 0; i < max; i++) {
+      result *= 16807 % 2147483647
+      yield result
+    }
+  }
+
+  const pseudoRandom = pseudoRandomGen(1, 10)
+  console.log(
+    pseudoRandom.next().value,
+    pseudoRandom.next().value,
+  )
+})();*/
+/*
+(() => { //async iterators & generators
+
+
+  let asyncIterator = {
+    from: 1,
+    to: 5,
+    [Symbol.iterator]() {//non async case; ...spread & for..of
+      let current = this.from
+      return {
+        next: () => current > this.to ? { done: true }
+          : { value: current++, done: false }
+      }
+    },
+    [Symbol.asyncIterator]() {//async case: for await...of
+      let current = this.from
+      return {
+        next: async () => {
+          await new Promise(rs => setTimeout(rs, 500))
+          return current > this.to ? { done: true }
+            : { value: current++, done: false }
+        }
+        //we can use non async next(), but return promise!!
+        //  next: () => Promise.resolve(
+        //    current > this.to ? { done: true }
+        //      : { value: current++, done: false } )
+      }
+    }
+  }
+  asyncIterator = {//syntax sugar, generators version
+    from: 1,
+    to: 5,
+    *[Symbol.iterator]() {//non async case
+      for (let i = this.from; i <= this.to; i++) yield i
+    },
+    async *[Symbol.asyncIterator]() {//async case
+      for (let i = this.from; i <= this.to; i++) {
+        await new Promise(rs => setTimeout(rs, 500))
+        yield i
+      }
+    }
+  }
+
+  //non async case: use the method [Symbol.iterator]()
+  console.log(...asyncIterator);//1 2 3 4 5
+  //async case: use the method [Symbol.asyncIterator]()
+  (async () => {
+    //for await (const i of asyncIterator) console.log(i)
+  })();
+
+
+
+
+  async function* sequenceGen(start, end, delay) {
+    for (let i = start; i <= end; i++) {
+      await new Promise(rs => setTimeout(rs, delay))
+      yield i
+    }
+  };
+  (async () => {
+    //for await (let i of sequenceGen(1, 5, 500))
+    //console.log(i)
+  })();
+
+
+  async function* fetchCommits(repo) {
+    let url = `https://api.github.com/repos/${repo}/commits`;
+
+    while (url) {
+      const response = await fetch(url,
+        { headers: { 'User-Agent': 'Our script' } })
+
+      const body = await response.json()
+      for (let commit of body) yield commit
+
+      url = response.headers.get('Link') // next page URL
+        .match(/<(.*?)>; rel="next"/)?.[1]
+    }
+  };
+
+  (async () => {
+    let count = 0
+    try {
+      for await (let commit of fetchCommits('theuniparse/keyboard')) {
+        console.log(commit.commit.message)
+        if (++count == 5) break
+      }
+    } catch (err) { console.log(err.cause) }
+  })();
+
+  console.log('code end');
+})();*/

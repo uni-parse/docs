@@ -76,7 +76,8 @@ scss= superset of css, sass= indent syntax style sheet.
       ›fix→sass2: /div=calc?math.div() /separator=list.slash()
   •map: (Ø|<exp>:<exp>,…); ›recommended: ('unique key':value,…)
     ›@mixin add($k,$v){$map:map.merge($map,($k,$v)) !global}
- *operators: ›order: unary(not ± /),*%/,+-,<=>,== !=,and,or.
+ *operators: 
+  ›order: unary(not ± /),*%/,+-,<=>,== !=,and,or.
   •() used to separate operators|lists|unquoted-str
   •equality: == !=
    ›numbers can be unitless or compatible, -1in==-96px=T 2==2=T

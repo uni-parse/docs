@@ -6,11 +6,22 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    .circle {
+      transition-property: width, height;
+      transition-duration: 2s;
+      position: fixed;
+      transform: translateX(-50%) translateY(-50%);
+      background-color: red;
+      border-radius: 50%;
+    }
+  </style>
 </head>
 
 <body>
+  <button id=showCircle>show circle</button>
   hello
-  <script src="./test.js"></script>
+  <script src="./test.js" type=module></script>
 </body>
 
 </html>
