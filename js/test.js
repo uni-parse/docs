@@ -2911,7 +2911,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   )
 })();*/
 /*
-(() => { //proxy
+(() => { //proxy & reflect
   const
     target = { p1: 'v1', p2: 'v2' },
     handler = {
@@ -3126,8 +3126,13 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
     sayHi_proxy.name,   // sayHi  preserved!!
     sayHi_proxy.length, // 1      preserved!!
     )
-  })();*/
-(() => { //reflect
+
+     
+  
+  
+  
+  
+  //reflect
   const user = {
     _name: 'guest',
     get name() {
@@ -3165,8 +3170,147 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   }
   console.log(admin.name) // UniParse
 
+
+
+
+
+
+
+  //limitation
+  const map = new Map().set('p', 'val')
+  const mapProxy = new Proxy(map, {})
+  try {
+    mapProxy.get('p')
+  } catch (err) {
+    console.log(err)
+    //TypeError: Method Map.prototype.get called on incompatible receiver #<Map>
+
+    //map, set, promise classes(except Array): save data in internal slots as [[MapData]]
+    //  they don't use regular [[Get]] / [[Set]] methods !!
+    //  Proxy have no [[internal slots]]
+    //  on reading map: mapProxy.[[MapData]] = undefined!
+    //  so throw Error !!
+  }
+
+  //we can fix that by exposing (binding to) the original target
+  const mapExposedProxy = new Proxy(map, {
+    get(target, prop, receiver) {
+      const val = Reflect.get(...arguments)
+      return typeof val == 'function' ? val.bind(target) : val
+      //we fix the missing [[iternal slot]] issue
+      //  on reading map: target.[[MapData]] = map.[[MapData]]
+      //  it works as expected !!
+      //  ⚠ but we exposed our target to any method !!
+    }
+  })
+  console.log(mapExposedProxy.get('p')) // val
+
+
+
+
+
+  //revocability: cuting reference to original target
+  const target = { data: 'valubale data' }
+  const { proxy, revoke } = Proxy.revocable(target, {})
+
+  console.log(proxy.data) // valubale data
+
+  revoke() // cut reference to original target
+  try {
+    proxy.data
+  } catch (err) {
+    console.log(err)
+    //TypeError: Cannot perform 'get' on a proxy that has been revoked
+  }
+
+  //storing revokes:
+  {// way1: remember all proxies=>revokes pairs in one WeakMap
+    const revokes = new WeakMap()
+    //...
+    const { proxy, revoke } = Proxy.revocable(target, {})
+    revokes.set(proxy, revoke)
+    //...
+    revokes.get(proxy)() // cut reference to original target
+  }
+  {// way2: each proxy stores its revoke
+    const { proxy, revoke } = Proxy.revocable(target, {})
+    proxy.revoke = revoke
+    //...
+    proxy.revoke() // cut reference to original target
+  }
+  })();*/
+/*
+(() => { //proxy tasks
+  //task 1 error on reading non existent property
+  function wrap(target) {
+    return new Proxy(target, {
+      get(target, p) {
+        if (p in target) return Reflect.get(...arguments)
+        throw new ReferenceError(`property "${p}" undefined`)
+      }
+    })
+  }
+  const user = { name: 'uniparse' }
+  const wrappedUser = wrap(user)
+  try {
+    wrappedUser.age
+  } catch (err) {
+    console.log(err)
+    //ReferenceError: property "age" undefined
+  }
+
+  //task 2 accessing array[-1]
+  let arr = [1, 2, 3]
+  arr = new Proxy(arr, {
+    get(target, p, receiver) {
+      return Reflect.get(
+        target,
+        p < 0 ? target.length + +p : p,
+        receiver
+      )
+      //my test bellow
+      const i = +p
+      if (typeof i == 'number' && !Number.isNaN(i))
+        return target.at(i)
+      return Reflect.get(...arguments)
+    }
+
+  })
+  console.log(
+    arr[0],  // 1
+    arr[-1], // 3
+    arr[-2], // 2
+    arr.length
+  )
+
+  //observable
+  function makeObservable(target) {
+    const handlers = Symbol('handlers')
+    target[handlers] = new Set()
+
+    target.observe = function (handler) {
+      this[handlers].add(handler)
+    }
+
+    return new Proxy(target, {
+      set(target, p, val, receiver) {
+        const seccuss = Reflect.set(...arguments)
+        if (seccuss)
+          target[handlers].forEach(handler => handler(p, val))
+        return seccuss
+      }
+    })
+  }
+  let obj = {}
+  obj = makeObservable(obj)
+  obj.observe((p, val) => console.log(`SET ${p}=${val} h1`))
+  obj.observe((p, val) => console.log(`SET ${p}=${val} h2`))
+  obj.name = 'uniParse'//SET name=uniParse
+})();*/
+(() => { //eval('execute string')
+  //task eval-calculator
+  
 })();
-(() => { })();
 (() => { })();
 (() => { })();
 (() => { })();
