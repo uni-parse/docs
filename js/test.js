@@ -1,9 +1,13 @@
-"use strict";
-import { config } from './script.js'
-(() => { //module introduction
-
+"use strict"; //used by default in modules
+/*
+import { config, sayHi } from './script.js'
+(() => { //module introduction //need browser
+  config.user = 'uniParse'
+  sayHi() //hi uniParse
+  console.log(import.meta.url)//http://192.168.1.6:5500/js/test.js
+  console.log(this)//undefined, if type≠module it will be window
 })();
-(() => { })();
+(() => { })();*/
 
 /*
 //destructuring opirator
@@ -1848,7 +1852,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
 /*
 (() => {  //class private & protected members
   //_protectedField by accessor properties get/set or methods
-  //still accessable externally, but should not be touched.
+  //still accessible externally, but should not be touched.
   class Parent {
     //fe can have public & protected identifier at same time
     _a = 'inherided by Child'
@@ -1856,7 +1860,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
     set a(val) { this._a = val < 0 ? 0 : val }
   }
   class Child extends Parent {
-    _b = 'accessable'
+    _b = 'accessible'
     getB() { return this._b }
     setB(v1, v2) { this._a = (v1 + v2) >= 0 ? (v1 + v2) : 0 }
   }
@@ -1882,7 +1886,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
     }
     #b() {
       try {
-        //this.#a//syntaxError: #a unaccessable outside class P
+        //this.#a//syntaxError: #a unaccessible outside class P
       } catch (error) { console.log(error) }
     }
   }
@@ -2891,3 +2895,280 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
 
   console.log('code end');
 })();*/
+/*
+(() => { //in operator (⚠check even __proto__ !!)
+  const
+    arr = [1, 2],
+    obj = { "1": 1, "2": 2, __proto__: { proto: 'val' } },
+    set = new Set(arr),
+    map = new Map(Object.entries(obj))
+  console.log(
+    1 in arr == arr.includes(1),                    //true
+    1 in obj == obj.hasOwnProperty(1),              //true
+    'proto' in obj, // != hasOwnProperty()          //true
+    1 in set != set.has(1),                         //true
+    '1' in map != map.has('1'),                     //true
+  )
+})();*/
+/*
+(() => { //proxy
+  const
+    target = { p1: 'v1', p2: 'v2' },
+    handler = {
+      // traps
+      get(target, property, receiver) { // trap
+        if (!(property in target)) return 'unAvailable !!'
+        return property == 'p2'
+          ? 'no access !!'
+          : target[property]
+      }
+    },
+    proxy = new Proxy(target, handler)
+
+  console.log(
+    target.p1,   // v1
+    proxy.p1,    // v1    same!
+
+    target.p2,   // v2
+    proxy.p2,    // no access !!
+
+    target.p3,   //undefined
+    proxy.p3,    //unAvailable !!
+  )
+
+  let dictionary = {
+    'hello': 'hola',
+    'bye': 'adios'
+  }
+
+
+
+
+  //overrite target !!
+  dictionary = new Proxy(dictionary, {
+    get: (target, phrase) => phrase in target
+      ? target[phrase]
+      : phrase // instead of undefined !!
+  })
+
+  console.log(
+    dictionary.hello,     //hola
+    dictionary.welcome,   //welcome       not undefined
+  )
+
+
+
+
+  //validate assignment
+  let numbers = []
+  numbers = new Proxy(numbers, {
+    set(target, prop, val, receiver) {
+      if (typeof val != 'number')
+        return false //rejection, throw new Typeerror()
+      target[prop] = val
+      return true //fulfilled
+    }
+  })
+
+  numbers.push(1)
+
+  try {
+    numbers.push('a') //err
+  } catch (err) {
+    console.log(err)
+    //TypeError: 'set' on proxy: trap returned falsish for property '1'
+  }
+
+
+
+
+  // iteration with trap 'ownKeys'
+  let user = {
+    name: 'UniParse',
+    age: 23,
+    _password: '***********'
+  }
+  user = new Proxy(user, {
+    ownKeys: target => Object.keys(target)
+      .filter(k => !k.startsWith('_'))
+  })
+  console.log(Object.keys(user)) //name, age  (no _password!!)
+
+
+  user = {}
+  user = new Proxy(user, {
+    // called once to get a list of properties
+    ownKeys: target => ['a', 'b', 'c'],
+
+    // called for every property
+    getOwnPropertyDescriptor: (target, prop) =>
+      ({ enumerable: true, configurable: true })
+  })
+  console.log(Object.keys(user)) // a, b, c
+
+
+
+
+  //protected properties
+  user = {
+    name: 'uniParse',
+    _password: '*****',
+    _getPassword: () => this._password,
+    checkPassword(pw) {
+      return this._password == pw
+    }
+  }
+
+  user = new Proxy(user, {
+    get(target, prop) {
+      if (prop.startsWith('_')) throw new Error('1.no access')
+      const val = target[prop]
+      return typeof val == 'function'
+        ? val.bind(target) // change this=proxy to avoid traps!!
+        : val
+    },
+    set(target, prop, val) {
+      if (prop.startsWith('_')) throw new Error('2.no access')
+      target[prop] = val
+      return true
+    },
+    deleteProperty(target, prop) {
+      if (prop.startsWith('_')) throw new Error('3.no access')
+      return delete target[prop]
+    },
+    ownKeys: target => Object.keys(target)
+      .filter(prop => !prop.startsWith('_'))
+  })
+
+  console.log(
+    user.name,                  // uniParse
+    Object.keys(user),          // name, checkPassword
+    user.checkPassword('*****') // true
+  )
+
+  try {
+    user._password
+  } catch (err) { console.log(err) }//error: no access
+
+  try {
+    user._getPassword()
+  } catch (err) { console.log(err) }//error: no access
+
+  try {
+    user._password = 'new password'
+  } catch (err) { console.log(err) }//error: no access
+
+  try {
+    delete user._password
+  } catch (err) { console.log(err) }//error: no access
+
+
+
+
+
+
+  //"in" range with "has" trap
+  const oldRange = {
+    start: 1,
+    end: 10,
+    *[Symbol.iterator]() {
+      for (let i = this.start; i < this.end; i++) yield i
+    }
+  }
+
+  const rangeHandler = {
+    has: (target, val) =>
+      val >= target.start && val <= target.end
+  }, range = new Proxy({ start: 1, end: 10 }, rangeHandler)
+
+  console.log(
+    5 in [...oldRange],    // true
+    11 in [...oldRange],   // false
+    // syntax sugar: no ...spread
+    // performance++: no generator, no ...spread
+    // flixable implementation: no individual *[Symbol.iterator]
+    //  shared rangeHandler for any next range
+    5 in range,   // true
+    11 in range   // false
+  )
+
+  
+  
+
+  //wrapping functions "apply"
+  const
+    delayDecorator = (f, ms) => function wrapper() {
+      setTimeout(() => f.apply(this, arguments), ms)
+    },
+    delayProxy = (f, ms) => new Proxy(f, {
+      apply: (target, thisArg, args) =>
+        setTimeout(() => target.apply(thisArg, args), ms)
+    })
+
+  function sayHi(name) { console.log(`Hello, ${name}!`) }
+  console.log(
+    sayHi.name,   // sayHi
+    sayHi.length, // 1 declaration arguments count
+  )
+
+  // lost original function.properties
+  const sayHi_deco = delayDecorator(sayHi, 1000)
+  sayHi_deco('uniParse from decoration')
+  console.log(
+    sayHi_deco.name,   // wrapper
+    sayHi_deco.length, // 0 no argumens in wrapper declaration
+  )
+
+  // forward original function.properties
+  const sayHi_proxy = delayProxy(sayHi, 1000)
+  sayHi_proxy('uniParse from proxy')
+  console.log(
+    sayHi_proxy.name,   // sayHi  preserved!!
+    sayHi_proxy.length, // 1      preserved!!
+    )
+  })();*/
+(() => { //reflect
+  const user = {
+    _name: 'guest',
+    get name() {
+      return this._name
+    }
+  }
+  console.log(user.name)
+
+  const userOldProxy = new Proxy(user, {
+    get(target, prop, receiver) {
+      // ⚠️️ if inherited this=user not current objcet!!
+      //receiver are current this ctx, passed only by Reflect
+      return target[prop]
+    }
+    //get are accessor, not a function, it can't be called
+    //  get.call(this, target, prop){ return target[prop] }
+    //  error!!
+  })
+
+  const oldAdmin = {
+    __proto__: userOldProxy,
+    _name: 'UniParse'
+  }
+  console.log(oldAdmin.name)//gues not UniParse
+
+  const userReflect = new Proxy(user, {
+    get(target, prop, receiver) {
+      //💡 the current ctx receiver passed through Reflect !!
+      return Reflect.get(...arguments)
+    }
+  })
+  const admin = {
+    __proto__: userReflect,
+    _name: 'UniParse'
+  }
+  console.log(admin.name) // UniParse
+
+})();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();

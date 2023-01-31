@@ -1,4 +1,4 @@
-▶▪◄▲▼⋆♥▸•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+▶▪◄▲▼⋆♥▸•»›⚠️️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ⋆concepts: renamed from liveScript to javaScript
   ▪place into document: in <head> or just before </body>.
     •embedded: <script>…</script>
@@ -498,7 +498,7 @@
     controller.abort() //unlisten to any event share {signal}
 
 ▸2022▸
-▶▪◄▲▼⋆♥▸•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+▶▪◄▲▼⋆♥▸•»›⚠️️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
 ⋆concepts
   ▪specification
     ECMA(European Computer Manufacturers Association)
@@ -519,7 +519,7 @@
 ⋆markup
   ▪<script src> /*ignore any code*/ <script>
   ▪comments: toggle line|block:  ctrl /, ctrl shift /
-    ⚠️nested comments throw error: /* /* error */ */
+    ⚠️️nested comments throw error: /* /* error */ */
 ⋆console & debugging:
   enabled by F12
   show us errors on which files and line
@@ -534,7 +534,7 @@
     or just before function (scope only its body)
     or (function() {'use strict'; /*scoped modern syntax*/ })()
     enable modern modification to old javaScript syntax
-    ⚠️can't be disabled once it enabled
+    ⚠️️can't be disabled once it enabled
     💡enabled by default (can  be omitted) on classes & modules
     •prevent auto declaration
       undefined_var = val //error undefined_var are not declareds
@@ -551,10 +551,10 @@
     const CapitalCase = 'used before parsing by devs'
     const camelCase = `on parsing, ex time is ${Date()}`
   ▪naming variables & function: [≠digit][letter digit $ _]...
-    ⚠️caseSinsitive, ≠statement_name(as: new let class ...)
+    ⚠️️caseSinsitive, ≠statement_name(as: new let class ...)
     💡naming must be meaningfull, and more specific even if longer (ex: the visitor name become: currentUserName)
 ⋆data types 8
-  ⚠️typeof
+  ⚠️️typeof
     typeof null // 'object'
       js language error, it must be 'null'
     typeof alert // 'function'
@@ -573,7 +573,7 @@
         const truthy = Boolean(
           anyValueNotFalsy && true && !false && [] && {} && new Boolean(false) && 'false'
         )
-        ⚠️Equality operator comparing just arr|obj.toString()
+        ⚠️️Equality operator comparing just arr|obj.toString()
           const falsy = Boolean(array == true || object == true)
           const truthy_exceptions = Boolean(
             [1] == true && new Boolean(true) == true
@@ -588,8 +588,8 @@
         Boolean.prototype.valueOf()//true|false
     ▸null
       const a = null //value unknown | nothing | empty
-      ⚠️is not reference to non-existing object | pointer null
-      ⚠️bug: typeof null //object
+      ⚠️️is not reference to non-existing object | pointer null
+      ⚠️️bug: typeof null //object
     ▸undefined
       globalThis.undefined //![Whritable,Enumerable,Configurable]
       const a //a initialized with undefined
@@ -642,7 +642,7 @@
                                               void …
                                               delete …
                                               await …
-      13 exponentiation ⚠️←                   …**…
+      13 exponentiation ⚠️️←                   …**…
       12 multiplication|division|reminer →    …*… | …/… | …%…
       11 addition | subtraction →             … + … | … - …
       9  less|greater than or_Equal? →        …<…|…>…|…<=…|…>=…
@@ -650,8 +650,8 @@
       8 (strict?) equality|inequality →    …==…|…!=…|…===…|…!==…
       4 logical and →                         …&&…
       3 logical or | nullish coalescing →     …||… | …??…
-      2 assignment ⚠️←                        …=…| …+=…| …-=…| …/=…| …%=…| …*=…| …**=…| …&&=…| …||=…| …??=…
-        ternary 'conditional' ⚠️←(nested 1st) …?…:…
+      2 assignment ⚠️️←                        …=…| …+=…| …-=…| …/=…| …%=…| …*=…| …**=…| …&&=…| …||=…| …??=…
+        ternary 'conditional' ⚠️️←(nested 1st) …?…:…
         arrow                                 …=>…
                                               yield … | yeild* …
         spread                                ...…
@@ -659,9 +659,9 @@
   ▪access member operators
     💡white space allowed, [spases, tabs, new line's]
     •dot notation:       obj <white space?> . <ws?> member
-      ⚠️#.member//typeError, . act as number_fraction_dot
+      ⚠️️#.member//typeError, . act as number_fraction_dot
         fix: # .member | #..member | #.0.member | (#).member
-      ⚠️obj.#//typeError, fix: obj[#]
+      ⚠️️obj.#//typeError, fix: obj[#]
     •bracket notation:   obj <ws?> [expression: 'memberName']
   ▪increment & decrement (update var & return its old|new val)
     •postfix: console.log(v±±)//return old v, before ±1
@@ -693,13 +693,13 @@
       Infinity * Infiniyt //Infinity
     ▸exponentiation a**b //Math.pow(a,b)
       NaN ** a // NaN
-      ⚠️limitation: base number cannot prefixed by unary operator [- + ~ ! delete void typeof]
+      ⚠️️limitation: base number cannot prefixed by unary operator [- + ~ ! delete void typeof]
         <unary>2 ** -2   //TypeError
         instead use: <unary>(2 ** -2),or ( <unary>2 ) ** -2
   ▪comparison operators
     ▸less|grater then orEqual?: a < | > |<= | >= b //bool
     ▸in?equality a == | != b //bool
-      ⚠️null == undefined, but null|undefined != any other value
+      ⚠️️null == undefined, but null|undefined != any other value
         null|undefined do not converted to Number 0|NaN !!
     ▸strict in?equality a === | !== b //bool
       compare type, then compare value
@@ -731,7 +731,7 @@
     ▸or a || b || c //return first_truthy_operand | last_operend
     ▸nullish coalescing a ?? b ?? c //return 1st_defined | last
       return first defined operand who are not: null | undefined, else return last operand (fallback)
-      ⚠️typeError if combined with || or &&, (use parenthesis)
+      ⚠️️typeError if combined with || or &&, (use parenthesis)
   ▪conditional operator (ternary)
   ▪assignment operators (copy value to variable & return it)
     💡return NaN if one of operends are string (except on concatecation assignmeng +=)
@@ -869,3 +869,122 @@
     ▸
     ▸
 ⋆Api
+
+▸2023▸
+⋆js:
+  ▪module:
+    "use strict" applyed by default!!
+    scope are private top-lvl, accessible only by export/import
+    this = undefined ≠ window on top-lvl
+    await can be used on top-lvl
+    only 1st time evaluated, & shared between all imports
+    only 1st external shared src fetched & executed
+    
+    <script type=module> the attribute are required!!
+    defer attribute preserved by defualt, same as <sm defer>
+      parse html __________________________.
+      <sm>           .......................__execute__
+      <sm src>       .__fetch__.............__execute__
+      
+    async attribute compatible even inline, src not required!!
+      parse html ______________.............___________
+      <sm async>               .__execute__.
+      <sm src async> .__fetch__.__execute__.
+
+    CORS header require for external script from other origin
+      <sm src="http://another-site.com/their.js">
+      remote server header: Access-Control-Allow-Origin
+      else it won't fetched for security reasons!!
+
+    bare module supported by nodeJS & bundle tools, but ≠browser
+      import {v} from './scriptNam.js'//valid by all
+      import {v} from 'scriptName' //no Path, invalid in browser
+
+    compatibility fallbacks: for old browsers
+      <script type=module> //ignored by old browsers
+      <script nomodule> alert('module unsupported') </script>
+
+    ▸usage:
+      export declaration
+        export const/let n1 = 1, n2 = 2
+        export const { n1, n2 } = obj
+        export const [ n1, n2 ] = arr
+        export function n(){}
+        export function* n(){}
+        export class n{}
+      export list
+        export { n1, n2, ... }
+        export { n1 as reName, ... }
+        export { n1 as 'str name', ... }
+        export { n1 as default, ... }
+      export default (⚠️ only once in module)
+        export default expression
+        export default function n(){}  | function(){}
+        export default function* n(){} | function*(){}
+        export default class n{}       | class{}
+      reExport (aggregating modules) (⚠️unavailable currently)
+          ⚠️ * export only named ones exluding default !!
+        export *                             from 'module-name'
+        export * as name                     from 'module-name'
+        export { default, n1, ... }          from 'module-name'
+        export { defualt as rn, n as rn,...} from 'module-name'
+
+      imports
+        import defaultErport                 from 'module-name'
+        import * as name                     from 'module-name'
+        import { n1, n2, ... }               from 'module-name'
+        import { n1 as alias, ...}           from 'module-name'
+        import { default as alias, ... }     from 'module-name'
+        import { 'str name' as alias }       from 'module-name'
+        import defaultErport, { n1, ... }    from 'module-name'
+        import defaultErport, * as name      from 'module-name'
+        import                                    'module-name'
+
+      dynamic imports (⚠️ import() is not function, its special)
+        const { default: rename, n1, ... } = await import(url)
+        /* then do something with imported default, n1 ... */
+  ▪proxy: new Proxy(target, handler)
+    target: object (including function generator class)
+    handler: object contait traps methods
+    ⚠️️(set, deleteProperty) traps must return true if fulfilled
+    [[internal method]] handler trap      triggers when...
+      Get               get               reading property
+      Set               set               writing to property
+      HasProperty	      has               in operator
+      Delete	          deleteProperty    delete operator
+      Call              apply             function call
+      Construct         construct         new operator
+      GetPrototypeOf    getPrototypeOf    Object.getPrototypeOf
+      SetPrototypeOf    setPrototypeOf    Object.setPrototypeOf
+      IsExtensible      isExtensible      Object.isExtensible
+      PreventExtensions preventExtensions
+                                        Object.preventExtensions
+      DefineOwnProperty defineProperty    Object.defineProperty
+                                          Object.defineProperties
+      GetOwnProperty    getOwnPropertyDescriptor
+                                Object.getOwnPropertyDescriptor
+                                          Object.keys
+                                          Object.values
+                                          Object.entries
+                                          for..in
+      OwnPropertyKeys   ownKeys	     Object.getOwnPropertyNames
+                                   Object.getOwnPropertySymbols
+                                          Object.keys
+                                          Object.values
+                                          Object.entries
+                                          for..in
+  ▪reflect
+
+⋆browser:
+  ▪loading document & resources:
+    ▸script async defer: (non-module require src attribute)
+      parse html ________.......................___________
+      <script src>       .__fetch__.__execute__.
+      
+      parse html ______________________________.
+      <script src defer> .__fetch__.............__execute__
+      
+      parse html __________________.............___________
+      <script src async> .__fetch__.__execute__.
+
+⋆addition:
