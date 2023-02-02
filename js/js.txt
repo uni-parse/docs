@@ -943,10 +943,16 @@
       dynamic imports (⚠️ import() is not function, its special)
         const { default: rename, n1, ... } = await import(url)
         /* then do something with imported default, n1 ... */
-  ▪proxy: new Proxy(target, handler)
-    target: object (including function generator class)
-    handler: object contait traps methods
-    ⚠️️(set, deleteProperty) traps must return true if fulfilled
+  ▪proxy & reflect: 
+    syntax: 
+      new Proxy(target, handler)
+      recursive: let {proxy, revoke} = Proxy.revocable(t,h)
+    terms:
+      target: object (including function generator class)
+      handler: object contait traps methods
+      revoke: if envoked: cut proxy reference to original target
+    ⚠️️(set, deleteProperty) traps must return true if success
+    reflect: Reflect.<trap>(...arguments) keep org behaviour
     [[internal method]] handler trap      triggers when...
       Get               get               reading property
       Set               set               writing to property
@@ -973,9 +979,84 @@
                                           Object.values
                                           Object.entries
                                           for..in
-  ▪reflect
 
 ⋆browser:
+  ▪document:
+    💡document are entry point to module 'DOM'
+    💡nodes are read-only, modified only by dom methods !!
+    💡collection are arr-like: nc[i] nc.length for..of ...spread
+    ▸navigation;
+                               parentNode (including document)
+                                   |
+             <--previousSibling__.node.__nextSibling-->
+                             /     |      \
+             <--firstChild__/  childNodes  \__lastChild-->
+
+      pn.hasChildNodes() // boolean
+      pn.childNodes    // nodes collection
+      pn.firstChild    // pn.childNodes[0]
+      pn.lastChild     // pn.childNodes[n.childNodes.length - 1]
+      cn.parentNode       // pn (💡including document)
+        document.documentElement.parentNode // document
+      cn2.nextSibling     // cn3
+      cn2.previousSibling // cn1
+
+      
+      
+      /* elements only */
+                              parentElement (document === null)
+                                   |
+      <--previousElementSibling__.node.__nextElementSibling-->
+                              /    |     \
+       <--firstElementChild__/  children  \__lastElementChild-->
+      
+      pn.children      // elements collection
+      pn.firstChild    // pn.children[0]
+      pn.lastChild     // pn.children[n.children.length - 1]
+      cn.parentElement       // pEl (⚠️excluding document)
+        document.documentElement.parentElement // null
+      cn2.nextElementSibling     // cEl3
+      cn2.previousElementSibling // cEl1
+
+
+      /* only tabes */
+      table.caption // caption el
+      table.tHead   // thead ctx
+      table.tFoot   // tfoot ctx
+      table.tBodies // tbody collection ctxs
+
+      table.rows    // tr collection els of entire table
+      thead.rows    // tr collection of current thead ctx
+      tbody.rows    // tr collection of current tbody ctx
+      tfoot.rows    // tr collection of current tfoot ctx
+
+      tr.cells      // th/td collection
+      tr.rowIndex   // relative to entire table
+      tr.sectionRowInex // relative to current ctx
+
+      th.cellIndex  // relative to current row tr ctx
+      td.cellIndex  // relative to current row tr ctx
+    ▸searching elements
+      document.getElementById('idName') // unique element
+        ⚠️error: anyEl.getElementById('idName')
+        💡same as: globalThis['idName']    // unrecommended
+        💡same as simply variable : idName // unrecommended
+      el.querySelectorAll('cssSelector') // els collection
+      el.querySelector('cssSelector') // first matched el
+        💡same as: el.querySelectorAll()[0] // but faster
+      el.matches(cssSelector) // boolean
+      el.closest(cssSelector) // closest matched ancestor el
+
+      💡history methods (useless): //return el collection
+      ⚠️issue: return "live" value not static!!
+        if we save reference to the returned collection,
+        and we add/remove els to/from the collection,
+        then the reference will be updated automaticly
+      el.getElementsByTagName('tagName')
+      el.getElementsByClassName('className')
+      document.getElementsByName('nameAttribute')
+        ⚠️error: anyEl.getElementsByName()
+
   ▪loading document & resources:
     ▸script async defer: (non-module require src attribute)
       parse html ________.......................___________

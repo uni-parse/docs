@@ -1,4 +1,5 @@
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+  IIFE immediately invoked function expression (()=>{...})();
   perpendicular≠parallel
   ECMA european computer Manufacturers association
   ide integrated development environment

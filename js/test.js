@@ -3269,10 +3269,8 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
         receiver
       )
       //my test bellow
-      const i = +p
-      if (typeof i == 'number' && !Number.isNaN(i))
-        return target.at(i)
-      return Reflect.get(...arguments)
+      return +p || p == 0 ? target.at(p)
+        : Reflect.get(...arguments)
     }
 
   })
@@ -3307,12 +3305,102 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   obj.observe((p, val) => console.log(`SET ${p}=${val} h2`))
   obj.name = 'uniParse'//SET name=uniParse
 })();*/
-(() => { //eval('execute string')
-  //task eval-calculator
-  
+/*
+(() => { //currying partials functions
+  const math = {
+    multiply: (a, b) => a * b
+  }
+  console.log(math.multiply(2, 4)) // 8
+
+  math.double = math.multiply.bind(math, 2)
+  console.log(math.double(4)) // 8
+
+
+
+  function curry(func) {
+    return function curried(...args) {
+      return args.length >= func.length
+        ? func.apply(this, args)
+        : function (...args2) {
+          return curried.apply(this, args.concat(args2))
+        }
+    }
+  }
+
+  math.sum3 = (a, b, c) => a + b + c
+  math.sum3 = curry(math.sum3)
+  console.log(
+    math.sum3(1, 2, 1), // 4
+    math.sum3(1)(2, 1), // 4
+    math.sum3(1, 2)(1), // 4
+    math.sum3(1)(2)(1)  // 4
+  )
+
+
+  //limitation in unlimited arguments
+  math.sum = function () {
+    return [...arguments].reduce((sum, n) => sum + n, 0)
+  }
+  console.log(math.sum(1, 3, 7, 8)) // 19
+  console.log(math.sum.length) // 0
+  math.sum = curry(math.sum)
+  try {
+    math.sum(2)(3)
+  } catch (err) {
+    console.log(err)//err math.sum(..) not a function
+    //no math.sum.length in declarations
+  }
+})();*/
+/*
+(() => { string testing
+  function getUnicode(char) {
+    return `U+${char.codePointAt(0).toString("16")}`
+  }
+
+  function getString(unicode) {
+    return unicode.splice(2)
+  }
+  function string(char) {
+    return String.fromCodePoint('0x' + getUnicode(char).slice(2))
+  }
+  console.log(
+    getUnicode('⚠'),
+    getUnicode('⚠️'),
+    getUnicode('a'),
+    string('𝒳'),
+  )
+  console.log(
+    '⚠'.codePointAt(0).toString(16),
+    '⚠️'.codePointAt(0).toString(16),
+    'a'.codePointAt(0).toString(16),
+    '⚠️'.length
+  )
+
+  const
+    getUnicodeHex = char => char.codePointAt(0).toString(16),
+    getEmoji = unicodeHex => String.fromCodePoint(unicodeHex)
+
+  console.log(
+    getUnicodeHex('\u26a0\ufe0f'.normalize()),
+    getEmoji(0x2757),
+    getUnicodeHex('Ṩ'),
+    getUnicodeHex('S\u0307\u0323'),
+    getEmoji(0x53),
+    'Ṩ'.length, //3
+    '\u26a0\ufe0f'.normalize(),
+    '\u1e68',
+    '⚠️'.length, // 2
+    '⚠'.length,  // 1
+  )
+  console.log(
+    'Ṩ',
+    'S\u0323\u0307'
+  )
+
+})();*/
+(() => { //
+
 })();
-(() => { })();
-(() => { })();
 (() => { })();
 (() => { })();
 (() => { })();
