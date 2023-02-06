@@ -115,10 +115,10 @@ document.body.appendChild(main);
   const
     div1 = document.createElement('div'),
     div2 = document.createElement('div')
-    div1.setAttribute('name', 'name1')
-    div1.setAttribute('class', 'class1')
-    div1.id = 'id1'
-    div2.id = 'id-2'//hyphen: valid id, but invalid variable name
+  div1.setAttribute('name', 'name1')
+  div1.setAttribute('class', 'class1')
+  div1.id = 'id1'
+  div2.id = 'id-2'//hyphen: valid id, but invalid variable name
   main.appendChild(div1)
   main.appendChild(div2)
 
@@ -141,12 +141,254 @@ document.body.appendChild(main);
 
 });
 
+
+(() => { //dom classes hierarchy & inheritance
+  log( //true
+    document.body instanceof HTMLBodyElement
+    && document.body instanceof HTMLElement
+    && document.body instanceof Element
+    && document.body instanceof Node
+    && document.body instanceof EventTarget //true in browser
+    && document.body instanceof Object
+  )
+
+
+  log(getClassesNames(document))
+  // HTMLDocument
+  // Document
+  // Node EventTarget Object
+
+  log(getClassesNames(document.createAttribute('class')))
+  // Attr
+  // Node EventTarget Object
+
+  log(
+    getClassesNames(document.createTextNode('hello')),
+    getClassesNames(document.createComment('notes'))
+  )
+  // Text | Comment
+  // CharacterData
+  // Node EventTarget Object
+
+  log(getClassesNames(//⚠️dont have their own classes
+    document.createElement('header'),
+    document.createElement('footer'),
+    document.createElement('main'),
+    document.createElement('aside'),
+    document.createElement('section'),
+    document.createElement('article'),
+    document.createElement('nav'),
+    document.createElement('address'),
+
+    document.createElement('b'),
+    document.createElement('em'),
+    document.createElement('i'),
+    document.createElement('strong'),
+  ))
+  // HTMLElement Element Node EventTarget Object
+
+  log(getClassesNames( //have thier own classes
+    document.documentElement, // html
+    document.head,
+    document.body,
+    document.createElement('div'),
+    document.createElement('span'),
+    document.createElement('input'),
+    document.createElement('a'),
+    document.createElement('ul'),
+    document.createElement('ol'),
+    document.createElement('li'),
+    document.createElement('script'),
+    document.createElement('img'),
+    document.createElement('picture'),
+    document.createElement('object'),
+    document.createElement('source'),
+    document.createElement('br'),
+    document.createElement('hr'),
+  ))
+  // HTMLHtmlElement | Head Body Div Span Input Anchor Ulist ...
+  // HTMLElement Element Node EventTarget Object
+
+  log(getClassesNames(
+    document.createElement('video'),
+    document.createElement('audio'),
+  ))
+  // HtmlVideoElement | HtmlAudioElement
+  // HTMLMediaElement
+  // HTMLElement Element Node EventTarget Object
+
+  log(getClassesNames(document.createElement('svg')))
+  // HTMLUnknownElement
+  // HTMLElement Element Node EventTarget Object
+
+  try {//works in browser, no err
+    log(getClassesNames(document.createEvent('AnimationEvent')))
+    //AnimationEvent Event Object
+  } catch (err) { console.log(err) }
+
+  //console.dir(document.createElement('div'))
+
+  log( //true   //old way to know node type
+    document.createElement('div').nodeType === 1
+    && document.createAttribute('class').nodeType === 2
+    && document.createTextNode('').nodeType === 3
+    //CDATA_SECTION_NODE = 4
+    //ENTITY_REFERENCE_NODE = 5       // legacy
+    //ENTITY_NODE = 6                 // legacy
+    //PROCESSING_INSTRUCTION_NODE = 7
+    && document.createComment('').nodeType === 8
+    && document.nodeType === 9
+    //DOCUMENT_TYPE_NODE = 10
+    //DOCUMENT_FRAGMENT_NODE = 11
+    //NOTATION_NODE = 12              // legacy
+  )
+
+
+
+
+  console.log(
+    Element.prototype.hasOwnProperty('tagName')   // Getter
+    && Node.prototype.hasOwnProperty('nodeName'), // Getter
+
+    document.createElement('a').tagName === // A from Element
+    document.createElement('a').nodeName,   // A from Node
+
+    document.createAttribute('class').nodeName, // class
+    document.createTextNode('hello').nodeName,  // #text
+    document.createComment('note').nodeName,    // #comment
+    document.nodeName,                          // #document
+  )
+
+
+  log(
+    getSourceClass( // Node
+      'hasChildNodes',
+      'parentNode',
+      'childNodes',
+      'firstChild',
+      'lastChild',
+      'previousSibling',
+      'nextSibling'
+    ),
+
+    getSourceClass(
+      'parentElement',           // Node
+      'children',                // Element
+      'firstElementChild',       // Element
+      'lastElementChild',        // Element
+      'previousElementSibling',  // Element
+      'nextElementSibling',      // Element
+    ),
+    getSourceClass(
+      'getElementById',         // Document
+      'querySelector',          // Element
+      'querySelectorAll',       // Element
+      'matches',                // Element
+      'closest',                // Element
+
+      'getElementsByTagName',   // Element
+      'getElementsByClassName', // Element
+      'getElementsByName',      // Document
+    ),
+
+    getSourceClass( // Element
+      'innerHTML',
+      'outerHTML',
+    ),
+
+    getSourceClass(
+      'nodeValue',     //Node
+      'data',          //CharacterData
+    ),
+
+    getSourceClass(
+      'textContent',   //Node
+      'innerText',     //HTMLElement
+      'outerText',     //HTMLElement
+    ),
+
+    getSourceClass('id'),     //Element
+
+    getSourceClass(
+      'hidden', //HTMLElement
+      'style',  //HTMLElement
+    ),
+
+    getSourceClass(
+      'name',   //Attr
+      'class', //⚠️unKnown
+    )
+  )
+
+  
+});
+
+(() => { //tasks
+  //task 1 count descendants
+  const ul = document.createElement('ul')
+  ul.innerHTML = `
+    <li>Animals
+      <ul>
+        <li>Mammals
+          <ul>
+            <li>Cows</li>
+            <li>Donkeys</li>
+            <li>Dogs</li>
+            <li>Tigers</li>
+          </ul>
+        </li>
+        <li>Other
+          <ul>
+            <li>Snakes</li>
+            <li>Birds</li>
+            <li>Lizards</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li>Fishes
+      <ul>
+        <li>Aquarium
+          <ul>
+            <li>Guppy</li>
+            <li>Angelfish</li>
+          </ul>
+        </li>
+        <li>Sea
+          <ul><li>Sea trout</li></ul>
+        </li>
+      </ul>
+    </li>`
+  document.body.appendChild(ul)
+  //1: show what's the text inside Li's (without the subtree)
+  for (li of ul.children)
+    console.log(li.firstChild.data.split('\n')[0])
+  //2: nth of all descendants Li's
+  console.log(
+    'nth of all nested descendants <li>: '
+    + ul.querySelectorAll('li').length
+  )
+
+
+  //task 4 where's the "document" in the hierarchy
+  console.log(
+    'document instance of: '
+    + getClassesNames(document).join(' ')
+    //HTMLDocument Document Node EventTarget Object
+  )
+  console.log(
+    document instanceof Node,//true
+    document instanceof Element,//false
+    document instanceof HTMLElement,//false
+  )
+
+
+});
+
 (() => { })();
 (() => { })();
 (() => { })();
 (() => { })();
-(() => { })();
-(() => { })();
 
 
 
@@ -155,9 +397,47 @@ document.body.appendChild(main);
 
 
 
+function getClassesNames() {
+  const allClassesNames = []
 
+  for (obj of arguments) {
+    const classesNames = []
+    let proto = obj
+
+    while (proto = Object.getPrototypeOf(proto))
+      classesNames.push(proto.constructor.name)
+
+    if (arguments.length == 1) return classesNames
+
+    allClassesNames.push(classesNames)
+  }
+
+  return allClassesNames
+}
+
+function getSourceClass() {
+  const classes = [
+    HTMLElement,
+    Element,
+    Node,
+    Attr,
+    Text,
+    Comment,
+    CharacterData,
+    Document,
+    HTMLDocument,
+    EventTarget,
+    Object,
+  ]
+
+  const sources = {}
+  for (const p of arguments) sources[p] = // src ?? ⚠️unKnown
+    classes.find(c => c.prototype.hasOwnProperty(p))?.name
+    ?? '⚠️unKnown'
+
+  return JSON.stringify(sources, null, 2).replaceAll('"', '')
+}
 
 function log() {
   for (const exp of arguments) console.log(exp)
 }
-

@@ -1003,7 +1003,7 @@
 
       
       
-      /* elements only */
+      /* elements only */ 
                               parentElement (document === null)
                                    |
       <--previousElementSibling__.node.__nextElementSibling-->
@@ -1056,6 +1056,25 @@
       el.getElementsByClassName('className')
       document.getElementsByName('nameAttribute')
         ⚠️error: anyEl.getElementsByName()
+    ▸basics: classes hierarchy & inheritance ...
+      readOnly
+        Node.nodeType //1=el, 3=txt, 8=comment, 9=document, ...
+        Node.nodeName | Element.tagName //upperCase
+      modification
+        Element.innerHTML?outerHTML
+          ⚠️el.innerHTML += '...' //UX--, performance--
+            rerender all el content, user will lose progress.
+          ⚠️let ref = el.outerHTML; ref = '...' // ref preserved
+            'newHtml' applyed, but still ref = 'oldHtml' !!
+        CharacterData.data | Node.nodeValue
+        Node.textContent | HTMLElement.innerText?outerText
+          ⚠️setting will replace all childNodes with 'str'
+          💡innerText ignore  <script & style> & hidden els
+            html attribute:  <el hidden> hidden text </el>
+            css           :  el { display:hidden }
+            java script   :  el.hidden = true 
+        HTMLElement.hidden
+        Element.id
 
   ▪loading document & resources:
     ▸script async defer: (non-module require src attribute)

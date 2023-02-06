@@ -3398,8 +3398,38 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   )
 
 })();*/
-(() => { //
+(async () => { //
+  function promiseState(p) {
+    const t = {}
+    return Promise.race([p, t])
+      .then(v => (v === t) ? "pending" : "fulfilled", () => "rejected")
+  }
+  async function promisesState(promises) {
+    const status = []
+    for (const promise of promises) {
+      const t = {}
+      status.push(await Promise.race([promise, t]).then(
+        v => (v === t) ? 'pending' : 'fulfilled',
+        () => 'rejected'
+      ))
+    }
 
+    if (status.includes('rejected')) return 'rejecded'
+    else return status.includes('pending')
+      ? 'pending' : 'fulfilled'
+  }
+  const
+    a = Promise.resolve(),
+    b = Promise.reject(),
+    c = new Promise(() => { }),
+    all = [a, b, c]
+
+  console.log(
+    await promiseState(a), // fulfilled
+    await promiseState(b), // rejected
+    await promiseState(c), // pending
+    await promisesState(all),
+  )
 })();
 (() => { })();
 (() => { })();
