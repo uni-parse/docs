@@ -855,24 +855,94 @@
 ⋆built-in objects
   ▪Object:
     ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
-    ▸
 ⋆Api
 
 ▸2023▸
 ⋆js:
-  ▪module:
+  ▪data types "primitive"
+    💡node:
+    ▸number
+      💡zeros to e
+        3.1 billion: 3.1e9 = 3_100_000_000 = 3100000000
+        3.1 nano: 3.1e-9 = .000_000_003_1 = .0000000031
+      .toString(base? = 10 : 2~36) // 255..toString(16) == 'ff'
+        💡255 = 0xff hex = 0b11111111 binary = 0o377 octal
+      rounding:     Math.floor(n) .ceil(n) .round(n) .trunc(n)
+        1.0 ~ 1.49         1         2        1         1
+        1.5 ~ 1.99         1         2        2         1
+        -1.49 ~ -1.0      -2        -1       -1         1
+        -1.99 ~ -1.5      -2        -1       -2         1
+        #.f (f</>5)        #        #+1     #/#+1       #
+        -#.f (f</>5)     -#-1       -#     -#-1/-#     -#
+      .toFixed(nth? = 0) // (Math.PI).toFixed(2) == 3.14
+      Number.isNaN(n) // boolean
+      Number.isFinite(n | Infinity) // true | false
+      parseFloat(str) // #.f, parseFloat('2.2em') == 2.2
+      parseInt(str, base=10) // number, parseInt('2.2em') = 2
+        255 = parseInt('ff', 16) = parseInt('0xff', 16)
+      Math.
+        PI // 3.14
+        E // 2.718, euler's number
+        random()//0~1
+        min|max(...n) // smallest|biggest n
+        pow(n, power) // n ** power
+        abs(±n) // n
+    ▸bigInt
+    ▸string utf-16
+      💡arr-like: str.lentgh str[i] str.at(±i) ...str for..of
+      
+      str.toUpperCase()
+      str.toLowerCase()
+      
+      str.indexOf(subStr, fromIndex)
+      str.lastIndexOf()
+      
+      str.includes(subStr)
+      str.startsWith()
+      str.endsWith()
+      
+      str.slice(start=0, end=str.length)
+        💡negative: 'stringify'.slice(-4, -1) == 'gif'
+        ⚠️end excluded
+      str.substring(start=0, end=str.length)
+        💡unorder: 'stringify'.substring(6, 2) == 'ring'
+        ⚠️end excluded
+      str.substr(start=0, length=rest)
+        💡negative: 'stringify'.substr(-4, 2) == 'gi'
+
+      str.codePointAt(pos)
+        'Z'.codePointAt(0).toString(16) == '5a'
+      String.fromCodePoint(code)//str
+        String.fromCodePoint(0x5a) // 'Z'
+
+      str.localeCompare(str2) //-1| 1| 0: str < > = str2
+
+      str.trim() //str without start & end whiteSpace
+      str.trimStart()
+      str.trimEnd()
+
+      str.repeat(n)
+
+      str.concat(...strings)
+      
+      str.replace(SubStr, replacement)
+      str.replaceAll()
+
+      str.split(separatorStr='')
+    ▸symbol
+    ▸boolean
+    ▸null
+    ▸undefined
+  ▪data types "object"
+    ▸objcet
+      Object.is(a, b) // boolean, a === b, 0 !== -0
+    ▸array
+      .push(...items) //to end
+      .pop()
+    ▸set
+    ▸map
+    ▸json
+  ▪module
     "use strict" applyed by default!!
     scope are private top-lvl, accessible only by export/import
     this = undefined ≠ window on top-lvl
@@ -943,7 +1013,7 @@
       dynamic imports (⚠️ import() is not function, its special)
         const { default: rename, n1, ... } = await import(url)
         /* then do something with imported default, n1 ... */
-  ▪proxy & reflect: 
+  ▪proxy & reflect
     syntax: 
       new Proxy(target, handler)
       recursive: let {proxy, revoke} = Proxy.revocable(t,h)
@@ -980,12 +1050,12 @@
                                           Object.entries
                                           for..in
 
-⋆browser:
-  ▪document:
+⋆browser
+  ▪document
     💡document are entry point to module 'DOM'
     💡nodes are read-only, modified only by dom methods !!
-    💡collection are arr-like: nc[i] nc.length for..of ...spread
-    ▸navigation;
+    💡collection are arr-like: c[i] c.length for..of ...spread
+    ▸navigation:
                                parentNode (including document)
                                    |
              <--previousSibling__.node.__nextSibling-->
@@ -1075,8 +1145,10 @@
             java script   :  el.hidden = true 
         HTMLElement.hidden
         Element.id
-
-  ▪loading document & resources:
+    ▸attributes:
+      💡most standard ones have corresponding dom properties
+      ⚠️href property have full url while .getAttribute('href')
+  ▪loading document & resources
     ▸script async defer: (non-module require src attribute)
       parse html ________.......................___________
       <script src>       .__fetch__.__execute__.

@@ -3398,7 +3398,7 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   )
 
 })();*/
-(async () => { //
+(async () => { //testing birthday 
   function promiseState(p) {
     const t = {}
     return Promise.race([p, t])
@@ -3430,7 +3430,13 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
     await promiseState(c), // pending
     await promisesState(all),
   )
+});
+(() => {
+  console.log(
+    "stringify".substring(2, 6),
+    "stringify".slice(2, 6),
+    "stringify".substr(2, 4),
+  )
 })();
-(() => { })();
 (() => { })();
 (() => { })();

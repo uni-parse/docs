@@ -320,7 +320,7 @@ document.body.appendChild(main);
     )
   )
 
-  
+
 });
 
 (() => { //tasks
@@ -385,7 +385,44 @@ document.body.appendChild(main);
 
 });
 
-(() => { })();
+(() => { //attributes & dom propertys
+
+console.log(
+
+
+)
+})();
+
+
+(() => { //styling & classes
+  const div = document.createElement('div')
+  div.className = 'a b c'
+
+  console.log(
+    div.classList.contains('a'), // true
+    div.classList.contains('b'), // true
+    div.classList.contains('c'), // true
+    div.classList.contains('d'), // false
+    ...div.classList             // a b c
+  )
+
+  div.classList.add('extra')
+  div.classList.remove('a')
+  div.classList.toggle('b')
+  console.log(
+    div.classList.contains('extra'), //true
+    div.classList.contains('a'),     //false
+    div.classList.contains('b'),     //false
+  )
+
+  div.classList.toggle('a')
+  div.classList.toggle('b')
+  console.log( // true
+    div.classList.contains('a'),
+    div.classList.contains('b'),
+  )
+
+})();
 (() => { })();
 (() => { })();
 (() => { })();
