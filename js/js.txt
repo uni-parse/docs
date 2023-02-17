@@ -1116,6 +1116,7 @@
         💡same as: el.querySelectorAll()[0] // but faster
       el.matches(cssSelector) // boolean
       el.closest(cssSelector) // closest matched ancestor el
+      el.contains(descendent_Node) // boolean
 
       💡history methods (useless): //return el collection
       ⚠️issue: return "live" value not static!!

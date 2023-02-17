@@ -6,11 +6,11 @@ ul.textContent = 'txt';
 ['one', 'two', 'three'].forEach(txt => {
   const li = document.createElement('li')
   li.textContent = txt
-  ul.appendChild(li)
-});
+  ul.append(li)
+})
 
-main.appendChild(ul)
-document.body.appendChild(main);
+main.append(ul)
+document.body.append(main);
 
 (() => {//node navigation
   const [txt, li1, li2, li3] = ul.childNodes
@@ -386,11 +386,11 @@ document.body.appendChild(main);
 });
 
 (() => { //attributes & dom propertys
+  const text = ul.childNodes[0]
+  console.log(
+    main.contains(text), //true
+  )
 
-console.log(
-
-
-)
 })();
 
 
