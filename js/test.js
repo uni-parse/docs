@@ -3432,11 +3432,11 @@ showSum.defer(1000)(1, 5) //after 1000ms show 6
   )
 });
 (() => {
-  console.log(
-    "stringify".substring(2, 6),
-    "stringify".slice(2, 6),
-    "stringify".substr(2, 4),
-  )
+  function test() {
+    return t
+  }
+  const t = 5
+  console.log(test())
 })();
 (() => { })();
 (() => { })();

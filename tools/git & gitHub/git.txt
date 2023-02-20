@@ -6,6 +6,9 @@ $ git --help
 // setup git userName & email (team member)
 $ git config --global user.email "abanibilal4@gmail.com" && git config --global user.name "phantombill"
 
+or
+
+$ git config --global user.email "theUniParse@gmail.com" && git config --global user.name "theUniParse"
 
 
 
