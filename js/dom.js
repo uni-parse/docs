@@ -391,7 +391,7 @@ document.body.append(main);
     main.contains(text), //true
   )
 
-})();
+});
 
 
 (() => { //styling & classes
@@ -422,16 +422,245 @@ document.body.append(main);
     div.classList.contains('b'),
   )
 
-})();
+});
+
+
+(() => { //drag n drop
+  const ball = document.createElement('div')
+  ball.style.width = ball.style.height = '15px'
+  main.append(ball)
+
+  //cancel default drag event.
+  ball.ondragstart = () => false
+
+  ball.onmousedown = function (e) {
+    const
+      shiftX = e.clientX - ball.getBoundingClientRect().left,
+      shiftY = e.clientY - ball.getBoundingClientRect().top
+
+    ball.style.position = 'absolute'
+    ball.style.zIndex = 1000
+    document.body.append(ball)
+
+    moveAt(e.pageX, e.pageY)
+
+    // moves the ball at (pageX, pageY) coordinates
+    // taking initial shifts into account
+    function moveAt(pageX, pageY) {
+      ball.style.left = pageX - shiftX + 'px'
+      ball.style.top = pageY - shiftY + 'px'
+    }
+
+    // potential droppable that we're flying over right now
+    let currentDroppable = null
+
+    function onMouseMove(e) {
+      moveAt(e.pageX, e.pageY)
+
+      ball.hidden = true
+      const elemBelow =
+        document.elementFromPoint(e.clientX, e.clientY)
+      ball.hidden = false
+
+      // mousemove events may trigger out of the window (when the ball is dragged off-screen)
+      // if clientX/clientY are out of the window, then elementFromPoint returns null
+      if (!elemBelow) return
+
+      // potential droppables are labeled with the class "droppable" (can be other logic)
+      let droppableBelow = elemBelow.closest('.droppable')
+
+      if (currentDroppable == droppableBelow) return
+      // we're flying in or out...
+      // note: both values can be null
+      //   currentDroppable=null if we were not over a droppable before this event (e.g over an empty space)
+      //   droppableBelow=null if we're not over a droppable now, during this event
+
+      // the logic to process "flying out" of the droppable (remove highlight)
+      if (currentDroppable) leaveDroppable(currentDroppable)
+
+      // the logic to process "flying in" of the droppable
+      if (currentDroppable = droppableBelow)
+        enterDroppable(currentDroppable)
+    }
+
+    // move the ball on mousemove
+    document.addEventListener('mousemove', onMouseMove)
+
+    // drop the ball, remove unneeded handlers
+    ball.addEventListener('mouseup', () =>
+      document.removeEventListener('mousemove', onMouseMove),
+      { once: true })
+  }
+});
+
+(() => {  //loading
+  //window.onbeforeunload = () => false
+  //window.onbeforeunload = () => 'msg'
+  window.addEventListener('beforeunload', e => {
+    //e.preventDefault()  //⚠️⚠️ignored (bug || issue)
+    //e.returnValue = false //??
+    e.returnValue = 'msg' //must work, but it isn't
+  })
+});
+(() => { //collection have .forEach((v,i)=>{}) method
+  const div = document.createElement('div')
+  document.body.append(div)
+
+  const p = document.createElement('p')
+  div.append(p.cloneNode(), p.cloneNode(), p.cloneNode())
+
+  const paras = div.querySelectorAll('p')
+  console.log(paras)
+
+  paras.forEach((v, i) => console.log(i, v))
+});
+
+(() => { // bufferArray
+  console.log(concat(
+    new Uint8Array(2),
+    new Uint8Array(3),
+    new Uint8Array(2)
+  ))
+
+  function concat(...arrays) {
+    const length = arrays.reduce((sum, buffer) =>
+      sum + buffer.length
+      , 0)
+
+    const result = new Uint8Array(length)
+
+    let i = 0
+    arrays.forEach(buffer => {
+      result.set(buffer, i)
+      i += buffer.length
+    })
+
+    return result
+  }
+
+  console.log('\ufffd')
+
+});
+
+(() => { // canvase
+  const canvas = document.createElement('canvas')
+  document.body.prepend(canvas)
+
+  canvas.style.backgroundColor = 'gray'
+
+  //⚠️issue: don't use css width height, use attributes!!
+  canvas.setAttribute('width', '100px')
+  canvas.setAttribute('height', '80px')
+
+  canvas.style.border = '1px solid'
+
+  canvas.addEventListener('pointerdown', async () => {
+    ctx.beginPath()
+    canvas.addEventListener('pointermove', drow)
+    await eventPromise(document.body, 'pointerup')
+    canvas.removeEventListener('pointermove', drow)
+  })
+
+  const ctx = canvas.getContext('2d');
+  const { x, y } = canvas.getBoundingClientRect()
+  function drow(e) {
+    ctx.lineTo(e.clientX - x, e.clientY - y)
+    ctx.stroke()
+  }
+
+});
+
+(async () => { // fetch download progress
+  const btn = document.createElement('button')
+  btn.textContent = 'dowload'
+  document.body.prepend(btn)
+
+  const output = document.createElement('output')
+  btn.after(output)
+  output.textContent = '\n'
+  t
+  btn.addEventListener('click', async () => {
+    const url = 'https://api.github.com/repos/theuniparse/keyboard/commits?per_page=100'
+
+    const response = await fetch(url)
+
+    if (!response.ok)
+      return output.textContent = `err ${response.status}`
+
+    const total = +response.headers.get('Content-Length')
+
+    let loaded = 0
+    for await (const chunk of response.body) {
+      loaded += chunk.length
+
+      console.log(loaded, total)
+    }
+
+    // const reader = response.body.getReader()
+    // console.log(reader.toString())
+
+
+    // const contentLength = +response.headers.get('Content-Length')
+
+    // // read data
+    // const chunks = []
+    // let recievedLength = 0
+
+    // for (const { done, value } of await reader.read) {
+    //   chunks.push(value)
+    //   recievedLength += value.length
+
+    //   output.textContent += `recieved ${recievedLength} of ${contentLength}\n`
+    // }
+
+    // // concatenate chunks to single Unit8Array
+    // const chunksConcat = new Uint8Array(recievedLength)
+    // let position = 0
+
+    // for (const chunk of chunks) {
+    //   chunksConcat.set(chunk, position)
+    //   position += chunk.length
+    // }
+
+    // // decode into a string
+    // //const result = new TextDecoder('utf-8').decode(chunksConcat)
+
+  })
+
+  // 💡polyfill
+  if (!ReadableStream.prototype.hasOwnProperty(Symbol.asyncIterator)) {
+    ReadableStream.prototype[Symbol.asyncIterator] = polyfill1
+
+    function polyfill1() {
+      const reader = this.getReader() // response.body
+      return {
+        next: ReadableStreamDefaultReader.prototype.read
+          .bind(reader) // async func return promise
+      }
+    }
+
+    async function* polyfill2() {
+      const reader = this.getReader() // response.body
+      let result
+      while (!(result = await reader.read()).done) yield result
+    }
+  }
+
+});
+
+
 (() => { })();
-(() => { })();
-(() => { })();
 
 
+function sleep(ms) {
+  return new Promise(rs => setTimeout(rs, ms))
+}
 
-
-
-
+function eventPromise(target, event) {
+  return new Promise(
+    rs => target.addEventListener(event, rs, { once: true })
+  )
+}
 
 
 function getClassesNames() {

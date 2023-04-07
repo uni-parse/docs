@@ -1,4 +1,8 @@
 ▶►◄▲▼★♥▬•»›⚠️💡⚙️±×÷²√π⁰≠≈≤≥Ø∞✓✗✖ € ← → ↑ ↓ ⇆♪©Ⓓ㊿†₱…
+  utf = unicode transformation format
+  buffer = region in memory, temporarily store data while moved
+  bit = binary digit, byte = 8bit (measure internet speed)
+  byte = 8bits (measure data & files sizes)
   IIFE immediately invoked function expression (()=>{...})();
   perpendicular≠parallel
   ECMA european computer Manufacturers association

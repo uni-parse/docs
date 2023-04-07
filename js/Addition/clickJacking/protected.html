@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Document</title>
+
+
+
+
+  <meta http-equiv='X-Frame-Options' content="DENY">
+  <!--⚠️the above front-end <meta> ignored!!
+    must be send by server_side HTTP-header ex:
+      "X-Frame-Options: SAMEORIGIN | DENY | ALLOW-FROM domain"
+  -->
+
+  <script>
+    //weak protection: old-school defence
+    //if we are in ifram, redirect to our_page.
+    if (top != window) top.location = window.location
+    //if our_window.top = hacker_window
+    //  then leave hacker_page & redirect to our_page.
+  </script>
+
+
+
+
+  <style>
+    div {
+      color: yellow;
+      background-color: magenta;
+    }
+  </style>
+</head>
+
+<body>
+  <div>protected page as twitter or paypal</div>
+</body>
+
+</html>

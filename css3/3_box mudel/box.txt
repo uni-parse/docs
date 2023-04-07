@@ -39,7 +39,7 @@
       »scope: ›globally: :root{--cp:v} ›locally: el{--cp:v}
       ›fallback list? returned if --custom-property invalid css.
     •env(variable,<fallback>,…) use UA value
-      ›used as property|desciptor value, may used in selectors.
+      ›used as property|descriptor value, may used in selectors.
       ›scope: only globally
       »variables:
         ›safe-area-inset-<side>:if display≠rectangle:<length> else:0,<meta name=viewport content='viewport-fit=cover'>
@@ -382,6 +382,7 @@
     ›oz↑user+: rotate?Z(180°)'6→9 translateZ() scaleZ().
 ★transition: property <duration delay?> timing-function,…?;
   ›apply to all els, ::before?after77≠S, ≠state-pseudo-class.
+    transform required display inline-block | block, not inline
   ›required statePseudoClass:hover?focuse?active or js.on|event.
   ›onEven: [delay 0→100%] then(onRemoveEvent) [delay 100→0%].
   ›demo: el{color: red; transition: color 2s ease-out;}

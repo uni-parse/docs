@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    iframe {
+      width: 400px;
+      height: 100px;
+      position: absolute;
+      top: 0;
+      left: -20px;
+
+      z-index: 1;
+      opacity: 0;
+    }
+  </style>
+
+</head>
+
+<body>
+
+  <fieldset>
+    <legend>Add a "protected" iframe</legend>
+    0% hacking: <button id=btn1>no hack</button><br>
+    50% hacking: <button id=btn2>ask if user want to leave</button><br>
+    100% hacking: <button id=btn3>prevent allow-top-navigation by sandbox</button>
+  </fieldset>
+
+  <script>
+
+    //insert transparent protected page as twitter or paypal
+    function appendIframe() {
+      const iframe = document.createElement('iframe')
+      iframe.src = 'protected.html'
+
+      iframe.style.zIndex = 1
+      iframe.style.opacity = .5
+      
+      document.body.append(iframe)
+
+      return iframe
+    }
+
+    btn1.onclick = appendIframe
+
+    btn2.onclick = () => {
+      appendIframe()
+
+      //ask visiter if he sure about leaving.
+      //  50% he will cancel the protection, and be hacked.
+      window.addEventListener('beforeunload', e =>
+        e.returnValue = "leave & watch annoying ads?"//lie hhh
+        //⚠️browser ignore our msg, and says:
+        //  Leave site?
+        //  Changes you made may not be saved.
+        , { once: true }
+      )
+    }
+
+    btn3.onclick = () => {
+      const iframe = appendIframe()
+
+      //prevent (ommit) allow-top-navigation
+      iframe.sandbox = 'allow-scripts allow-forms'
+      
+      //⚠️sandbox ignored after appendig iframe.
+      //  so we need to reappend it after adding sandbox
+      document.body.append(iframe)
+    }
+  </script>
+</body>
+
+</html>

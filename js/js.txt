@@ -1150,6 +1150,31 @@
       💡most standard ones have corresponding dom properties
       ⚠️href property have full url while .getAttribute('href')
   ▪loading document & resources
+    ▸state:
+      document.readyState = 'loading | interactive | complete'
+        interactive: dom are ready to manipulate by js.
+        complete: dom & all resources (iframes, imgs...) loaded
+    
+    ▸events:
+      document.addEventListener('readystatechange', handler)
+        //from loading to interactive
+        //from interactive to complete
+
+      window.onload
+      //instantly after as document.readyState = 'complete'
+
+      //popup: ask the user if he sure about reload|leave
+      window.onbeforeunload = () => false | 'msg'
+      //or:
+      window.addEventListener('beforeunload',e => {
+        //e.preventDefault() //don't work
+        e.returnValue = 'msg' //use this instead (untested)
+      })
+
+      //send analytics data to our server in the background
+      const data = {} //about clicks, scrolls, viewed areas...
+      window.onunload = () => navigator.sendBeacon(url, data)
+
     ▸script async defer: (non-module require src attribute)
       parse html ________.......................___________
       <script src>       .__fetch__.__execute__.
@@ -1160,4 +1185,52 @@
       parse html __________________.............___________
       <script src async> .__fetch__.__execute__.
 
+      💡script with type=module are defer by default
+      💡defer scripts depend on dom end, before DOMContentLoaded
+        executing order: source code
+      💡async scripts are independent (ads, counters...)
+        executing order: load_first (if cached: source code)
+        ex: <script async src="https://google-analytics.com/analytics.js"></script>
+
 ⋆addition:
+
+  ▪ArrayBuffer binary array
+    new ArrayBuffer(16)
+    ⚠️ArrayBuffer are not Array, so buffer[i] invalid!!
+    ▸accessors:
+    💡byte = 8bit, is area in memory.
+      Unit8Array   each byte   = integer 0 ~ 255
+      Unit16Array  each 2bytes = integer 0 ~ 65,535
+      Unit32Array  each 4bytes = integer 0 ~ 4,294,967,295
+      Float64Array each 8bytes = floatPoint 5.0e-324 ~ 1.8e308
+
+
+  ▪network
+    ▸fetch(url, options)
+      options are object of:
+      method: 
+        get/post/head
+        <unsafe-custom> as put/delete/patch/...
+        options, "preFlight" request made by browsre if unsafe
+      headers: (safe)
+        💡request headers:
+        origin (added automaticly in cross-origin request)
+        Accept
+        Accept-Language
+        Content-Language
+        Cache-Control
+        Content-Length
+        Content-Type:
+          application/x-www-form-urlencoded
+          multipart/form-data
+          text/plain
+          <unsafe-custom>
+        Expires
+        Last-Modified
+        Pragma
+        <unsafe-custom> as API-Key/...
+        💡response headers: 
+        1: cross-origin "preFlight" response: (status:200 ok)
+        Access-Control-Allow-Origin: * | origin
+        Access-Control-Request-Method: comma separated methods
+        Access-Control-Expose-Headers: comma separated headers

@@ -1,0 +1,52 @@
+javascript
+  fundamentals
+
+  objects basics
+
+  data types
+
+  functions
+
+  object properties configuration
+
+  prototypes inheritance
+
+  classes
+
+  error handling
+
+  promises, async/await
+
+  generators, iterations
+
+  modules
+
+  miscellaneous
+
+browser
+  document
+
+  introduction to events
+
+  UI events
+
+  forms, controls
+
+  document and resource loading
+
+  miscellaneous
+
+addition
+  frames and windows
+
+  binary data, fies
+
+  network requests
+
+  storing data in the browser
+
+  animation
+
+  web components
+
+  regular expressions

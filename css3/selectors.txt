@@ -8,33 +8,101 @@
     sAncestor sDescendant{}, ex[s0 s#{} → s0 s1 s2 … s#{}].
     s1+s2{only next sibling} s1~s2{all subsequent siblings}
   ›tag{(0,0,1)} ›.classifyEls{(0,1,0)} ›#uniqueIdentify{(1,0,0)}
-  ›[attribute]{(0,1,0)}   [att=v]{}   [… i]{caseInsencitive lv4}
-    [att*=Vpart]{…v…} [att~=spaceV]{… v …} [att|=hyphenV]{…-v-…}
-    [att^=valPrefix]{v…} [att$=valSufix]{…v}  /*tilde~, caret^*/
+  ›attributes: (0,1,0)
+    [att]
+    [att = exact]      'exact'
+    [att *= part]      '…part…'
+    [att ~= spaceWord] '… spaceWord …'    (tilde~)
+    [att |= dashWord]  '…-dashWord-…'
+    [att ^= prefix]    'prefix…'          (caret^)
+    [att $= sufix]     '…v'
+    [… i]              case insencitive lv4
 ★pseudoElement(0,0,1): part of el, basicSelector::onceInEnd.
-  ::selection≠Ios15?{color;bg-color;text-shadow?decorationCSS2}
-  :?::first-letter/*of line1 of #block-lvl-els*/{vertical-align;
-    font;text-shadow?transform?decoration?-*;letter?word-spacing
-    line-height;margin;padding;border;box-shadow;float;color;bg}
-    ›include all '"%&#@!*?/\.:,…;L) symbols connected to letter1
-  :?::first-line/*#block-lvl-els*/{
-    <::first-letter>≠margin;padding;border;box-shadow;float}
-  ::placeholder{<::line1>-*;color:lightgrayⒹ}/*input?textarea*/
-  :?::before?after{content; display:inlineⒹ}   /*≠replacedEls*/
-    »content: none| normal|
-    [<img>|''|attr()|counter|no-?open?close-quote]…/'alt'≠S19F4?
-      »counter(name,style?) counters(name,'nest separater',sty?)
-       ›style: disq|circle|square|lower?upper-roman?alpha=latin |decimal?-leading-zero|lower-greek'αβγ|urdu'ar#-moz4|…
-    ›.paren/*=child1*/{ counter-reset: noneⒹ|[name ±#0d?] …;
-      el{ counter-increment: noneⒹ|[name ±#1d?] …}
-      el:nth-child(#){ counter-re?set≠S19:<reset>}}//reset=set+1
-  ::marker≠S19{font;white-space;color;direction;content:;}
-    ›applyTo: li| summary| el?::pseudoElement{display:list-item}
-  ::cue?cue(selector)≠F4{bg;color;opacity;visibility;font;
-    text-shadow?decoration?-*;line-height;white-space;outline}
-    ›style track.Vtt of vedio, bg apply individually to each cue
-  ::part(n1 …){} <template><shadowEl part='n1 …'> //from outside
-  ::slotted(*|1s≠combined){} <custom-el><el slot=> //from inside
+  ⚠️historical issues :?::(before after first-line first-letter)
+  ::selection { // ≠Ios15
+    color
+    bg-color
+    text-shadow?decorationCSS2
+  }
+  ::first-letter { // of line1 of #block-lvl-els
+    ⚠️select all '"%&#@!*?/\.:,…;L) symbols connected to letter1
+    vertical-align;
+    font;
+    text-shadow-*;
+    transform-*;
+    decoration-*;
+    letter?word-spacing
+    line-height;
+    margin;
+    padding;
+    border;
+    box-shadow;
+    float;
+    color;
+    bg
+  }
+  ::first-line { // of #block-lvl-els
+    <::first-letter>≠margin;
+    padding;
+    border;
+    box-shadow;
+    float
+  }
+  ::placeholder { // for input, textarea
+    <::line1> -*;
+    color: lightgrayⒹ;
+  }
+  ::before?after { // non-replaced-Els, ⚠️content required
+    display: inlineⒹ;
+    ...;
+    content: none| normal| [
+      ''|
+      <img>|
+      attr()|
+      open-quote| close-quote| no-open-quote| no-close-quote|
+      counter(name, style?)|
+      counters(name, 'nest separater', style?)
+    ]… / 'alt' // ≠S19F4
+  }
+    💡.paren { // = child1
+        counter-reset: noneⒹ | [name ±#0d?] …;
+      }
+      .child {
+        counter-increment: noneⒹ | [name ±#1d?] …;
+      }
+      .child:nth-child(#) { //reset = set + 1
+        counter-set: <reset>; //≠S19
+        counter-reset: <reset>;
+      }
+    💡style: disq circle square decimal?-leading-zero
+        lower?upper-roman?alpha=latin
+        lower-greek'αβγ urdu'ar#-moz
+  ::marker { // ≠S19
+    content;
+    color;
+    font;
+    white-space;
+    direction;
+    💡apply to: li summary el?::pseudoEl { display: list-item }
+  }
+  ::cue?cue(selector) { // ::cue(selector) ≠F4
+    💡style vedio track.Vtt, bg apply individually to each cue
+    bg;
+    color;
+    opacity;
+    visibility;
+    font;
+    text-shadow-*;
+    decoration?-*;
+    line-height;
+    white-space;
+    outline
+  }
+  ::part(n1 …) {} // from outside
+    //<template> <shadowEl part='n1 …'>
+  ::slotted(*|1s≠combined) {} // from inside
+    //<custom-el> <el slot>
+
 ★pseudoClass(0,1,0): elState. :lang(en){quotes; …??} <el lang=>
   :not(s1,s2,…){}//s≠:not()?pseudoElement, :not((#,#,#))=(#,#,#)
   :is?where(s1,s2,…)//s≠::pseudoElement, forgiving-selector≠S19

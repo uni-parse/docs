@@ -1,50 +1,21 @@
 const sharp = require('sharp')
-sharp('src/test.png')
-  // .resize(
-  //   200,//width
-  //   200,//height
-  //   {
-  //     fit: 'contain',
-  //     position: 'left',
-  //     background: `red`,
-  //     //withoutReduction: true
-  //   }
-  // )
-  // .extend({
-  //   top: 10,
-  //   bottom: 20,
-  //   left: 10,
-  //   right: 10,
-  //   background: { r: 0, g: 0, b: 0, alpha: .5 }
-  // })
+const fs = require('node:fs')
 
-  /* .extract({ //crop
-    left: 40,//push from right
-    top: 40,// push from bottom
-    width: 1200 - 80,
-    height: 1200 -105
-  }) */
+const
+  src = './src/',
+  dist = './dist/'
 
-  //.trim(30) //crop img by border?margin width10Ⓓ
+fs.mkdir(dist, () => { })
 
-  .jpeg({
-    quality: 50, //80d 0~100
-    progressive: true, //falseⒹ
-    chromaSubsampling: '4:2:0',//'4:4:4' '4:2:0'
-    optimizeCoding: true, //trueⒹ
-    trellisQuantisation: false,
-    overshootDeringing: false,
-    optimizeScans: false,
-    quantizationTable: 0, //integer 0d~8
-    mozjpeg: true, //falseⒹ {trellisQuantisation: true, overshootDeringing: true, optimiseScans: true, quantisationTable: 3}
-    force: true //trueⒹ format
-  })
-  .avif({
-    quality: 50, //80d
-    lossless: false, //falseⒹ
-    effort: 0, //0fastest~6slowest 4d cpu's
-    chromaSubsampling: '4:2:0'//'4:4:4' '4:2:0'
-  })
+const imgs = fs.readdirSync(src).filter(label =>
+  label.endsWith('.png')
+  || label.endsWith('.jpg')
+  || label.endsWith('.jpeg')
+)
+
+let imgsCount = 0
+
+const promises = imgs.reduce((p, img) => p.add(sharp(src + img)
   .png({
     quality: 50, //0~100d
     colors: 256, //256d
@@ -54,61 +25,58 @@ sharp('src/test.png')
     adaptiveFiltering: false, //falseⒹ
     effort: 1, //1~10 7d
     dither: 1.0, //1.0d
-    force: true, //trueⒹ
+    force: false, //trueⒹ
   })
-  .webp({
-    quality: 50, //80d
-    alphaQuality: 80, //0~100d
-    lossless: false, //falseⒹ
-    nearLossless: false, //falseⒹ
-    smartSubsample: false, //falseⒹ high quality chroma
-    effort: 0, //0fastest~6slowest 4d cpu's
-    loop: 0, //0d infinity # times animation frames
-    delay: 0, //animation ms between frames
-    force: true //trueⒹ format
+  .jpeg({
+    quality: 50, //80d 0~100
+    progressive: false, //falseⒹ
+    chromaSubsampling: '4:2:0',//'4:4:4' '4:2:0'
+    optimizeCoding: true, //trueⒹ
+    trellisQuantisation: false,
+    overshootDeringing: false,
+    optimizeScans: false,
+    quantizationTable: 0, //integer 0d~8
+    mozjpeg: true, //falseⒹ {trellisQuantisation: true, overshootDeringing: true, optimiseScans: true, quantisationTable: 3}
+    force: false //trueⒹ format
   })
+  .toFile(dist + img)
+  .then(({ size }) => {
+    console.log(
+      img + ' ' + getOrgSizeStr(img) + ' → ' + size2str(size)
+    )
+    imgsCount++
+    return size
+  })
+), new Set())
 
-  //  .extend({ left: 553, right: 553, top: 816, bottom: 816 , background: {r:0,g:0,b:0,alpha:0}})
-  //   .composite([ //sprite
-  //     {
-  //       input: 'src/assets/_red.png',
-  //       gravity: 'east' //position side(north|east|south|west|centreⒹ) corner(northwest|...)
-  //     }, {
-  //       input: 'src/assets/_magenta.png',
-  //       gravity: 'west'
-  //     }, {
-  //       input: 'src/assets/_green.png',
-  //       gravity: 'northwest'
-  //     }, {
-  //       input: 'src/assets/_cyan.png',
-  //       gravity: 'south'
-  //     },
-  //   ])
+//log total size opt
+const orgSize = imgs.reduce((prev, img) =>
+  prev + fs.statSync(src + img).size, 0)
 
-
-  //.rotate(180)
-  //.flip()//flip→y-axis
-  //.flop()//flip→x-axis
-  //.blur(15)
-  //.flatten({background:'#333'})// ramove alpha channel
-  //.gamma()//1~3 2.2Ⓓ blackness
-  //.negate()//??
-  //.normalise()
-  //.clahe({ width: 40, height: 40 })// brighten dark detailes
-  //.linear()//?
-  
-  /* .modulate({
-     brightness: .8,
-     //saturation: 2,
-     //hue: 270,
-     lightness: 1
-  }) */
-
-  //.grayscale()
-
-  //.toFormat('webp')
-  //.toBuffer()//same formate
-  .toFile('dist/')
+Promise.all(promises).then(sizes => {
+  newSize = sizes.reduce((prev, size) => prev + size, 0)
+  console.log(
+    '______________done___________________' + '\n'
+    + 'total: '
+    + '(' + imgsCount + ' img' + (imgsCount < 10 ? 's' : '') + ') '
+    + size2str(orgSize) + ' → ' + size2str(newSize)
+  )
+})
 
 
-  .then(() => console.log('Hi😎UniParse😄 I\'m done.'))
+
+//helpers
+function getOrgSizeStr(img) {
+  return size2str(fs.statSync(src + img).size)
+}
+function size2str(bytes, decimals = 2) {
+  if (!+bytes) return '0 Bytes'
+
+  const
+    k = 1024,
+    dm = decimals < 0 ? 0 : decimals,
+    sizes = ['Bytes', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'],
+    i = Math.floor(Math.log(bytes) / Math.log(k))
+
+  return `${parseFloat((bytes / Math.pow(k, i)).toFixed(dm))} ${sizes[i]}`
+}
