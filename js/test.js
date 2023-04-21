@@ -1,8 +1,12 @@
 (async () => {
 
-  const x = 5
+  const date1 = new Date()
+  await sleep(100)
+  const date2 = new Date()
 
   console.log(
+    date2 > date1,
+    typeof date1
   )
 
   function sleep(ms) {

@@ -1,27 +1,73 @@
 … ★ • › » ⁂ ⁑ × ÷ € ← → ↑ ↓ ↔ ↕ ⇆ π ♪ ≠ ≈ ≤ ≥ ± © § Ø ƒ † ⁰ ₱
-★demo: <head><style>::part(input amount){}</style>
-  <template id=shadowHost> <style>::slotted(*){} …{}</style>
-    <dl> <dt><h2><slot name=item>undefined</slot></h2></dt>
-        <dd>amount: <input part='input amount'></dd>
-        <dd>vip: <input part='input vip'</dd> </dl></template>
-  <script> var host = document.querySelector('#shadowHost');
-    class className extends HTMLElement{ constructor(){ super();
-      this.attachShadow({mode:'open'});//globalDOM-access=open
-      this.shadowRoot.appendChild(host.content.cloneNode(true)}}
-    customElements.define('custom-el/*#hyphen-*/', className);
-  </script></head> <body>
-    <custom-el> <span slot=item>chocolate</span> </custom-el>
+★demo: 
+  <head>
+    <style>
+      ::part(input amount) {}
+    </style>
+  
+  <template id=shadowHost>
+    <style>
+      ::slotted(*) {}
+      …{}
+    </style>
+    
+    <dl>
+      <dt>
+        <h2>
+          <slot name=item>undefined</slot>
+        </h2>
+      </dt>
+      <dd>amount: <input part='input amount'></dd>
+      <dd>vip: <input part='input vip'</dd>
+    </dl>
+  </template>
+  
+  <script>
+    const host = document.querySelector('#shadowHost')
+    
+    customElements.define('custom-el', class extends HTMLElement {
+      constructor() {
+        super()
+      }
+      connectingCallback() {
+        this.attachShadow({mode:'open'}) //globalDOM-access=open
+        this.shadowRoot.append(host.content.cloneNode(true))
+      }
+    })
+
+  </script>
+  </head>
+  <bodrffrrrftrftrrstrftttrftrftrftrftarft
+    <custom-el>
+      <span slot=item>chocolate</span>
+    </custom-el>
+  </body>
+
+
 ★Document-Object-Model: is API allow js to access html.nodes.
   •all UA shared the global object window.document.
   •template=shadowHost=shadowRoot of scopped shadowDOM Tree.
     ›can be in head or body.
+  
   •attachShadow({mode:'open'}): allow access to&from globalDOM.
-    »::part(name1 …) target shadowDOM from globalDOM:
-      ›target: <template> <el part='n …'(as class)> </template>.
-    »::slotted(*|1s≠combined) target globalDOM from shadowDOM:
-      ›target: <custom-el><el slot=placeholder</el></custom-el>.
-      ›argument: <template> <slot name=placeholder> </template>.
-    ›:host target <custom-el> who in globalDOM from shadowDOM.
+    
+    ::part(name1 …) target shadowDOM from globalDOM
+      <template>
+        <el part='n …'> // name space like class
+      </template>
+    
+    ::slotted(*|1s≠combined) target globalDOM from shadowDOM
+      //target
+      <custom-el>
+        <el slot=placeholder</el>
+      </custom-el>
+      //argument
+      <template>
+        <slot name=placeholder>
+      </template>
+    
+    :host target <custom-el> who in globalDOM from shadowDOM.
      :host(*|1s≠combined){} rel→globalDOM, S19≠slotted?:host>s
      :host-context≠S19F4(*|1s≠combined){}//s=globalDOM.ancestor
-  •:not(:defined){display:none} target <custom-el> until <script src='//customElements.define()' defer> parsing=100%
+  
+  :not(:defined) { display: none } target <custom-el> until parsing=100% <script src='//customElements.define()' defer>

@@ -649,6 +649,54 @@ document.body.append(main);
 });
 
 
+(() => { // shadow dom
+  const template = document.createElement('template')
+  template.innerHTML = `
+  my name: <slot name='name'>unknown</slot>
+  <br>
+  my birthday: <slot name='birthday'>unknown</slot>
+  <br>
+
+  <dl>
+    <dt>more about me?</dt>
+    <dd>...</dd>
+    <slot></slot>
+  </dl>
+
+  `
+
+  customElements.define('my-el', class extends HTMLElement {
+    constructor() {
+      super()
+    }
+    connectedCallback() {
+      this.attachShadow({ mode: 'open' })
+        .append(template.content.cloneNode(true))
+    }
+  })
+
+  const myEl = document.createElement('my-el')
+  document.body.prepend(myEl)
+  myEl.innerHTML = `
+  <dd>hi, am a front-end web developer</dd>
+  
+  <span slot=name>uniparse</span>
+  
+  <dd>my skills based on html5, css3(sass) and javascript(vanila).</dd>
+
+  <span slot=birthday>2000/01/15</span>
+  
+  <dd>am almost done with web component, so my next skill to learn will be React.</dd>
+  `
+})();
+
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
+(() => { })();
 (() => { })();
 
 
