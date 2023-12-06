@@ -1,0 +1,33 @@
+
+motivation
+  enjoyable:
+    sensation (pleasure/pain)
+    anticipation (hope/fear)
+    social cohesion (belonging/rejection).
+  progress map,
+  rewards: points/badgs (create routine),
+  social influence:
+    recommendations
+    computation (rewards for first 3 users)
+  limitation:
+    timed promotion
+    limited quantity
+  investment:
+    make the user feel ownership
+    allow customize theme/UI/sound/font/privacy/settings
+
+ability
+  you can do it,
+  it simple:
+    defaults
+    advanced filter
+    multi select, instead of individual actions
+    automate repetition
+  tutorial:
+    simple hints (svg/gif),
+    & more info button (detailed text),
+    & close/exit button,
+    step by step (no all at once)
+
+triggers
+  notifications push to take actions

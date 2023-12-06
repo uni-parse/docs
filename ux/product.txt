@@ -1,0 +1,64 @@
+business
+  goals & expectations
+  competitor nalysis
+
+target audience
+  demographics
+    age, gender, education, occupation, location, income, status
+  psychographics
+    attitudes, values, interests, lifestyle, personality
+  goals and theres needs
+  pain points
+
+target outcome
+  smart way
+    specific, measurable, achivable, realistic, timed
+
+
+
+Business Model Canvas (9 keys)
+  cs customer segmaters
+    target groupe of users/organizations
+  vp value proposition
+    unique features stand vs computation
+  ch channels
+    the way to delever the value to the customers
+    physical/virtual stores number
+  cr customer relationship
+    personal-assestance or self-service or automated services
+  rs reenue streams
+    money generated from customers
+    sals or subscriiptions or advertisings fees
+  ks key resources
+     physical, financial, intellectual, and human resources
+  ka key activities
+    all necessary tasks to deliver value to customers
+    Develop/produce product/service.
+    Maintain customer relationship & support.
+    Solve any customer problems/issues that may arise.
+  kp key partnerships
+    to optimize resources & reduce risks of "key activities"
+    network of allie suppliers, sponsors, partners
+  cs cost structure
+    to take advantages & reduce expenses
+    fixed and variable expenses, taxes, scales
+
+
+Lean Canvas (8 keys)
+  problem
+  customer segmaters
+  uvp unique value proposition
+    why users should pick you over your competitors
+  solution
+    list features & functionalities
+    remove/reduce bugs/issues
+  channels
+    methods to reach customers
+    social media, seo, email campaigns, ads
+  revenue streams
+    sals, subscriiptions, ads fees
+  key matrics
+    indecators to measure performance
+    sals, users engagement & satisfication, ...
+  unfir advantage
+    
