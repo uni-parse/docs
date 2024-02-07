@@ -1,0 +1,15 @@
+personality
+  (https://bigfive-test.com/result/65ae0c91e27a150008874882)
+  openness
+    creative & try new thinks, don't like change resist new ides
+  conscientiousness
+    schedule & order & orgonization, skip deadlines & miss
+  extraversion
+    extraversion (excited, social attention, express emotions)
+    vs introversion
+  agreeableness
+    kind & empathy & help others & concerned
+    vs compatative & manipulative & carless
+  neuroticism
+    stable stress & emotions & rarly depress
+    vs unstable mode, easly sad
