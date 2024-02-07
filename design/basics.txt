@@ -1,0 +1,43 @@
+design ethics
+  design is problem solving
+  audience consideration
+    ignore your unconscious bias, and foucus just on users
+  real world impact
+
+accessibility
+  color contrast
+  spasing
+  text size
+  hierarchy
+  usability
+    in mobile the thumb reach short range area and not the top!!
+    so position nav & meneu & search section at bottom
+    to reduce afford
+
+design research
+  important questions
+    who are the target customers
+    why do they or do they use your product
+    what are their motivations
+    what their expectations from the product
+    what the alternative solution they are using now
+  feedback
+    customer idrect interviews
+    survies
+  competitors
+    analyze how they communicate with customers
+    how they solve the target problem
+    what there solution lake
+
+product design
+  goal setting
+  research
+  analysis
+  product strategy and planning
+  executing and product launch
+UX design
+  conduct user research
+  design (structure the IA information architecture, build wireframes, prototyping)
+  test and iterate
+  implement
+
