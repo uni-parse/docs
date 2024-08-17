@@ -68,8 +68,15 @@
     ›bg-image: url(url1)|<gradient1>, url(url2)|<gradient2>, …;
     ›bg-position|origin|repeat|attachment|size|clip: vl1, vl2,…;
   •shorthand: ›bg: vl1, vl2, …, vln color(only on last vl);
+
 ★opacity: 0~1d; affect both foreground & background.
-★filter: blur0d(length) brightness|contrast|saturate(≤#1d|100%≤) grayscale0d|sepia0d|invert0d|opacity1d(≤#1|100%) hue-rotate(<angle>) drop-shadow(offsetX offsetY <blur> <color>)
+
+★filter: 
+  blur0d(length)
+	brightness|contrast|saturate(≤#1d|100%≤)
+	grayscale0d|sepia0d|invert0d|opacity1d(≤#1|100%)
+	hue-rotate(<angle>)
+	drop-shadow(offsetX offsetY <blur> <color>)
 
 
 
