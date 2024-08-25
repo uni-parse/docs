@@ -1,3 +1,5 @@
+// after merge
+git stash && git rebase main && git push --force-with-lease origin dev
 
 // install git
 $ pkg i git && git --version
